@@ -39,11 +39,16 @@ export function removerTodo(){
 }
 export function getAllShoes() {
   return async function (dispatch) {
-    const results = await axios(`${baseUrl}/shoes`);
-    dispatch({
-      type: "GET_ALL_SHOES",
-      payload: results.data,
-    });
+    try {
+      const results = await axios(`${baseUrl}/shoes`);
+      dispatch({
+        type: "GET_ALL_SHOES",
+        payload: results.data,
+      });
+      
+    } catch (error) {
+      console.log(error);
+    }
   };
 }
 export function getDetails(id) {
