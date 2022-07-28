@@ -33,7 +33,8 @@ export const HYDRATATE_FROM_LS = "HYDRATATE_FROM_LS"
 export const REMOVER_TODO = "REMOVER_TODO"
 export const MERCADOPAGO_PAYMENT = 'MERCADOPAGO_PAYMENT'
 
-const baseUrl = process.env.URL
+const { pruebaUrl } = process.env
+const pruebapruebaUrl = "https://yourshoes-back.herokuapp.com"
 
 export function removerTodo() {
   return {
@@ -42,7 +43,7 @@ export function removerTodo() {
 }
 export function getAllShoes() {
   return async function (dispatch) {
-    const results = await axios(`${baseUrl}/shoes`);
+    const results = await axios(`${pruebaUrl}/shoes`);
     dispatch({
       type: "GET_ALL_SHOES",
       payload: results.data,
@@ -51,7 +52,7 @@ export function getAllShoes() {
 }
 export function getDetails(id) {
   return async function (dispatch) {
-    const res = await axios(`${baseUrl}/shoes/${id}`);
+    const res = await axios(`${pruebaUrl}/shoes/${id}`);
     return dispatch({
       type: GET_DETAILS,
       payload: res.data,
@@ -64,7 +65,7 @@ export function getShoesName(name) {
 
   return async function (dispatch) {
     try {
-      const results = await axios(`${baseUrl}/shoes?name=${name}`);
+      const results = await axios(`${pruebaUrl}/shoes?name=${name}`);
       return dispatch({
         type: "GET_SHOES_NAME",
         payload: results.data,
@@ -91,13 +92,13 @@ export function deleteOneToCart(payload) {
 
 export function getAllBrands() {
   return async function () {
-    await axios(`${baseUrl}/brands`);
+    await axios(`${pruebaUrl}/brands`);
   };
 }
 
 export function getAllCategories() {
   return async function (dispatch) {
-    const results = await axios(`${baseUrl}/categories`);
+    const results = await axios(`${pruebaUrl}/categories`);
     return dispatch({
       type: GET_ALL_CATEGORIES,
       payload: results.data,
@@ -106,7 +107,7 @@ export function getAllCategories() {
 }
 export function filterByBrand(payload) {
   return async function (dispatch) {
-    const results = await axios(`${baseUrl}/shoes?brand=${payload}`)
+    const results = await axios(`${pruebaUrl}/shoes?brand=${payload}`)
     return dispatch({
       type: FILTER_BY_BRAND,
       payload: results.data,
@@ -116,7 +117,7 @@ export function filterByBrand(payload) {
 
 export function filterByCategory(payload) {
   return async function (dispatch) {
-    const results = await axios(`${baseUrl}/shoes?category=${payload}`)
+    const results = await axios(`${pruebaUrl}/shoes?category=${payload}`)
     //console.log(results.data)
     return dispatch({
       type: FILTER_BY_CATEGORY,
@@ -126,7 +127,7 @@ export function filterByCategory(payload) {
 }
 export function filterBySize(payload) {
   return async function (dispatch) {
-    const results = await axios(`${baseUrl}/shoes?size=${payload}`)
+    const results = await axios(`${pruebaUrl}/shoes?size=${payload}`)
     //console.log(results.data)
     return dispatch({
       type: FILTER_BY_SIZE,
@@ -137,7 +138,7 @@ export function filterBySize(payload) {
 export function filterByPrice(priceMin, priceMax) {
   //console.log("precio", priceMax)
   return async function (dispatch) {
-    const results = await axios(`${baseUrl}/shoes?priceMin=${priceMin}&priceMax=${priceMax}`)
+    const results = await axios(`${pruebaUrl}/shoes?priceMin=${priceMin}&priceMax=${priceMax}`)
     return dispatch({
       type: FILTER_BY_PRICE,
       payload: results.data,
@@ -149,7 +150,7 @@ export function postUser(payload) {
   return async function (dispatch) {
     try {
       var json = await axios.post(
-        `${baseUrl}/login/signup`,
+        `${pruebaUrl}/login/signup`,
         payload
       );
       dispatch({
@@ -165,7 +166,7 @@ export function Login(payload) {
   console.log('payload', payload)
   return async function (dispatch) {
     try {
-      var json = await axios.post(`${baseUrl}/login/signin`, payload)
+      var json = await axios.post(`${pruebaUrl}/login/signin`, payload)
 
       dispatch({
         type: LOGIN_USER,
@@ -189,7 +190,7 @@ export function hydratateFromLocalStorage(payload) {
 }
 export function createOrder(payload) {
   return async function (dispatch) {
-    const res = await axios.post(`${baseUrl}/mercadopago`, { cart: payload.cart });
+    const res = await axios.post(`${pruebaUrl}/mercadopago`, { cart: payload.cart });
     return dispatch({
       type: "CREATE_ORDER",
       payload: res.data,
@@ -200,7 +201,7 @@ export function createOrder(payload) {
 export function combinationsFilter(brand, priceMin, priceMax) {
   return async function (dispatch) {
     try {
-      const results = await axios(`${baseUrl}/shoes?brand=${brand}&priceMin=${priceMin}&priceMax=${priceMax}`)
+      const results = await axios(`${pruebaUrl}/shoes?brand=${brand}&priceMin=${priceMin}&priceMax=${priceMax}`)
       dispatch({
         type: COMBINATION_FILTERS,
         payload: results.data
@@ -214,7 +215,7 @@ export function combinationsFilter(brand, priceMin, priceMax) {
 export function combinationsFilter1(name, priceMin, priceMax) {
   return async function (dispatch) {
     try {
-      const results = await axios(`${baseUrl}/shoes?name=${name}&priceMin=${priceMin}&priceMax=${priceMax}`)
+      const results = await axios(`${pruebaUrl}/shoes?name=${name}&priceMin=${priceMin}&priceMax=${priceMax}`)
       dispatch({
         type: COMBINATION_FILTERS1,
         payload: results.data
@@ -228,7 +229,7 @@ export function combinationsFilter1(name, priceMin, priceMax) {
 export function combinationsFilter2(brand, name, priceMin, priceMax) {
   return async function (dispatch) {
     try {
-      const results = await axios(`${baseUrl}/shoes?brand=${brand}&name=${name}&priceMin=${priceMin}&priceMax=${priceMax}`)
+      const results = await axios(`${pruebaUrl}/shoes?brand=${brand}&name=${name}&priceMin=${priceMin}&priceMax=${priceMax}`)
       dispatch({
         type: COMBINATION_FILTERS2,
         payload: results.data
@@ -242,7 +243,7 @@ export function combinationsFilter2(brand, name, priceMin, priceMax) {
 export function combinationsFilter3(name, brand) {
   return async function (dispatch) {
     try {
-      const results = await axios(`${baseUrl}/shoes?name=${name}&brand=${brand}`)
+      const results = await axios(`${pruebaUrl}/shoes?name=${name}&brand=${brand}`)
       dispatch({
         type: COMBINATION_FILTERS3,
         payload: results.data
@@ -256,7 +257,7 @@ export function combinationsFilter3(name, brand) {
 export function combinationsFilter4(category, priceMin, priceMax) {
   return async function (dispatch) {
     try {
-      const results = await axios(`${baseUrl}/shoes?category=${category}&priceMin=${priceMin}&priceMax=${priceMax}`)
+      const results = await axios(`${pruebaUrl}/shoes?category=${category}&priceMin=${priceMin}&priceMax=${priceMax}`)
       dispatch({
         type: COMBINATION_FILTERS4,
         payload: results.data
@@ -270,7 +271,7 @@ export function combinationsFilter4(category, priceMin, priceMax) {
 export function combinationsFilter5(category, name) {
   return async function (dispatch) {
     try {
-      const results = await axios(`${baseUrl}/shoes?category=${category}&name=${name}`)
+      const results = await axios(`${pruebaUrl}/shoes?category=${category}&name=${name}`)
       dispatch({
         type: COMBINATION_FILTERS5,
         payload: results.data
@@ -284,7 +285,7 @@ export function combinationsFilter5(category, name) {
 export function combinationsFilter6(brand, category) {
   return async function (dispatch) {
     try {
-      const results = await axios(`${baseUrl}/shoes?brand=${brand}&category=${category}`)
+      const results = await axios(`${pruebaUrl}/shoes?brand=${brand}&category=${category}`)
       dispatch({
         type: COMBINATION_FILTERS6,
         payload: results.data
@@ -298,7 +299,7 @@ export function combinationsFilter6(brand, category) {
 export function combinationsFilter7(category, brand, name) {
   return async function (dispatch) {
     try {
-      const results = await axios(`${baseUrl}/shoes?category=${category}&brand=${brand}&name=${name}`)
+      const results = await axios(`${pruebaUrl}/shoes?category=${category}&brand=${brand}&name=${name}`)
       dispatch({
         type: COMBINATION_FILTERS7,
         payload: results.data
@@ -312,7 +313,7 @@ export function combinationsFilter7(category, brand, name) {
 export function combinationsFilter8(category, brand, priceMax, priceMin) {
   return async function (dispatch) {
     try {
-      const results = await axios(`${baseUrl}/shoes?category=${category}&brand=${brand}&priceMin=${priceMin}&priceMax=${priceMax}`)
+      const results = await axios(`${pruebaUrl}/shoes?category=${category}&brand=${brand}&priceMin=${priceMin}&priceMax=${priceMax}`)
       dispatch({
         type: COMBINATION_FILTERS8,
         payload: results.data
@@ -326,7 +327,7 @@ export function combinationsFilter8(category, brand, priceMax, priceMin) {
 export function combinationsFilter9(category, name, priceMax, priceMin) {
   return async function (dispatch) {
     try {
-      const results = await axios(`${baseUrl}/shoes?category=${category}&name=${name}&priceMin=${priceMin}&priceMax=${priceMax}`)
+      const results = await axios(`${pruebaUrl}/shoes?category=${category}&name=${name}&priceMin=${priceMin}&priceMax=${priceMax}`)
       dispatch({
         type: COMBINATION_FILTERS9,
         payload: results.data
@@ -340,7 +341,7 @@ export function combinationsFilter9(category, name, priceMax, priceMin) {
 export function combinationsFilter10(category, name, priceMax, priceMin, brand) {
   return async function (dispatch) {
     try {
-      const results = await axios(`${baseUrl}/shoes?category=${category}&name=${name}&brand=${brand}&priceMin=${priceMin}&priceMax=${priceMax}`)
+      const results = await axios(`${pruebaUrl}/shoes?category=${category}&name=${name}&brand=${brand}&priceMin=${priceMin}&priceMax=${priceMax}`)
       dispatch({
         type: COMBINATION_FILTERS10,
         payload: results.data
@@ -354,7 +355,7 @@ export function combinationsFilter10(category, name, priceMax, priceMin, brand) 
 export function combinationsFilter11(brand, priceMin, priceMax, size) {
   return async function (dispatch) {
     try {
-      const results = await axios(`${baseUrl}/shoes?size=${size}&brand=${brand}&priceMin=${priceMin}&priceMax=${priceMax}`)
+      const results = await axios(`${pruebaUrl}/shoes?size=${size}&brand=${brand}&priceMin=${priceMin}&priceMax=${priceMax}`)
       dispatch({
         type: COMBINATION_FILTERS11,
         payload: results.data
@@ -368,7 +369,7 @@ export function combinationsFilter11(brand, priceMin, priceMax, size) {
 export function combinationsFilter_12(size, priceMin, priceMax) {
   return async function (dispatch) {
     try {
-      const results = await axios(`${baseUrl}/shoes?size=${size}&priceMin=${priceMin}&priceMax=${priceMax}`)
+      const results = await axios(`${pruebaUrl}/shoes?size=${size}&priceMin=${priceMin}&priceMax=${priceMax}`)
       dispatch({
         type: COMBINATION_FILTERS_12,
         payload: results.data
@@ -382,7 +383,7 @@ export function combinationsFilter_12(size, priceMin, priceMax) {
 export function combinationsFilter_13(size, brand) {
   return async function (dispatch) {
     try {
-      const results = await axios(`${baseUrl}/shoes?size=${size}&brand=${brand}`)
+      const results = await axios(`${pruebaUrl}/shoes?size=${size}&brand=${brand}`)
       dispatch({
         type: COMBINATION_FILTERS_13,
         payload: results.data
@@ -397,7 +398,7 @@ export function combinationsFilter_13(size, brand) {
 export function combinationsFilter14(size, brand, name, priceMin, priceMax) {
   return async function (dispatch) {
     try {
-      const results = await axios(`${baseUrl}/shoes?size=${size}&brand=${brand}&name=${name}&priceMin=${priceMin}&priceMax=${priceMax}`)
+      const results = await axios(`${pruebaUrl}/shoes?size=${size}&brand=${brand}&name=${name}&priceMin=${priceMin}&priceMax=${priceMax}`)
       dispatch({
         type: COMBINATION_FILTERS14,
         payload: results.data
@@ -412,7 +413,7 @@ export function combinationsFilter14(size, brand, name, priceMin, priceMax) {
 export function combinationsFilter15(size, name) {
   return async function (dispatch) {
     try {
-      const results = await axios(`${baseUrl}/shoes?size=${size}&name=${name}`)
+      const results = await axios(`${pruebaUrl}/shoes?size=${size}&name=${name}`)
       dispatch({
         type: COMBINATION_FILTERS15,
         payload: results.data
@@ -427,7 +428,7 @@ export function combinationsFilter15(size, name) {
 export function combinationsFilter16(size, category) {
   return async function (dispatch) {
     try {
-      const results = await axios(`${baseUrl}/shoes?size=${size}&category=${category}`)
+      const results = await axios(`${pruebaUrl}/shoes?size=${size}&category=${category}`)
       dispatch({
         type: COMBINATION_FILTERS16,
         payload: results.data
