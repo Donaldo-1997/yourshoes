@@ -14,6 +14,10 @@ import MercadoPago from "./components/MercadoPago/MercadoPago"
 
 
 function App() {
+  useEffect(() => {
+    if (!localStorage) localStorage.setItem("products", JSON.stringify([]));
+  }, []);
+
   const productsLS = JSON.parse(localStorage.getItem("products"))
   const dispatch = useDispatch()
   useEffect(()=>{
