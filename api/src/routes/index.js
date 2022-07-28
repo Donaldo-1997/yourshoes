@@ -13,7 +13,7 @@ const google = require('./google')
 const mercadoRouter = require("./mercadopago.js")
 
 //--------------------------ROUTES
-router.use("/google", google)
+// router.use("/google", google)
 router.use("/login", login)
 router.use("/user/", user);
 router.use("/shoes", shoesRouter);
@@ -21,6 +21,9 @@ router.use("/categories", categories);
 router.use("/brands", brands)
 router.use("/mercadopago", mercadoRouter)
 
+router.get('/', (req, res) => {
+    res.send('deploy funcionando')
+})
 
 
 module.exports = router;
