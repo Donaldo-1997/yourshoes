@@ -1,22 +1,38 @@
-import { Route, Switch } from 'react-router-dom';
-import Home from './components/Home.jsx'
-import DetailPokemon from './components/DetailPokemon.jsx'
-import CreatePokemon from './components/CreatePokemon.jsx'
-import Landing from './components/Landing.jsx'
-import NotFound from './components/NotFound.jsx';
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
+import HomePage from "./components/HomePage/HomePage"
+import ProductDetail from './components/ProductDetail/ProductDetail';
+import './App.css';
+import Cart from './components/Cart/Cart';
+import FormUser from './components/FormUser/FormUser'
+import LogIn from './components/LogIn/LogIn';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { hydratateFromLocalStorage } from './redux/actions';
+import AboutUs from './components/About/AboutUs';
+import FAQs from './components/About/FAQs';
+import MercadoPago from "./components/MercadoPago/MercadoPago"
+
 
 function App() {
+  const productsLS = JSON.parse(localStorage.getItem("products"))
+  const dispatch = useDispatch()
+  useEffect(()=>{
+    dispatch(hydratateFromLocalStorage(productsLS))
+  },[productsLS])
+
   return (
-    <div className="App">
-      <Switch>
-        <Route exact path='/' component={Landing} />
-        <Route exact path='/home' component={Home} />
-        <Route exact path='/detail/:parameter' component={DetailPokemon} />
-        <Route exact path='/create' component={CreatePokemon} />
-        <Route path='*' component={NotFound} />
-      </Switch>
-    </div>
+      <Router>
+        <Routes>
+          <Route exact path="/" element={<HomePage/>}/>
+          <Route exact path='/shoes/:id' element={<ProductDetail/>}/>
+          <Route exact path='/cart' element={<Cart/>}/>
+          <Route exact path='/user' element={<FormUser/>}/>
+          <Route exact path='/login' element={<LogIn/>}/>
+          <Route exact path='/aboutUs' element={<AboutUs/>}/>
+          <Route exact path='/questions' element={<FAQs/>}/>
+          <Route exact path='/mercadopago/pagos' element={<MercadoPago/>}/>
+        </Routes>
+      </Router>
   );
 }
-
 export default App;

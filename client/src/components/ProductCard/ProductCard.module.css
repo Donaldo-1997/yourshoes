@@ -1,0 +1,50 @@
+.ellipsis {
+  text-overflow: ellipsis ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.short {
+  width: 400px;
+}
+
+.title {
+  font-size: 12px;
+  font-family: "Fugaz One";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16.5258px;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: black;
+}
+
+.price {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16.5258px;
+  /* line-height: 100%; */
+  color: black;
+}
+
+.container{
+  background: #f87d2d;
+  padding-bottom: 18%;
+  height: 89px;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+}
+
+.cardImg {
+  width: 100%;
+}
+
+.infoContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}

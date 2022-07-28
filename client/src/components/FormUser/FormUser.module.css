@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap');
+
+
+
+.contenedor {
+	
+	display: flex;
+	align-items: flex-start;
+	justify-content: center;
+    margin-top: 0px;
+    /* background: linear-gradient(90deg, rgb(185, 134, 69) 0%, rgb(195, 97, 33) 35%, rgb(216, 90, 6) 95%); */
+    /* background: linear-gradient(90deg, rgb(216, 90, 6) 0%, rgb(195, 97, 33) 35%, rgb(185, 134, 69) 95%); */
+    
+    height: 900px;
+   
+    
+}
+
+.yourShoes{
+    font-family: 'Anton';
+font-style: normal;
+font-weight: 400;
+font-size: 2rem;
+line-height: 100%;
+text-transform: uppercase;
+display: flex;
+align-items: flex-start;
+justify-content: center;
+/* or 60px */
+
+letter-spacing: 0.04em;
+
+color: #faeeee;
+}
+
+.yourShoes span{
+    color:#F87D2D
+}
+
+.formulario {
+	min-width: 400px;
+    min-height: 200px;
+	margin-top: 15px;
+    background: linear-gradient(90deg, rgb(185, 134, 69) 0%, rgb(195, 97, 33) 35%, rgb(216, 90, 6) 95%);
+	border-radius: 5px;
+	padding: 20px;
+	box-shadow: rgba(0, 0, 0, 0.833) 0px 1px 4px;
+}
+
+.formulario > div {
+	margin-bottom: 5px;
+}
+
+.formulario label {
+	display: block;
+	font-weight: 600;
+	font-size: 14px;
+	margin-bottom: 5px;
+	color: #f2e7e7;
+}
+
+.formulario input,
+.formulario textarea {
+	font-family: 'Open Sans', sans-serif;
+	width: 100%;
+	border-radius: 5px;
+	border: 2px solid #e2e2e2;
+	font-size: 18px;
+	padding: 0px;
+	margin-bottom: 5px;
+	color: #f0e3e3;
+}
+
+.formulario input:focus {
+	outline: none;
+	border: 2px solid #0085FF;
+}
+
+.formulario .error {
+	color: #8d090b;
+    text-shadow:
+      0 0 7px rgb(205, 8, 8),
+      0 0 10px rgb(197, 7, 7),
+      0 0 21px rgb(141, 4, 4),
+      0 0 42px rgb(255, 0, 0),
+      0 0 82px rgb(255, 0, 34),
+      0 0 92px rgb(255, 0, 0),
+      0 0 102px rgb(255, 0, 47),
+      0 0 151px rgb(255, 0, 30);
+;
+font-weight: 600;
+	font-size: 12px;
+}
+
+.formulario button[type="submit"] {
+	display: block;
+	background: #ff9d00;
+	font-weight: 600;
+	font-family: 'Open Sans', sans-serif;
+	border: none;
+	cursor: pointer;
+	width: 100%;
+	padding: 10px;
+	border-radius: 5px;
+	color: #fff;
+	font-size: 16px;
+	transition: .3s ease all;
+}
+
+.formulario button[type="submit"]:hover {
+	background: #ba740a;
+}
+
+.formulario .exito {
+	text-align: center;
+	font-size: 14px;
+	padding-top: 20px;
+	color: #02a802;
+}
+
+.formulario input[type="radio"] {
+	width: auto;
+}
+
+.link {
+    text-decoration: none;
+    font-size: 20px;
+color: #f9efef;
+}

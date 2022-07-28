@@ -1,0 +1,29 @@
+
+.filtersContainer{
+    display: flex;
+    margin-top: 10px;
+    margin-left: 10px;
+
+}
+
+.brandSelect{
+    margin-right: 10px;
+    border-radius: 10px;
+    background-color: #f87d2d;
+    border: none;
+}
+
+.priceFilter{
+    border: none;
+    border-bottom-style: solid;
+    margin-right: 10px;
+    outline: 0px;
+    width: 117px;
+}
+
+.priceButton{
+    border-radius: 50%;
+    border: none;
+    background-color: #f87d2d;
+}
+

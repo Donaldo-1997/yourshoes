@@ -1,16 +1,20 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
 import './index.css';
+import {Provider} from 'react-redux'
+import {store} from "./redux/store"
+// import dotenv from "dotenv";
 import App from './App';
-import { Provider } from 'react-redux';
-import { BrowserRouter } from 'react-router-dom';
-import store from './redux/store.js'
+// dotenv.config();
 
-ReactDOM.render(
-  <BrowserRouter>
-    <Provider store={store}>
+localStorage.setItem("cart", localStorage.getItem("cart"));
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <Provider store={store}>
+    <React.StrictMode>
       <App />
-    </Provider>
-  </BrowserRouter>,
-  document.getElementById('root')
+    </React.StrictMode>
+  </Provider>
 );
+

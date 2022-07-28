@@ -1,0 +1,130 @@
+.divCard {
+  min-width: 250px;
+  width: 50%;
+  margin: auto;
+  margin-top: 3em;
+  margin-left: 35rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.divContent {
+  display: flex;
+  flex-direction:row;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: space-around;
+  align-items:flex-end;
+}
+
+.cart{
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 100%;
+  text-transform: uppercase;
+  background: #D9D9D9;
+  border-radius: 41.4179px;
+  padding: 15px 40px;
+  border: none;
+  margin-left: 3rem;
+
+}
+
+.title{
+  position: relative;
+  font-family: 'Fugaz One';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 2rem;
+  line-height: 100%;
+  
+  text-transform: uppercase;
+}
+
+.yourshoes{
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+  margin-top: 0.9rem;
+  margin-left: 1.1rem;
+  font-family: 'Anton';
+font-style: normal;
+font-weight: 400;
+font-size: 2rem;
+line-height: 100%;
+/* or 60px */
+
+letter-spacing: 0.04em;
+
+color: #000000;
+}
+
+.shoes{
+  color:#F87D2D
+}
+
+.imagen{
+  position: fixed;
+  left: 2rem;
+  border:solid #F87D2D;
+  border-radius: 10px;
+}
+
+.select {
+  position: relative;
+  border: 1px solid #ccc;
+  width: 5rem;
+  overflow: hidden;
+  background-color: #fff;
+  font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 32px;
+line-height: 100%;
+}
+  
+.select:before {
+    content: '';
+    position: absolute;
+    right: 5px;
+    top: 7px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 7px 5px 0 5px;
+    border-color: #000000 transparent transparent transparent;
+    z-index: 5;
+    pointer-events: none;
+}
+  
+.select select {
+    padding: 5px 8px;
+    width: 130%;
+    border: none;
+    box-shadow: none;
+    background-color: transparent;
+    background-image: none;
+    appearance: none;
+}
+
+.price{
+  font-family: 'Inter';
+font-style: normal;
+font-weight: 600;
+font-size: 40.0714px;
+line-height: 100%;
+}
+
+.size{
+  font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 40.0714px;
+line-height: 100%;
+}

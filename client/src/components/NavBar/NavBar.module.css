@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Fugaz+One&family=Inter&display=swap');
+.Link {
+    text-decoration: none;
+    text-decoration-color: grey;
+}
+
+.yourShoes{
+    font-family: 'Anton';
+font-style: normal;
+font-weight: 400;
+font-size: 2rem;
+line-height: 100%;
+text-transform: uppercase;
+/* or 60px */
+
+letter-spacing: 0.04em;
+
+color: #000000;
+}
+
+.yourShoes span{
+    color:#F87D2D
+}
+
+.icon{
+    text-decoration: none;
+    
+}
+
+.navbar{
+    background: rgba(143, 53, 53, 0.9);
+    width: 100%;
+    position:fixed;
+    z-index: 100;
+}
+
+.resetButton{
+    border-style: none;
+    background-color: transparent;
+}

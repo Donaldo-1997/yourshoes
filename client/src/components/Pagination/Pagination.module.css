@@ -1,0 +1,47 @@
+
+
+.contenedor {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.contenedor1{
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+}
+
+.button{
+  all:unset;
+  font-size: 1.40rem;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 100%;
+  /* or 32px */
+  letter-spacing: 0.04em;
+  margin-left: 5px;
+  margin-right: 5px;
+  border-style: solid;
+  border-radius: 8px;
+  padding: 2px
+}
+
+.button:disabled:hover{
+  transform: none;
+  cursor: default
+}
+
+p{
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 100%;
+  /* or 32px */
+
+  letter-spacing: 0.04em;
+  margin-top: 14px;
+}
