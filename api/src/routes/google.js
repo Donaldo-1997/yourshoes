@@ -41,13 +41,13 @@ router.get('/', passport.authenticate('google', { scope: ['profile', 'email'] })
 router.get('/callback', passport.authenticate('google', { failureRedirect: '/failed' }),
   function(req, res) {
     // Successful authentication, redirect home.
-    res.redirect('http://localhost:3000');
+    res.redirect('https://yourshoes-donaldojbm7-gmailcom.vercel.app');
   }
 );
 
 router.get('/logout', (req, res) => {
     req.session = null;
     req.logout();
-    res.redirect('http://localhost:3000');
+    res.redirect('https://yourshoes-donaldojbm7-gmailcom.vercel.app');
 })
 module.exports = router;
