@@ -9,7 +9,7 @@ const categories= require("./categories")
 const brands= require("./brands");
 // const login = require('./login')
 // const auth_email = require('./auth_email')
-const mercadoRouter = require("./mercadopago.js")
+// const mercadoRouter = require("./mercadopago.js")
 
 //--------------------------ROUTES
 // router.use("/auth", auth_email)
@@ -18,7 +18,7 @@ const mercadoRouter = require("./mercadopago.js")
 router.use("/shoes", shoesRouter);
 router.use("/categories", categories);
 router.use("/brands", brands)
-router.use("/mercadopago", mercadoRouter)
+// router.use("/mercadopago", mercadoRouter)
 
 router.get('/', (req, res) => {
     res.send('deploy funcionando')
