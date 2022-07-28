@@ -8,11 +8,11 @@ const shoesRouter = require("./products");
 const categories= require("./categories")
 const brands= require("./brands");
 // const login = require('./login')
-// const google = require('./google')
+const auth_email = require('./auth_email')
 // const mercadoRouter = require("./mercadopago.js")
 
 //--------------------------ROUTES
-// router.use("/google", google)
+router.use("/auth", auth_email)
 // router.use("/login", login)
 // router.use("/user/", user);
 router.use("/shoes", shoesRouter);
