@@ -1,11 +1,26 @@
 const { Router } = require("express");
 const router = Router();
-const products = require("./products");
+var logger = require('morgan');
+var session = require('express-session');
 
-router.get('/', (req, res) => {
-    res.send('deploy funcionando')
-})
+//--------------------------IMPORT
+const shoesRouter = require("./products");
+const user = require("./users");
+const categories= require("./categories")
+const brands= require("./brands");
+const login = require('./login')
+const google = require('./google')
+const mercadoRouter = require("./mercadopago.js")
 
-router.use("/shoes", products);
+//--------------------------ROUTES
+router.use("/google", google)
+router.use("/login", login)
+router.use("/user/", user);
+router.use("/shoes", shoesRouter);
+router.use("/categories", categories);
+router.use("/brands", brands)
+router.use("/mercadopago", mercadoRouter)
+
+
 
 module.exports = router;
