@@ -13,6 +13,7 @@ import FAQs from "./components/About/FAQs";
 import MercadoPago from "./components/MercadoPago/MercadoPago";
 import Favorites from "./components/Favorites/Favorites";
 import { hydratateLSFav } from "./redux/actions";
+import CreateProduct from "./components/CreateProduct/CreateProduct";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -73,6 +74,7 @@ function App() {
         <Route exact path="/questions" element={<FAQs />} />
         <Route exact path="/mercadopago/pagos" element={<MercadoPago />} />
         <Route exact path="/favorites" element={<Favorites />} />
+        <Route exact path="/post" element={<CreateProduct/>}/>
       </Routes>
     </Router>
   );

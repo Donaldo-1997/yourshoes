@@ -36,6 +36,7 @@ export const REMOVER_TODO = "REMOVER_TODO"
 export const MERCADOPAGO_PAYMENT = 'MERCADOPAGO_PAYMENT'
 export const ADD_ONE_TO_FAV = "ADD_ONE_TO_FAV";
 export const HYDRATATE_FAV_LS = "HYDRATATE_FAV_LS";
+export const POST_PRODUCT = "POST_PRODUCT"
 
 const { URL } = process.env
 const pruebaUrl = "https://yourshoes-back.herokuapp.com"
@@ -529,4 +530,14 @@ export function addOneToFav(payload) {
     type: ADD_ONE_TO_FAV,
     payload,
   };
+}
+
+export function postProduct(props){
+  return async function (dispatch){
+    const response = axios.post(`http://localhost:3001/shoes`, props)
+    dispatch({
+      type: POST_PRODUCT,
+      payload: response.data
+    })
+  }
 }

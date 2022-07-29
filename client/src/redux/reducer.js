@@ -34,7 +34,7 @@ import {
   COMBINATION_FILTERS18,
   ADD_ONE_TO_FAV,
   HYDRATATE_FAV_LS,
-  
+  POST_PRODUCT
 } from "./actions";
 
 const initialState = {
@@ -292,7 +292,11 @@ export default function rootReducer(state = initialState, action) {
         cart: initialState.cart,
       };
     }
-
+    case POST_PRODUCT:
+      return {
+        ...state,
+        products: action.payload
+      }
     default:
       return state;
   }
