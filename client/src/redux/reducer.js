@@ -84,7 +84,7 @@ export default function rootReducer(state = initialState, action) {
         }
         : {
           ...state,
-          cart: [...state.cart, { ...newItem, quantity: 1 }],
+          cart: state.cart && [...state.cart, { ...newItem, quantity: 1 }],
         };
 
     case DELETE_ONE_FROM_CART:
