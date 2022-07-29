@@ -11,6 +11,7 @@ const brands= require("./brands");
 const login = require('./login')
 const auth_email = require('./auth_email')
 const mercadoRouter = require("./mercadopago.js")
+const size = require("./size")
 
 //--------------------------ROUTES
 router.use("/auth", auth_email)
@@ -19,11 +20,12 @@ router.use("/user/", user);
 router.use("/shoes", shoesRouter);
 router.use("/categories", categories);
 router.use("/brands", brands)
-router.use("/mercadopago", mercadoRouter)
+router.use("/mercadopago", mercadoRouter);
+router.use("/size", size);
 
-router.get('/', (req, res) => {
-    res.send('deploy funcionando')
-})
+// router.get('/', (req, res) => {
+//     res.send('deploy funcionando')
+// })
 
 
 module.exports = router;

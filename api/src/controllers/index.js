@@ -1,10 +1,12 @@
-const { Product, Category, Brand } = require("../db");
+const { Product, Category, Brand, Size } = require("../db");
 const axios = require("axios");
+const {Op} = require ("sequelize");
 
 const getDb = async () => {
   const foundDate = await Product.findAll({ include: { model: Category, attributes: ["id", "name"], throught: { attributes: [] } } });
   return foundDate;
 };
+let sizeStock = [{id: 1, number:35, stock:5, counter:0},{id: 2,number:36, stock:5, counter:0},{id: 3, number:37, stock:5, counter:0},{id: 4, number:38, stock:5, counter:0},{id: 5, number:39, stock:5, counter:0},{id: 6, number:40, stock:5, counter:0},{id: 7, number:41, stock:5, counter:0},{id: 8, number:42, stock:5, counter:0},{id: 9, number:43, stock:5, counter:0},{id: 10, number:44, stock:5, counter:0},{id: 11, number:45, stock:5, counter:0}]
 
 const setDataApi = async () => {
   const url = "https://api.mercadolibre.com/sites/MLA/search?category=";
@@ -36,11 +38,7 @@ const setDataApi = async () => {
   
   const cargoalDB = getAllApi.flat().map((e) => {
     // Creando tallas random
-    const sizesRamdons = []
-    for (let i = 0; i < Math.floor(Math.random() * 8); i++) {
-      sizesRamdons.push(random(35, 45))
-    }
-    
+       
     return ({
       id: e.id,
       title: e.title,
@@ -51,18 +49,21 @@ const setDataApi = async () => {
       category: e.category_id,
       stock: e.available_quantity,
       sold: e.sold_quantity,
-      size: sizesRamdons
+      size: [{id: 1, number:35, stock:5, counter:0}, {id: 2,number:36, stock:5, counter:0},{id: 3, number:37, stock:5, counter:0},{id: 4, number:38, stock:5, counter:0},{id: 5, number:39, stock:5, counter:0},{id: 6, number:40, stock:5, counter:0},{id: 7, number:41, stock:5, counter:0},{id: 8, number:42, stock:5, counter:0},{id: 9, number:43, stock:5, counter:0},{id: 10, number:44, stock:5, counter:0},{id: 11, number:45, stock:5, counter:0}]
     });
   })
-
+console.log(cargoalDB.size);
   const cargoFinal = cargoalDB.filter(e => e.id !== 'MLA1142122158')
   //cargo los productos al db y necesita que ya este cargada las categoria para que se cree la relacion
   await Promise.all(
     cargoFinal.map(async (el) => {
       const newProduct = await Product.create(el);
-      const foundBrand = await Brand.findByPk(el.brand)
+      const foundBrand = await Brand.findByPk(el.brand);
+      const foundSize = await Size.findAll({where:{ id: { [Op.in]: [1,2,3,4,5,6,7,8,9,10,11]}}});
+      //console.log(foundSize);
       const foundCategories = await Category.findByPk(el.category);
-      await newProduct.setBrand(foundBrand)
+      await newProduct.setBrand(foundBrand);
+      await newProduct.addSize(foundSize);
       await newProduct.setCategory(foundCategories);
       return newProduct;
     })
@@ -86,6 +87,10 @@ const getDbBrand = async () => {
     throw error
   }
 }
+const getDbSize = async () => {
+  const foundSize = await Size.findAll({ include: { all: true } });
+  return foundSize;
+};
 
 
-module.exports = { getDb, getDbCategories, setDataApi, getDbBrand };
+module.exports = { getDb, getDbCategories, setDataApi, getDbBrand, getDbSize };
