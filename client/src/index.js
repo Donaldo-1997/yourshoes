@@ -9,6 +9,10 @@ import App from "./App";
 
 // localStorage.setItem("cart", localStorage.getItem("cart"));
 
+if (!localStorage) localStorage.setItem("products", JSON.stringify([]));
+
+if (!localStorage) localStorage.setItem("favProducts", JSON.stringify([]));
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Provider store={store}>
