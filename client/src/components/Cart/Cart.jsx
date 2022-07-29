@@ -40,7 +40,7 @@ export default function Cart() {
       <div>
         {cartProducts && cartProducts.length ? (
           <div className={styles.contenedor}>
-            {cartProducts.map((item, index) => (
+            {cartProducts && cartProducts.map((item, index) => (
               <CartItem key={index} data={item} deleteProduct={deleteProduct} />
             ))}
             <div>
