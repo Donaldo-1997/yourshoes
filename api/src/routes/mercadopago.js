@@ -10,6 +10,7 @@ mercadopago.configure({
 
 server.post("/", function (req, res) {
   ordenID = 1;
+  console.log(req.body, "REQ.BODY")
   if(req.body.as.length===0) res.status(400).send("Carrito vacío")
   const items_ml = req.body.as.map((p) => ({
     name: p.title,
