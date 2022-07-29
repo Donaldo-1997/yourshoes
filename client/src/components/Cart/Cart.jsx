@@ -10,7 +10,7 @@ export default function Cart() {
   const dispatch = useDispatch();
 
   let precios = 0;
-  for (let i = 0; i < cartProducts.length; i++) {
+  for (let i = 0; i < cartProducts && cartProducts.length; i++) {
     if (cartProducts[i].quantity === 1) {
       precios += cartProducts[i].price;
     } else {
