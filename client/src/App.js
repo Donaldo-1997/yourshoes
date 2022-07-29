@@ -17,8 +17,10 @@ import { hydratateLSFav } from "./redux/actions";
 function App() {
 
   useEffect(() => {
-    if (localStorage.length ===0) localStorage.setItem("products", JSON.stringify([]));
-    if (localStorage.length === 0) localStorage.setItem("favProducts", JSON.stringify([]));
+    if (localStorage.length === 0) {
+      localStorage.setItem("products", JSON.stringify([]));
+      localStorage.setItem("favProducts", JSON.stringify([]));
+    }
   }, []);
   
   const productsLS = JSON.parse(localStorage.getItem("products"));
