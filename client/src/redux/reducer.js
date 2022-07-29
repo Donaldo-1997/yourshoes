@@ -68,7 +68,7 @@ export default function rootReducer(state = initialState, action) {
       };
 
     case ADD_ONE_TO_CART:
-      const newItem = state.products.find(
+      const newItem = state.products && state.products.find(
         (product) => product.id === action.payload
       );
       let itemInCart = state.cart && state.cart.find((item) => item.id === newItem.id);
