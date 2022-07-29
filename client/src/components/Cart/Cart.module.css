@@ -1,22 +1,39 @@
-.container2 p {
-  color: blue;
-}
 .container img {
   width: 100px;
 }
+
 .container {
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
   gap: 0.5rem;
-  background-color: dodgerblue;
+  background: linear-gradient(to top right, #edac14, #fafcff);
   height: 100vh;
 }
+.container2 {
+  border: solid 5px black;
+  background-color: black;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 80vh;
+  overflow: -moz-hidden-unscrollable;
+  overflow-x: hidden;
+  /* border-radius: 10px; */
+}
+
+.container2::-webkit-scrollbar {
+  width: 10px;
+  /* border-radius: 10px; */
+}
+
 .Link {
   text-decoration: none;
 }
-.contenedor{
+.contenedor {
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -24,8 +41,6 @@
   text-align: center;
   width: 700px;
   gap: 0.2rem;
-  background-color: dodgerblue;
-
 }
 
 .yourshoes {
@@ -50,7 +65,23 @@
 .shoes {
   color: #f87d2d;
 }
-.containerSinDato h4, h5{
+.containerSinDato h4,
+h5,
+h2 {
   display: flex;
   justify-content: center;
+  color: wheat;
+}
+
+.buttonsContainer {
+  border-style: hidden;
+  justify-content: flex-end;
+  border-radius: 8px;
+  transition: 0.45s;
+  background-color: rgb(215, 164, 69);
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+.buttonsContainer:hover {
+  opacity: 0.75;
+  transform: scale(102%);
 }
