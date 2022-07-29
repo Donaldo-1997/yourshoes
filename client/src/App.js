@@ -13,10 +13,17 @@ import FAQs from "./components/About/FAQs";
 import MercadoPago from "./components/MercadoPago/MercadoPago";
 import Favorites from "./components/Favorites/Favorites";
 import { hydratateLSFav } from "./redux/actions";
-function App() {
-  
-  const productsLS = JSON.parse(localStorage.getItem("products"));
 
+function App() {
+
+  useEffect(() => {
+    if (!localStorage) localStorage.setItem("products", JSON.stringify([]));
+  }, []);
+  useEffect(() => {
+    if (!localStorage) localStorage.setItem("favProducts", JSON.stringify([]));
+  }, []);
+  const productsLS = JSON.parse(localStorage.getItem("products"));
+  
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(hydratateFromLocalStorage(productsLS));
