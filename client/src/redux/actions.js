@@ -1,39 +1,44 @@
 import axios from "axios";
 
-export const GET_ALL_SHOES = "GET_ALL_SHOES";
-export const GET_DETAILS = "GET_DETAILS";
-export const GET_SHOES_NAME = "GET_SHOES_NAME";
-export const GET_ALL_CATEGORIES = "GET_ALL_CATEGORIES";
-export const ADD_ONE_TO_CART = "ADD_ONE_TO_CART";
-export const DELETE_ONE_FROM_CART = "DELETE_ONE_FROM_CART";
-export const FILTER_BY_BRAND = "FILTER_BY_BRAND";
-export const POST_USER = "POST_USER";
-export const LOGIN_USER = "LOGIN_USER";
-export const FILTER_BY_PRICE = "FILTER_BY_PRICE";
-export const FILTER_BY_CATEGORY = "FILTER_BY_CATEGORY";
-export const FILTER_BY_SIZE = "FILTER_BY_SIZE";
-export const COMBINATION_FILTERS = "COMBINATION_FILTERS";
-export const COMBINATION_FILTERS1 = "COMBINATION_FILTERS1";
-export const COMBINATION_FILTERS2 = "COMBINATION_FILTERS2";
-export const COMBINATION_FILTERS3 = "COMBINATION_FILTERS3";
-export const COMBINATION_FILTERS4 = "COMBINATION_FILTERS4";
-export const COMBINATION_FILTERS5 = "COMBINATION_FILTERS5";
-export const COMBINATION_FILTERS6 = "COMBINATION_FILTERS6";
-export const COMBINATION_FILTERS7 = "COMBINATION_FILTERS7";
-export const COMBINATION_FILTERS8 = "COMBINATION_FILTERS8";
-export const COMBINATION_FILTERS9 = "COMBINATION_FILTERS9";
-export const COMBINATION_FILTERS10 = "COMBINATION_FILTERS10";
-export const COMBINATION_FILTERS11 = "COMBINATION_FILTERS11";
-export const COMBINATION_FILTERS_12 = "COMBINATION_FILTERS_12";
-export const COMBINATION_FILTERS_13 = "COMBINATION_FILTERS_13";
-export const COMBINATION_FILTERS14 = "COMBINATION_FILTERS14";
-export const COMBINATION_FILTERS15 = "COMBINATION_FILTERS15";
-export const COMBINATION_FILTERS16 = "COMBINATION_FILTERS16";
-export const HYDRATATE_FROM_LS = "HYDRATATE_FROM_LS";
-export const REMOVER_TODO = "REMOVER_TODO";
-export const MERCADOPAGO_PAYMENT = "MERCADOPAGO_PAYMENT";
+export const GET_ALL_SHOES = "GET_ALL_SHOES"
+export const GET_DETAILS = "GET_DETAILS"
+export const GET_SHOES_NAME = "GET_SHOES_NAME"
+export const GET_ALL_CATEGORIES = "GET_ALL_CATEGORIES"
+export const ADD_ONE_TO_CART = 'ADD_ONE_TO_CART'
+export const DELETE_ONE_FROM_CART = 'DELETE_ONE_FROM_CART'
+export const FILTER_BY_BRAND = "FILTER_BY_BRAND"
+export const POST_USER = 'POST_USER'
+export const LOGIN_USER = 'LOGIN_USER'
+export const FILTER_BY_PRICE = 'FILTER_BY_PRICE'
+export const FILTER_BY_CATEGORY = 'FILTER_BY_CATEGORY'
+export const FILTER_BY_SIZE = 'FILTER_BY_SIZE'
+export const COMBINATION_FILTERS = 'COMBINATION_FILTERS'
+export const COMBINATION_FILTERS1 = 'COMBINATION_FILTERS1'
+export const COMBINATION_FILTERS2 = 'COMBINATION_FILTERS2'
+export const COMBINATION_FILTERS3 = 'COMBINATION_FILTERS3'
+export const COMBINATION_FILTERS4 = 'COMBINATION_FILTERS4'
+export const COMBINATION_FILTERS5 = 'COMBINATION_FILTERS5'
+export const COMBINATION_FILTERS6 = 'COMBINATION_FILTERS6'
+export const COMBINATION_FILTERS7 = 'COMBINATION_FILTERS7'
+export const COMBINATION_FILTERS8 = 'COMBINATION_FILTERS8'
+export const COMBINATION_FILTERS9 = 'COMBINATION_FILTERS9'
+export const COMBINATION_FILTERS10 = 'COMBINATION_FILTERS10'
+export const COMBINATION_FILTERS11 = 'COMBINATION_FILTERS11'
+export const COMBINATION_FILTERS_12 = 'COMBINATION_FILTERS_12'
+export const COMBINATION_FILTERS_13 = 'COMBINATION_FILTERS_13'
+export const COMBINATION_FILTERS14 = 'COMBINATION_FILTERS14'
+export const COMBINATION_FILTERS15 = 'COMBINATION_FILTERS15'
+export const COMBINATION_FILTERS16 = 'COMBINATION_FILTERS16'
+export const COMBINATION_FILTERS17 = 'COMBINATION_FILTERS17'
+export const COMBINATION_FILTERS18 = 'COMBINATION_FILTERS18'
+export const HYDRATATE_FROM_LS = "HYDRATATE_FROM_LS"
+export const REMOVER_TODO = "REMOVER_TODO"
+export const MERCADOPAGO_PAYMENT = 'MERCADOPAGO_PAYMENT'
 export const ADD_ONE_TO_FAV = "ADD_ONE_TO_FAV";
 export const HYDRATATE_FAV_LS = "HYDRATATE_FAV_LS";
+
+const { URL } = process.env
+const pruebaUrl = "http://localhost:3001"
 
 export function removerTodo() {
   return {
@@ -63,11 +68,11 @@ export function getShoesName(name) {
   return async function (dispatch) {
     try {
       const results = await axios(`http://localhost:3001/shoes?name=${name}`);
-      return dispatch({
+      dispatch({
         type: "GET_SHOES_NAME",
         payload: results.data,
       });
-      // return results.data
+      return results.data
     } catch (error) {
       alert("Model of shoes not found");
     }
@@ -131,9 +136,10 @@ export function filterBySize(payload) {
     //console.log(results.data)
     dispatch({
       type: FILTER_BY_SIZE,
-      payload: results.data,
-    });
-  };
+      payload: results.data
+    })
+    return results.data
+  }
 }
 export function filterByPrice(priceMin, priceMax) {
   //console.log("precio", priceMax)
@@ -466,6 +472,37 @@ export function combinationsFilter15(size, name) {
         payload: results.data,
       });
       return results.data;
+    } catch (err) {
+      throw err;
+    }
+  };
+}
+
+export function combinationsFilter16(size, category) {
+  return async function (dispatch) {
+    try {
+      const results = await axios(
+        `http://localhost:3001/shoes?size=${size}&category=${category}`
+      );
+      dispatch({
+        type: COMBINATION_FILTERS16,
+        payload: results.data,
+      });
+      return results.data;
+    } catch (err) {
+      throw err;
+    }
+  }
+}
+export function combinationsFilter17(size, category, brand) {
+  return async function (dispatch) {
+    try {
+      const results = await axios(`http://localhost:3001/shoes?size=${size}&category=${category}&brand=${brand}`)
+      dispatch({
+        type: COMBINATION_FILTERS17,
+        payload: results.data
+      })
+      return results.data
     } catch (err) {
       throw err;
     }
