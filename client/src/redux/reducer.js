@@ -86,15 +86,15 @@ export default function rootReducer(state = initialState, action) {
           };
 
     case ADD_ONE_TO_CART:
-      const newItem = state.products.find(
+      const newItem = state.products && state.products.find(
         (product) => product.id === action.payload
       );
-      let itemInCart = state.cart.find((item) => item.id === newItem.id);
+      let itemInCart = state.cart && state.cart.find((item) => item.id === newItem.id);
 
       return itemInCart
         ? {
           ...state,
-          cart: state.cart.map((item) =>
+          cart: state.cart && state.cart.map((item) =>
             item.id === newItem.id
               ? { ...item, quantity: item.quantity + 1 }
               : item
@@ -102,7 +102,7 @@ export default function rootReducer(state = initialState, action) {
         }
         : {
           ...state,
-          cart: [...state.cart, { ...newItem, quantity: 1 }],
+          cart: state.cart && [...state.cart, { ...newItem, quantity: 1 }],
         };
 
     case DELETE_ONE_FROM_CART:
