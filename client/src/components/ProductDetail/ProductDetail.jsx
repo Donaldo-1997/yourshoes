@@ -76,7 +76,7 @@ export default function ProductDetail() {
               <button className={styles.cart}>Comprar</button> 
               <button
                 className={styles.cart}
-                onClick={() => addToCart(myShoes.id)}
+                onClick={() => addToCart( myShoes.id && myShoes.id)}
                 id={myShoes.id}
               >
                 Añadir al carro
