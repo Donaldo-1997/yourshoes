@@ -5,7 +5,7 @@ import "./App.css";
 import Cart from "./components/Cart/Cart";
 import FormUser from "./components/FormUser/FormUser";
 import LogIn from "./components/LogIn/LogIn";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { hydratateFromLocalStorage } from "./redux/actions";
 import AboutUs from "./components/About/AboutUs";
@@ -15,7 +15,33 @@ import Favorites from "./components/Favorites/Favorites";
 import { hydratateLSFav } from "./redux/actions";
 
 function App() {
+  const [user, setUser] = useState(null);
 
+  useEffect(() => {
+    const getUser = () => {
+      fetch("http://localhost:3001/auth/login/success", {
+        method: "GET",
+        credentials: "include",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Credentials": true,
+        },
+      })
+        .then((response) => {
+          if (response.status === 200) return response.json();
+          throw new Error("authentication has been failed!");
+        })
+        .then((res) => {
+          setUser(res.user);
+          console.log(res.user);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    };
+    getUser();
+  }, []);
   useEffect(() => {
     if (localStorage.length === 0) {
       localStorage.setItem("products", JSON.stringify([]));

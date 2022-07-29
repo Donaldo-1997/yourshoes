@@ -1,26 +1,19 @@
 import React, { useState } from "react";
 import { Formik, Field, Form, ErrorMessage } from "formik";
-import {useDispatch } from "react-redux";
-import {Login} from "../../redux/actions";
+import { useDispatch } from "react-redux";
+import { Login } from "../../redux/actions";
 import styles from "./LogIn.module.css";
 import { useNavigate } from "react-router-dom";
-import { FcGoogle , FcGoodDecision,FcDownLeft} from "react-icons/fc";
+import { FcGoogle, FcGoodDecision, FcDownLeft } from "react-icons/fc";
 import { Link } from "react-router-dom";
-
-
-
-
 
 export default function LogIn() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  
-
   const [formularioEnviado, setformularioEnviado] = useState(false);
   return (
-      <div className={styles.contenedor}>
-  
+    <div className={styles.contenedor}>
       <Formik
         initialValues={{
           email: "",
@@ -63,10 +56,11 @@ export default function LogIn() {
         }}
       >
         {({ errors }) => (
-            
           <Form className={styles.formulario}>
             <div>
-               <div className={styles.yourShoes}>Your<span>Shoes</span></div>
+              <div className={styles.yourShoes}>
+                Your<span>Shoes</span>
+              </div>
               <label htmlFor="email">Correo: </label>
               <Field
                 type="email"
@@ -100,12 +94,26 @@ export default function LogIn() {
             {formularioEnviado && (
               <p className={styles.exito}>Enviado con exito!</p>
             )}
-            <a href="https://yourshoes-back.herokuapp.com/auth" className={styles.link}><FcGoogle></FcGoogle> Accede con google</a>
-            
-            <Link to='/user' className={styles.link}><p><FcGoodDecision></FcGoodDecision>Registrate</p></Link>
-            
-            <Link to='/' className={styles.link}><p><FcDownLeft></FcDownLeft>Regresa</p></Link>
+            <a
+              onClick={() =>
+                window.open("http://localhost:3001/auth/google", "_self")
+              }
+              className={styles.link}
+            >
+              <FcGoogle></FcGoogle> Accede con google
+            </a>
 
+            <Link to="/user" className={styles.link}>
+              <p>
+                <FcGoodDecision></FcGoodDecision>Registrate
+              </p>
+            </Link>
+
+            <Link to="/" className={styles.link}>
+              <p>
+                <FcDownLeft></FcDownLeft>Regresa
+              </p>
+            </Link>
           </Form>
         )}
       </Formik>

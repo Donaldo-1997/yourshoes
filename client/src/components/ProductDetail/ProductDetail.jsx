@@ -26,6 +26,7 @@ export default function ProductDetail() {
     localStorage.getItem("products");
   };
 
+<<<<<<< HEAD
   //  const addToCartToast = () => {
     
   // }
@@ -35,6 +36,14 @@ export default function ProductDetail() {
     addLocalStorage()
     saveLocalStorage()}
    },[cartProducts])
+=======
+  useEffect(() => {
+    if (cartProducts.length) {
+      addLocalStorage();
+      saveLocalStorage();
+    }
+  }, [cartProducts]);
+>>>>>>> dev
 
   const addToCart = (id) => {
     dispatch(addOneToCart(id));

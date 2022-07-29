@@ -497,29 +497,30 @@ export function combinationsFilter16(size, category) {
 export function combinationsFilter17(size, category, brand) {
   return async function (dispatch) {
     try {
-      const results = await axios(`https://yourshoes-back.herokuapp.com/shoes?size=${size}&category=${category}&brand=${brand}`)
+      const results = await axios(`http://localhost:3001/shoes?size=${size}&category=${category}&brand=${brand}`)
       dispatch({
         type: COMBINATION_FILTERS17,
         payload: results.data
       })
       return results.data
     } catch (err) {
-      throw err
+      throw err;
     }
-  }
+  };
 }
 export function combinationsFilter18(size, category, brand, name, priceMin, priceMax) {
   return async function (dispatch) {
     try {
-      const results = await axios(`https://yourshoes-back.herokuapp.com/shoes?size=${size}&category=${category}&brand=${brand}
-      &name=${name}&priceMin=${priceMin}&priceMax=${priceMax}`)
+      const results = await axios(
+        `http://localhost:3001/shoes?size=${size}&category=${category}`
+      );
       dispatch({
-        type: COMBINATION_FILTERS18,
-        payload: results.data
-      })
-      return results.data
+        type: COMBINATION_FILTERS16,
+        payload: results.data,
+      });
+      return results.data;
     } catch (err) {
-      throw err
+      throw err;
     }
   }
 }
