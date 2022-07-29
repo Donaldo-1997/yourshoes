@@ -60,8 +60,6 @@ export function getDetails(id) {
 }
 
 export function getShoesName(name) {
-  //
-
   return async function (dispatch) {
     try {
       const results = await axios(`http://localhost:3001/shoes?name=${name}`);
@@ -69,6 +67,7 @@ export function getShoesName(name) {
         type: "GET_SHOES_NAME",
         payload: results.data,
       });
+      // return results.data
     } catch (error) {
       alert("Model of shoes not found");
     }
@@ -130,7 +129,7 @@ export function filterBySize(payload) {
   return async function (dispatch) {
     const results = await axios(`http://localhost:3001/shoes?size=${payload}`);
     //console.log(results.data)
-    return dispatch({
+    dispatch({
       type: FILTER_BY_SIZE,
       payload: results.data,
     });
@@ -472,8 +471,7 @@ export function combinationsFilter15(size, name) {
     }
   };
 }
-
-export function combinationsFilter16(size, category) {
+export function combinationsFilter18(size, category, brand, name, priceMin, priceMax) {
   return async function (dispatch) {
     try {
       const results = await axios(

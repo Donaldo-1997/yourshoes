@@ -100,7 +100,7 @@ export default function LogIn() {
             {formularioEnviado && (
               <p className={styles.exito}>Enviado con exito!</p>
             )}
-            <a href="http://localhost:3001/google" className={styles.link}><FcGoogle></FcGoogle> Accede con google</a>
+            <a href="https://yourshoes-back.herokuapp.com/auth" className={styles.link}><FcGoogle></FcGoogle> Accede con google</a>
             
             <Link to='/user' className={styles.link}><p><FcGoodDecision></FcGoodDecision>Registrate</p></Link>
             

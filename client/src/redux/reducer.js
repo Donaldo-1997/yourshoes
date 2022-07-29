@@ -91,17 +91,17 @@ export default function rootReducer(state = initialState, action) {
 
       return itemInCart
         ? {
-            ...state,
-            cart: state.cart.map((item) =>
-              item.id === newItem.id
-                ? { ...item, quantity: item.quantity + 1 }
-                : item
-            ),
-          }
+          ...state,
+          cart: state.cart.map((item) =>
+            item.id === newItem.id
+              ? { ...item, quantity: item.quantity + 1 }
+              : item
+          ),
+        }
         : {
-            ...state,
-            cart: [...state.cart, { ...newItem, quantity: 1 }],
-          };
+          ...state,
+          cart: [...state.cart, { ...newItem, quantity: 1 }],
+        };
 
     case DELETE_ONE_FROM_CART:
       const { productId, all } = action.payload;

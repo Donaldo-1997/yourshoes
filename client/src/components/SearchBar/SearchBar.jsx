@@ -1,6 +1,4 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux/es/exports";
-import { getShoesName } from "../../redux/actions";
+import React from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { FaSearch } from "react-icons/fa";

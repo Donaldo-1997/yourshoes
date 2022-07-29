@@ -15,6 +15,7 @@ export default function ProductDetail() {
   }, [dispatch, id]);
 
   const cartProducts = useSelector((state) => state.cart);
+  
   const myShoes = useSelector((state) => state.detail);
 
   const addLocalStorage = () => {
