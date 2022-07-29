@@ -29,6 +29,8 @@ export const COMBINATION_FILTERS_13 = 'COMBINATION_FILTERS_13'
 export const COMBINATION_FILTERS14 = 'COMBINATION_FILTERS14'
 export const COMBINATION_FILTERS15 = 'COMBINATION_FILTERS15'
 export const COMBINATION_FILTERS16 = 'COMBINATION_FILTERS16'
+export const COMBINATION_FILTERS17 = 'COMBINATION_FILTERS17'
+export const COMBINATION_FILTERS18 = 'COMBINATION_FILTERS18'
 export const HYDRATATE_FROM_LS = "HYDRATATE_FROM_LS"
 export const REMOVER_TODO = "REMOVER_TODO"
 export const MERCADOPAGO_PAYMENT = 'MERCADOPAGO_PAYMENT'
@@ -61,15 +63,14 @@ export function getDetails(id) {
 }
 
 export function getShoesName(name) {
-  //
-
   return async function (dispatch) {
     try {
       const results = await axios(`https://yourshoes-back.herokuapp.com/shoes?name=${name}`);
-      return dispatch({
+      dispatch({
         type: "GET_SHOES_NAME",
         payload: results.data,
       });
+      return results.data
     } catch (error) {
       alert("Model of shoes not found");
     }
@@ -129,10 +130,11 @@ export function filterBySize(payload) {
   return async function (dispatch) {
     const results = await axios(`https://yourshoes-back.herokuapp.com/shoes?size=${payload}`)
     //console.log(results.data)
-    return dispatch({
+    dispatch({
       type: FILTER_BY_SIZE,
       payload: results.data
     })
+    return results.data
   }
 }
 export function filterByPrice(priceMin, priceMax) {
@@ -431,6 +433,35 @@ export function combinationsFilter16(size, category) {
       const results = await axios(`https://yourshoes-back.herokuapp.com/shoes?size=${size}&category=${category}`)
       dispatch({
         type: COMBINATION_FILTERS16,
+        payload: results.data
+      })
+      return results.data
+    } catch (err) {
+      throw err
+    }
+  }
+}
+export function combinationsFilter17(size, category, brand) {
+  return async function (dispatch) {
+    try {
+      const results = await axios(`https://yourshoes-back.herokuapp.com/shoes?size=${size}&category=${category}&brand=${brand}`)
+      dispatch({
+        type: COMBINATION_FILTERS17,
+        payload: results.data
+      })
+      return results.data
+    } catch (err) {
+      throw err
+    }
+  }
+}
+export function combinationsFilter18(size, category, brand, name, priceMin, priceMax) {
+  return async function (dispatch) {
+    try {
+      const results = await axios(`https://yourshoes-back.herokuapp.com/shoes?size=${size}&category=${category}&brand=${brand}
+      &name=${name}&priceMin=${priceMin}&priceMax=${priceMax}`)
+      dispatch({
+        type: COMBINATION_FILTERS18,
         payload: results.data
       })
       return results.data

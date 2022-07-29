@@ -26,7 +26,12 @@ import {
   COMBINATION_FILTERS10,
   COMBINATION_FILTERS11,
   COMBINATION_FILTERS_12,
-  COMBINATION_FILTERS_13
+  COMBINATION_FILTERS_13,
+  COMBINATION_FILTERS14,
+  COMBINATION_FILTERS15,
+  COMBINATION_FILTERS16,
+  COMBINATION_FILTERS17,
+  COMBINATION_FILTERS18
 } from "./actions";
 
 const initialState = {
@@ -70,17 +75,17 @@ export default function rootReducer(state = initialState, action) {
 
       return itemInCart
         ? {
-            ...state,
-            cart: state.cart.map((item) =>
-              item.id === newItem.id
-                ? { ...item, quantity: item.quantity + 1 }
-                : item
-            ),
-          }
+          ...state,
+          cart: state.cart.map((item) =>
+            item.id === newItem.id
+              ? { ...item, quantity: item.quantity + 1 }
+              : item
+          ),
+        }
         : {
-            ...state,
-            cart: [...state.cart, { ...newItem, quantity: 1 }],
-          };
+          ...state,
+          cart: [...state.cart, { ...newItem, quantity: 1 }],
+        };
 
     case DELETE_ONE_FROM_CART:
       const { productId, all } = action.payload;
@@ -211,6 +216,36 @@ export default function rootReducer(state = initialState, action) {
         products: action.payload
       }
     case COMBINATION_FILTERS_13:
+      return {
+        ...state,
+        filteredProducts: action.payload,
+        products: action.payload
+      }
+    case COMBINATION_FILTERS14:
+      return {
+        ...state,
+        filteredProducts: action.payload,
+        products: action.payload
+      }
+    case COMBINATION_FILTERS15:
+      return {
+        ...state,
+        filteredProducts: action.payload,
+        products: action.payload
+      }
+    case COMBINATION_FILTERS16:
+      return {
+        ...state,
+        filteredProducts: action.payload,
+        products: action.payload
+      }
+    case COMBINATION_FILTERS17:
+      return {
+        ...state,
+        filteredProducts: action.payload,
+        products: action.payload
+      }
+    case COMBINATION_FILTERS18:
       return {
         ...state,
         filteredProducts: action.payload,

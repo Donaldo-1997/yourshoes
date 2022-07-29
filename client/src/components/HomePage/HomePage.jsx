@@ -26,7 +26,9 @@ import {
   combinationsFilter10,
   combinationsFilter14,
   combinationsFilter15,
-  combinationsFilter16
+  combinationsFilter16,
+  combinationsFilter17,
+  combinationsFilter18
 } from "../../redux/actions";
 import ProductCards from "../ProductCards/ProductCards";
 import Pagination from "../Pagination/Pagination";
@@ -82,7 +84,12 @@ export default function HomePage() {
 
   const handleNameSubmit = (e) => {
     e.preventDefault();
-    if(brandFilter !== "default" && sizeFilter !== "default" && priceMin !== "" && priceMax !== ""){
+    if(sizeFilter !== "default" && brandFilter !== "default" && priceMin !== "" && priceMax !== "" && categoryFilter !== "default"){
+      dispatch(combinationsFilter18(sizeFilter, categoryFilter, brandFilter, nameFilter, priceMin, priceMax))
+      .then(res => console.log(res))
+      .catch(err => alert(err.response.data))
+    }
+    else if(brandFilter !== "default" && sizeFilter !== "default" && priceMin !== "" && priceMax !== ""){
       dispatch(combinationsFilter14(sizeFilter, brandFilter, nameFilter, priceMin, priceMax))
       .then(res => console.log(res))
       .catch(err => alert(err.response.data))
@@ -126,18 +133,23 @@ export default function HomePage() {
       dispatch(combinationsFilter15(sizeFilter, nameFilter))
       .then(res => console.log(res))
       .catch(err => alert(err.response.data))
-    }
-    else if (!nameFilter) {
-      alert("Put a Name");
-    } else {
-      dispatch(getShoesName(nameFilter));
+    } 
+    else {
+      dispatch(getShoesName(nameFilter))
+      .then(res => console.log(res))
+      .catch(err => alert(err.response.data));
     }
     setCurrentPage(1)
   };
 
   const handleFilterBrand = (e) => {
     setBrandFilter(e.target.value);
-    if(nameFilter !== "" && sizeFilter !== "default" && priceMin !== "" && priceMax !== ""){
+    if(nameFilter !== "" && sizeFilter !== "default" && priceMin !== "" && priceMax !== "" && categoryFilter !== "default"){
+      dispatch(combinationsFilter18(sizeFilter, categoryFilter, e.target.value, nameFilter, priceMin, priceMax))
+      .then(res => console.log(res))
+      .catch(err => alert(err.response.data))
+    }
+    else if(nameFilter !== "" && sizeFilter !== "default" && priceMin !== "" && priceMax !== ""){
       dispatch(combinationsFilter14(sizeFilter, e.target.value, nameFilter, priceMin, priceMax))
       .then(res => console.log(res))
       .catch(err => alert(err.response.data))
@@ -160,6 +172,11 @@ export default function HomePage() {
     }
     else if(priceMax !== "" && priceMin !== "" && categoryFilter !== "default"){
       dispatch(combinationsFilter8(categoryFilter, e.target.value, priceMax, priceMin))
+      .then(res => console.log(res))
+      .catch(err => alert(err.response.data))
+    }
+    else if(categoryFilter !== "default" && sizeFilter !== "default"){
+      dispatch(combinationsFilter17(sizeFilter, categoryFilter,e.target.value,))
       .then(res => console.log(res))
       .catch(err => alert(err.response.data))
     }
@@ -196,18 +213,28 @@ export default function HomePage() {
 
   const handleCategories = (e) => {
     setCategoryFilter(e.target.value);
-    if(brandFilter !== "default" && nameFilter !== "" && priceMin !== "" && priceMax !== ""){
+    if(nameFilter !== "" && brandFilter !== "default" && priceMin !== "" && priceMax !== "" && sizeFilter !== "default"){
+      dispatch(combinationsFilter18(sizeFilter,e.target.value, brandFilter, nameFilter, priceMin, priceMax))
+      .then(res => console.log(res))
+      .catch(err => alert(err.response.data))
+    }
+    else if(brandFilter !== "default" && nameFilter !== "" && priceMin !== "" && priceMax !== ""){
       dispatch(combinationsFilter10(e.target.value, nameFilter, priceMax, priceMin, brandFilter))
       .then(res => console.log(res))
       .catch(err => alert(err.response.data))
     }
-    else if(priceMax !== "" && priceMin !== "" && brandFilter !== "default"){
+    else if(priceMax !== "" && priceMin !==" " && brandFilter !== "default"){
       dispatch(combinationsFilter8(e.target.value,nameFilter, brandFilter, priceMin, priceMax))
       .then(res => console.log(res))
       .catch(err => alert(err.response.data))
     }
     else if(nameFilter !== "default" && priceMin !== "" && priceMax !== ""){
       dispatch(combinationsFilter9(e.target.value, nameFilter, priceMin, priceMax))
+      .then(res => console.log(res))
+      .catch(err => alert(err.response.data))
+    }
+    else if(brandFilter !== "default" && sizeFilter !== "default"){
+      dispatch(combinationsFilter17(sizeFilter, e.target.value, brandFilter))
       .then(res => console.log(res))
       .catch(err => alert(err.response.data))
     }
@@ -244,7 +271,12 @@ export default function HomePage() {
 
   const handleFilterByPrice = (e) => {
     e.preventDefault()
-    if(nameFilter !== "" && sizeFilter !== "default" && brandFilter !== "default"){
+    if(nameFilter !== "" && brandFilter !== "default" && priceMin !== "" && priceMax !== "" && categoryFilter !== "default"){
+      dispatch(combinationsFilter18(sizeFilter, categoryFilter, brandFilter, nameFilter, priceMin, priceMax))
+      .then(res => console.log(res))
+      .catch(err => alert(err.response.data))
+    }
+    else if(nameFilter !== "" && sizeFilter !== "default" && brandFilter !== "default"){
       dispatch(combinationsFilter14(sizeFilter, brandFilter, nameFilter, priceMin, priceMax))
       .then(res => console.log(res))
       .catch(err => alert(err.response.data))
@@ -302,13 +334,23 @@ export default function HomePage() {
 
   const handleSize = (e) => {
     setSizeFilter(e.target.value)
-    if(nameFilter !== "" && brandFilter !== "default" && priceMin !== "" && priceMax !== ""){
+    if(nameFilter !== "" && brandFilter !== "default" && priceMin !== "" && priceMax !== "" && categoryFilter !== "default"){
+      dispatch(combinationsFilter18(e.target.value, categoryFilter, brandFilter, nameFilter, priceMin, priceMax))
+      .then(res => console.log(res))
+      .catch(err => alert(err.response.data))
+    }
+    else if(nameFilter !== "" && brandFilter !== "default" && priceMin !== "" && priceMax !== ""){
       dispatch(combinationsFilter14(e.target.value, brandFilter, nameFilter, priceMin, priceMax))
       .then(res => console.log(res))
       .catch(err => alert(err.response.data))
     }
     if(priceMin !== "" && priceMax !== "" && brandFilter !== "default"){
       dispatch(combinationsFilter11(brandFilter, priceMin, priceMax, e.target.value))
+      .then(res => console.log(res))
+      .catch(err => alert(err.response.data))
+    }
+    else if(brandFilter !== "default" && categoryFilter !== "default"){
+      dispatch(combinationsFilter17(e.target.value, categoryFilter, brandFilter))
       .then(res => console.log(res))
       .catch(err => alert(err.response.data))
     }

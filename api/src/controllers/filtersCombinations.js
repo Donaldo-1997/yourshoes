@@ -4,7 +4,25 @@ const { Op } = require('sequelize');
 
 function getAllFilters({ priceMax, priceMin, category, brand, name, size }) {
     let options = {}
-    if (priceMax && priceMin && brand && name && size) {
+    if (priceMax && priceMin && category && brand && name && size) {
+      options = {
+        where: {
+          size:[size],
+          title: { [Op.iLike]: `%${name}%` },
+          price: {
+            [Op.and]: [
+              { [Op.gte]: priceMin ? priceMin : 0 }, // Precio sea mayor o igual a precio minimo
+              { [Op.lte]: priceMax } // Precio sea menor o igual a precio maximo
+            ],
+          }
+        },
+        include: [
+          { model: Brand, where: { name: { [Op.iLike]: `%${brand}%` } } },
+          { model: Category, where: { name: { [Op.iLike]: `%${category}%` } } },
+        ]
+      }
+    }
+    else if (priceMax && priceMin && brand && name && size) {
       options = {
         where: {
           size:[size],
@@ -120,6 +138,18 @@ function getAllFilters({ priceMax, priceMin, category, brand, name, size }) {
         include: [
           { model: Brand, where: { name: { [Op.iLike]: `%${brand}%` } } },
           { model: Category},
+        ]
+      }
+    }
+    else if(category && brand && name && size){
+      options = {
+        where: {
+          size:[size],
+          title: { [Op.iLike]: `%${name}%` },
+        },
+        include: [
+          { model: Brand, where: { name: { [Op.iLike]: `%${brand}%` } } },
+          { model: Category, where: { name: { [Op.iLike]: `%${category}%` } } },
         ]
       }
     }

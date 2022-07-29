@@ -89,7 +89,7 @@ async function getBySize(size) {
         { model: Category },
       ]
     })
-    
+    console.log(all)
     return all
 
   } catch (error) {
