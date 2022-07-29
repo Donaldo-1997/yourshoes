@@ -32,7 +32,7 @@ export default function NavBar({handleReset, handleInputName, handleNameSubmit})
              <Link to='/cart' className={styles.Link}> <BsFillCartFill style={{ color: "#f87d2d" }} /></Link> 
             </Nav.Link>
             <Nav.Link  className={styles.icon}>
-               <FaHeart style={{ color: "#f87d2d" }} />
+              <Link to="/favorites"><FaHeart style={{ color: "#f87d2d" }} /></Link> 
             </Nav.Link>
             <Nav.Link  className={styles.icon}>
                <Link to='/login'><FaUserAlt  style={{ color: "#f87d2d" }} /></Link>
