@@ -16,6 +16,7 @@ export default function ProductDetail() {
   }, [dispatch, id]);
 
   const cartProducts = useSelector((state) => state.cart);
+  
   const myShoes = useSelector((state) => state.detail);
 
   const addLocalStorage = () => {
@@ -31,7 +32,7 @@ export default function ProductDetail() {
   // }
 
    useEffect(() => {
-    if(cartProducts.length){
+    if(cartProducts && cartProducts.length){
     addLocalStorage()
     saveLocalStorage()}
    },[cartProducts])
