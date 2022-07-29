@@ -14,6 +14,7 @@ import MercadoPago from "./components/MercadoPago/MercadoPago";
 import Favorites from "./components/Favorites/Favorites";
 import { hydratateLSFav } from "./redux/actions";
 function App() {
+  
   useEffect(() => {
     if (!localStorage) localStorage.setItem("products", JSON.stringify([]));
   }, []);

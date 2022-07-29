@@ -47,7 +47,7 @@ export function removerTodo() {
 }
 export function getAllShoes() {
   return async function (dispatch) {
-    const results = await axios(`http://localhost:3001/shoes`);
+    const results = await axios(`https://yourshoes-back.herokuapp.com/shoes`);
     dispatch({
       type: "GET_ALL_SHOES",
       payload: results.data,
@@ -56,7 +56,7 @@ export function getAllShoes() {
 }
 export function getDetails(id) {
   return async function (dispatch) {
-    const res = await axios(`http://localhost:3001/shoes/${id}`);
+    const res = await axios(`https://yourshoes-back.herokuapp.com/shoes/${id}`);
     return dispatch({
       type: GET_DETAILS,
       payload: res.data,
@@ -95,13 +95,13 @@ export function deleteOneToCart(payload) {
 
 export function getAllBrands() {
   return async function () {
-    await axios(`http://localhost:3001/brands`);
+    await axios(`https://yourshoes-back.herokuapp.com/brands`);
   };
 }
 
 export function getAllCategories() {
   return async function (dispatch) {
-    const results = await axios(`http://localhost:3001/categories`);
+    const results = await axios(`https://yourshoes-back.herokuapp.com/categories`);
     return dispatch({
       type: GET_ALL_CATEGORIES,
       payload: results.data,
@@ -110,7 +110,7 @@ export function getAllCategories() {
 }
 export function filterByBrand(payload) {
   return async function (dispatch) {
-    const results = await axios(`http://localhost:3001/shoes?brand=${payload}`);
+    const results = await axios(`https://yourshoes-back.herokuapp.com/shoes?brand=${payload}`);
     return dispatch({
       type: FILTER_BY_BRAND,
       payload: results.data,
@@ -121,7 +121,7 @@ export function filterByBrand(payload) {
 export function filterByCategory(payload) {
   return async function (dispatch) {
     const results = await axios(
-      `http://localhost:3001/shoes?category=${payload}`
+      `https://yourshoes-back.herokuapp.com/shoes?category=${payload}`
     );
     //console.log(results.data)
     return dispatch({
@@ -132,7 +132,7 @@ export function filterByCategory(payload) {
 }
 export function filterBySize(payload) {
   return async function (dispatch) {
-    const results = await axios(`http://localhost:3001/shoes?size=${payload}`);
+    const results = await axios(`https://yourshoes-back.herokuapp.com/shoes?size=${payload}`);
     //console.log(results.data)
     dispatch({
       type: FILTER_BY_SIZE,
@@ -145,7 +145,7 @@ export function filterByPrice(priceMin, priceMax) {
   //console.log("precio", priceMax)
   return async function (dispatch) {
     const results = await axios(
-      `http://localhost:3001/shoes?priceMin=${priceMin}&priceMax=${priceMax}`
+      `https://yourshoes-back.herokuapp.com/shoes?priceMin=${priceMin}&priceMax=${priceMax}`
     );
     return dispatch({
       type: FILTER_BY_PRICE,
@@ -158,7 +158,7 @@ export function postUser(payload) {
   return async function (dispatch) {
     try {
       var json = await axios.post(
-        `http://localhost:3001/login/signup`,
+        `https://yourshoes-back.herokuapp.com/login/signup`,
         payload
       );
       dispatch({
@@ -175,7 +175,7 @@ export function Login(payload) {
   return async function (dispatch) {
     try {
       var json = await axios.post(
-        `http://localhost:3001/login/signin`,
+        `https://yourshoes-back.herokuapp.com/login/signin`,
         payload
       );
 
@@ -203,7 +203,7 @@ export function hydratateLSFav(payload) {
 }
 export function createOrder(payload) {
   return async function (dispatch) {
-    const res = await axios.post(`http://localhost:3001/mercadopago`, {
+    const res = await axios.post(`https://yourshoes-back.herokuapp.com/mercadopago`, {
       cart: payload.cart,
     });
     return dispatch({
@@ -217,7 +217,7 @@ export function combinationsFilter(brand, priceMin, priceMax) {
   return async function (dispatch) {
     try {
       const results = await axios(
-        `http://localhost:3001/shoes?brand=${brand}&priceMin=${priceMin}&priceMax=${priceMax}`
+        `https://yourshoes-back.herokuapp.com/shoes?brand=${brand}&priceMin=${priceMin}&priceMax=${priceMax}`
       );
       dispatch({
         type: COMBINATION_FILTERS,
@@ -233,7 +233,7 @@ export function combinationsFilter1(name, priceMin, priceMax) {
   return async function (dispatch) {
     try {
       const results = await axios(
-        `http://localhost:3001/shoes?name=${name}&priceMin=${priceMin}&priceMax=${priceMax}`
+        `https://yourshoes-back.herokuapp.com/shoes?name=${name}&priceMin=${priceMin}&priceMax=${priceMax}`
       );
       dispatch({
         type: COMBINATION_FILTERS1,
@@ -249,7 +249,7 @@ export function combinationsFilter2(brand, name, priceMin, priceMax) {
   return async function (dispatch) {
     try {
       const results = await axios(
-        `http://localhost:3001/shoes?brand=${brand}&name=${name}&priceMin=${priceMin}&priceMax=${priceMax}`
+        `https://yourshoes-back.herokuapp.com/shoes?brand=${brand}&name=${name}&priceMin=${priceMin}&priceMax=${priceMax}`
       );
       dispatch({
         type: COMBINATION_FILTERS2,
@@ -265,7 +265,7 @@ export function combinationsFilter3(name, brand) {
   return async function (dispatch) {
     try {
       const results = await axios(
-        `http://localhost:3001/shoes?name=${name}&brand=${brand}`
+        `https://yourshoes-back.herokuapp.com/shoes?name=${name}&brand=${brand}`
       );
       dispatch({
         type: COMBINATION_FILTERS3,
@@ -281,7 +281,7 @@ export function combinationsFilter4(category, priceMin, priceMax) {
   return async function (dispatch) {
     try {
       const results = await axios(
-        `http://localhost:3001/shoes?category=${category}&priceMin=${priceMin}&priceMax=${priceMax}`
+        `https://yourshoes-back.herokuapp.com/shoes?category=${category}&priceMin=${priceMin}&priceMax=${priceMax}`
       );
       dispatch({
         type: COMBINATION_FILTERS4,
@@ -297,7 +297,7 @@ export function combinationsFilter5(category, name) {
   return async function (dispatch) {
     try {
       const results = await axios(
-        `http://localhost:3001/shoes?category=${category}&name=${name}`
+        `https://yourshoes-back.herokuapp.com/shoes?category=${category}&name=${name}`
       );
       dispatch({
         type: COMBINATION_FILTERS5,
@@ -313,7 +313,7 @@ export function combinationsFilter6(brand, category) {
   return async function (dispatch) {
     try {
       const results = await axios(
-        `http://localhost:3001/shoes?brand=${brand}&category=${category}`
+        `https://yourshoes-back.herokuapp.com/shoes?brand=${brand}&category=${category}`
       );
       dispatch({
         type: COMBINATION_FILTERS6,
@@ -329,7 +329,7 @@ export function combinationsFilter7(category, brand, name) {
   return async function (dispatch) {
     try {
       const results = await axios(
-        `http://localhost:3001/shoes?category=${category}&brand=${brand}&name=${name}`
+        `https://yourshoes-back.herokuapp.com/shoes?category=${category}&brand=${brand}&name=${name}`
       );
       dispatch({
         type: COMBINATION_FILTERS7,
@@ -345,7 +345,7 @@ export function combinationsFilter8(category, brand, priceMax, priceMin) {
   return async function (dispatch) {
     try {
       const results = await axios(
-        `http://localhost:3001/shoes?category=${category}&brand=${brand}&priceMin=${priceMin}&priceMax=${priceMax}`
+        `https://yourshoes-back.herokuapp.com/shoes?category=${category}&brand=${brand}&priceMin=${priceMin}&priceMax=${priceMax}`
       );
       dispatch({
         type: COMBINATION_FILTERS8,
@@ -361,7 +361,7 @@ export function combinationsFilter9(category, name, priceMax, priceMin) {
   return async function (dispatch) {
     try {
       const results = await axios(
-        `http://localhost:3001/shoes?category=${category}&name=${name}&priceMin=${priceMin}&priceMax=${priceMax}`
+        `https://yourshoes-back.herokuapp.com/shoes?category=${category}&name=${name}&priceMin=${priceMin}&priceMax=${priceMax}`
       );
       dispatch({
         type: COMBINATION_FILTERS9,
@@ -383,7 +383,7 @@ export function combinationsFilter10(
   return async function (dispatch) {
     try {
       const results = await axios(
-        `http://localhost:3001/shoes?category=${category}&name=${name}&brand=${brand}&priceMin=${priceMin}&priceMax=${priceMax}`
+        `https://yourshoes-back.herokuapp.com/shoes?category=${category}&name=${name}&brand=${brand}&priceMin=${priceMin}&priceMax=${priceMax}`
       );
       dispatch({
         type: COMBINATION_FILTERS10,
@@ -399,7 +399,7 @@ export function combinationsFilter11(brand, priceMin, priceMax, size) {
   return async function (dispatch) {
     try {
       const results = await axios(
-        `http://localhost:3001/shoes?size=${size}&brand=${brand}&priceMin=${priceMin}&priceMax=${priceMax}`
+        `https://yourshoes-back.herokuapp.com/shoes?size=${size}&brand=${brand}&priceMin=${priceMin}&priceMax=${priceMax}`
       );
       dispatch({
         type: COMBINATION_FILTERS11,
@@ -415,7 +415,7 @@ export function combinationsFilter_12(size, priceMin, priceMax) {
   return async function (dispatch) {
     try {
       const results = await axios(
-        `http://localhost:3001/shoes?size=${size}&priceMin=${priceMin}&priceMax=${priceMax}`
+        `https://yourshoes-back.herokuapp.com/shoes?size=${size}&priceMin=${priceMin}&priceMax=${priceMax}`
       );
       dispatch({
         type: COMBINATION_FILTERS_12,
@@ -431,7 +431,7 @@ export function combinationsFilter_13(size, brand) {
   return async function (dispatch) {
     try {
       const results = await axios(
-        `http://localhost:3001/shoes?size=${size}&brand=${brand}`
+        `https://yourshoes-back.herokuapp.com/shoes?size=${size}&brand=${brand}`
       );
       dispatch({
         type: COMBINATION_FILTERS_13,
@@ -448,7 +448,7 @@ export function combinationsFilter14(size, brand, name, priceMin, priceMax) {
   return async function (dispatch) {
     try {
       const results = await axios(
-        `http://localhost:3001/shoes?size=${size}&brand=${brand}&name=${name}&priceMin=${priceMin}&priceMax=${priceMax}`
+        `https://yourshoes-back.herokuapp.com/shoes?size=${size}&brand=${brand}&name=${name}&priceMin=${priceMin}&priceMax=${priceMax}`
       );
       dispatch({
         type: COMBINATION_FILTERS14,
@@ -465,7 +465,7 @@ export function combinationsFilter15(size, name) {
   return async function (dispatch) {
     try {
       const results = await axios(
-        `http://localhost:3001/shoes?size=${size}&name=${name}`
+        `https://yourshoes-back.herokuapp.com/shoes?size=${size}&name=${name}`
       );
       dispatch({
         type: COMBINATION_FILTERS15,
@@ -482,7 +482,7 @@ export function combinationsFilter16(size, category) {
   return async function (dispatch) {
     try {
       const results = await axios(
-        `http://localhost:3001/shoes?size=${size}&category=${category}`
+        `https://yourshoes-back.herokuapp.com/shoes?size=${size}&category=${category}`
       );
       dispatch({
         type: COMBINATION_FILTERS16,
