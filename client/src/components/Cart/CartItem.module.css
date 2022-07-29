@@ -1,15 +1,16 @@
 .container {
-  border: solid 2px black;
+  border: solid 2px grey;
   border-radius: 8px;
   width: auto;
   padding: 1rem;
   text-align: center;
-  background-color: grey;
+  background: linear-gradient(to bottom left, white, orange);
   max-width: 80%;
   display: flex;
   justify-content: center;
   gap: 0.5rem;
 }
+
 
 .buttonsContainer button {
   border-style: hidden;
@@ -29,4 +30,7 @@
 .info {
   display: flex;
   flex-direction: column;
+}
+.info h5{
+  color: black;
 }

@@ -26,7 +26,12 @@ import {
   COMBINATION_FILTERS10,
   COMBINATION_FILTERS11,
   COMBINATION_FILTERS_12,
-  COMBINATION_FILTERS_13
+  COMBINATION_FILTERS_13,
+  COMBINATION_FILTERS14,
+  COMBINATION_FILTERS15,
+  COMBINATION_FILTERS16,
+  ADD_ONE_TO_FAV,
+  HYDRATATE_FAV_LS,
 } from "./actions";
 
 const initialState = {
@@ -34,7 +39,8 @@ const initialState = {
   detail: [],
   cart: [],
   filteredProducts: [],
-  categories: []
+  categories: [],
+  favorites: [],
 };
 
 export default function rootReducer(state = initialState, action) {
@@ -61,6 +67,21 @@ export default function rootReducer(state = initialState, action) {
         ...state,
         products: action.payload,
       };
+    case ADD_ONE_TO_FAV:
+      const newItemFav = state.products.find(
+        (product) => product.id === action.payload
+      );
+      let itemInFav = state.favorites.find((item) => item.id === newItemFav.id);
+
+      return itemInFav
+        ? {
+            ...state,
+            //favorites: ...favorites
+          }
+        : {
+            ...state,
+            favorites: [...state.favorites, { ...newItemFav }],
+          };
 
     case ADD_ONE_TO_CART:
       const newItem = state.products.find(
@@ -106,6 +127,11 @@ export default function rootReducer(state = initialState, action) {
         ...state,
         cart: action.payload,
       };
+    case HYDRATATE_FAV_LS:
+      return {
+        ...state,
+        favorites: action.payload,
+      };
     case FILTER_BY_BRAND:
       return {
         ...state,
@@ -117,14 +143,14 @@ export default function rootReducer(state = initialState, action) {
       return {
         ...state,
         filteredProducts: action.payload,
-        products: action.payload
-      }
+        products: action.payload,
+      };
     case FILTER_BY_CATEGORY:
       return {
         ...state,
         filteredProducts: action.payload,
-        products: action.payload
-      }
+        products: action.payload,
+      };
     case FILTER_BY_SIZE:
       return {
         ...state,
@@ -136,86 +162,104 @@ export default function rootReducer(state = initialState, action) {
       return {
         ...state,
         filteredProducts: action.payload,
-        products: action.payload
-      }
+        products: action.payload,
+      };
     case COMBINATION_FILTERS1:
       return {
         ...state,
         filteredProducts: action.payload,
-        products: action.payload
-      }
+        products: action.payload,
+      };
     case COMBINATION_FILTERS2:
       return {
         ...state,
         filteredProducts: action.payload,
-        products: action.payload
-      }
+        products: action.payload,
+      };
     case COMBINATION_FILTERS3:
       return {
         ...state,
         filteredProducts: action.payload,
-        products: action.payload
-      }
+        products: action.payload,
+      };
     case COMBINATION_FILTERS4:
       return {
         ...state,
         filteredProducts: action.payload,
-        products: action.payload
-      }
+        products: action.payload,
+      };
     case COMBINATION_FILTERS5:
       return {
         ...state,
         filteredProducts: action.payload,
-        products: action.payload
-      }
+        products: action.payload,
+      };
     case COMBINATION_FILTERS6:
       return {
         ...state,
         filteredProducts: action.payload,
-        products: action.payload
-      }
+        products: action.payload,
+      };
     case COMBINATION_FILTERS7:
       return {
         ...state,
         filteredProducts: action.payload,
-        products: action.payload
-      }
+        products: action.payload,
+      };
     case COMBINATION_FILTERS8:
       return {
         ...state,
         filteredProducts: action.payload,
-        products: action.payload
-      }
+        products: action.payload,
+      };
     case COMBINATION_FILTERS9:
       return {
         ...state,
         filteredProducts: action.payload,
-        products: action.payload
-      }
+        products: action.payload,
+      };
     case COMBINATION_FILTERS10:
       return {
         ...state,
         filteredProducts: action.payload,
-        products: action.payload
-      }
+        products: action.payload,
+      };
     case COMBINATION_FILTERS11:
       return {
         ...state,
         filteredProducts: action.payload,
-        products: action.payload
-      }
+        products: action.payload,
+      };
     case COMBINATION_FILTERS_12:
       return {
         ...state,
         filteredProducts: action.payload,
-        products: action.payload
-      }
+        products: action.payload,
+      };
     case COMBINATION_FILTERS_13:
       return {
         ...state,
         filteredProducts: action.payload,
-        products: action.payload
-      }
+        products: action.payload,
+      };
+    case COMBINATION_FILTERS14:
+      return {
+        ...state,
+        filteredProducts: action.payload,
+        products: action.payload,
+      };
+    case COMBINATION_FILTERS15:
+      return {
+        ...state,
+        filteredProducts: action.payload,
+        products: action.payload,
+      };
+    case COMBINATION_FILTERS16:
+      return {
+        ...state,
+        filteredProducts: action.payload,
+        products: action.payload,
+      };
     case POST_USER: {
       return {
         ...state,
@@ -230,8 +274,8 @@ export default function rootReducer(state = initialState, action) {
     case REMOVER_TODO: {
       return {
         ...state,
-        cart: initialState.cart
-      }
+        cart: initialState.cart,
+      };
     }
 
     default:
