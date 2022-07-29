@@ -38,7 +38,7 @@ export default function Cart() {
 
       {/* <button onClick={clearCart}>Limpiar carrito</button> */}
       <div>
-        {cartProducts.length ? (
+        {cartProducts && cartProducts.length ? (
           <div className={styles.contenedor}>
             {cartProducts.map((item, index) => (
               <CartItem key={index} data={item} deleteProduct={deleteProduct} />
