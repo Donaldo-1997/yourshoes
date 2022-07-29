@@ -37,7 +37,7 @@ export default function Cart() {
       </Link>
 
       {/* <button onClick={clearCart}>Limpiar carrito</button> */}
-      <div>
+      <div className={styles.container2}>
         {cartProducts.length ? (
           <div className={styles.contenedor}>
             {cartProducts.map((item, index) => (
@@ -46,16 +46,20 @@ export default function Cart() {
             <div>
               <div>
                 <h2>SUMA TOTAL: ${precios}</h2>
-                <Link to='/mercadopago/pagos'>
-                  <button>Pagar</button>
+                <Link to="/mercadopago/pagos">
+                  <button className={styles.buttonsContainer}>
+                    Ir a comprar
+                  </button>
                 </Link>
-                <button onClick={clearCart}>Limpiar carrito</button>
+                <button className={styles.buttonsContainer} onClick={clearCart}>
+                  Limpiar carrito
+                </button>
               </div>
             </div>
           </div>
         ) : (
           <div className={styles.containerSinDato}>
-            <h4>El carrito está vacío.</h4>
+            <h5>El carrito está vacío.</h5>
             <h5>Vuelve y escoje tus zapatillas favoritas!</h5>
           </div>
         )}
