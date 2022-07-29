@@ -71,12 +71,12 @@ export default function rootReducer(state = initialState, action) {
       const newItem = state.products.find(
         (product) => product.id === action.payload
       );
-      let itemInCart = state.cart.find((item) => item.id === newItem.id);
+      let itemInCart = state.cart && state.cart.find((item) => item.id === newItem.id);
 
       return itemInCart
         ? {
           ...state,
-          cart: state.cart.map((item) =>
+          cart: state.cart && state.cart.map((item) =>
             item.id === newItem.id
               ? { ...item, quantity: item.quantity + 1 }
               : item
