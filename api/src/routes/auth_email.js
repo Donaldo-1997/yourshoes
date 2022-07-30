@@ -1,12 +1,15 @@
 const { Router } = require("express");
 const router = Router();
 const passport = require("passport");
+const { mail } = require('../controllers/nodemailer')
 require("../controllers/passport-setup");
 
 const { CLIENT_URL } = process.env;
 
-router.get("/login/success", (req, res) => {
+router.get("/login/success", async (req, res) => {
   if (req.user) {
+    await mail(req.user.emails[0].value)
+    
     res.status(200).json({
       success: true,
       message: "successfull",

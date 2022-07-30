@@ -5,6 +5,7 @@ const { validateAttributes, validateAttribute } = require('../controllers/valida
 const router = Router();
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const {mail} = require('../controllers/nodemailer')
 
 
 router.post("/signup", async (req, res) => {
@@ -35,11 +36,17 @@ router.post("/signup", async (req, res) => {
         let token = jwt.sign({ user: newUser }, process.env.AUTH_SECRET, {
           expiresIn: process.env.AUTH_EXPIRES
       });
-        !created ? res.status(201).send('There is already a user with that email') :
-          res.status(200).json({
-            user: newUser,
-            token: token
-        });
+
+       if (!created ) res.status(201).send('There is already a user with that email') 
+       else {
+        console.log('mail', typeof mail)
+        await mail(email)
+         res.status(200).json({
+           user: newUser,
+           token: token
+       });
+       }
+
       } else {
         return res.status(404).send(validation)
       }

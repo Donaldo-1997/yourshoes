@@ -38,3 +38,7 @@ color: #000000;
     border-style: none;
     background-color: transparent;
 }
+
+.logout_button {
+    padding: 10px;
+}

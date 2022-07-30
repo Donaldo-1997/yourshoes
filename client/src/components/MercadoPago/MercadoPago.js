@@ -13,7 +13,7 @@ function MercadoPago() {
   useEffect(() => {
     if (cart.length > 0) {
       axios
-        .post("http://localhost:3001/mercadopago", { as: cart })
+        .post(`${window.env.URL}/mercadopago`, { as: cart })
         .then((data) => {
           setDatos(data.data);
           console.info("Contenido de data:", data);

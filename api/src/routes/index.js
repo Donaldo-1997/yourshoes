@@ -12,7 +12,7 @@ const login = require('./login')
 const auth_email = require('./auth_email')
 const mercadoRouter = require("./mercadopago.js")
 const size = require("./size")
-const nodemailer = require("./nodemailer")
+const nodemailer = require("./nodemailer.js")
 
 
 //--------------------------ROUTES

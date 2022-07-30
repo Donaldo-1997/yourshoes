@@ -6,14 +6,19 @@ import Searchbar from "../SearchBar/SearchBar";
 import { BsFillCartFill } from "react-icons/bs";
 import { FaHeart } from "react-icons/fa";
 import { FaUserAlt } from "react-icons/fa";
+import { BiLogOut } from "react-icons/bi";
 import {Link} from 'react-router-dom'
 import styles from './NavBar.module.css'
+import { useDispatch, useSelector } from "react-redux";
+import axios from "axios";
+import { logoutUser } from "../../redux/actions";
 
 
 
 
 export default function NavBar({handleReset, handleInputName, handleNameSubmit}) {
 
+  const { user } = useSelector(state => state)
 
   return (
     <Navbar bg="light" expand="lg" className={styles.navbar}>
@@ -34,9 +39,13 @@ export default function NavBar({handleReset, handleInputName, handleNameSubmit})
             <Nav.Link  className={styles.icon}>
               <Link to="/favorites"><FaHeart style={{ color: "#f87d2d" }} /></Link> 
             </Nav.Link>
-            <Nav.Link  className={styles.icon}>
-               <Link to='/login'><FaUserAlt  style={{ color: "#f87d2d" }} /></Link>
-            </Nav.Link>
+            {Object.keys(user).length ? (
+              <a href={`${window.env.URL}/auth/logout`} className={styles.logout_button}><BiLogOut style={{ color: "#f87d2d" }}></BiLogOut></a>
+            ) : (
+              <Nav.Link  className={styles.icon}>
+                 <Link to='/login'><FaUserAlt  style={{ color: "#f87d2d" }} /></Link>
+              </Nav.Link>
+            )}
           </Nav>
           <Searchbar 
           handleInputName={handleInputName}

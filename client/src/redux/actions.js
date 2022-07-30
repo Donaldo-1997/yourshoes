@@ -184,14 +184,17 @@ export function postUser(payload) {
   };
 }
 export function Login(payload) {
-  console.log("payload", payload);
   return async function (dispatch) {
     try {
-      var json = await axios.post(`${URL}/login/signin`,payload);
+      const json = await axios.post(`${URL}/login/signin`,payload);
+
+      console.log('json -->', json);
       dispatch({
         type: LOGIN_USER,
-        payload: json,
+        payload: json.data.user,
       });
+
+      return json
     } catch (error) {
       console.log(error);
     }
@@ -542,10 +545,18 @@ export function addOneToFav(payload) {
 
 export function postProduct(props){
   return async function (dispatch){
-    const response = axios.post(`http://localhost:3001/shoes`, props)
+    const response = axios.post(`${URL}/shoes`, props)
     dispatch({
       type: POST_PRODUCT,
       payload: response.data
     })
   }
 }
+
+export function loginUser(user){
+    return ({
+      type: 'USER_LOGGED',
+      payload: user
+    })
+}
+
