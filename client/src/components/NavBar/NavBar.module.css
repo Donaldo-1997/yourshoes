@@ -42,3 +42,9 @@ color: #000000;
 .logout_button {
     padding: 10px;
 }
+
+.createProdButton{
+    margin-right: 50%;
+    border-radius: 10px;
+    background-color: #f87d2d;
+}
