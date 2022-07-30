@@ -22,11 +22,11 @@ module.exports = (sequelize) => {
         image: {
             type: DataTypes.STRING,
             allownull: false,
-        },
-        size:{
-            type:DataTypes.ARRAY(DataTypes.INTEGER),
-            allowNull: false,
-        },
+        }, 
+        sold: {
+            type: DataTypes.INTEGER,
+            allownull: false,
+        },      
         isActive: {
             type: DataTypes.BOOLEAN,
             defaultValue: true,

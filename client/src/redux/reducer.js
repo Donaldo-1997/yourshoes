@@ -7,6 +7,8 @@ import {
   FILTER_BY_SIZE,
   GET_ALL_SHOES,
   GET_ALL_CATEGORIES,
+  GET_ALL_BRANDS,
+  GET_ALL_SIZES,
   GET_DETAILS,
   GET_SHOES_NAME,
   LOGIN_USER,
@@ -58,7 +60,19 @@ export default function rootReducer(state = initialState, action) {
         ...state,
         categories: action.payload,
       };
-
+    case GET_ALL_SIZES:
+      return {
+        ...state,
+      };
+    case GET_ALL_CATEGORIES:
+      return {
+          ...state,
+      };
+    case GET_ALL_BRANDS:
+      return {
+            ...state,
+      };
+  
     case GET_DETAILS:
       return {
         ...state,
@@ -78,13 +92,13 @@ export default function rootReducer(state = initialState, action) {
 
       return itemInFav
         ? {
-            ...state,
-            //favorites: ...favorites
-          }
+          ...state,
+          //favorites: ...favorites
+        }
         : {
-            ...state,
-            favorites: [...state.favorites, { ...newItemFav }],
-          };
+          ...state,
+          favorites: [...state.favorites, { ...newItemFav }],
+        };
 
     case ADD_ONE_TO_CART:
       const newItem = state.products && state.products.find(

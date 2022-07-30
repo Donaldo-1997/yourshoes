@@ -28,7 +28,8 @@ import {
   combinationsFilter15,
   combinationsFilter16,
   combinationsFilter17,
-  combinationsFilter18
+  combinationsFilter18,
+  getAllSizes
 } from "../../redux/actions";
 import ProductCards from "../ProductCards/ProductCards";
 import Pagination from "../Pagination/Pagination";
@@ -206,7 +207,9 @@ export default function HomePage() {
         .catch(err => alert(err.response.data))
     }
     else {
-      dispatch(filterByBrand(e.target.value));
+      dispatch(filterByBrand(e.target.value))
+      .then(res => console.log(res))
+      .catch(err => alert(err.response.data));
     }
     setCurrentPage(1);
   };
@@ -265,6 +268,8 @@ export default function HomePage() {
     }
     else {
       dispatch(filterByCategory(e.target.value))
+      .then(res => console.log(res))
+      .catch(err => alert(err.response.data))
     }
     setCurrentPage(1);
   }
@@ -328,10 +333,13 @@ export default function HomePage() {
     }
     else {
       dispatch(filterByPrice(priceMin, priceMax))
+      .then(res => console.log(res))
+      .catch(err => alert(err.response.data))
     }
     setCurrentPage(1)
   }
 
+  
   const handleSize = (e) => {
     setSizeFilter(e.target.value)
     if(nameFilter !== "" && brandFilter !== "default" && priceMin !== "" && priceMax !== "" && categoryFilter !== "default"){
@@ -376,7 +384,8 @@ export default function HomePage() {
     }
     else {
       dispatch(filterBySize(e.target.value))
-      setSizeFilter(e.target.value)
+      .then(res => console.log(res))
+      .catch(err => alert(err.response.data))
     }
     setCurrentPage(1);
   }
@@ -397,6 +406,7 @@ export default function HomePage() {
     dispatch(getAllShoes());
     dispatch(getAllBrands());
     dispatch(getAllCategories())
+    dispatch(getAllSizes())
   }, [dispatch]);
 
   return (
