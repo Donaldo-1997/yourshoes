@@ -68,7 +68,7 @@ color: #faeeee;
 	font-size: 18px;
 	padding: 0px;
 	margin-bottom: 5px;
-	color: #f0e3e3;
+	color: #201e1e;
 }
 
 .formulario input:focus {
@@ -78,16 +78,6 @@ color: #faeeee;
 
 .formulario .error {
 	color: #8d090b;
-    text-shadow:
-      0 0 7px rgb(205, 8, 8),
-      0 0 10px rgb(197, 7, 7),
-      0 0 21px rgb(141, 4, 4),
-      0 0 42px rgb(255, 0, 0),
-      0 0 82px rgb(255, 0, 34),
-      0 0 92px rgb(255, 0, 0),
-      0 0 102px rgb(255, 0, 47),
-      0 0 151px rgb(255, 0, 30);
-;
 font-weight: 600;
 	font-size: 12px;
 }
