@@ -545,7 +545,7 @@ export function addOneToFav(payload) {
 
 export function postProduct(props){
   return async function (dispatch){
-    const response = axios.post(`http://localhost:3001/shoes`, props)
+    const response = axios.post(`${URL}/shoes`, props)
     dispatch({
       type: POST_PRODUCT,
       payload: response.data

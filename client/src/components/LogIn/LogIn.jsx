@@ -99,7 +99,7 @@ export default function LogIn() {
             )}
             <a
               onClick={() =>
-                window.open("http://localhost:3001/auth/google", "_self")
+                window.open(`${window.env.URL}/auth/google`, "_self")
               }
               className={styles.link}
             >
