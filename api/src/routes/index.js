@@ -12,6 +12,8 @@ const login = require('./login')
 const auth_email = require('./auth_email')
 const mercadoRouter = require("./mercadopago.js")
 const size = require("./size")
+const nodemailer = require("./nodemailer")
+
 
 //--------------------------ROUTES
 router.use("/auth", auth_email)
@@ -22,6 +24,7 @@ router.use("/categories", categories);
 router.use("/brands", brands)
 router.use("/mercadopago", mercadoRouter);
 router.use("/size", size);
+router.use("/nodemailer", nodemailer)
 
 // router.get('/', (req, res) => {
 //     res.send('deploy funcionando')
