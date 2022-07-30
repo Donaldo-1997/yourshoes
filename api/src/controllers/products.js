@@ -1,4 +1,4 @@
-const { Product, Brand, Category } = require('../db');
+const { Product, Brand, Category, Size } = require('../db');
 const { Op } = require('sequelize');
 const { setDataApi } = require('.');
 
@@ -83,10 +83,11 @@ async function getByPrice(priceMin, priceMax) {
 async function getBySize(size) {
   try {
     const all = await Product.findAll({
-      where:{size:[size]},
+      
       include: [
         { model: Brand },
         { model: Category },
+        { model: Size },
       ]
     })
     console.log(all)
