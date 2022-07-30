@@ -68,7 +68,11 @@ export default function rootReducer(state = initialState, action) {
       return {
           ...state,
       };
-
+    case GET_ALL_BRANDS:
+      return {
+            ...state,
+      };
+  
     case GET_DETAILS:
       return {
         ...state,
