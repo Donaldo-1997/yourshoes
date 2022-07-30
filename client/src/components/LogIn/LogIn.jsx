@@ -12,6 +12,17 @@ export default function LogIn() {
   const dispatch = useDispatch();
 
   const [formularioEnviado, setformularioEnviado] = useState(false);
+
+  const handleLogin = (valores, resetForm) => {
+    resetForm();
+    dispatch(Login(valores));
+    console.log("formulario enviado");
+    console.log("post", valores);
+    setformularioEnviado(true);
+    setTimeout(() => setformularioEnviado(false), 5000);
+    navigate("/");
+  }
+
   return (
     <div className={styles.contenedor}>
       <Formik
@@ -19,15 +30,7 @@ export default function LogIn() {
           email: "",
           password: "",
         }}
-        onSubmit={(valores, { resetForm }) => {
-          resetForm();
-          dispatch(Login(valores));
-          console.log("formulario enviado");
-          console.log("post", valores);
-          setformularioEnviado(true);
-          setTimeout(() => setformularioEnviado(false), 5000);
-          navigate("/");
-        }}
+        onSubmit={(valores, { resetForm }) => handleLogin(valores, resetForm)}
         validate={(valores) => {
           let error = {};
 

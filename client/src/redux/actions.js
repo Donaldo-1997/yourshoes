@@ -184,14 +184,17 @@ export function postUser(payload) {
   };
 }
 export function Login(payload) {
-  console.log("payload", payload);
   return async function (dispatch) {
     try {
-      var json = await axios.post(`${URL}/login/signin`,payload);
+      const json = await axios.post(`${URL}/login/signin`,payload);
+
+      console.log('json -->', json);
       dispatch({
         type: LOGIN_USER,
-        payload: json,
+        payload: json.data.user,
       });
+
+      return json
     } catch (error) {
       console.log(error);
     }
@@ -549,3 +552,11 @@ export function postProduct(props){
     })
   }
 }
+
+export function loginUser(user){
+    return ({
+      type: 'USER_LOGGED',
+      payload: user
+    })
+}
+

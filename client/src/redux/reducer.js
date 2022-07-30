@@ -46,6 +46,7 @@ const initialState = {
   filteredProducts: [],
   categories: [],
   favorites: [],
+  user: {}
 };
 
 export default function rootReducer(state = initialState, action) {
@@ -298,6 +299,7 @@ export default function rootReducer(state = initialState, action) {
     case LOGIN_USER: {
       return {
         ...state,
+        user: action.payload
       };
     }
     case REMOVER_TODO: {
@@ -310,6 +312,11 @@ export default function rootReducer(state = initialState, action) {
       return {
         ...state,
         products: action.payload
+      }
+    case 'USER_LOGGED':
+      return {
+        ...state,
+        user: action.payload
       }
     default:
       return state;

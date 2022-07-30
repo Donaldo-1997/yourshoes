@@ -7,7 +7,7 @@ import FormUser from "./components/FormUser/FormUser";
 import LogIn from "./components/LogIn/LogIn";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { hydratateFromLocalStorage } from "./redux/actions";
+import { hydratateFromLocalStorage, loginUser } from "./redux/actions";
 import AboutUs from "./components/About/AboutUs";
 import FAQs from "./components/About/FAQs";
 import MercadoPago from "./components/MercadoPago/MercadoPago";
@@ -16,7 +16,6 @@ import { hydratateLSFav } from "./redux/actions";
 import CreateProduct from "./components/CreateProduct/CreateProduct";
 
 function App() {
-  const [user, setUser] = useState(null);
 
   useEffect(() => {
     const getUser = () => {
@@ -34,8 +33,8 @@ function App() {
           throw new Error("authentication has been failed!");
         })
         .then((res) => {
-          setUser(res.user);
-          console.log(res.user);
+          dispatch(loginUser(res.user))
+          console.log('google -->',res.user);
         })
         .catch((err) => {
           console.log(err);
