@@ -39,7 +39,8 @@ export const MERCADOPAGO_PAYMENT = 'MERCADOPAGO_PAYMENT'
 export const ADD_ONE_TO_FAV = "ADD_ONE_TO_FAV";
 export const HYDRATATE_FAV_LS = "HYDRATATE_FAV_LS";
 
-const URL = process.env.ENVIROMENT === 'production' ? "https://yourshoes-back.herokuapp.com" : 'http://localhost:3001'
+const { URL } = process.env
+// const URL = process.env.ENVIROMENT === 'production' ? "https://yourshoes-back.herokuapp.com" : 'http://localhost:3001'
 
 export function removerTodo() {
   return {
