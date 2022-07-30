@@ -22,13 +22,15 @@ const transporter = nodemailer.createTransport({
     console.log(err)
   })
   
-  const mail = async () => {
+  async function mail(email){
+   
     await transporter.sendMail({
       from: '"YOURSHOES 👟" <yourshoes.henry@gmail.com>', // sender address
-      to: 'giseltaboada1990@gmail.com', // list of receivers
+      to: email, // list of receivers
       subject : 'GRACIAS POR UNIRTE AL TEAM YOURSHOES', // Subject line
       html: '<p>Ya sos parte del mundo de Yourshoes, gracias por loguearte. Ahora vas a tener descuentos en todos los productos</p>'// html body
     })
+    
   }
 
   module.exports = {
