@@ -14,13 +14,19 @@ export default function LogIn() {
   const [formularioEnviado, setformularioEnviado] = useState(false);
 
   const handleLogin = (valores, resetForm) => {
-    resetForm();
-    dispatch(Login(valores));
-    console.log("formulario enviado");
-    console.log("post", valores);
-    setformularioEnviado(true);
-    setTimeout(() => setformularioEnviado(false), 5000);
-    navigate("/");
+    dispatch(Login(valores))
+    .then(res => {
+      resetForm();
+      console.log("post", res);
+      setformularioEnviado(true);
+      setTimeout(() => setformularioEnviado(false), 5000);
+      navigate("/");
+    })
+    .catch(error => {
+      // console.log(error);
+      alert(error.response.data.msg)
+    })
+    
   }
 
   return (
