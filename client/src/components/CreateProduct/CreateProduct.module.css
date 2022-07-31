@@ -7,6 +7,7 @@
     border-style: solid;
     width: 519px;
     height: 519px;
+    background-color: #F87D2D;
 }
 
 .infoContainer{
@@ -21,4 +22,49 @@
     border: none;
     border-bottom-style: solid;
     outline: 0px;
+    background-color: transparent;
+}
+
+.error{
+    font-size: 11px;
+    color: #f8f9fa;
+    display: flex;
+}
+
+.createButton{
+    margin-top: 63px;
+    margin-left: 38%;
+    width: 151px;
+    height: 61px;
+    border-radius: 10px;
+    font-size: 20px;
+}
+
+
+.homeButton{
+    border-style: none;
+    background-color: transparent;
+    font-family: 'Anton';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 2rem;
+    line-height: 100%;
+    text-transform: uppercase;
+    /* or 60px */
+
+    letter-spacing: 0.04em;
+
+    color: #000000;
+}
+
+.shoes{
+    color:#F87D2D
+}
+
+.title{
+    margin-left: 552px;
+}
+
+.select{
+    border-radius: 10px;
 }

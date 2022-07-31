@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { postProduct } from '../../redux/actions'
 import styles from "./CreateProduct.module.css"
 import { Widget } from "@uploadcare/react-widget";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function CreateProduct(){
     const dispatch = useDispatch()
@@ -67,7 +69,6 @@ export default function CreateProduct(){
     const handleSubmit = (e) => {
         e.preventDefault()
         dispatch(postProduct(input))
-        alert("Producto creado")
         setInput({
             title: "",
             model: "",
@@ -77,6 +78,11 @@ export default function CreateProduct(){
             brand: "",
             category: ""
         })
+        toast.success("Tu producto fue creado!", {
+            className: "cart-toast",
+            draggable: true,
+            position: toast.POSITION.TOP_CENTER,
+          });
     }
 
     //Validaciones//
@@ -103,22 +109,22 @@ export default function CreateProduct(){
     return(
         <div>
             <Link to="/" >
-              <button>YOUR<span>SHOES</span></button>
+              <button className={styles.homeButton}>YOUR<span className={styles.shoes}>SHOES</span></button>
             </Link>
-            <h1>Publicación de producto</h1>
+            <h1 className={styles.title}>Publicación de producto</h1>
             <div className={styles.allContainer}>
                 <form onSubmit={(e) => handleSubmit(e)} className={styles.form}>
 
                     <div className={styles.infoContainer}>
                         <label className={styles.label}>Título del producto </label>
                         <input onChange={(e) => handleChange(e)} type="text" value={input.title} name="title" className={styles.input}/>
-                        {!errors.title ? null : <span>{errors.title}</span>}
+                        {!errors.title ? null : <span className={styles.error}>{errors.title}</span>}
                     </div>
 
                     <div className={styles.infoContainer}>
                         <label className={styles.label}>Modelo del producto </label>
                         <input onChange={(e) => handleChange(e)} type="text" value={input.model} name="model" className={styles.input}/>
-                        {!errors.model ? null : <span>{errors.model}</span>}
+                        {!errors.model ? null : <span className={styles.error}>{errors.model}</span>}
                     </div>
 
                     <div className={styles.infoContainer}>
@@ -134,12 +140,12 @@ export default function CreateProduct(){
                     <div className={styles.infoContainer}>
                         <label className={styles.label}>Precio </label>
                         <input onChange={(e) => handleChange(e)} type="number" value={input.price} name="price" className={styles.input}/>
-                        {!errors.price ? null : <span>{errors.price}</span>}
+                        {!errors.price ? null : <span className={styles.error}>{errors.price}</span>}
                     </div>
 
                     <div className={styles.infoContainer}>
                         <label className={styles.label}>Talle </label>
-                        <select onChange={(e) => handleSelectSize(e)} value={input.size}>
+                        <select onChange={(e) => handleSelectSize(e)} value={input.size} className={styles.select}>
                             <option>35</option>
                             <option>36</option>
                             <option>37</option>
@@ -160,12 +166,12 @@ export default function CreateProduct(){
                     <div className={styles.infoContainer}>
                         <label className={styles.label}>Marca </label>
                         <input onChange={(e) => handleChange(e)} type="text" value={input.brand} name="brand" className={styles.input}/>
-                        {!errors.brand ? null : <span>{errors.brand}</span>}
+                        {!errors.brand ? null : <span className={styles.error}>{errors.brand}</span>}
                     </div>
 
                     <div className={styles.infoContainer}>
                         <label className={styles.label}>Categoria </label>
-                        <select onChange={(e) => handleSelectCategory(e)} value={input.category}>
+                        <select onChange={(e) => handleSelectCategory(e)} value={input.category} className={styles.select}>
                             <option>Zapatillas</option>
                             <option>Botas y Botinetas</option>
                             <option>Sandalias y ojotas</option>
@@ -176,8 +182,10 @@ export default function CreateProduct(){
                             <option>Alpargatas</option>
                         </select>
                     </div>
-
-                    {!Object.keys(errors).length ? <button type="submit">Crear producto</button> : <button type="submit" disabled={true}>Crear producto</button>}
+                    <div>
+                        {!Object.keys(errors).length ? <button type="submit" className={styles.createButton}>Crear producto</button> : <button type="submit" className={styles.createButton} disabled={true}>Crear producto</button>}
+                        <ToastContainer/>
+                    </div>
                 </form>
             </div>
         </div>

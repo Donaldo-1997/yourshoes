@@ -10,13 +10,15 @@ router.get("/login/success", async (req, res) => {
   if (req.user) {
     await mail(req.user.emails[0].value)
     
-    res.status(200).json({
+    return res.status(200).json({
       success: true,
       message: "successfull",
       user: req.user,
       //   cookies: req.cookies
     });
   }
+
+  else res.status(400).send('solicitud inválida')
 });
 
 router.get("/login/failed", (req, res) => {

@@ -34,7 +34,7 @@ function App() {
         })
         .then((res) => {
           dispatch(loginUser(res.user))
-          console.log('google -->',res.user);
+          console.log('google -->',res);
         })
         .catch((err) => {
           console.log(err);

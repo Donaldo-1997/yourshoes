@@ -10,7 +10,7 @@ passport.use(
       // passReqToCallback:true
     },
     function (request, accessToken, refreshToken, profile, done) {
-      console.log(profile);
+      // console.log(profile);
       return done(null, profile);
     }
   )

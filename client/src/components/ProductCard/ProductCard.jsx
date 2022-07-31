@@ -5,6 +5,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { FaHeart } from "react-icons/fa";
 import { addOneToFav } from "../../redux/actions";
 import { useEffect } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 export default function ProductCard({ image, title, price, id }) {
   const dispatch = useDispatch();
 
@@ -24,6 +27,11 @@ export default function ProductCard({ image, title, price, id }) {
 
   const addToFav = (id) => {
     dispatch(addOneToFav(id));
+    toast.success("Tu producto fue agregado favoritos!", {
+      className: "cart-toast",
+      draggable: true,
+      position: toast.POSITION.TOP_CENTER,
+    });
   };
   return (
     <div className={styles.infoContainer}>
@@ -36,6 +44,7 @@ export default function ProductCard({ image, title, price, id }) {
         <button onClick={() => addToFav(id)}>
           <FaHeart style={{ color: "#f87d2d" }} />
         </button>
+        <ToastContainer/>
       </div>
       <div className={styles.container}>
         <div className={styles.short}>

@@ -196,7 +196,7 @@ export function Login(payload) {
 
       return json
     } catch (error) {
-      console.log(error);
+      throw error
     }
   };
 }

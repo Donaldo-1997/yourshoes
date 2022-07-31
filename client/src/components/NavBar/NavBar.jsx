@@ -47,6 +47,9 @@ export default function NavBar({handleReset, handleInputName, handleNameSubmit})
               </Nav.Link>
             )}
           </Nav>
+          <button className={styles.createProdButton}>
+            <Link to='/post'>Crear producto</Link>
+          </button>
           <Searchbar 
           handleInputName={handleInputName}
           handleNameSubmit={handleNameSubmit}></Searchbar>
