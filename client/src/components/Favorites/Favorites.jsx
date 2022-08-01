@@ -2,6 +2,7 @@ import styles from "./favorites.module.css";
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import FavItem from "./FavoritesItem";
+import { Link } from "react-router-dom";
 
 export default function Favorites() {
   const favProducts = useSelector((state) => state.favorites);
@@ -12,6 +13,7 @@ export default function Favorites() {
 
   return (
     <div>
+            <Link to='/'>Volver</Link>
       <div>
         {favProducts.length ? (
           <div>
