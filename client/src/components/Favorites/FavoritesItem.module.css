@@ -1,3 +1,6 @@
-.container h5{
-    color:black
-}
+.container2 {
+   display: flex;
+   text-align: center;
+   align-items: center;
+} 
+
