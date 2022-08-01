@@ -30,8 +30,8 @@ server.post("/", function (req, res) {
       installments: 3,
     },
     back_urls: {
-      success: "http://localhost:3000/",
-      failure: "http://localhost:3000/",
+      success: "https://yourshoes.vercel.app/",
+      failure: "https://yourshoes.vercel.app/",
     },
   };
 
