@@ -107,7 +107,7 @@ export default function CreateProduct(){
     }
 
     return(
-        <div>
+        <div className={styles.Container}>
             <Link to="/" >
               <button className={styles.homeButton}>YOUR<span className={styles.shoes}>SHOES</span></button>
             </Link>

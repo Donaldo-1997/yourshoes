@@ -1,13 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Fugaz+One&family=Inter:wght@400;700&display=swap');
 .allContainer{
     display: flex;
     justify-content: center;
+    font-family: Inter;
+    text-transform: uppercase;
+    font-weight: 700;
 }
 
 .form{
     border-style: solid;
     width: 519px;
     height: 519px;
-    background-color: #F87D2D;
+    background: linear-gradient(to bottom left, white, orange);
+    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.833) 0px 1px 4px;
 }
 
 .infoContainer{
@@ -39,7 +45,9 @@
     border-radius: 10px;
     font-size: 20px;
 }
-
+.Container{
+    background: linear-gradient(to top right, #edac14, #fafcff);
+}
 
 .homeButton{
     border-style: none;
@@ -59,10 +67,14 @@
 
 .shoes{
     color:#F87D2D
+    
 }
 
 .title{
-    margin-left: 552px;
+    width: 100%;
+    font-family: Anton;
+    text-align: center;
+    text-transform: uppercase;
 }
 
 .select{
