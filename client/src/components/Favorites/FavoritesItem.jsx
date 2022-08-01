@@ -9,7 +9,7 @@ export default function FavItem({ data }) {
     <div className={styles.container}>
     
       <div className={styles.container2}>
-      <img src={image} alt="Img Not Found" width={100} />
+      <img src={image} alt="Img Not Found" width={100}  className={styles.img}/>
           ${price} 
         <div>
         </div>
