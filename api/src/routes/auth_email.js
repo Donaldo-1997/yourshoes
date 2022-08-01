@@ -8,12 +8,12 @@ const { CLIENT_URL } = process.env;
 
 router.get("/login/success", async (req, res) => {
   if (req.user) {
+
     await mail(req.user.emails[0].value)
     
     return res.status(200).json({
-      success: true,
-      message: "successfull",
       user: req.user,
+      token: req.cookies.session
       //   cookies: req.cookies
     });
   }
