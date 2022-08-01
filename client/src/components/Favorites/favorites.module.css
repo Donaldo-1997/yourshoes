@@ -1,5 +1,48 @@
-.favoritosTitle {
+.favoritosTitle2{
     display: flex;
     align-items: center;
     text-align: center;
+    font-family: Anton;
+    font-size: 2rem;
+    text-transform: uppercase;
+
+}
+
+.favoritosTitle{
+    /* IMPORTANTE */
+    width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+.favoritosTitle3{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    font-family: Anton;
+    font-size: 1rem;
+}
+
+.yourShoes{
+    font-family: 'Anton';
+font-style: normal;
+font-weight: 400;
+font-size: 2rem;
+line-height: 100%;
+text-transform: uppercase;
+margin-top: 10px;
+/* or 60px */
+
+letter-spacing: 0.04em;
+
+color: #000000;
+}
+
+.yourShoes span{
+    color:#F87D2D
+}
+
+.yourShoes:hover{
+   text-decoration: none;
 }

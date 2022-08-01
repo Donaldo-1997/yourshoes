@@ -36,9 +36,15 @@
     line-height: 100%;
     /* or 60px */
     letter-spacing: 0.04em;
-    color: #000000;
+    color: #ffff;
+    background: black;
+    padding: 12px;
+    border-radius: 10px;
   }
   
   .shoes {
     color: #f87d2d;
+  }
+  .p{
+    font-size: 2.5rem;
   }

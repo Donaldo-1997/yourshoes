@@ -9,7 +9,7 @@ export default function AboutUs() {
           YOUR<span className={styles.shoes}>SHOES</span>
         </button>
       </Link>
-        <p>
+        <p className={styles.p}>
           Somos un grupo de estudiantes de Henry creando nuestro proyecto final
           nos decidimos por hacer un e-commerce de ZAPATILLAS
         </p>
