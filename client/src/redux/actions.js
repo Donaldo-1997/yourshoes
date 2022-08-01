@@ -40,7 +40,7 @@ export const MERCADOPAGO_PAYMENT = 'MERCADOPAGO_PAYMENT'
 export const ADD_ONE_TO_FAV = "ADD_ONE_TO_FAV";
 export const HYDRATATE_FAV_LS = "HYDRATATE_FAV_LS";
 export const POST_PRODUCT = "POST_PRODUCT"
-
+export const GET_USER_LOGIN = 'GET_USER_LOGIN'
 
 const URL = window.env.URL
 
@@ -560,4 +560,5 @@ export function loginUser(user){
       payload: user
     })
 }
+
 

@@ -36,7 +36,7 @@ import {
   COMBINATION_FILTERS18,
   ADD_ONE_TO_FAV,
   HYDRATATE_FAV_LS,
-  POST_PRODUCT
+  POST_PRODUCT,
 } from "./actions";
 
 const initialState = {
