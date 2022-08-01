@@ -28,7 +28,7 @@ const transporter = nodemailer.createTransport({
       from: '"YOURSHOES 👟" <yourshoes.henry@gmail.com>', // sender address
       to: email, // list of receivers
       subject : 'GRACIAS POR UNIRTE AL TEAM YOURSHOES', // Subject line
-      html: '<p>Ya sos parte del mundo de Yourshoes, gracias por loguearte. Ahora vas a tener descuentos en todos los productos</p>'// html body
+      html: '<p>Ya sos parte del mundo de Yourshoes, gracias por loguearte!</p>'// html body
     })
     
   }
