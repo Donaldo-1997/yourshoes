@@ -143,7 +143,7 @@ export default function CreateProduct(){
                         {!errors.price ? null : <span className={styles.error}>{errors.price}</span>}
                     </div>
 
-                    <div className={styles.infoContainer}>
+                    <div className={styles.tallesContainer}>
                         <label className={styles.label}>Talle </label>
                         <select onChange={(e) => handleSelectSize(e)} value={input.size} className={styles.select}>
                             <option>35</option>
@@ -158,8 +158,8 @@ export default function CreateProduct(){
                             <option>44</option>
                             <option>45</option>
                         </select>
-                        <ul>
-                            {input.size.map(talle => <li key={talle}>{talle}<button value={talle} onClick={(e) => handleDeleteSize(e)}>x</button></li>)}
+                        <ul className={styles.ulTalles}>
+                            {input.size.map(talle => <li key={talle} className={styles.liTalle}>{talle}<button value={talle} onClick={(e) => handleDeleteSize(e)} className={styles.xButton}>x</button></li>)}
                         </ul>
                     </div>
 
@@ -183,7 +183,7 @@ export default function CreateProduct(){
                         </select>
                     </div>
                     <div>
-                        {!Object.keys(errors).length ? <button type="submit" className={styles.createButton}>Crear producto</button> : <button type="submit" className={styles.createButton} disabled={true}>Crear producto</button>}
+                        {!Object.keys(errors).length ? <button type="submit" className={styles.createButton}>CREAR PRODUCTO</button> : <button type="submit" className={styles.createButton} disabled={true}>CREAR PRODUCTO</button>}
                         <ToastContainer/>
                     </div>
                 </form>
