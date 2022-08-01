@@ -13,6 +13,7 @@ export default function Favorites() {
 
   return (
     <div>
+    <div className={styles.favoritosTitle}><p>Favoritos</p></div>
             <Link to='/'>Volver</Link>
       <div>
         {favProducts.length ? (

@@ -2,5 +2,8 @@
    display: flex;
    text-align: center;
    align-items: center;
+   width: 50vh; 
+  margin: 15px;
+  padding: 25px;
 } 
 
