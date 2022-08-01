@@ -4,14 +4,14 @@ const CartItem = ({ data, deleteProduct }) => {
   let { id, image, price, quantity } = data;
   return (
     <div className={styles.container}>
-      <img src={image} alt="Img Not Found" width={100} />
+      <img src={image} alt="Img Not Found" className={styles.imgCart} />
       <div className={styles.info}>
         <h5>
           ${price} x {quantity} = ${price * quantity}
         </h5>
         <div className={styles.buttonsContainer}>
-          <button onClick={() => deleteProduct(id)}>Eliminar Uno</button>
-          <button onClick={() => deleteProduct(id, true)}>
+          <button onClick={() => deleteProduct(id)} className={styles.deleteBtn}>Eliminar Uno</button>
+          <button onClick={() => deleteProduct(id, true)} className={styles.deleteBtn}>
             Eliminar Todos
           </button>
         </div>

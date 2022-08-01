@@ -44,9 +44,9 @@ export default function Cart() {
               <CartItem key={index} data={item} deleteProduct={deleteProduct} />
             ))}
             <div>
-              <div>
                 <h2>SUMA TOTAL: ${precios}</h2>
-                <Link to="/mercadopago/pagos">
+              <div>
+                <Link to="/mercadopago/pagos" className={styles.mpLinkBtn}>
                   <button className={styles.buttonsContainer}>
                     Ir a comprar
                   </button>

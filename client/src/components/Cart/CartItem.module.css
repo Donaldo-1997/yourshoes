@@ -1,27 +1,28 @@
 .container {
-  border: solid 2px grey;
   border-radius: 8px;
   width: auto;
   padding: 1rem;
   text-align: center;
-  background: linear-gradient(to bottom left, white, orange);
+  background: #f87d2d;
   max-width: 80%;
   display: flex;
   justify-content: center;
   gap: 0.5rem;
+  width: 573px;
+  height: 152px;
 }
 
 
 .buttonsContainer button {
-  border-style: hidden;
   justify-content: flex-end;
   border-radius: 8px;
   transition: 0.45s;
+  background: transparent;
+  border-style: solid;
 }
 .buttonsContainer {
   display: flex;
   gap: 0.5rem;
-
 }
 .buttonsContainer button:hover {
   opacity: 0.75;
@@ -34,3 +35,9 @@
 .info h5{
   color: black;
 }
+
+.imgCart{
+  width: 50%;
+}
+
+
