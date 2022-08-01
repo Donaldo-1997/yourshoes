@@ -9,6 +9,8 @@ export default function Cart() {
   const cartProducts = useSelector((state) => state.cart);
   const dispatch = useDispatch();
 
+  const user = useSelector(state => state.user)
+
   let precios = 0;
   for (let i = 0; i < cartProducts && cartProducts.length; i++) {
     if (cartProducts[i].quantity === 1) {
@@ -30,6 +32,7 @@ export default function Cart() {
 
   return (
     <div className={styles.container}>
+    
       <Link to="/">
         <button className={styles.yourshoes}>
           YOUR<span className={styles.shoes}>SHOES</span>
@@ -46,11 +49,14 @@ export default function Cart() {
             <div>
               <div>
                 <h2>SUMA TOTAL: ${precios}</h2>
+                { !Object.keys(user).length ?  <Link to='/login'><button className={styles.buttonsContainer}>
+                    Logueate para comprar
+                  </button></Link> :
                 <Link to="/mercadopago/pagos">
                   <button className={styles.buttonsContainer}>
                     Ir a comprar
                   </button>
-                </Link>
+                </Link>}
                 <button className={styles.buttonsContainer} onClick={clearCart}>
                   Limpiar carrito
                 </button>
