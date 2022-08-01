@@ -6,7 +6,6 @@ const getDb = async () => {
   const foundDate = await Product.findAll({ include: { model: Category, attributes: ["id", "name"], throught: { attributes: [] } } });
   return foundDate;
 };
-let sizeStock = [{id: 1, number:35, stock:5, counter:0},{id: 2,number:36, stock:5, counter:0},{id: 3, number:37, stock:5, counter:0},{id: 4, number:38, stock:5, counter:0},{id: 5, number:39, stock:5, counter:0},{id: 6, number:40, stock:5, counter:0},{id: 7, number:41, stock:5, counter:0},{id: 8, number:42, stock:5, counter:0},{id: 9, number:43, stock:5, counter:0},{id: 10, number:44, stock:5, counter:0},{id: 11, number:45, stock:5, counter:0}]
 
 const setDataApi = async () => {
   const url = "https://api.mercadolibre.com/sites/MLA/search?category=";
@@ -32,13 +31,8 @@ const setDataApi = async () => {
     })
   );
 
-  function random(min, max) {
-    return Math.floor((Math.random() * (max - min + 1)) + min);
-  }
   
   const cargoalDB = getAllApi.flat().map((e) => {
-    // Creando tallas random
-       
     return ({
       id: e.id,
       title: e.title,
