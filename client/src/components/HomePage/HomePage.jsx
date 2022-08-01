@@ -465,7 +465,7 @@ export default function HomePage() {
       </div>
       <Pagination
         shoesPerPage={shoesPerPage}
-        allProducts={allProducts.length}
+        allProducts={ allProducts && allProducts.length}
         pagination={pagination}
         nextPageButton={nextPageButton}
         prevPageButton={prevPageButton}
