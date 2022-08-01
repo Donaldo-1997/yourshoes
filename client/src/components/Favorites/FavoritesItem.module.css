@@ -5,5 +5,32 @@
    width: 50vh; 
   margin: 15px;
   padding: 25px;
+  background-color: #f87e2d;
+  border-radius: 20px;
+  border: solid black;
+  font-family: inter;
+  font-weight: 600;
+    /* IMPORTANTE */
+  
+    margin-left: auto;
+    margin-right: auto;
 } 
 
+.img{
+  border-radius: 20px;
+  filter: brightness(1.1);
+  mix-blend-mode: multiply;
+}
+.container3 {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  width: 50vh; 
+ margin: 15px;
+ padding: 25px;
+ background-color: #f87e2d;
+ border-radius: 20px;
+ border: solid black;
+ font-family: inter;
+ font-weight: 600;
+} 

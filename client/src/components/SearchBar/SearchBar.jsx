@@ -12,7 +12,7 @@ export default function Searchbar({handleInputName, handleNameSubmit}) {
     <Form className="d-flex" onSubmit={(e) => handleNameSubmit(e)}  >
             <Form.Control
               type="search"
-              placeholder="Search"
+              placeholder="Buscar..."
               className="me-2"
               aria-label="Search"
               onChange={(e) => handleInputName(e)}

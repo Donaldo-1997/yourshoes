@@ -14,19 +14,19 @@
 
 .yourShoes{
     font-family: 'Anton';
-font-style: normal;
-font-weight: 400;
-font-size: 2rem;
-line-height: 100%;
-text-transform: uppercase;
-display: flex;
-align-items: flex-start;
-justify-content: center;
-/* or 60px */
+    font-style: normal;
+    font-weight: 400;
+    font-size: 2rem;
+    line-height: 100%;
+    text-transform: uppercase;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    /* or 60px */
+    position: relative;
+    letter-spacing: 0.04em;
 
-letter-spacing: 0.04em;
-
-color: #f8efef;
+    color: #000000;
 }
 
 .yourShoes span{
