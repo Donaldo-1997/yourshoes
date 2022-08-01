@@ -14,6 +14,8 @@ export default function ProductDetail() {
     dispatch(getDetails(id));
   }, [dispatch, id]);
 
+  const user = useSelector(state => state.user)
+
   const cartProducts = useSelector((state) => state.cart);
   
   const myShoes = useSelector((state) => state.detail);
@@ -77,6 +79,10 @@ export default function ProductDetail() {
               <option value="44">44</option>
             </select>
             <div className={styles.buttons}>
+            {
+              !Object.keys(user).length ?  <Link to='/login'><button className={styles.cart}>
+                    Logueate para comprar
+                  </button></Link> :
               <Link to="/mercadopago/pagos">
                 <button
                   className={styles.cart}
@@ -85,7 +91,7 @@ export default function ProductDetail() {
                 >
                   Comprar
                 </button>
-              </Link>
+              </Link>}
               <button
                 className={styles.cart}
                 onClick={() => addToCart( myShoes.id && myShoes.id)}
