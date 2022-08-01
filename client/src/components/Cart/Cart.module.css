@@ -1,6 +1,4 @@
-.container img {
-  width: 100px;
-}
+
 
 .container {
   display: flex;
@@ -8,7 +6,7 @@
   flex-direction: column;
   align-items: center;
   gap: 0.5rem;
-  background: linear-gradient(to top right, #edac14, #fafcff);
+  background: white;
   height: 100vh;
 }
 .container2 {
@@ -51,8 +49,6 @@
   font: inherit;
   cursor: pointer;
   outline: inherit;
-  margin-top: 0.9rem;
-  margin-left: 1.1rem;
   font-family: "Anton";
   font-style: normal;
   font-weight: 400;
@@ -70,7 +66,7 @@ h5,
 h2 {
   display: flex;
   justify-content: center;
-  color: wheat;
+  color: black;
 }
 
 .buttonsContainer {
@@ -78,10 +74,15 @@ h2 {
   justify-content: flex-end;
   border-radius: 8px;
   transition: 0.45s;
-  background-color: rgb(215, 164, 69);
+  background-color:#f87d2d;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  padding: 5px;
 }
 .buttonsContainer:hover {
   opacity: 0.75;
   transform: scale(102%);
+}
+
+.mpLinkBtn{
+  padding-right: 10px;
 }
