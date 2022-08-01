@@ -232,7 +232,7 @@ export default function HomePage() {
       .then(res => console.log(res))
       .catch(err => alert(err.response.data))
     }
-    else if(nameFilter !== "default" && priceMin !== "" && priceMax !== ""){
+    else if(nameFilter !== "" && priceMin !== "" && priceMax !== ""){
       dispatch(combinationsFilter9(e.target.value, nameFilter, priceMin, priceMax))
       .then(res => console.log(res))
       .catch(err => alert(err.response.data))
