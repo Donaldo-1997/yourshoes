@@ -61,6 +61,7 @@ export function getAllShoes() {
 export function getDetails(id) {
   return async function (dispatch) {
     const res = await axios(`${URL}/shoes/${id}`);
+    console.log(res.data)
     return dispatch({
       type: GET_DETAILS,
       payload: res.data,

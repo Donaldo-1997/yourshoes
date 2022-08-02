@@ -44,7 +44,6 @@ export default function HomePage() {
 
   const [brandFilter, setBrandFilter] = useState("default");
   const [categoryFilter, setCategoryFilter] = useState("default");
-  console.log(categoryFilter)
   const [sizeFilter, setSizeFilter] = useState("default");
   const [nameFilter, setNameFilter] = useState("")
   const [priceMin, setPriceMin] = useState("");

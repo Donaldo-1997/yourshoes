@@ -43,7 +43,7 @@ const setDataApi = async () => {
       category: e.category_id,
       stock: e.available_quantity,
       sold: e.sold_quantity,
-      size: [{id: 1, number:35, stock:5, counter:0}, {id: 2,number:36, stock:5, counter:0},{id: 3, number:37, stock:5, counter:0},{id: 4, number:38, stock:5, counter:0},{id: 5, number:39, stock:5, counter:0},{id: 6, number:40, stock:5, counter:0},{id: 7, number:41, stock:5, counter:0},{id: 8, number:42, stock:5, counter:0},{id: 9, number:43, stock:5, counter:0},{id: 10, number:44, stock:5, counter:0},{id: 11, number:45, stock:5, counter:0}]
+      size: [{id:35, stock:5, counter:0}, {id:36, stock:5, counter:0},{id:37, stock:5, counter:0},{id:38, stock:5, counter:0},{id:39, stock:5, counter:0},{id:40, stock:5, counter:0},{id:41, stock:5, counter:0},{id:42, stock:5, counter:0},{id:43, stock:5, counter:0},{id:44, stock:5, counter:0},{id:45, stock:5, counter:0}]
     });
   })
 console.log(cargoalDB.size);
@@ -53,7 +53,7 @@ console.log(cargoalDB.size);
     cargoFinal.map(async (el) => {
       const newProduct = await Product.create(el);
       const foundBrand = await Brand.findByPk(el.brand);
-      const foundSize = await Size.findAll({where:{ id: { [Op.in]: [1,2,3,4,5,6,7,8,9,10,11]}}});
+      const foundSize = await Size.findAll({where:{ id: { [Op.in]: [35,36,37,38,39,40,41,42,43,44,45]}}});
       //console.log(foundSize);
       const foundCategories = await Category.findByPk(el.category);
       await newProduct.setBrand(foundBrand);

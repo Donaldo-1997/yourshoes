@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 export default function Cart() {
   const cartProducts = useSelector((state) => state.cart);
   const dispatch = useDispatch();
+  console.log(cartProducts)
 
   const user = useSelector(state => state.user)
 

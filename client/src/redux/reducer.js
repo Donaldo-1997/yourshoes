@@ -46,7 +46,8 @@ const initialState = {
   filteredProducts: [],
   categories: [],
   favorites: [],
-  user: {}
+  user: {},
+  sizes: []
 };
 
 export default function rootReducer(state = initialState, action) {
@@ -64,6 +65,7 @@ export default function rootReducer(state = initialState, action) {
     case GET_ALL_SIZES:
       return {
         ...state,
+        sizes: action.payload
       };
     case GET_ALL_CATEGORIES:
       return {
