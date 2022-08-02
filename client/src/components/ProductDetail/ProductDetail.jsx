@@ -5,6 +5,7 @@ import { useParams, Link } from "react-router-dom";
 import styles from "./ProductDetail.module.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Navbar2 from "../Navbar2/Navbar2";
 
 export default function ProductDetail() {
   const dispatch = useDispatch();
@@ -49,6 +50,7 @@ export default function ProductDetail() {
 
   return (
     <div>
+    <Navbar2></Navbar2>
       <Link to="/">
         <button className={styles.yourshoes}>
           YOUR<span className={styles.shoes}>SHOES</span>

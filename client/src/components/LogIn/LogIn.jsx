@@ -6,6 +6,7 @@ import styles from "./LogIn.module.css";
 import { useNavigate } from "react-router-dom";
 import { FcGoogle, FcGoodDecision, FcDownLeft } from "react-icons/fc";
 import { Link } from "react-router-dom";
+import Navbar2 from "../Navbar2/Navbar2";
 
 export default function LogIn() {
   const navigate = useNavigate();
@@ -31,6 +32,7 @@ export default function LogIn() {
 
   return (
     <div className={styles.contenedor}>
+    <Navbar2></Navbar2>
       <Formik
         initialValues={{
           email: "",

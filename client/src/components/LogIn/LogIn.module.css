@@ -23,7 +23,6 @@
     align-items: flex-start;
     justify-content: center;
     /* or 60px */
-    position: relative;
     letter-spacing: 0.04em;
 
     color: #000000;
@@ -40,8 +39,8 @@
 }
 
 .formulario {
-	min-width: 400px;
-    min-height: 200px;
+	min-width: 700px;
+    min-height: 400px;
 	margin-top: 0px;
     background: linear-gradient(90deg, rgb(185, 134, 69) 0%, rgb(195, 97, 33) 35%, rgb(216, 90, 6) 95%);
 	border-radius: 5px;
@@ -52,6 +51,8 @@
 .formulario > div {
 	margin-bottom: 5px;
 }
+
+
 
 .formulario label {
 	display: block;

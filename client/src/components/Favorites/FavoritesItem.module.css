@@ -10,6 +10,7 @@
   border: solid black;
   font-family: inter;
   font-weight: 600;
+  margin-top: 50px;
     /* IMPORTANTE */
   
     margin-left: auto;
@@ -20,6 +21,7 @@
   border-radius: 20px;
   filter: brightness(1.1);
   mix-blend-mode: multiply;
+
 }
 .container3 {
   display: flex;

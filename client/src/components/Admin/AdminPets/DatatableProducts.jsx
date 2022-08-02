@@ -7,9 +7,10 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { useSelector, useDispatch } from 'react-redux';
-import axios from 'axios';
-import { ButtonDelete, ButtonEdit, DivButtons, TablaOscura, TextTable } from "./StyledDataTablePets";
+
+import { TextTable } from "./StyledDataTablePets";
 import { getAllShoes } from "../../../redux/actions";
+
 
 
 export default function DatatableProducts() {
@@ -38,9 +39,9 @@ export default function DatatableProducts() {
     // }
 
     return (
-        <div style={{paddingTop: '66px', paddingLeft: '50px'}}>
+        <div >
+       
             <TableContainer component={Paper} className='table' >
-                <TablaOscura sx={{ minWidth: 750 }} aria-label="simple table">
                     <TableHead>
                         <TableRow>
                             <TableCell className="tableCell" ><TextTable>ID</TextTable></TableCell>
@@ -68,22 +69,20 @@ export default function DatatableProducts() {
                                 <TableCell className="tableCell"><TextTable>{p.sold}</TextTable></TableCell>
                                 <TableCell className="tableCell"><TextTable>{p.isActive}</TextTable></TableCell>
                                 {/* <TableCell className="tableCell"><TextTable>{p.brand ? p.brand : 'Sin marca'}</TextTable></TableCell> */}
-                                <TableCell>
+                                {/* <TableCell>
                                     <DivButtons>
-                                        {/* <ButtonEdit to={`/admin/profilepets/${p.id}`}>Editar</ButtonEdit> */}
-                                        {/* <ButtonDelete onClick={() => axios.put(`/pet/${p.id}`).then((r) => console.log(r.data))}>
+                                        <ButtonEdit to={`/admin/profilepets/${p.id}`}>Editar</ButtonEdit>
+                                        <ButtonDelete onClick={() => axios.put(`/pet/${p.id}`).then((r) => console.log(r.data))}>
                                             Eliminar
-                                        </ButtonDelete> */}
+                                        </ButtonDelete>
                                     </DivButtons>
-                                </TableCell>
+                                </TableCell> */}
                             </TableRow>
                         ))}
                     </TableBody>
-                </TablaOscura>
-            </TableContainer>
-            <div>
                
-            </div>
+            </TableContainer>
+            
 
         </div>
     )

@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import FavItem from "./FavoritesItem";
 import { Link } from "react-router-dom";
+import Navbar2 from "../Navbar2/Navbar2";
 
 export default function Favorites() {
   const favProducts = useSelector((state) => state.favorites);
@@ -13,6 +14,7 @@ export default function Favorites() {
 
   return (
     <div>
+    <Navbar2></Navbar2>
       <Link to='/' className={styles.yourShoes}>YOUR<span>SHOES</span></Link>
     <div className={styles.favoritosTitle}>
               <p className={styles.favoritosTitle2}>Favoritos</p>
