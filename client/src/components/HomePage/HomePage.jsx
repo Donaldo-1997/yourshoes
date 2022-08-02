@@ -487,9 +487,7 @@ export default function HomePage() {
           prevPageButton={prevPageButton}
           currentPage={currentPage}
         />
-        <div>
-          <About />
-        </div>
+        
       </div>
     </div>
   );
