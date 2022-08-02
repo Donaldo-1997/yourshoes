@@ -18,7 +18,7 @@ export default function Searchbar({handleInputName, handleNameSubmit}) {
               onChange={(e) => handleInputName(e)}
               id={"input-searchbar"}
             />
-            <Button variant="outline-success" onClick={(e) => handleNameSubmit(e)}><FaSearch/></Button>
+            <Button variant="outline-success" onClick={(e) => handleNameSubmit(e)}  style={{ color: 'black' , backgroundColor: '#f87d2d', borderColor:' #f87d2d'}}><FaSearch/></Button>
           </Form>
           
   );
