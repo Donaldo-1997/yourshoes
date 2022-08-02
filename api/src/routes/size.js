@@ -10,12 +10,12 @@ router.get("/", async (req, res) => {
     const sizeDb = await getDbSize();
 
     if(!sizeDb.length){
-    let sizeProduct = [{id: 1, number:35, stock:5, counter:0}, {id: 2,number:36, stock:5, counter:0},{id: 3, number:37, stock:5, counter:0},{id: 4, number:38, stock:5, counter:0},{id: 5, number:39, stock:5, counter:0},{id: 6, number:40, stock:5, counter:0},{id: 7, number:41, stock:5, counter:0},{id: 8, number:42, stock:5, counter:0},{id: 9, number:43, stock:5, counter:0},{id: 10, number:44, stock:5, counter:0},{id: 11, number:45, stock:5, counter:0}]
+    let sizeProduct = [{id:35, stock:5, counter:0}, {id:36, stock:5, counter:0},{id:37, stock:5, counter:0},{id:38, stock:5, counter:0},{id:39, stock:5, counter:0},{id:40, stock:5, counter:0},{id:41, stock:5, counter:0},{id:42, stock:5, counter:0},{id:43, stock:5, counter:0},{id:44, stock:5, counter:0},{id:45, stock:5, counter:0}]
       
       sizeProduct.forEach(async (s) => {
         await Size.findOrCreate({
           where: { id: s.id },
-          defaults: { stock: s.stock, counter: s.counter, number: s.number }
+          defaults: { stock: s.stock, counter: s.counter }
         })
       })
       res.status(200).json(sizeProduct);
