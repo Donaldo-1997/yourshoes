@@ -23,7 +23,6 @@ router.get("/", async (req, res) => {
   }
 })
 
-
 //PUT USER
 router.put('/', async (req, res) => {
   const { email } = req.query;

@@ -17,6 +17,7 @@ function MercadoPago() {
         .then((data) => {
           setDatos(data.data);
           console.info("Contenido de data:", data);
+          console.log(cart)
         })
         .catch((err) => console.error(err));
     }
