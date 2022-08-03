@@ -29,7 +29,8 @@ function App() {
         method: "GET",
         credentials: "include",
         headers: {
-          Accept: "application/json",
+          // Accept: "application/json",
+          "origin": [`${window.env.URL}`],
           "Content-Type": "application/json",
           "Access-Control-Allow-Credentials": true,
           "Access-Control-Allow-Origin": "*"
@@ -37,8 +38,7 @@ function App() {
       })
         .then((response) => {
           if (response.status === 200) return response.json();
-          console.log('login',response.json)
-          throw new Error("authentication has been failed!");
+          throw(response)
         })
         .then((res) => {
           dispatch(loginUser(res.user))
