@@ -1,16 +1,17 @@
-const server = require("express").Router();
 const { payment } = require("mercadopago");
 const mercadopago = require("mercadopago");
 const { ACCESS_TOKEN } = process.env;
-const { Order } = require("../db.js");
+const { Router } = require("express");
+const router = Router();
+const { Product, Size } = require("../db");
+
 
 mercadopago.configure({
   access_token: ACCESS_TOKEN,
 });
 
-server.post("/", function (req, res) {
+router.post("/", function (req, res) {
   ordenID = 1;
-  console.log(req.body, "REQ.BODY")
   if(req.body.as.length===0) res.status(400).send("Carrito vacío")
   const items_ml = req.body.as.map((p) => ({
     name: p.title,
@@ -44,6 +45,33 @@ server.post("/", function (req, res) {
     .catch((err) => {
       console.log(err);
     });
+
 });
 
-module.exports = server;
+ router.put("/", async (req, res) => {
+      const idAll = req.body.as;
+     
+      let productId = [];
+      let sizeId = [];
+      let productArray = [];
+
+      for (let i = 0; i < idAll.length; i++) {
+        productId.push(idAll[i].id) && sizeId.push(idAll[i].size);
+      }
+
+      for (let i = 0; i < productId.length; i++) {
+         const productCopy = await Product.findOne({
+          where: { id: productId[i] },
+          include: Size,
+        })
+        productCopy.sizes.find((s) => s.id === sizeId[i]).stock =
+        productCopy.sizes.find((s) => s.id === sizeId[i]).stock - 1;
+
+        await productCopy.save();
+        productArray.push(productCopy);
+      }
+      res.status(200).json(productArray)
+    });
+    
+
+module.exports = router;

@@ -32,6 +32,7 @@ const setDataApi = async () => {
   );
 
   
+ 
   const cargoalDB = getAllApi.flat().map((e) => {
     return ({
       id: e.id,
@@ -43,17 +44,18 @@ const setDataApi = async () => {
       category: e.category_id,
       stock: e.available_quantity,
       sold: e.sold_quantity,
-      size: [{id:35, stock:5, counter:0}, {id:36, stock:5, counter:0},{id:37, stock:5, counter:0},{id:38, stock:5, counter:0},{id:39, stock:5, counter:0},{id:40, stock:5, counter:0},{id:41, stock:5, counter:0},{id:42, stock:5, counter:0},{id:43, stock:5, counter:0},{id:44, stock:5, counter:0},{id:45, stock:5, counter:0}]
+      sizes: [{id:35, stock:5, counter:0}, {id:36, stock:5, counter:0},{id:37, stock:5, counter:0},{id:38, stock:5, counter:0},{id:39, stock:5, counter:0},{id:40, stock:5, counter:0},{id:41, stock:5, counter:0},{id:42, stock:5, counter:0},{id:43, stock:5, counter:0},{id:44, stock:5, counter:0},{id:45, stock:5, counter:0}]
+ 
     });
   })
-console.log(cargoalDB.size);
+console.log(cargoalDB.sizes);
   const cargoFinal = cargoalDB.filter(e => e.id !== 'MLA1142122158')
   //cargo los productos al db y necesita que ya este cargada las categoria para que se cree la relacion
   await Promise.all(
     cargoFinal.map(async (el) => {
       const newProduct = await Product.create(el);
       const foundBrand = await Brand.findByPk(el.brand);
-      const foundSize = await Size.findAll({where:{ id: { [Op.in]: [35,36,37,38,39,40,41,42,43,44,45]}}});
+      const foundSize = await Size.findByPk(el.sizes.id);
       //console.log(foundSize);
       const foundCategories = await Category.findByPk(el.category);
       await newProduct.setBrand(foundBrand);
