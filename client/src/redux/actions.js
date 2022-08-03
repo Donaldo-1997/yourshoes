@@ -41,7 +41,7 @@ export const ADD_ONE_TO_FAV = "ADD_ONE_TO_FAV";
 export const HYDRATATE_FAV_LS = "HYDRATATE_FAV_LS";
 export const POST_PRODUCT = "POST_PRODUCT"
 export const GET_USER_LOGIN = 'GET_USER_LOGIN'
-
+export const DELETE_ONE_FROM_FAV = 'DELETE_ONE_FROM_FAV'
 const URL = window.env.URL
 
 export function removerTodo() {
@@ -52,6 +52,7 @@ export function removerTodo() {
 export function getAllShoes() {
   return async function (dispatch) {
     const results = await axios(`${URL}/shoes`);
+    
     dispatch({
       type: "GET_ALL_SHOES",
       payload: results.data,
@@ -561,4 +562,9 @@ export function loginUser(user){
     })
 }
 
-
+export function deleteOneToFav(payload) {
+  return {
+    type: DELETE_ONE_FROM_FAV,
+    payload: payload,
+  };
+}
