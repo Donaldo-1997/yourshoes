@@ -4,6 +4,7 @@ import CartItem from "./CartItem.jsx";
 import { useSelector, useDispatch } from "react-redux/es/exports";
 import { deleteOneToCart, removerTodo } from "../../redux/actions";
 import { Link } from "react-router-dom";
+import Navbar2 from "../Navbar2/Navbar2";
 
 export default function Cart() {
   const cartProducts = useSelector((state) => state.cart);
@@ -33,7 +34,7 @@ export default function Cart() {
 
   return (
     <div className={styles.container}>
-    
+    <Navbar2></Navbar2>
       <Link to="/">
         <button className={styles.yourshoes}>
           YOUR<span className={styles.shoes}>SHOES</span>

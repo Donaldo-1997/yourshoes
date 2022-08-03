@@ -37,9 +37,18 @@
   background-color: #f87e2d;
 }
 .img {
+  margin-top: 50px;
+    /* IMPORTANTE */
+  
+    margin-left: auto;
+    margin-right: auto;
+} 
+
+.img{
   border-radius: 20px;
   filter: brightness(1.1);
   mix-blend-mode: multiply;
+
 }
 .container3 {
   display: flex;

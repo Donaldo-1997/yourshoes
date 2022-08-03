@@ -1,5 +1,9 @@
 const passport = require("passport");
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
+const { User } = require('../db.js');
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
+
 
 passport.use(
   new GoogleStrategy(
@@ -9,8 +13,23 @@ passport.use(
       callbackURL: process.env.CALLBACK_URL,
       // passReqToCallback:true
     },
-    function (request, accessToken, refreshToken, profile, done) {
-      // console.log(profile);
+    async function (request, accessToken, refreshToken, profile, done) {
+      console.log(profile);
+      
+      const user = await User.findOne({ where: profile.email })
+
+      if(user === null) {
+        const data = {
+          name: profile._json.given_name,
+          surname: profile._json.family_name,
+          email: profile._json.email,
+          image: profile._json.picture,
+        }
+
+        const newUser = await User.create(data)
+        console.log("data:" , data)
+        console.log("newUser:" , newUser)
+      }
       return done(null, profile);
     }
   )

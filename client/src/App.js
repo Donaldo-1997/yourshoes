@@ -14,7 +14,16 @@ import MercadoPago from "./components/MercadoPago/MercadoPago";
 import Favorites from "./components/Favorites/Favorites";
 import { hydratateLSFav } from "./redux/actions";
 import CreateProduct from "./components/CreateProduct/CreateProduct";
+<<<<<<< HEAD
 import UserProfile from "./components/UserProfile/UserProfile";
+=======
+import AdminHome from "./components/AdminHome/AdminHome";
+import NavBar from "./components/NavBar/NavBar";
+import Footer from "./components/About/Footer"
+import AdminUsers from "./components/Admin/AdminUsers/AdminUsers";
+import AdminPets from "./components/Admin/AdminPets/AdminPets";
+
+>>>>>>> 42e91156d6dec1a59d3bda69b4cd2a544ebc9d98
 
 function App() {
   const [user, SetUser] = useState(null)
@@ -83,8 +92,15 @@ function App() {
         <Route exact path="/mercadopago/pagos" element={<MercadoPago />} />
         <Route exact path="/favorites" element={<Favorites />} />
         <Route exact path="/post" element={<CreateProduct/>}/>
+<<<<<<< HEAD
         <Route exact path="/datauser" element={<UserProfile/>}/>
+=======
+        <Route exact path="/admin" element={<AdminHome></AdminHome>}/>
+        <Route exact path="/admin/users" element={<AdminUsers></AdminUsers>}/>
+        <Route exact path="/admin/products" element={<AdminPets></AdminPets>}/>
+>>>>>>> 42e91156d6dec1a59d3bda69b4cd2a544ebc9d98
       </Routes>
+      <Footer></Footer>
     </Router>
   );
 }
