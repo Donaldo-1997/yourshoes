@@ -104,23 +104,23 @@ export default function rootReducer(state = initialState, action) {
         };
 
     case ADD_ONE_TO_CART:
-      const newItem = state.products && state.products.find(
-        (product) => product.id === action.payload
-      );
-      let itemInCart = state.cart && state.cart.find((item) => item.id === newItem.id);
-
+      const newItem = state.products && state.products.find((product) => product.id === action.payload.id);
+      const newItemSize = state.sizes && state.sizes.find((size) => size.id === action.payload.size);
+      console.log(action.payload, "soy reducer")
+      let itemInCart = state.cart && state.cart.find((item) => item.id === newItem.id && item.size=== newItemSize.id);
+      console.log(state.cart, "soy cart")
       return itemInCart
         ? {
           ...state,
           cart: state.cart && state.cart.map((item) =>
             item.id === newItem.id
-              ? { ...item, quantity: item.quantity + 1 }
+              ? { ...item, quantity: item.quantity + 1,  }
               : item
           ),
         }
         : {
           ...state,
-          cart: state.cart && [...state.cart, { ...newItem, quantity: 1 }],
+          cart: state.cart && [...state.cart, { ...newItem, quantity: 1, size: action.payload.size }],
         };
 
     case DELETE_ONE_FROM_CART:

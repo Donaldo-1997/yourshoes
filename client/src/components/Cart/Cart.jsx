@@ -8,8 +8,8 @@ import { Link } from "react-router-dom";
 export default function Cart() {
   const cartProducts = useSelector((state) => state.cart);
   const dispatch = useDispatch();
-  console.log(cartProducts)
-
+  console.log(cartProducts, "Soy el producto añadido al carrito")
+  
   const user = useSelector(state => state.user)
 
   let precios = 0;
@@ -50,15 +50,13 @@ export default function Cart() {
             <div>
                 <h2>SUMA TOTAL: ${precios}</h2>
               <div>
-                { !Object.keys(user).length ?  <Link to='/login'><button className={styles.buttonsContainer}>
-                    Logueate para comprar
-                  </button></Link> :
+                
                 <Link to="/mercadopago/pagos" className={styles.mpLinkBtn}>
 
                   <button className={styles.buttonsContainer}>
                     Ir a comprar
                   </button>
-                </Link>}
+                </Link>
                 <button className={styles.buttonsContainer} onClick={clearCart}>
                   Limpiar carrito
                 </button>
