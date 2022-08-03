@@ -19,7 +19,7 @@ export default function ProductCard({ image, title, price, id }) {
     localStorage.getItem("favProducts");
   };
   useEffect(() => {
-    if (favProducts.length) {
+    if (favProducts?.length) {
       addLocalStorage();
       saveLocalStorage();
     }

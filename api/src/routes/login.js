@@ -62,6 +62,7 @@ router.post("/signup", async (req, res) => {
   
   try{
     let { email, password } = req.body;
+    console.log("email: ", email, "pass: ", password)
   
        const user = await User.findOne({
         where: {
