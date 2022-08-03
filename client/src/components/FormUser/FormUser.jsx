@@ -6,6 +6,7 @@ import styles from "./FormUser.module.css";
 import { useNavigate } from "react-router-dom";
 import {FcDownLeft} from "react-icons/fc";
 import { Link } from "react-router-dom";
+import Navbar2 from "../Navbar2/Navbar2";
 // import * as Yup from "yup";
 
 //name, surname, nickname, email, phone_number, date_of_Birth, address
@@ -20,6 +21,7 @@ export default function Formulario() {
   const [formularioEnviado, setformularioEnviado] = useState(false);
   return (
     <div className={styles.contenedor}>
+    <Navbar2></Navbar2>
       <Formik
         initialValues={{
           name: "",

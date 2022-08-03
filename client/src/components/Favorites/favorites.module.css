@@ -10,6 +10,7 @@
   margin: 2%;
   margin-right: 20%;
   margin-left: 20%;
+  margin-top: 60px;
 }
 .favoritosTitle {
   /* IMPORTANTE */
@@ -30,6 +31,8 @@
   text-transform: uppercase;
 }
 /* .containerCards{
+.favoritosTitle2{
+    margin-top: 50px;
     display: flex;
   justify-content: center;
   text-align: center;
