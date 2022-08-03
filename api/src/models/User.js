@@ -27,7 +27,7 @@ module.exports = (sequelize) => {
         },
         password: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
             validate: {
                 len: {
                     args: [6, 255],
@@ -35,9 +35,13 @@ module.exports = (sequelize) => {
                 }
             }
         },
+        image: {
+            type: DataTypes.STRING,
+            allownull: true,
+        },
         phone_number: {
             type: DataTypes.STRING,
-            allownull: false
+            allownull: true
         },
         date_of_Birth: {
             type: DataTypes.STRING,

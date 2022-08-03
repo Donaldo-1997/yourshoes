@@ -22,7 +22,16 @@
     "redux": "^4.2.0",
     "redux-devtools-extension": "^2.13.9",
     "redux-thunk": "^2.4.1",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "@mui/icons-material": "^5.8.4",
+    "@mui/material": "^5.8.7",
+    "@mui/x-data-grid": "^5.13.0",
+    "@emotion/react": "^11.9.3",
+    "@emotion/styled": "^11.9.3",
+    "styled": "^1.0.0",
+    "styled-components": "^5.3.5",
+    "recharts": "^2.1.12",
+    "sweetalert2": "^11.4.19"
   },
   "scripts": {
     "start": "react-dotenv && react-scripts start",

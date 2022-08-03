@@ -14,9 +14,15 @@ import MercadoPago from "./components/MercadoPago/MercadoPago";
 import Favorites from "./components/Favorites/Favorites";
 import { hydratateLSFav } from "./redux/actions";
 import CreateProduct from "./components/CreateProduct/CreateProduct";
+import AdminHome from "./components/AdminHome/AdminHome";
+import NavBar from "./components/NavBar/NavBar";
+import Footer from "./components/About/Footer"
+import AdminUsers from "./components/Admin/AdminUsers/AdminUsers";
+import AdminPets from "./components/Admin/AdminPets/AdminPets";
+
 
 function App() {
-
+  const [user, SetUser] = useState(null)
   useEffect(() => {
     const getUser = () => {
       fetch(`${window.env.URL}/auth/login/success`, {
@@ -35,6 +41,7 @@ function App() {
         })
         .then((res) => {
           dispatch(loginUser(res.user))
+          SetUser(res.user)
           console.log('google -->',res);
         })
         .catch((err) => {
@@ -49,7 +56,13 @@ function App() {
       localStorage.setItem("favProducts", JSON.stringify([]));
     }
   }, []);
-  
+  useEffect(() => {
+    if (localStorage.length === 0) {
+      localStorage.setItem("products", JSON.stringify([]));
+      localStorage.setItem("favProducts", JSON.stringify([]));
+    }
+  }, [user]);
+    
   const productsLS = JSON.parse(localStorage.getItem("products"));
   
   const dispatch = useDispatch();
@@ -75,7 +88,11 @@ function App() {
         <Route exact path="/mercadopago/pagos" element={<MercadoPago />} />
         <Route exact path="/favorites" element={<Favorites />} />
         <Route exact path="/post" element={<CreateProduct/>}/>
+        <Route exact path="/admin" element={<AdminHome></AdminHome>}/>
+        <Route exact path="/admin/users" element={<AdminUsers></AdminUsers>}/>
+        <Route exact path="/admin/products" element={<AdminPets></AdminPets>}/>
       </Routes>
+      <Footer></Footer>
     </Router>
   );
 }

@@ -5,13 +5,12 @@ import { useParams, Link } from "react-router-dom";
 import styles from "./ProductDetail.module.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Navbar2 from "../Navbar2/Navbar2";
 
 export default function ProductDetail() {
   const dispatch = useDispatch();
   let { id } = useParams();
-  // console.log(id);
   useEffect(() => {
-    console.log(id)
     dispatch(getDetails(id));
   }, [dispatch, id]);
 
@@ -20,8 +19,7 @@ export default function ProductDetail() {
   const cartProducts = useSelector((state) => state.cart);
   
   const myShoes = useSelector((state) => state.detail);
-  console.log(myShoes)
-
+  
   const addLocalStorage = () => {
     localStorage.setItem("products", JSON.stringify(cartProducts));
   };
@@ -41,7 +39,6 @@ export default function ProductDetail() {
    },[cartProducts])
 
   const addToCart = (id) => {
-    console.log(id)
     dispatch(addOneToCart(id));
     toast.success("Tu producto fue agregado al carrito!", {
       className: "cart-toast",
@@ -52,6 +49,7 @@ export default function ProductDetail() {
 
   return (
     <div>
+    <Navbar2></Navbar2>
       <Link to="/">
         <button className={styles.yourshoes}>
           YOUR<span className={styles.shoes}>SHOES</span>
@@ -98,7 +96,7 @@ export default function ProductDetail() {
               </Link>}
               <button
                 className={styles.cart}
-                onClick={() => addToCart( myShoes.id && myShoes.id)}
+                onClick={() => addToCart( myShoes.id)}
                 id={myShoes.id}
               >
                 Añadir al carro

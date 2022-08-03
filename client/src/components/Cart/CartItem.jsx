@@ -10,9 +10,10 @@ const CartItem = ({ data, deleteProduct }) => {
           ${price} x {quantity} = ${price * quantity}
         </h5>
         <div className={styles.buttonsContainer}>
-          <button onClick={() => deleteProduct(id)} className={styles.deleteBtn}>Eliminar Uno</button>
+          <button onClick={() => deleteProduct(id)} className={styles.deleteBtn}>Eliminar (1)</button>
           <button onClick={() => deleteProduct(id, true)} className={styles.deleteBtn}>
-            Eliminar Todos
+          <img src="https://cdn-icons-png.flaticon.com/512/1017/1017530.png" width={30} alt="" />
+
           </button>
         </div>
       </div>

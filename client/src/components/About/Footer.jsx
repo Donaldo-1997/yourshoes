@@ -12,7 +12,6 @@ export default function About() {
               <li><Link to="/aboutUs">ABOUT US</Link></li>
               <li>COMMUNITY</li>
               <li>CONTACT</li>
-              <li>LEGAL</li>
             </ul>
           </div>
           <div className={styles.footer_col2}>
@@ -26,7 +25,6 @@ export default function About() {
             <ul>
               <li>FAQ</li>
               <li>CONTACT SUPPORT</li>
-              <li>SERVICE CENTER</li>
             </ul>
           </div>
           <div>

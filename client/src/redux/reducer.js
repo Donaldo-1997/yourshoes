@@ -36,7 +36,8 @@ import {
   COMBINATION_FILTERS18,
   ADD_ONE_TO_FAV,
   HYDRATATE_FAV_LS,
-  POST_PRODUCT
+  POST_PRODUCT,
+  DELETE_ONE_FROM_FAV,
 } from "./actions";
 
 const initialState = {
@@ -46,8 +47,8 @@ const initialState = {
   filteredProducts: [],
   categories: [],
   favorites: [],
-  user: {},
-  sizes: []
+  user: [],
+  sizes: [],
 };
 
 export default function rootReducer(state = initialState, action) {
@@ -65,17 +66,17 @@ export default function rootReducer(state = initialState, action) {
     case GET_ALL_SIZES:
       return {
         ...state,
-        sizes: action.payload
+        sizes: action.payload,
       };
-    case GET_ALL_CATEGORIES:
-      return {
-          ...state,
-      };
+    // case GET_ALL_CATEGORIES:
+    //   return {
+    //       ...state,
+    //   };
     case GET_ALL_BRANDS:
       return {
-            ...state,
+        ...state,
       };
-  
+
     case GET_DETAILS:
       return {
         ...state,
@@ -95,33 +96,36 @@ export default function rootReducer(state = initialState, action) {
 
       return itemInFav
         ? {
-          ...state,
-          //favorites: ...favorites
-        }
+            ...state,
+            //favorites: ...favorites
+          }
         : {
-          ...state,
-          favorites: [...state.favorites, { ...newItemFav }],
-        };
+            ...state,
+            favorites: [...state.favorites, { ...newItemFav }],
+          };
 
     case ADD_ONE_TO_CART:
-      const newItem = state.products && state.products.find(
-        (product) => product.id === action.payload
-      );
-      let itemInCart = state.cart && state.cart.find((item) => item.id === newItem.id);
+      const newItem =
+        state.products &&
+        state.products.find((product) => product.id === action.payload);
+      let itemInCart =
+        state.cart && state.cart.find((item) => item.id === newItem.id);
 
       return itemInCart
         ? {
-          ...state,
-          cart: state.cart && state.cart.map((item) =>
-            item.id === newItem.id
-              ? { ...item, quantity: item.quantity + 1 }
-              : item
-          ),
-        }
+            ...state,
+            cart:
+              state.cart &&
+              state.cart.map((item) =>
+                item.id === newItem.id
+                  ? { ...item, quantity: item.quantity + 1 }
+                  : item
+              ),
+          }
         : {
-          ...state,
-          cart: state.cart && [...state.cart, { ...newItem, quantity: 1 }],
-        };
+            ...state,
+            cart: state.cart && [...state.cart, { ...newItem, quantity: 1 }],
+          };
 
     case DELETE_ONE_FROM_CART:
       const { productId, all } = action.payload;
@@ -260,38 +264,38 @@ export default function rootReducer(state = initialState, action) {
       return {
         ...state,
         filteredProducts: action.payload,
-        products: action.payload
-      }
+        products: action.payload,
+      };
     case COMBINATION_FILTERS14:
       return {
         ...state,
         filteredProducts: action.payload,
-        products: action.payload
-      }
+        products: action.payload,
+      };
     case COMBINATION_FILTERS15:
       return {
         ...state,
         filteredProducts: action.payload,
-        products: action.payload
-      }
+        products: action.payload,
+      };
     case COMBINATION_FILTERS16:
       return {
         ...state,
         filteredProducts: action.payload,
-        products: action.payload
-      }
+        products: action.payload,
+      };
     case COMBINATION_FILTERS17:
       return {
         ...state,
         filteredProducts: action.payload,
-        products: action.payload
-      }
+        products: action.payload,
+      };
     case COMBINATION_FILTERS18:
       return {
         ...state,
         filteredProducts: action.payload,
-        products: action.payload
-      }
+        products: action.payload,
+      };
     case POST_USER: {
       return {
         ...state,
@@ -301,7 +305,7 @@ export default function rootReducer(state = initialState, action) {
     case LOGIN_USER: {
       return {
         ...state,
-        user: action.payload
+        user: action.payload,
       };
     }
     case REMOVER_TODO: {
@@ -313,13 +317,24 @@ export default function rootReducer(state = initialState, action) {
     case POST_PRODUCT:
       return {
         ...state,
-        products: action.payload
-      }
-    case 'USER_LOGGED':
+        products: action.payload,
+      };
+    case "USER_LOGGED":
       return {
         ...state,
-        user: action.payload
+        user: action.payload,
+      };
+    case DELETE_ONE_FROM_FAV:
+      const { FavId } = action.payload;
+      let itemToDeleteFAv = state.favorites.find((item) => item.id === FavId);
+      console.log(FavId);
+      if (itemToDeleteFAv) {
+        return {
+          ...state,
+          favorites: state.favorites.filter((item) => item.id !== FavId),
+        };
       }
+    // eslint-disable-next-line no-fallthrough
     default:
       return state;
   }
