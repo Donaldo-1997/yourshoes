@@ -17,7 +17,7 @@ import CreateProduct from "./components/CreateProduct/CreateProduct";
 import UserProfile from "./components/UserProfile/UserProfile";
 
 function App() {
-
+  const [user, SetUser] = useState(null)
   useEffect(() => {
     const getUser = () => {
       fetch(`${window.env.URL}/auth/login/success`, {
@@ -27,6 +27,7 @@ function App() {
           Accept: "application/json",
           "Content-Type": "application/json",
           "Access-Control-Allow-Credentials": true,
+          "Access-Control-Allow-Origin": "*"
         },
       })
         .then((response) => {
@@ -34,8 +35,8 @@ function App() {
           throw new Error("authentication has been failed!");
         })
         .then((res) => {
-          //dispatch(loginUser(res.user))
-          localStorage.setItem("users", JSON.stringify(res.user))
+          dispatch(loginUser(res.user))
+          SetUser(res.user)
           console.log('google -->',res);
         })
         .catch((err) => {
@@ -50,7 +51,13 @@ function App() {
       localStorage.setItem("favProducts", JSON.stringify([]));
     }
   }, []);
-  
+  useEffect(() => {
+    if (localStorage.length === 0) {
+      localStorage.setItem("products", JSON.stringify([]));
+      localStorage.setItem("favProducts", JSON.stringify([]));
+    }
+  }, [user]);
+    
   const productsLS = JSON.parse(localStorage.getItem("products"));
   
   const dispatch = useDispatch();

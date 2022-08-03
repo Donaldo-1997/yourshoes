@@ -8,16 +8,17 @@ import { Link } from "react-router-dom";
 export default function Cart() {
   const cartProducts = useSelector((state) => state.cart);
   const dispatch = useDispatch();
+  console.log(cartProducts)
 
   const user = useSelector(state => state.user)
-
   let precios = 0;
-  for (let i = 0; i < cartProducts && cartProducts.length; i++) {
+  for (let i = 0; i < cartProducts.length; i++) {
     if (cartProducts[i].quantity === 1) {
       precios += cartProducts[i].price;
     } else {
       precios += cartProducts[i].price * cartProducts[i].quantity;
     }
+    console.log(precios)
   }
   const deleteProduct = (id, all = false) => {
     dispatch(deleteOneToCart({ productId: id, all }));

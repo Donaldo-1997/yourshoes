@@ -1,48 +1,60 @@
-.favoritosTitle2{
+.container {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 0.5rem;
+  border-radius: 20px;
+  border: solid black;
+  margin: 2%;
+  margin-right: 20%;
+  margin-left: 20%;
+}
+.favoritosTitle {
+  /* IMPORTANTE */
+  /* width: 200px; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-left: auto;
+  margin-right: auto;
+}
+.favoritosTitle2 {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  font-family: Anton;
+  font-size: 2rem;
+  text-transform: uppercase;
+}
+/* .containerCards{
     display: flex;
-    align-items: center;
-    text-align: center;
-    font-family: Anton;
-    font-size: 2rem;
-    text-transform: uppercase;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  flex-direction: column;
+} */
+.yourShoes {
+  font-family: "Anton";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 2rem;
+  line-height: 100%;
+  text-transform: uppercase;
+  margin-top: 10px;
+  /* or 60px */
 
+  letter-spacing: 0.04em;
+
+  color: #000000;
 }
 
-.favoritosTitle{
-    /* IMPORTANTE */
-    width: 200px;
-    margin-left: auto;
-    margin-right: auto;
-
+.yourShoes span {
+  color: #f87d2d;
 }
 
-.favoritosTitle3{
-    display: flex;
-    align-items: center;
-    text-align: center;
-    font-family: Anton;
-    font-size: 1rem;
-}
-
-.yourShoes{
-    font-family: 'Anton';
-font-style: normal;
-font-weight: 400;
-font-size: 2rem;
-line-height: 100%;
-text-transform: uppercase;
-margin-top: 10px;
-/* or 60px */
-
-letter-spacing: 0.04em;
-
-color: #000000;
-}
-
-.yourShoes span{
-    color:#F87D2D
-}
-
-.yourShoes:hover{
-   text-decoration: none;
+.yourShoes:hover {
+  text-decoration: none;
 }

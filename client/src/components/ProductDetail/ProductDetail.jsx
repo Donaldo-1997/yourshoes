@@ -9,7 +9,6 @@ import "react-toastify/dist/ReactToastify.css";
 export default function ProductDetail() {
   const dispatch = useDispatch();
   let { id } = useParams();
-  // console.log(id);
   useEffect(() => {
     dispatch(getDetails(id));
   }, [dispatch, id]);
@@ -19,7 +18,7 @@ export default function ProductDetail() {
   const cartProducts = useSelector((state) => state.cart);
   
   const myShoes = useSelector((state) => state.detail);
-
+  
   const addLocalStorage = () => {
     localStorage.setItem("products", JSON.stringify(cartProducts));
   };
@@ -67,16 +66,17 @@ export default function ProductDetail() {
             <h5>descripcion del producto</h5>
             <h1 className={styles.size}>Talle: </h1>
             <select className={styles.select}>
-              <option value="35">35</option>
-              <option value="36">36</option>
-              <option value="37">37</option>
-              <option value="38">38</option>
-              <option value="39">39</option>
-              <option value="40">40</option>
-              <option value="41">41</option>
-              <option value="42">42</option>
-              <option value="43">43</option>
-              <option value="44">44</option>
+              <option value={35}>35</option>
+              <option value={36}>36</option>
+              <option value={37}>37</option>
+              <option value={38}>38</option>
+              <option value={39}>39</option>
+              <option value={40}>40</option>
+              <option value={41}>41</option>
+              <option value={42}>42</option>
+              <option value={43}>43</option>
+              <option value={44}>44</option>
+              <option value={45}>45</option>
             </select>
             <div className={styles.buttons}>
             {
@@ -94,7 +94,7 @@ export default function ProductDetail() {
               </Link>}
               <button
                 className={styles.cart}
-                onClick={() => addToCart( myShoes.id && myShoes.id)}
+                onClick={() => addToCart( myShoes.id)}
                 id={myShoes.id}
               >
                 Añadir al carro

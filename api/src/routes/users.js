@@ -23,6 +23,7 @@ router.get("/", async (req, res) => {
   }
 })
 
+<<<<<<< HEAD
 router.get("/:id", async (req, res) => {
   const {id} = req.params
   try{
@@ -37,6 +38,8 @@ router.get("/:id", async (req, res) => {
 })
 
 
+=======
+>>>>>>> 7225c22c9a303e4d4a76c671272a12c520f5d584
 //PUT USER
 router.put('/', async (req, res) => {
   const { email } = req.query;

@@ -2,21 +2,19 @@ const { DataTypes } = require('sequelize')
 
 module.exports = (sequelize) => {
     sequelize.define('size', {
-        // id:{
-        //     type: DataTypes.BIGINT,
-        //     primaryKey: true,
-        //     unique: true
-        // },
-number: {
-    type: DataTypes.INTEGER,
-    allowNull: false
-},
-stock: {
-    type: DataTypes.INTEGER,
-    allowNull: false
-},
-counter:{
-    type: DataTypes.INTEGER,
-}
+        id: {
+            type: DataTypes.INTEGER,
+            primaryKey: true,
+            unique:true,
+            allowNull: false
+        },
+        stock: {
+            type: DataTypes.INTEGER,
+            allowNull: false
+        },
+        counter: {
+            type: DataTypes.INTEGER,
+        }
 
-    }, { timestamps: false })}
+    }, { timestamps: false })
+}

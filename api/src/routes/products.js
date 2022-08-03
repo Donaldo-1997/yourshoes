@@ -1,5 +1,5 @@
 const { Router } = require('express');
-const { Product, Brand, Category } = require('../db.js');
+const { Product, Brand, Category, Size} = require('../db.js');
 const { Op } = require('sequelize')
 const { getByName, getByBrand, getByCategory, getByPrice, getAll, getBySize } = require('../controllers/products.js');
 const {getAllFilters}= require('../controllers/filtersCombinations')
@@ -82,7 +82,8 @@ router.get("/:id", async (req, res) => {
         {
           include: [
             { model: Brand },
-            { model: Category }
+            { model: Category },
+            { model: Size}
           ]
         });
 
