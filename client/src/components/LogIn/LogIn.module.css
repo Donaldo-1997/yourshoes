@@ -39,7 +39,7 @@
 }
 
 .formulario {
-	min-width: 700px;
+	min-width: 500px;
     min-height: 400px;
 	margin-top: 0px;
     background: linear-gradient(90deg, rgb(185, 134, 69) 0%, rgb(195, 97, 33) 35%, rgb(216, 90, 6) 95%);
