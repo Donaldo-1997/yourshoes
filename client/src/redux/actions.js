@@ -42,6 +42,7 @@ export const HYDRATATE_FAV_LS = "HYDRATATE_FAV_LS";
 export const POST_PRODUCT = "POST_PRODUCT"
 export const GET_USER_LOGIN = 'GET_USER_LOGIN'
 export const DELETE_ONE_FROM_FAV = 'DELETE_ONE_FROM_FAV'
+export const PUT_STOCK = "PUT_STOCK"
 const URL = window.env.URL
 
 export function removerTodo() {
@@ -62,7 +63,6 @@ export function getAllShoes() {
 export function getDetails(id) {
   return async function (dispatch) {
     const res = await axios(`${URL}/shoes/${id}`);
-    console.log(res.data)
     return dispatch({
       type: GET_DETAILS,
       payload: res.data,
@@ -567,4 +567,13 @@ export function deleteOneToFav(payload) {
     type: DELETE_ONE_FROM_FAV,
     payload: payload,
   };
+}
+export function putProductStock(props){
+  return async function(dispatch){
+    const result = axios.put(`${URL}/mercadopago`, props)
+    return dispatch({
+      type: PUT_STOCK,
+      payload: result.data
+    })
+  }
 }

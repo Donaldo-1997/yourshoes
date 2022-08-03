@@ -6,6 +6,7 @@ import styles from "./ProductDetail.module.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Navbar2 from "../Navbar2/Navbar2";
+import { useState } from "react";
 
 export default function ProductDetail() {
   const dispatch = useDispatch();
@@ -19,7 +20,13 @@ export default function ProductDetail() {
   const cartProducts = useSelector((state) => state.cart);
   
   const myShoes = useSelector((state) => state.detail);
-  
+  console.log(myShoes, "soy my shoes")
+  const [size, SetSize]= useState()
+  const shoesAdd ={
+    id: id,
+    size: parseInt(size)
+  }
+
   const addLocalStorage = () => {
     localStorage.setItem("products", JSON.stringify(cartProducts));
   };
@@ -31,6 +38,10 @@ export default function ProductDetail() {
   //  const addToCartToast = () => {
     
   // }
+  const handleOnChangeSize = (e)=>{
+    e.preventDefault()
+    SetSize(e.target.value)
+  }
 
    useEffect(() => {
     if(cartProducts && cartProducts.length){
@@ -38,8 +49,8 @@ export default function ProductDetail() {
     saveLocalStorage()}
    },[cartProducts])
 
-  const addToCart = (id) => {
-    dispatch(addOneToCart(id));
+  const addToCart = () => {
+    dispatch(addOneToCart(shoesAdd));
     toast.success("Tu producto fue agregado al carrito!", {
       className: "cart-toast",
       draggable: true,
@@ -67,19 +78,14 @@ export default function ProductDetail() {
             <h3 className={styles.price}>${myShoes.price}</h3>
             <h5>descripcion del producto</h5>
             <h1 className={styles.size}>Talle: </h1>
-            <select className={styles.select}>
-              <option value={35}>35</option>
-              <option value={36}>36</option>
-              <option value={37}>37</option>
-              <option value={38}>38</option>
-              <option value={39}>39</option>
-              <option value={40}>40</option>
-              <option value={41}>41</option>
-              <option value={42}>42</option>
-              <option value={43}>43</option>
-              <option value={44}>44</option>
-              <option value={45}>45</option>
-            </select>
+            <select
+                    onChange={(e) => {handleOnChangeSize(e) }}>
+                        <option></option>
+                    {myShoes.sizes && myShoes.sizes.map((s, i) => (
+                        <option  key={i} value={s.id}>{s.id}</option>
+                    ))}
+                </select>
+        
             <div className={styles.buttons}>
             {
               !Object.keys(user).length ?  <Link to='/login'><button className={styles.cart}>

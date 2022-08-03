@@ -103,7 +103,8 @@ async function getAll() {
         let result = cargo ? await Product.findAll({
           include: [
             { model: Brand },
-            { model: Category }
+            { model: Category },
+            { model: Size }
           ]
         }) : await setDataApi()
 

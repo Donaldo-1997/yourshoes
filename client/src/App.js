@@ -14,8 +14,8 @@ import MercadoPago from "./components/MercadoPago/MercadoPago";
 import Favorites from "./components/Favorites/Favorites";
 import { hydratateLSFav } from "./redux/actions";
 import CreateProduct from "./components/CreateProduct/CreateProduct";
+import UserProfile from "./components/UserProfile/UserProfile";
 import AdminHome from "./components/AdminHome/AdminHome";
-import NavBar from "./components/NavBar/NavBar";
 import Footer from "./components/About/Footer"
 import AdminUsers from "./components/Admin/AdminUsers/AdminUsers";
 import AdminPets from "./components/Admin/AdminPets/AdminPets";
@@ -29,7 +29,8 @@ function App() {
         method: "GET",
         credentials: "include",
         headers: {
-          Accept: "application/json",
+          // Accept: "application/json",
+          "origin": [`${window.env.URL}`],
           "Content-Type": "application/json",
           "Access-Control-Allow-Credentials": true,
           "Access-Control-Allow-Origin": "*"
@@ -37,7 +38,7 @@ function App() {
       })
         .then((response) => {
           if (response.status === 200) return response.json();
-          throw new Error("authentication has been failed!");
+          throw(response)
         })
         .then((res) => {
           dispatch(loginUser(res.user))
@@ -88,6 +89,7 @@ function App() {
         <Route exact path="/mercadopago/pagos" element={<MercadoPago />} />
         <Route exact path="/favorites" element={<Favorites />} />
         <Route exact path="/post" element={<CreateProduct/>}/>
+        <Route exact path="/datauser" element={<UserProfile/>}/>
         <Route exact path="/admin" element={<AdminHome></AdminHome>}/>
         <Route exact path="/admin/users" element={<AdminUsers></AdminUsers>}/>
         <Route exact path="/admin/products" element={<AdminPets></AdminPets>}/>

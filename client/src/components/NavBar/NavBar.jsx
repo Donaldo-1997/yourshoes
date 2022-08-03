@@ -19,6 +19,7 @@ import { logoutUser } from "../../redux/actions";
 export default function NavBar({handleReset, handleInputName, handleNameSubmit}) {
 
   const { user } = useSelector(state => state)
+ 
 
   const handleLogout = () => {
     localStorage.setItem("products", JSON.stringify([]));
