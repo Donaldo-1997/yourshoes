@@ -14,6 +14,7 @@ import MercadoPago from "./components/MercadoPago/MercadoPago";
 import Favorites from "./components/Favorites/Favorites";
 import { hydratateLSFav } from "./redux/actions";
 import CreateProduct from "./components/CreateProduct/CreateProduct";
+import UserProfile from "./components/UserProfile/UserProfile";
 
 function App() {
 
@@ -33,7 +34,8 @@ function App() {
           throw new Error("authentication has been failed!");
         })
         .then((res) => {
-          dispatch(loginUser(res.user))
+          //dispatch(loginUser(res.user))
+          localStorage.setItem("users", JSON.stringify(res.user))
           console.log('google -->',res);
         })
         .catch((err) => {
@@ -74,6 +76,7 @@ function App() {
         <Route exact path="/mercadopago/pagos" element={<MercadoPago />} />
         <Route exact path="/favorites" element={<Favorites />} />
         <Route exact path="/post" element={<CreateProduct/>}/>
+        <Route exact path="/datauser" element={<UserProfile/>}/>
       </Routes>
     </Router>
   );
