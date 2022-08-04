@@ -10,10 +10,10 @@ export default function AdminUsers() {
         <>
         <BackgroundListUsers>
             <ContainerListUsers >
-                {/* <div className="listTitle">Users</div> */}
+              
                 <SideBar />
                 <AdminTable/>
-                {/* <AdminDonation/> */}
+                
             </ContainerListUsers >
         </BackgroundListUsers>
         </>
