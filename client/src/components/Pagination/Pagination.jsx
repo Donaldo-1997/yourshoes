@@ -9,10 +9,10 @@ export default function Pagination({shoesPerPage, allProducts, pagination, nextP
             <ul className={styles.contenedor}>
                 <div className={styles.contenedor1}>
                     <button onClick={(e) => pagination(1)} disabled={currentPage === 1} className={styles.button}>Primera</button>
-                    <button onClick={(e) => prevPageButton(e)} disabled={currentPage === 1} className={styles.button}>{"<<Ant "}</button>
+                    <button onClick={(e) => prevPageButton(e)} disabled={currentPage === 1} className={styles.button}>{"ᐊ"}</button>
                     <p> {currentPage} de {pageNumber} </p>
                     <div className={styles.right}>
-                        <button onClick={(e) => nextPageButton(e)} disabled={currentPage === pageNumber} className={styles.button}>{"Sig>>"}</button>
+                        <button onClick={(e) => nextPageButton(e)} disabled={currentPage === pageNumber} className={styles.button}>{" ᐅ"}</button>
                         <button onClick={(e) => pagination(pageNumber)} disabled={currentPage === pageNumber} className={styles.button}>Ultima</button>
                     </div>
                    

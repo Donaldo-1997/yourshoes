@@ -10,21 +10,20 @@ export default function About() {
             <h3>ABOUT</h3>
             <ul>
               <li><Link to="/aboutUs">ABOUT US</Link></li>
-              <li>COMMUNITY</li>
-              <li>CONTACT</li>
+              <li><Link to="/community">COMUNIDAD</Link></li>
             </ul>
           </div>
           <div className={styles.footer_col2}>
-            <h3>PRODUCTS</h3>
+            <h3>PRODUCTOS</h3>
             <ul>
               <li>ZAPATILLAS PARA LA FLIA</li>
             </ul>
           </div>
           <div className={styles.footer_col3}>
-            <h3>SUPPORT</h3>
+            <h3>SOPORTE</h3>
             <ul>
               <li>FAQ</li>
-              <li>CONTACT SUPPORT</li>
+              <li>CONTACTO</li>
             </ul>
           </div>
           <div>

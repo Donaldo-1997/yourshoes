@@ -18,7 +18,8 @@ import UserProfile from "./components/UserProfile/UserProfile";
 import AdminHome from "./components/AdminHome/AdminHome";
 import Footer from "./components/About/Footer"
 import AdminUsers from "./components/Admin/AdminUsers/AdminUsers";
-import AdminProducts from "./components/Admin/AdminProducts/AdminProducts";
+import AdminPets from "./components/Admin/AdminPets/AdminPets";
+import Community from "./components/About/Community";
 
 
 function App() {
@@ -95,7 +96,12 @@ function App() {
         <Route exact path="/datauser" element={<UserProfile/>}/>
         <Route exact path="/admin" element={<AdminHome></AdminHome>}/>
         <Route exact path="/admin/users" element={<AdminUsers></AdminUsers>}/>
+<<<<<<< HEAD
         <Route exact path="/admin/products" element={<AdminProducts></AdminProducts>}/>
+=======
+        <Route exact path="/admin/products" element={<AdminPets></AdminPets>}/>
+        <Route exact path="/community" element={<Community/>}/>
+>>>>>>> 224beba (Modificacion en estilos y ruta para editar prod creado)
       </Routes>
       <Footer></Footer>
     </Router>

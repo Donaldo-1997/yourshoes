@@ -137,4 +137,40 @@ router.post("/", async (req, res) => {
   }
 })
 
+router.put("/:id", async (req, res) => {
+  try{
+    const { title, model, image, price, size, brand, category } = req.body
+    const { id } = req.params
+    
+    const productUpdated = await Product.findOne({where: {id}, include: [{model: Brand}, {model: Category}, {model: Size}]})
+    const oldBrand = productUpdated.brand.id
+    const oldCategory = productUpdated.category.id
+    const oldSizes = productUpdated.sizes.map(size => size.id)
+    await productUpdated.removeBrand(oldBrand)
+    await productUpdated.removeCategory(oldCategory)
+    await productUpdated.removeSize(oldSizes)
+
+    const brandDb = await Brand.findOne({where: {name: brand}})
+    const categoryDb = await Category.findOne({where : {name: category}})
+    const sizeDb = await Size.findAll({where: {counter: size}})
+
+    await productUpdated.addBrand(brandDb)
+    await productUpdated.addCategory(categoryDb)
+    await productUpdated.addSize(sizeDb)
+
+    productUpdated.set({
+      title,
+      model,
+      image,
+      price
+    })
+
+    await productUpdated.save()
+    res.status(200).send("Producto actualizado")
+
+  }catch(error){
+    console.log(error)
+  }
+})
+
 module.exports = router;
