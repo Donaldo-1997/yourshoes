@@ -24,6 +24,7 @@ export default function NavBar({handleReset, handleInputName, handleNameSubmit})
   const handleLogout = () => {
     localStorage.setItem("products", JSON.stringify([]));
     localStorage.setItem("favProducts", JSON.stringify([]));
+    localStorage.setItem("user", JSON.stringify([]))
     
   }
   const user = JSON.parse(localStorage.getItem('user'))
