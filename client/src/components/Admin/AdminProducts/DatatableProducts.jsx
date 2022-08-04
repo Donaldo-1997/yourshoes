@@ -8,7 +8,7 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { TextTable } from "./StyledDataTablePets";
+import { TextTable } from "./StyledDataTable";
 import { getAllShoes } from "../../../redux/actions";
 
 
