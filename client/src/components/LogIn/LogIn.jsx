@@ -1,16 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Formik, Field, Form, ErrorMessage } from "formik";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Login } from "../../redux/actions";
 import styles from "./LogIn.module.css";
 import { useNavigate } from "react-router-dom";
 import { FcGoogle, FcGoodDecision, FcDownLeft } from "react-icons/fc";
 import { Link } from "react-router-dom";
 import Navbar2 from "../Navbar2/Navbar2";
+import UserProfile from "../UserProfile/UserProfile";
 
 export default function LogIn() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const user = useSelector((state) => state.user)
 
   const [formularioEnviado, setformularioEnviado] = useState(false);
 
@@ -29,7 +31,12 @@ export default function LogIn() {
     })
     
   }
-
+  useEffect(() => {
+  
+     localStorage.setItem('user',  JSON.stringify(user))
+   
+  }, [user]);
+  
   return (
     <div className={styles.contenedor}>
     <Navbar2></Navbar2>
