@@ -47,31 +47,33 @@ router.post("/", function (req, res) {
     });
 
 });
+router.put("/", async (req, res) => {
+  const idAll = req.body.as;
+ console.log(idAll)
+  let productId = [];
+  let sizeId = [];
+  let productArray = [];
 
- router.put("/", async (req, res) => {
-      const idAll = req.body.as;
-     
-      let productId = [];
-      let sizeId = [];
-      let productArray = [];
+  for (let i = 0; i < idAll.length; i++) {
+    productId.push(idAll[i].id) && sizeId.push(idAll[i].sizeNumber);
+  }
 
-      for (let i = 0; i < idAll.length; i++) {
-        productId.push(idAll[i].id) && sizeId.push(idAll[i].size);
-      }
-
-      for (let i = 0; i < productId.length; i++) {
-         const productCopy = await Product.findOne({
-          where: { id: productId[i] },
-          include: Size,
-        })
-        productCopy.sizes.find((s) => s.id === sizeId[i]).stock =
-        productCopy.sizes.find((s) => s.id === sizeId[i]).stock - 1;
-
-        await productCopy.save();
-        productArray.push(productCopy);
-      }
-      res.status(200).json(productArray)
-    });
-    
+  for (let i = 0; i < productId.length; i++) {
+     const productCopy = await Product.findOne({
+      where: { id: productId[i] }})
+    const data =productCopy.size.find((s) => s.id === sizeId[i]).stock =
+    productCopy.size.find((s) => s.id === sizeId[i]).stock - 1;
+      console.log(data,"data")
+   const info= productCopy.size.map(s=> s===data? s.set({
+       stock: s.stock-1
+    }):s)
+    console.log(info)
+    productCopy.set({size:[info]})
+    await productCopy.save();
+    productArray.push(productCopy);
+   }
+   res.status(200).json(productArray)
+  
+});
 
 module.exports = router;

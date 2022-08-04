@@ -26,7 +26,10 @@ module.exports = (sequelize) => {
         sold: {
             type: DataTypes.INTEGER,
             allownull: false,
-        },      
+        },
+        size:{
+            type: DataTypes.JSONB
+        },
         isActive: {
             type: DataTypes.BOOLEAN,
             defaultValue: true,

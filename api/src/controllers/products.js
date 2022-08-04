@@ -1,6 +1,6 @@
 const { Product, Brand, Category, Size } = require('../db');
 const { Op } = require('sequelize');
-const { setDataApi } = require('.');
+const { getAllProducts } = require('.');
 
 let cargo = false
 
@@ -106,7 +106,7 @@ async function getAll() {
             { model: Category },
             { model: Size }
           ]
-        }) : await setDataApi()
+        }) : await getAllProducts()
 
         cargo = true;
         
