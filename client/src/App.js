@@ -51,18 +51,21 @@ function App() {
     };
     getUser();
   }, []);
+
   useEffect(() => {
     if (localStorage.length === 0) {
       localStorage.setItem("products", JSON.stringify([]));
       localStorage.setItem("favProducts", JSON.stringify([]));
+      localStorage.setItem('user',  JSON.stringify([]))
     }
-  }, []);
+  }, []); 
   useEffect(() => {
     if (localStorage.length === 0) {
       localStorage.setItem("products", JSON.stringify([]));
       localStorage.setItem("favProducts", JSON.stringify([]));
     }
   }, [user]);
+
     
   const productsLS = JSON.parse(localStorage.getItem("products"));
   

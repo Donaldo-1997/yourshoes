@@ -1,15 +1,13 @@
 import React from 'react';
-import DashboardCard from '../Admin/DashboardCard/DashboardCard';
+import DashboardCard from '../Admin/DashboardCard/DashboardCardProducts';
 import DashboardCardUser from '../Admin/DashboardCard/DashboardCardUser';
 import SideBar from '../Admin/SideBar/SideBar';
 import Chart from '../Admin/Chart/Chart';
-import ChartCircle from '../Admin/Chart/ChartCircle';
+
 import { BackgroundList,
     ContainerDashboard,
     ContainerList,
     ContainerChart,
-    ContainerCircleChart,
-    Subtitle,
     Text,
 } from './StyledAdminHome';
 
