@@ -26,21 +26,12 @@ export const ContainerChart = styled.div`
     margin-top: 40px;
 `
 
-export const ContainerCircleChart = styled.div`
-    height: 300px;
-    margin-bottom: 70px;
-`
 
 export const ContainerBarChart = styled.div`
     margin-top: 70px;
 `
 
-export const Subtitle = styled.h1`
-    font-size: 1rem;
-    margin: 0;
-    color: ${(props) => props.theme.font_alt};
-    text-align: center;
-`
+
 
 export const Text = styled.h1`
     font-size: 1rem;
