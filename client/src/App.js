@@ -96,12 +96,8 @@ function App() {
         <Route exact path="/datauser" element={<UserProfile/>}/>
         <Route exact path="/admin" element={<AdminHome></AdminHome>}/>
         <Route exact path="/admin/users" element={<AdminUsers></AdminUsers>}/>
-<<<<<<< HEAD
-        <Route exact path="/admin/products" element={<AdminProducts></AdminProducts>}/>
-=======
         <Route exact path="/admin/products" element={<AdminPets></AdminPets>}/>
         <Route exact path="/community" element={<Community/>}/>
->>>>>>> 224beba (Modificacion en estilos y ruta para editar prod creado)
       </Routes>
       <Footer></Footer>
     </Router>
