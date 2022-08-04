@@ -66,8 +66,8 @@ Review.belongsTo(Product)
 Brand.belongsToMany(Product,{through: 'brand_product',timestamps: false})
 Product.belongsTo(Brand)
 
-User.belongsToMany(Review, {through: 'user_review',timestamps: false})
-Review.belongsTo(User)
+Product.hasMany(Review);
+Review.belongsTo(Product);
 
 User.belongsToMany(Order, {through: 'user_order',timestamps: false})
 Order.belongsTo(User)

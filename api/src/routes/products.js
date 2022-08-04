@@ -138,6 +138,7 @@ router.post("/", async (req, res) => {
   }
 })
 
+
 router.put("/:id", async (req, res) => {
   try{
     const { title, model, image, price, size, brand, category } = req.body
@@ -175,5 +176,6 @@ router.put("/:id", async (req, res) => {
     console.log(error)
   }
 })
+
 
 module.exports = router;
