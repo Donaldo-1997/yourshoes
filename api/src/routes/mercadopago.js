@@ -11,7 +11,8 @@ mercadopago.configure({
 });
 
 router.post("/", function (req, res) {
-  ordenID = 1;
+  try{
+    ordenID = 1;
   if(req.body.as.length===0) res.status(400).send("Carrito vacío")
   const items_ml = req.body.as.map((p) => ({
     name: p.title,
@@ -45,11 +46,15 @@ router.post("/", function (req, res) {
     .catch((err) => {
       console.log(err);
     });
-
+ }catch(error){
+  console.log(error)
+  res.status(404).json(error)
+ }
 });
 router.put("/", async (req, res) => {
-  const idAll = req.body.cart;
-
+  try{
+    const idAll = req.body.as;
+  console.log(idAll)
   let productId = [];
   let sizeId = [];
   let productArray = [];
@@ -73,7 +78,9 @@ router.put("/", async (req, res) => {
     productArray.push(productCopy);
    }
    res.status(200).json(productArray)
-  
+  } catch(error){
+    res.status(404).json(error)
+  }
 });
 
 module.exports = router;
