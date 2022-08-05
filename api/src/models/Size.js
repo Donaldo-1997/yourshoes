@@ -3,17 +3,17 @@ const { DataTypes } = require('sequelize')
 module.exports = (sequelize) => {
     sequelize.define('size', {
         id: {
-            type: DataTypes.JSONB,
+            type: DataTypes.INTEGER,
             primaryKey: true,
             unique:true,
             allowNull: false
         },
         stock: {
-            type: DataTypes.JSONB,
-            defaultValue:{min:0,max:2000}
+            type: DataTypes.INTEGER,
+            
         },
         counter: {
-            type: DataTypes.JSONB,
+            type: DataTypes.INTEGER,
         }
 
     }, { timestamps: false })

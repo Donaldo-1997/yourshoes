@@ -48,8 +48,8 @@ router.post("/", function (req, res) {
 
 });
 router.put("/", async (req, res) => {
-  const idAll = req.body.as;
- console.log(idAll)
+  const idAll = req.body.cart;
+
   let productId = [];
   let sizeId = [];
   let productArray = [];
