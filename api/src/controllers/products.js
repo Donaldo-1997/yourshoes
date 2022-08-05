@@ -87,7 +87,7 @@ async function getBySize(size) {
       include: [
         { model: Brand },
         { model: Category },
-        { model: Size, where: { id: size }},
+        { model: Size, where: { number: size }},
       ]
     })
     console.log(all)
