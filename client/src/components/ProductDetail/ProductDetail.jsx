@@ -81,7 +81,7 @@ export default function ProductDetail() {
             <select
                     onChange={(e) => {handleOnChangeSize(e) }}>
                         <option></option>
-                    {myShoes.size && myShoes.size.map((s, i) => (
+                    {myShoes.sizes && myShoes.sizes.map((s, i) => (
                         <option  key={i} value={s.id}>{s.id}</option>
                     ))}
                 </select>
