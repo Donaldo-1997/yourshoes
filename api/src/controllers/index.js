@@ -31,7 +31,7 @@ const cargoalDB =async()=>{
   
   const getAllApi1  =await setDataApi()
   const data =getAllApi1.flat().map((e) => {
-    e.size = [{id:35, stock:5, counter:0}, {id:36, stock:5, counter:0},{id:37, stock:5, counter:0},{id:38, stock:5, counter:0},{id:39, stock:5, counter:0},{id:40, stock:5, counter:0},{id:41, stock:5, counter:0},{id:42, stock:5, counter:0},{id:43, stock:5, counter:0},{id:44, stock:5, counter:0},{id:45, stock:5, counter:0}]
+    e.size = [{id:1, number: 35, stock:5, solds:0}, {id:2, number:36, stock:5, solds:0},{id:3, number:37, stock:5, solds:0},{id:4, number:38, stock:5, solds:0},{id: 5, number:39, stock:5, solds:0},{id:6, number:40, stock:5, solds:0},{id:7, number:41, stock:5, solds:0},{id:8, number:42, stock:5, solds:0},{id:9, number:43, stock:5, solds:0},{id:10, number:44, stock:5, solds:0},{id:11, number:45, stock:5, solds:0}]
    
     return ({
       id: e.id,
@@ -41,13 +41,12 @@ const cargoalDB =async()=>{
       model: e.attributes && e.attributes.length === 3 ? e.attributes[2].value_name : "Not found",
       price: e.price, //parseInt(s.price)
       category: e.category_id,
-      stock: e.available_quantity,
-      sold: e.sold_quantity,
       size: e.size ? e.size.map(s=>{
         return({
           id: s.id,
+          number: s.number,
           stock: s.stock,
-          counter: s.counter
+          solds: s.solds
         })
       }) : "Not found"
     });
@@ -68,14 +67,7 @@ const cargoalDB =async()=>{
         image:el.image,
         model:el.model,
         price:el.price,
-        sold:el.sold,
-        size:el.size.map(s=>{
-          return({
-            id:s.id,
-            stock:s.stock,
-            counter:s.counter
-          })
-        })
+        solds:el.solds
        });
        const foundBrand = await Brand.findByPk(el.brand);
        const foundSize = el.size.map(s=>s.id)

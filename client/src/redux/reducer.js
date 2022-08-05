@@ -106,7 +106,7 @@ export default function rootReducer(state = initialState, action) {
 
     case ADD_ONE_TO_CART:
       const newItem = state.products && state.products.find((product) => product.id === action.payload.id);
-      const newItemSize = state.products && state.products.map((product) => product.size.find(s=> s.id=== action.payload.size));
+      const newItemSize = state.sizes && state.sizes.find((size) => size.number=== action.payload.size);
       console.log(action.payload, "soy reducer")
       let itemInCart = state.cart && state.cart.find((item) => item.id === newItem.id && item.size=== newItemSize.id);
       console.log(state.cart, "soy cart")

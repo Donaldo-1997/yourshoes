@@ -51,9 +51,10 @@ router.post("/", function (req, res) {
   res.status(404).json(error)
  }
 });
+
 router.put("/", async (req, res) => {
   try{
-    const idAll = req.body.as;
+    const idAll = req.body.cart;
   console.log(idAll)
   let productId = [];
   let sizeId = [];
@@ -65,15 +66,17 @@ router.put("/", async (req, res) => {
 
   for (let i = 0; i < productId.length; i++) {
      const productCopy = await Product.findOne({
-      where: { id: productId[i] }})
-    const data =productCopy.size.find((s) => s.id === sizeId[i]).stock =
-    productCopy.size.find((s) => s.id === sizeId[i]).stock - 1;
-      console.log(data,"data")
-   const info= productCopy.size.map(s=> s===data? s.set({
-       stock: s.stock-1
-    }):s)
-    console.log(info)
-    productCopy.set({size:[info]})
+      where: { id: productId[i] },include:[{model:Size, where:{number:sizeId[i]}}]})
+      const data = productCopy.sizes.map(s=>s.id)
+      const data1 = productCopy.sizes.map(s=>s.stock-1)
+      const data2 = productCopy.sizes.map(s=>s.solds+1)
+    productCopy.removeSize(data)
+    const newSize = await Size.create({
+      number:sizeId[i],
+      stock:data1,
+      solds:data2
+    })
+    await productCopy.addSize(newSize)
     await productCopy.save();
     productArray.push(productCopy);
    }

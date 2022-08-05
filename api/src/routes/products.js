@@ -118,12 +118,13 @@ router.post("/", async (req, res) => {
         id: `MLA${Math.round(Math.random() * 1000000000)}`,
         model,
         image,
-        price,
-        size
+        price
       },
     })
     const findCategories = await Category.findOne({ where: { name: { [Op.iLike]: `%${category}%` } } })
     const findBrand = await Brand.findOne({ where: { name: { [Op.iLike]: `%${brand}%` } } })
+    const findSize = await Size.findOne({where: {id:size}})
+    newProduct.addSize(findSize)
     newProduct.setCategory(findCategories)
     newProduct.setBrand(findBrand)
 
@@ -150,11 +151,11 @@ router.put("/:id", async (req, res) => {
     const oldSizes = productUpdated.sizes.map(size => size.id)
     await productUpdated.update(oldBrand)
     await productUpdated.update(oldCategory)
-    await productUpdated.update(oldSizes)
+    await productUpdated.removeSize(oldSizes)
 
-    const brandDb = await Brand.findOne({where: {name: brand}})
-    const categoryDb = await Category.findOne({where : {name: category}})
-    const sizeDb = await Size.findAll({where: {counter: size}})
+    const brandDb = await Brand.findOne({where: {name: { [Op.iLike]: `%${brand}%` } }})
+    const categoryDb = await Category.findOne({where : {name:{ [Op.iLike]: `%${category}%` } }})
+    const sizeDb = await Size.findAll({where: {id: size}})
 
     await productUpdated.setBrand(brandDb)
     await productUpdated.setCategory(categoryDb)
