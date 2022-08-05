@@ -44,6 +44,7 @@ function App() {
         .then((res) => {
           dispatch(loginUser(res.user))
           SetUser(res.user)
+          localStorage.setItem('user',  JSON.stringify(res.user))
           console.log('google -->',res);
         })
         .catch((err) => {
