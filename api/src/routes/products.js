@@ -143,19 +143,21 @@ router.put("/:id", async (req, res) => {
     const { id } = req.params
     
     const productUpdated = await Product.findOne({where: {id}, include: [{model: Brand}, {model: Category}, {model: Size}]})
+    console.log('product', productUpdated)
     const oldBrand = productUpdated.brand.id
+    console.log('brand', oldBrand)
     const oldCategory = productUpdated.category.id
     const oldSizes = productUpdated.sizes.map(size => size.id)
-    await productUpdated.removeBrand(oldBrand)
-    await productUpdated.removeCategory(oldCategory)
-    await productUpdated.removeSize(oldSizes)
+    await productUpdated.update(oldBrand)
+    await productUpdated.update(oldCategory)
+    await productUpdated.update(oldSizes)
 
     const brandDb = await Brand.findOne({where: {name: brand}})
     const categoryDb = await Category.findOne({where : {name: category}})
     const sizeDb = await Size.findAll({where: {counter: size}})
 
-    await productUpdated.addBrand(brandDb)
-    await productUpdated.addCategory(categoryDb)
+    await productUpdated.setBrand(brandDb)
+    await productUpdated.setCategory(categoryDb)
     await productUpdated.addSize(sizeDb)
 
     productUpdated.set({
@@ -166,7 +168,7 @@ router.put("/:id", async (req, res) => {
     })
 
     await productUpdated.save()
-    res.status(200).send("Producto actualizado")
+    res.status(200).send(productUpdated)
 
   }catch(error){
     console.log(error)
