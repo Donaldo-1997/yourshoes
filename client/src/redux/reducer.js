@@ -49,6 +49,7 @@ const initialState = {
   favorites: [],
   user: [],
   sizes: [],
+  brands: []
 };
 
 export default function rootReducer(state = initialState, action) {
@@ -75,6 +76,7 @@ export default function rootReducer(state = initialState, action) {
     case GET_ALL_BRANDS:
       return {
         ...state,
+        brands: action.payload
       };
 
     case GET_DETAILS:
@@ -332,6 +334,11 @@ export default function rootReducer(state = initialState, action) {
         };
       }
     // eslint-disable-next-line no-fallthrough
+
+    // case "PUT_CREATED_PRODUCT":
+    //   return{
+    //     ...state
+    //   }
     default:
       return state;
   }

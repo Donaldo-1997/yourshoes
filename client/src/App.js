@@ -20,6 +20,7 @@ import Footer from "./components/About/Footer"
 import AdminUsers from "./components/Admin/AdminUsers/AdminUsers";
 import AdminProducts from "./components/Admin/AdminProducts/AdminProducts";
 import Community from "./components/About/Community";
+import EditProduct from "./components/EditProduct/EditProduct";
 
 
 function App() {
@@ -100,6 +101,7 @@ function App() {
         <Route exact path="/admin/products" element={<AdminProducts></AdminProducts>}/>
         <Route exact path="/admin/create-product" element={<AdminProducts></AdminProducts>}/>
         <Route exact path="/community" element={<Community/>}/>
+        <Route exact path="/edit" element={<EditProduct/>}/>
       </Routes>
       <Footer></Footer>
     </Router>

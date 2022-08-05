@@ -579,3 +579,27 @@ export function putProductStock(props){
     })
   }
 }
+
+// export function putCreatedProduct({id, input}){
+//   return async function (dispatch){
+//     const res = axios.put(`${URL}/shoes/${id}`, input)
+//     return dispatch({
+//       type: "PUT_CREATED_PRODUCT",
+//       payload: res.data
+//     })
+//   }
+// }
+
+export const putCreatedProduct = ({ id, input }) => {
+  console.log("id: ", id, "input: ", input)
+  return async (dispatch) => {
+    await axios
+      .put(`${URL}/shoes/${id}`, input)
+      .then((res) => dispatch({ type: "MODIFY_PRODUCT" }));
+  };
+};
+
+export function getShoeById(id){
+  axios(`${URL}/shoes/${id}`)
+}
+
