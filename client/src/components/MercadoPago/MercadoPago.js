@@ -17,8 +17,8 @@ function MercadoPago() {
       axios
         .post(`${window.env.URL}/mercadopago`, { as: cart })
         .then((data) => {
+          dispatch(putProductStock({cart}))
           setDatos(data.data);
-          dispatch(putProductStock({as:cart}))
           console.info("Contenido de data:", data);
         })
         .catch((err) => console.error(err));

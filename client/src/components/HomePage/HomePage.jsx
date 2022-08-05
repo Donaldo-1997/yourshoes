@@ -57,7 +57,7 @@ export default function HomePage() {
   const currentShoes =
     Array.isArray(allProducts) &&
     allProducts.slice(indexOfFirstShoe, indexOfLastShoe);
-console.log(currentShoes)
+
   const pagination = (page) => {
     setCurrentPage(page);
   };
