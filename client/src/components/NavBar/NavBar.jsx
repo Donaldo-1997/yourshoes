@@ -48,7 +48,7 @@ export default function NavBar({handleReset, handleInputName, handleNameSubmit})
             <Nav.Link  className={styles.icon}>
               <Link to="/favorites"><FaHeart style={{ color: "#f87d2d" }} /></Link> 
             </Nav.Link>
-            {Object.keys(user).length ? (
+            {user && Object.keys(user).length ? (
               <a href={`${window.env.URL}/auth/logout`} onClick={handleLogout} className={styles.logout_button}><BiLogOut style={{ color: "#f87d2d" }}></BiLogOut></a>
             ) : (
               <Nav.Link  className={styles.icon}>
