@@ -34,11 +34,11 @@ router.post("/", function (req, res) {
       installments: 3,
     },
     back_urls: {
-      success: "https://yourshoes.vercel.app/orderConfirm?orderId=" `${ordenID}`,
+      success: "https://yourshoes.vercel.app/",
       failure: "https://yourshoes.vercel.app/",
     },
   };
-
+  // success: "https://yourshoes.vercel.app/orderConfirm?orderId=" `${ordenID}`,
   mercadopago.preferences
     .create(preference)
     .then((r) => {
