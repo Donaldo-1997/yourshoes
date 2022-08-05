@@ -1,6 +1,6 @@
 import React from "react";
 import SideBar from "../SideBar/SideBar";
-import DatatableProducts from "./DatatableProducts";
+import DatatableProducts_copy from "./DatatableProducts_copy";
 import { BackgroundList, ContainerList } from "./StyledAdmin";
 
 export default function AdminProducts() {
@@ -9,7 +9,7 @@ export default function AdminProducts() {
         <BackgroundList>
             <ContainerList>
                 <SideBar />
-                <DatatableProducts />
+                <DatatableProducts_copy />
             </ContainerList>
         </BackgroundList>
     )
