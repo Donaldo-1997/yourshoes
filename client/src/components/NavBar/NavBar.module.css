@@ -65,3 +65,18 @@ color: #000000;
     text-transform: uppercase;
     font-family: Inter;
 }
+
+.containerLogout {
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.img {
+   
+  height: 70px;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  border-radius: 50%;
+  background-size: 100% auto;
+  }

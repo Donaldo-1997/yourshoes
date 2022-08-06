@@ -40,6 +40,7 @@ export default function ProductCard({ image, title, price, id }) {
           <img src={image} alt="img not found" className={styles.cardImg} />
         </div>
       </Link>
+      <Link to={"/edit/" + id}><button>Edit</button></Link>
       <div className={styles.botonFav}>
         <button onClick={() => addToFav(id)}>
           <FaHeart style={{ color: "#f87d2d" }} />

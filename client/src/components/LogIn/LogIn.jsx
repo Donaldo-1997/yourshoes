@@ -56,7 +56,7 @@ export default function LogIn() {
               valores.email
             )
           ) {
-            error.email = "Ingresa un email válido";
+            error.email = "Tu email debe ser en formato mail(@)";
           }
 
           if (!valores.password) {

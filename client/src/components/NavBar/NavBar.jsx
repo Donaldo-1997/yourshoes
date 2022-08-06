@@ -19,7 +19,7 @@ import { logoutUser } from "../../redux/actions";
 export default function NavBar({handleReset, handleInputName, handleNameSubmit}) {
 
   // const { user } = useSelector(state => state)
- 
+  const infoUser = JSON.parse(localStorage.getItem('user'))
 
   const handleLogout = () => {
     localStorage.setItem("products", JSON.stringify([]));
@@ -42,18 +42,31 @@ export default function NavBar({handleReset, handleInputName, handleNameSubmit})
             style={{ maxHeight: "100px" }}
             navbarScroll
           >
+          <div className={styles.containerLogout}>
             <Nav.Link className={styles.icon}>
-             <Link to='/cart' className={styles.Link}> <BsFillCartFill style={{ color: "#f87d2d" }} /></Link> 
+             <Link to='/cart' className={styles.Link}> <BsFillCartFill  style={{ color: "#f87d2d" }} /></Link> 
             </Nav.Link>
+            </div>
+            <div className={styles.containerLogout}>
             <Nav.Link  className={styles.icon}>
               <Link to="/favorites"><FaHeart style={{ color: "#f87d2d" }} /></Link> 
             </Nav.Link>
+            </div>
             {user && Object.keys(user).length ? (
+              <div className={styles.containerLogout}>
+              <div>
               <a href={`${process.env.REACT_APP_URL}/auth/logout`} onClick={handleLogout} className={styles.logout_button}><BiLogOut style={{ color: "#f87d2d" }}></BiLogOut></a>
+              </div>
+              <div>
+             <Link to='/datauser'>{!infoUser.image ? <img className={styles.img} src="https://cdn4.iconfinder.com/data/icons/e-commerce-181/512/477_profile__avatar__man_-512.png"/> : <img className={styles.img} src={infoUser.image}/>}</Link> 
+              </div>
+              </div>
             ) : (
+              <div className={styles.containerLogout}>
               <Nav.Link  className={styles.icon}>
                  <Link to='/login'><FaUserAlt  style={{ color: "#f87d2d" }} /></Link>
               </Nav.Link>
+              </div>
             )}
             <button className={styles.createProdButton}>
               <Link to='/admin'><span className={styles.link}>Dashboard admin</span></Link>
@@ -62,9 +75,7 @@ export default function NavBar({handleReset, handleInputName, handleNameSubmit})
           <button className={styles.createProdButton}>
             <Link to='/post'><span className={styles.link}>Crear producto</span></Link>
           </button>
-          <button>
-            <Link to='/edit'><span>EDITAR</span></Link>
-          </button>
+        
           <Searchbar 
           handleInputName={handleInputName}
           handleNameSubmit={handleNameSubmit}></Searchbar>

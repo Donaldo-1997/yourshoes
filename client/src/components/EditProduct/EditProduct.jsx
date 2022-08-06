@@ -7,8 +7,9 @@ import { Widget } from "@uploadcare/react-widget";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-export default function EditProduct({id}){
-    console.log(id)
+export default function EditProduct(){
+    const {id} = useParams()
+    console.log('ID EDIT',id)
     const dispatch = useDispatch()
     const allBrands = useSelector(state => state.brands)
     const prodDetail = useSelector(state => state.detail)
@@ -221,7 +222,7 @@ export default function EditProduct({id}){
                         </select>
                     </div>
                     <div>
-                        {!Object.keys(errors).length ? <button type="submit" className={styles.createButton}>ENVIAR</button> : <button type="submit" className={styles.createButton} disabled={true}>ENVIAR</button>}
+                        {!Object.keys(errors).length ? <button type="submit" className={styles.createButton}>EDITAR</button> : <button type="submit" className={styles.createButton} disabled={true}>EDITAR</button>}
                         <ToastContainer/>
                     </div>
                 </form>
