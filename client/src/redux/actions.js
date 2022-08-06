@@ -1,6 +1,6 @@
 import axios from "axios";
 // import env from "react-dotenv";
-
+//asd
 export const GET_ALL_SHOES = "GET_ALL_SHOES"
 export const GET_DETAILS = "GET_DETAILS"
 export const GET_SHOES_NAME = "GET_SHOES_NAME"
