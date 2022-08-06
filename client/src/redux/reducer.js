@@ -38,6 +38,9 @@ import {
   HYDRATATE_FAV_LS,
   POST_PRODUCT,
   DELETE_ONE_FROM_FAV,
+  CREATE_REVIEW,
+  GET_REVIEWS_PRODUCT,
+  GET_USERS,
 } from "./actions";
 
 const initialState = {
@@ -48,8 +51,14 @@ const initialState = {
   categories: [],
   favorites: [],
   user: [],
+  users: [],
+  usersCopy: [],
   sizes: [],
+<<<<<<< HEAD
   brands: []
+=======
+  reviews:[],
+>>>>>>> 7e778de (Reviews)
 };
 
 export default function rootReducer(state = initialState, action) {
@@ -59,6 +68,13 @@ export default function rootReducer(state = initialState, action) {
         ...state,
         products: action.payload,
       };
+      case GET_USERS: {
+        return {
+          ...state,
+          users: action.payload,
+          usersCopy: action.payload
+        };
+      }
     case GET_ALL_CATEGORIES:
       return {
         ...state,
@@ -68,6 +84,17 @@ export default function rootReducer(state = initialState, action) {
       return {
         ...state,
         sizes: action.payload,
+      };
+      case CREATE_REVIEW:
+      return {
+        ...state,
+        reviews: action.payload,
+      };
+
+    case GET_REVIEWS_PRODUCT:
+      return {
+        ...state,
+        reviews: action.payload,
       };
     // case GET_ALL_CATEGORIES:
     //   return {
