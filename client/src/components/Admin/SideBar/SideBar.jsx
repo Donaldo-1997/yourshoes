@@ -9,6 +9,7 @@ import {
     Icon2,
     Text,
     LinkList,
+    IconCreate,
 } from './StyledSideBar';
 
 export default function SideBar() {
@@ -34,6 +35,12 @@ export default function SideBar() {
                     <Icon2 />
                     <LinkList to='/admin/products'>
                         <Text>Productos</Text>
+                    </LinkList>
+                </LiList>
+                <LiList>
+                    <IconCreate />
+                    <LinkList to='/admin/create-product'>
+                        <Text>Nuevo Producto</Text>
                     </LinkList>
                 </LiList>
             </List>

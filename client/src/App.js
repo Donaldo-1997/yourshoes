@@ -98,6 +98,7 @@ function App() {
         <Route exact path="/admin" element={<AdminHome></AdminHome>}/>
         <Route exact path="/admin/users" element={<AdminUsers></AdminUsers>}/>
         <Route exact path="/admin/products" element={<AdminProducts></AdminProducts>}/>
+        <Route exact path="/admin/create-product" element={<AdminProducts></AdminProducts>}/>
         <Route exact path="/community" element={<Community/>}/>
       </Routes>
       <Footer></Footer>

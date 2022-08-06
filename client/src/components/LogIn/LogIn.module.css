@@ -115,6 +115,9 @@
 	width: auto;
 }
 
-.link { text-decoration: none;
-font-size: 20px;
-color: #fcf5f5;}
+.link { 
+	text-decoration: none;
+	font-size: 20px;
+	color: #fcf5f5;
+	cursor: pointer;
+}

@@ -55,6 +55,9 @@ export default function NavBar({handleReset, handleInputName, handleNameSubmit})
                  <Link to='/login'><FaUserAlt  style={{ color: "#f87d2d" }} /></Link>
               </Nav.Link>
             )}
+            <button className={styles.createProdButton}>
+              <Link to='/admin'><span className={styles.link}>Dashboard admin</span></Link>
+            </button>
           </Nav>
           <button className={styles.createProdButton}>
             <Link to='/post'><span className={styles.link}>Crear producto</span></Link>
