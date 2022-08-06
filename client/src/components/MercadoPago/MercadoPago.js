@@ -4,7 +4,7 @@ import Checkout from "./Checkout.jsx";
 import axios from "axios";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { putProductStock } from "../../redux/actions";
+import { putProductStock, postOrder } from "../../redux/actions";
 
 function MercadoPago() {
   const cart = useSelector((state) => state.cart);
@@ -12,12 +12,13 @@ function MercadoPago() {
   const [datos, setDatos] = useState("");
   const dispatch = useDispatch()
 
-  useEffect(() => {
+  useEffect(() => { 
     if (cart.length > 0) {
       axios
         .post(`${window.env.URL}/mercadopago`, { as: cart })
         .then((data) => {
-          dispatch(putProductStock({cart}))
+          dispatch(putProductStock({cart}));
+          dispatch(postOrder({cart}));
           setDatos(data.data);
           console.info("Contenido de data:", data);
         })

@@ -43,6 +43,7 @@ export const POST_PRODUCT = "POST_PRODUCT"
 export const GET_USER_LOGIN = 'GET_USER_LOGIN'
 export const DELETE_ONE_FROM_FAV = 'DELETE_ONE_FROM_FAV'
 export const PUT_STOCK = "PUT_STOCK"
+export const POST_ORDER = "POST_ORDER"
 const URL = window.env.URL
 
 export function removerTodo() {
@@ -573,6 +574,16 @@ export function putProductStock(props){
     const result = axios.put(`${URL}/mercadopago`, props)
     return dispatch({
       type: PUT_STOCK,
+      payload: result.data
+    })
+  }
+}
+
+export function postOrder(props){
+  return async function(dispatch){
+    const result = axios.post(`${URL}/orden`, props)
+    return dispatch({
+      type: POST_ORDER,
       payload: result.data
     })
   }
