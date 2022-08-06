@@ -42,6 +42,7 @@ router.post("/", function (req, res) {
     .then((r) => {
       console.info("respondio");
       (global.id = r.body.id), res.json({ id: global.id });
+      console.log(r, "soy r")
     })
     .catch((err) => {
       console.log(err);
