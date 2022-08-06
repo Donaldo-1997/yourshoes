@@ -102,6 +102,7 @@ function App() {
         <Route exact path="/admin/create-product" element={<AdminProducts></AdminProducts>}/>
         <Route exact path="/community" element={<Community/>}/>
         <Route exact path="/edit/:id" element={<EditProduct/>}/>
+        
       </Routes>
       <Footer></Footer>
     </Router>

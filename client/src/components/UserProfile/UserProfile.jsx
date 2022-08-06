@@ -21,6 +21,7 @@ export default function UserProfile(){
                         {!infoUser.name ? <h1>Nombre: {infoUser.user.name}</h1> : <h1>Nombre: {infoUser.name}</h1>}
                         <h1>Apellido: {infoUser.surname}</h1>
                         <h1>E-mail: {infoUser.email}</h1>
+                        <h1>Historia de compras:</h1>
                        
                     </div> : null
                 }

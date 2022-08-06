@@ -13,6 +13,7 @@ export default function EditProduct(){
     const dispatch = useDispatch()
     const allBrands = useSelector(state => state.brands)
     const prodDetail = useSelector(state => state.detail)
+    const navigate = useNavigate()
 
 
     const [errors, setErrors] = useState({first: true})
@@ -115,6 +116,7 @@ export default function EditProduct(){
             draggable: true,
             position: toast.POSITION.TOP_CENTER,
           });
+          navigate("/admin/products")
     }
 
     //Validaciones//

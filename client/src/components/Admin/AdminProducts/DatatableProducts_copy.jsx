@@ -26,6 +26,7 @@ import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import DisabledByDefaultIcon from '@mui/icons-material/DisabledByDefault';
 import { useEffect } from 'react';
 import { getAllShoes } from '../../../redux/actions';
+import {Link} from 'react-router-dom'
 
 function descendingComparator(a, b, orderBy) {
   // console.log("a -->", a[orderBy])
@@ -347,7 +348,7 @@ export default function EnhancedTable() {
                       <TableCell align="right">{row.sold}</TableCell>
                       <TableCell align="left">{row.model}</TableCell>
                       <TableCell align="center">{row.isActive ? <CheckCircleIcon color='success' /> : <DisabledByDefaultIcon color='error' /> }</TableCell>
-                      <TableCell align="right"><Button variant='outlined' color='success' size='small' >Editar</Button></TableCell>
+                      <TableCell align="right"><Link to={`/edit/${row.id}`}><Button variant='outlined' color='success' size='small' >Editar</Button></Link></TableCell>
                     </TableRow>
                   );
                 })}
