@@ -2,7 +2,7 @@ const { Router } = require("express");
 const router = Router();
 const passport = require("passport");
 const { mail } = require('../controllers/nodemailer');
-const { User, Order, Review } = require('../db.js');
+const { User, Order } = require('../db.js');
 require("../controllers/passport-setup");
 
 const { CLIENT_URL } = process.env;
@@ -15,8 +15,7 @@ router.get("/login/success", async (req, res) => {
     const userDB = await User.findOne({ 
       where: { email }, 
       include: [
-        { model: Review },
-        { model: Order },
+        { model: Order }
       ]
     })
     

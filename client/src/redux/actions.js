@@ -52,6 +52,7 @@ export function removerTodo() {
     type: REMOVER_TODO,
   };
 }
+
 export function getAllShoes() {
   return async function (dispatch) {
     const results = await axios(`${URL}/shoes`);
