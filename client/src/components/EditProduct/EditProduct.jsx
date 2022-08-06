@@ -143,7 +143,7 @@ export default function EditProduct(){
 
     return(
         <div className={styles.Container}>
-            <Link to="/" >
+            <Link to="/admin/products" >
               <button className={styles.homeButton}>YOUR<span className={styles.shoes}>SHOES</span></button>
             </Link>
             <h1 className={styles.title}>Edicion de producto</h1>
