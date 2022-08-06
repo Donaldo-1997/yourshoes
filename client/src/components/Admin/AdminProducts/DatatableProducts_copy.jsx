@@ -20,35 +20,16 @@ import Switch from '@mui/material/Switch';
 import DeleteIcon from '@mui/icons-material/Delete';
 import FilterListIcon from '@mui/icons-material/FilterList';
 import { visuallyHidden } from '@mui/utils';
-import { useSelector } from 'react-redux';
-
-// function createData(name, calories, fat, carbs, protein) {
-//   return {
-//     name,
-//     calories,
-//     fat,
-//     carbs,
-//     protein,
-//   };
-// }
-
-// const rows = [
-//   createData('Cupcake', 305, 3.7, 67, 4.3),
-//   createData('Donut', 452, 25.0, 51, 4.9),
-//   createData('Eclair', 262, 16.0, 24, 6.0),
-//   createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-//   createData('Gingerbread', 356, 16.0, 49, 3.9),
-//   createData('Honeycomb', 408, 3.2, 87, 6.5),
-//   createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-//   createData('Jelly Bean', 375, 0.0, 94, 0.0),
-//   createData('KitKat', 518, 26.0, 65, 7.0),
-//   createData('Lollipop', 392, 0.2, 98, 0.0),
-//   createData('Marshmallow', 318, 0, 81, 2.0),
-//   createData('Nougat', 360, 19.0, 9, 37.0),
-//   createData('Oreo', 437, 18.0, 63, 4.0),
-// ];
+import { useDispatch, useSelector } from 'react-redux';
+import { Button } from '@mui/material';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import DisabledByDefaultIcon from '@mui/icons-material/DisabledByDefault';
+import { useEffect } from 'react';
+import { getAllShoes } from '../../../redux/actions';
 
 function descendingComparator(a, b, orderBy) {
+  // console.log("a -->", a[orderBy])
+
   if (b[orderBy] < a[orderBy]) {
     return -1;
   }
@@ -82,29 +63,29 @@ const headCells = [
   {
     id: 'id',
     numeric: false,
-    disablePadding: true,
+    disablePadding: false,
     label: 'ID',
   },
   {
-    id: 'nombre',
+    id: 'title',
     numeric: false,
     disablePadding: false,
     label: 'Nombre',
   },
   {
-    id: 'precio',
+    id: 'price',
     numeric: true,
     disablePadding: false,
     label: 'Precio',
   },
   {
-    id: 'modelo',
+    id: 'brand',
     numeric: true,
     disablePadding: false,
-    label: 'Modelo',
+    label: 'Marca',
   },
   {
-    id: 'imagen',
+    id: 'image',
     numeric: false,
     disablePadding: false,
     label: 'Imagen',
@@ -116,16 +97,22 @@ const headCells = [
     label: 'Sold',
   },
   {
-    id: 'isActive',
-    numeric: true,
+    id: 'model',
+    numeric: false,
     disablePadding: false,
-    label: 'IsActive',
+    label: 'Modelo',
   },
   {
-    id: 'brand',
+    id: 'isActive',
+    numeric: false,
+    disablePadding: false,
+    label: 'Activo',
+  },
+  {
+    id: 'actions',
     numeric: true,
     disablePadding: false,
-    label: 'Brand',
+    label: 'Acciones',
   },
 ];
 
@@ -137,8 +124,8 @@ function EnhancedTableHead(props) {
 
   return (
     <TableHead>
-      <TableRow>
-        <TableCell padding="checkbox">
+      <TableRow color='primary'>
+        {/* <TableCell padding="checkbox">
           <Checkbox
             color="primary"
             indeterminate={numSelected > 0 && numSelected < rowCount}
@@ -148,7 +135,7 @@ function EnhancedTableHead(props) {
               'aria-label': 'select all desserts',
             }}
           />
-        </TableCell>
+        </TableCell> */}
         {headCells.map((headCell) => (
           <TableCell
             key={headCell.id}
@@ -232,12 +219,16 @@ export default function EnhancedTable() {
   const [selected, setSelected] = React.useState([]);
   const [page, setPage] = React.useState(0);
   const [dense, setDense] = React.useState(false);
-  const [rowsPerPage, setRowsPerPage] = React.useState(5);
+  const [rowsPerPage, setRowsPerPage] = React.useState(40);
 
-  console.log(order)
-  console.log(orderBy)
-  
+  // console.log(order)
+  // console.log(orderBy)
+  const dispatch = useDispatch() 
   const rows = useSelector(state => state.products)
+
+  useEffect(() => {
+    dispatch(getAllShoes())
+  }, [])
 
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === 'asc';
@@ -300,6 +291,7 @@ export default function EnhancedTable() {
         <TableContainer sx={{ maxHeight: 440 }}>
           <Table
             stickyHeader
+            aria-label="sticky table"
             sx={{ minWidth: 550 }}
             aria-labelledby="tableTitle"
             size={dense ? 'small' : 'medium'}
@@ -331,7 +323,7 @@ export default function EnhancedTable() {
                       key={row.id}
                       selected={isItemSelected}
                     >
-                      <TableCell padding="checkbox">
+                      {/* <TableCell padding="checkbox">
                         <Checkbox
                           color="primary"
                           checked={isItemSelected}
@@ -339,22 +331,23 @@ export default function EnhancedTable() {
                             'aria-labelledby': labelId,
                           }}
                         />
-                      </TableCell>
+                      </TableCell> */}
                       <TableCell
                         component="th"
                         id={labelId}
                         scope="row"
-                        padding="none"
+                        padding="normal"
                       >
                         {row.id}
                       </TableCell>
-                      <TableCell align="right">{row.title}</TableCell>
-                      <TableCell align="right">{parseFloat(row.price)}</TableCell>
-                      <TableCell align="right">{row.model}</TableCell>
-                      <TableCell align="right"><img src={row.image} alt="product" width="50" /></TableCell>
-                      <TableCell align="right">{row.sold}</TableCell>
-                      <TableCell align="right">{row.isActive ? 'true' : 'false'}</TableCell>
+                      <TableCell align="left">{row.title}</TableCell>
+                      <TableCell align="right">$ {row.price}</TableCell>
                       <TableCell align="right">{row.brand ? row.brand.name : 'Sin marca'}</TableCell>
+                      <TableCell align="left"><img src={row.image} alt="product" width="50" /></TableCell>
+                      <TableCell align="right">{row.sold}</TableCell>
+                      <TableCell align="left">{row.model}</TableCell>
+                      <TableCell align="center">{row.isActive ? <CheckCircleIcon color='success' /> : <DisabledByDefaultIcon color='error' /> }</TableCell>
+                      <TableCell align="right"><Button variant='outlined' color='success' size='small' >Editar</Button></TableCell>
                     </TableRow>
                   );
                 })}
@@ -371,7 +364,7 @@ export default function EnhancedTable() {
           </Table>
         </TableContainer>
         <TablePagination
-          rowsPerPageOptions={[5, 10, 25]}
+          rowsPerPageOptions={[10, 25, 40]}
           component="div"
           count={rows.length}
           rowsPerPage={rowsPerPage}

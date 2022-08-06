@@ -26,12 +26,12 @@ function App() {
   const [user, SetUser] = useState(null)
   useEffect(() => {
     const getUser = () => {
-      fetch(`${window.env.URL}/auth/login/success`, {
+      fetch(`${process.env.REACT_APP_URL}/auth/login/success`, {
         method: "GET",
         credentials: "include",
         headers: {
           // Accept: "application/json",
-          "origin": [`${window.env.URL}`],
+          "origin": [`${process.env.REACT_APP_URL}`],
           "Content-Type": "application/json",
           "Access-Control-Allow-Credentials": true,
           "Access-Control-Allow-Origin": "*"

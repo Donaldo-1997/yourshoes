@@ -1,5 +1,5 @@
 import axios from "axios";
-import env from "react-dotenv";
+// import env from "react-dotenv";
 
 export const GET_ALL_SHOES = "GET_ALL_SHOES"
 export const GET_DETAILS = "GET_DETAILS"
@@ -43,7 +43,9 @@ export const POST_PRODUCT = "POST_PRODUCT"
 export const GET_USER_LOGIN = 'GET_USER_LOGIN'
 export const DELETE_ONE_FROM_FAV = 'DELETE_ONE_FROM_FAV'
 export const PUT_STOCK = "PUT_STOCK"
-const URL = window.env.URL
+
+const URL = process.env.REACT_APP_URL
+// console.log('URL -->', URL)
 
 export function removerTodo() {
   return {

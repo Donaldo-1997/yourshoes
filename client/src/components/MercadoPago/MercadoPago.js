@@ -15,7 +15,7 @@ function MercadoPago() {
   useEffect(() => {
     if (cart.length > 0) {
       axios
-        .post(`${window.env.URL}/mercadopago`, { as: cart })
+        .post(`${process.env.REACT_APP_URL}/mercadopago`, { as: cart })
         .then((data) => {
           dispatch(putProductStock({cart}))
           setDatos(data.data);

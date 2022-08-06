@@ -114,7 +114,7 @@ export default function LogIn() {
             )}
             <a
               onClick={() =>
-                window.open(`${window.env.URL}/auth/google`, "_self")
+                window.open(`${process.env.REACT_APP_URL}/auth/google`, "_self")
               }
               className={styles.link}
             >
