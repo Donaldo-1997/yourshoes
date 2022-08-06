@@ -71,7 +71,6 @@ export default function rootReducer(state = initialState, action) {
         ...state,
         sizes: action.payload,
       };
-
     // case GET_ALL_CATEGORIES:
     //   return {
     //       ...state,
