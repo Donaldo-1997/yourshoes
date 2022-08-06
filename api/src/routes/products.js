@@ -83,7 +83,8 @@ router.get("/:id", async (req, res) => {
           include: [
             { model: Brand },
             { model: Category },
-            { model: Size}
+            { model: Size},
+            
           ]
         });
 

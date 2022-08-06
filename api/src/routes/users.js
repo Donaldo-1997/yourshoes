@@ -12,7 +12,6 @@ router.get("/", async (req, res) => {
     const data = await User.findAll({
       order: [['name', "ASC"]],
       include: [
-        { model: Review },
         { model: Order, attributes: ['id'] },
       ]
     })
