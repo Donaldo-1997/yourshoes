@@ -1,5 +1,5 @@
 const { Router } = require('express');
-const { User, Order, Review } = require('../db.js');
+const { User, Order } = require('../db.js');
 const { Op } = require('sequelize')
 const { validateAttributes, validateAttribute } = require('../controllers/validation');
 const router = Router();

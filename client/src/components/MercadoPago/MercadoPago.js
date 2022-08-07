@@ -19,6 +19,7 @@ function MercadoPago() {
         .then((data) => {
           dispatch(putProductStock({cart}))
           setDatos(data.data);
+          localStorage.setItem("products", JSON.stringify([]));
           console.info("Contenido de data:", data);
         })
         .catch((err) => console.error(err));

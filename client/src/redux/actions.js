@@ -1,11 +1,15 @@
 import axios from "axios";
 <<<<<<< HEAD
 // import env from "react-dotenv";
+<<<<<<< HEAD
 =======
 import env from "react-dotenv";
 import swal from "sweetalert";
 >>>>>>> 7e778de (Reviews)
 
+=======
+//asd
+>>>>>>> e923fc4aa3ba5ea64ed9f4ff5fff3c0e9eb704b3
 export const GET_ALL_SHOES = "GET_ALL_SHOES"
 export const GET_DETAILS = "GET_DETAILS"
 export const GET_SHOES_NAME = "GET_SHOES_NAME"

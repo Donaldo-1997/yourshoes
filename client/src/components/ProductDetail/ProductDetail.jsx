@@ -5,12 +5,15 @@ import { useParams, Link } from "react-router-dom";
 import styles from "./ProductDetail.module.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Navbar2 from "../Navbar2/Navbar2";
 import { useState } from "react";
+<<<<<<< HEAD
 import { ReviewsDetail } from "../ReviewsDetail/ReviewsDetail";
 export default function ProductDetail() {
+=======
+
+export default function ProductDetail({ id }) {
+>>>>>>> e923fc4aa3ba5ea64ed9f4ff5fff3c0e9eb704b3
   const dispatch = useDispatch();
-  let { id } = useParams();
   useEffect(() => {
     dispatch(getDetails(id));
   }, [dispatch, id]);
@@ -25,6 +28,15 @@ export default function ProductDetail() {
   const shoesAdd ={
     id: id,
     size: parseInt(size)
+  }
+
+  const handleToast = () => {
+    toast.error("Debes estar logueado para poder comprar", {
+      className: "buy-toast",
+      draggable: true,
+      position: toast.POSITION.TOP_CENTER,
+      toastId: "prevent-buy-toast"
+    })
   }
 
   const addLocalStorage = () => {
@@ -60,12 +72,6 @@ export default function ProductDetail() {
 
   return (
     <div>
-    <Navbar2></Navbar2>
-      <Link to="/">
-        <button className={styles.yourshoes}>
-          YOUR<span className={styles.shoes}>SHOES</span>
-        </button>
-      </Link>
       {myShoes ? (
         <div className={styles.divCard}>
           <img
@@ -75,22 +81,24 @@ export default function ProductDetail() {
           />
           <div className={styles.divContent}>
             <h1 className={styles.title}>{myShoes.title}</h1>
-            <h3 className={styles.price}>${myShoes.price}</h3>
-            <h5>descripcion del producto</h5>
-            <h1 className={styles.size}>Talle: </h1>
-            <select
-                    onChange={(e) => {handleOnChangeSize(e) }}>
-                        <option></option>
-                    {myShoes.sizes && myShoes.sizes.map((s, i) => (
-                        <option  key={i} value={s.number}>{s.number}</option>
-                    ))}
-                </select>
-        
+            <div className={styles.sizePriceCont}>
+              <div className={styles.sizeContainer}>
+                <h1 className={styles.size}>Talle: </h1>
+                <select
+                        onChange={(e) => {handleOnChangeSize(e) }}>
+                            <option></option>
+                        {myShoes.sizes && myShoes.sizes.map((s, i) => (
+                            <option  key={i} value={s.number}>{s.number}</option>
+                        ))}
+                    </select>
+              </div>
+              <h3 className={styles.price}>${myShoes.price}</h3>
+            </div>          
             <div className={styles.buttons}>
             {
-              !Object.keys(user).length ?  <Link to='/login'><button className={styles.cart}>
-                    Logueate para comprar
-                  </button></Link> :
+              !Object.keys(user).length ? <button onClick={handleToast} className={styles.cart}>
+                    Comprar
+                  </button> :
               <Link to="/mercadopago/pagos">
                 <button
                   className={styles.cart}
@@ -107,8 +115,11 @@ export default function ProductDetail() {
               >
                 Añadir al carro
               </button>{" "}
+<<<<<<< HEAD
               <ToastContainer />
               <ReviewsDetail user={user} id={myShoes.id} />
+=======
+>>>>>>> e923fc4aa3ba5ea64ed9f4ff5fff3c0e9eb704b3
             </div>
           </div>
         </div>
@@ -121,6 +132,7 @@ export default function ProductDetail() {
           <p>Loading...</p>
         </div>
       )}
+      
     </div>
   );
 }
