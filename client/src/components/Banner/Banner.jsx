@@ -11,13 +11,9 @@ export default function Banner() {
           <img
             className="d-block w-100"
             style={{ height: "500px" }}
-            src="https://www.fotoefectos.com/images/202207/25/fotoefectos.com__final_7229072012361613604_.jpg?act=96"
+            src="https://www.vansecuador.com/images/hoverimg/202203022306031337.jpg"
             alt="First slide"
           />
-          <Carousel.Caption>
-            <div className={styles.yourShoes}>Your<span>Shoes</span></div>
-            <p>Elige tu marca</p>
-          </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item interval={5000}>
           <img
