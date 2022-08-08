@@ -5,6 +5,8 @@ import { useParams, Link } from "react-router-dom";
 import styles from "./ProductDetail.module.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Navbar2 from "../Navbar2/Navbar2";
+
 import { useState } from "react";
 
 export default function ProductDetail({ id }) {
