@@ -79,7 +79,7 @@ export default function ProductDetail({ id }) {
             <div className={styles.sizePriceCont}>
               <div className={styles.sizeContainer}>
                 <h1 className={styles.size}>Talle: </h1>
-                <select
+                <select className={styles.selectSize}
                         onChange={(e) => {handleOnChangeSize(e) }}>
                             <option></option>
                         {myShoes.sizes && myShoes.sizes.map((s, i) => (

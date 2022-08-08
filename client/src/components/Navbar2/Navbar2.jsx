@@ -19,7 +19,7 @@ export default function NavBar() {
   
 
   return (
-    <Navbar bg="light" expand="lg" className={styles.navbar}>
+    <Navbar expand="lg" className={styles.navbar}>
       <Container fluid>
          <Link to='/'><Navbar.Brand className={styles.yourShoes}>Your<span>Shoes</span></Navbar.Brand></Link>
         <Navbar.Toggle aria-controls="navbarScroll" />
