@@ -6,10 +6,6 @@ import styles from "./ProductDetail.module.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useState } from "react";
-<<<<<<< HEAD
-=======
-
->>>>>>> 385d33f (Estilos y review afuera)
 
 
 export default function ProductDetail({ id }) {
