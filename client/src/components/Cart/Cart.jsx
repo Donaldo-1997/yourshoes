@@ -33,8 +33,9 @@ export default function Cart() {
   }, [cartProducts]);
 
   return (
-    <div className={styles.container}>
+    <div>
     <Navbar2></Navbar2>
+    <div className={styles.container}>
       {/* <button onClick={clearCart}>Limpiar carrito</button> */}
       <div>
         {cartProducts && cartProducts.length ? (
@@ -65,6 +66,7 @@ export default function Cart() {
           </div>
         )}
       </div>
+    </div>
     </div>
   );
 }

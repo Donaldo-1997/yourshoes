@@ -2,6 +2,7 @@ import styles from "./CartItem.module.css";
 
 const CartItem = ({ data, deleteProduct }) => {
   let { id, image, price, quantity } = data;
+  console.log("CANTIDAD", quantity)
   return (
     <div className={styles.container}>
       <img src={image} alt="Img Not Found" className={styles.imgCart} />

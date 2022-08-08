@@ -7,7 +7,6 @@
   border-radius: 8px;
   border: solid black;
   margin: 2%;
-<<<<<<< HEAD
   margin-left: 607px;
   margin-top: 60px;
   border-width: 2px;
@@ -25,12 +24,10 @@
 .container::-webkit-scrollbar-thumb:hover {
   background: #b3b3b3;
   box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
-=======
   margin-left: 575px;
   margin-top: 60px;
   width: 700px;
   border-width: 2px;
->>>>>>> 3a2c6a0 (Cambios de estilos)
 }
 .favoritosTitle {
   /* IMPORTANTE */
@@ -49,11 +46,7 @@
   font-family: Anton;
   font-size: 2rem;
   text-transform: uppercase;
-<<<<<<< HEAD
   color: #fd7e14
-=======
-  color: #f87e2d;
->>>>>>> 3a2c6a0 (Cambios de estilos)
 }
 /* .containerCards{
 .favoritosTitle2{
@@ -87,11 +80,11 @@
   text-decoration: none;
 }
 
-<<<<<<< HEAD
+
 .alertaFavs{
   color: white
 }
-=======
+
 .userName{
   color: white
 }
@@ -99,4 +92,4 @@
 .mensaje{
   color: white
 }
->>>>>>> 3a2c6a0 (Cambios de estilos)
+
