@@ -6,16 +6,14 @@
 
 .yourShoes{
     font-family: 'Anton';
-font-style: normal;
-font-weight: 400;
-font-size: 2rem;
-line-height: 100%;
-text-transform: uppercase;
-/* or 60px */
-
-letter-spacing: 0.04em;
-
-color: #000000;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 2rem;
+    line-height: 100%;
+    text-transform: uppercase;
+    /* or 60px */
+    letter-spacing: 0.04em;
+    color: white;
 }
 
 .yourShoes span{
@@ -28,7 +26,7 @@ color: #000000;
 }
 
 .navbar{
-    background: rgba(143, 53, 53, 0.9);
+    background-color: #404040;
     width: 100%;
     position:fixed;
     z-index: 100;
@@ -73,10 +71,9 @@ color: #000000;
 }
 
 .img {
-   
   height: 49px;
   background-repeat: no-repeat;
   background-position: 50%;
   border-radius: 50%;
   background-size: 100% auto;
-  }
+}
