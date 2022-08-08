@@ -2,11 +2,6 @@ const { DataTypes } = require('sequelize')
 
 module.exports = (sequelize) => {
     sequelize.define('order', {
-        id: {
-            type: DataTypes.BIGINT,
-            primaryKey:true,
-            allownull:false
-        },
         amount:{
             type: DataTypes.INTEGER,
             allownull: false
@@ -24,7 +19,7 @@ module.exports = (sequelize) => {
             allownull: false
         },
         date:{
-            type: DataTypes.STRING,
+            type: DataTypes.DATE,
             allownull: false
         },
         isActive:{

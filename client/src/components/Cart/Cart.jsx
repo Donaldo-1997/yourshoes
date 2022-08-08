@@ -11,7 +11,7 @@ export default function Cart() {
   const dispatch = useDispatch();
   console.log(cartProducts, "Soy el producto añadido al carrito")
   
-  const user = useSelector(state => state.user)
+
   let precios = 0;
   for (let i = 0; i < cartProducts.length; i++) {
     if (cartProducts[i].quantity === 1) {
@@ -67,7 +67,7 @@ export default function Cart() {
         ) : (
           <div className={styles.containerSinDato}>
             <h5>El carrito está vacío.</h5>
-            <h5>Vuelve y escoje tus zapatillas favoritas!</h5>
+            <h5>Vuelve y escoge tus zapatillas favoritas!</h5>
           </div>
         )}
       </div>

@@ -14,10 +14,9 @@ const mercadoRouter = require("./mercadopago.js")
 const size = require("./size")
 const nodemailer = require("./nodemailer.js")
 const stock = require ("./stock");
-<<<<<<< HEAD
+
 const order = require ("./order")
-=======
->>>>>>> dfcb69e4dda8ae352f52b6ee9a06260c43a57fa0
+
 
 
 //--------------------------ROUTES
