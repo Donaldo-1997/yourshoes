@@ -21,13 +21,15 @@ export default function ProductDetail({ id }) {
   const cartProducts = useSelector((state) => state.cart);
   
   const myShoes = useSelector((state) => state.detail);
+  let cantidad = 1
   console.log(myShoes, "soy my shoes")
-  const [size, SetSize]= useState()
+  const [size, setSize]= useState([])
   const shoesAdd ={
     id: id,
-    size: parseInt(size)
+    size: size.map(e=>parseInt(e)),
+    quantity: size.length
   }
-
+  console.log(shoesAdd, "shoesAdd")
   const handleToast = () => {
     toast.error("Debes estar logueado para poder comprar", {
       className: "buy-toast",
@@ -50,9 +52,17 @@ export default function ProductDetail({ id }) {
   // }
   const handleOnChangeSize = (e)=>{
     e.preventDefault()
-    SetSize(e.target.value)
+    setSize(
+      size.concat(e.target.value)
+    )
   }
-
+  const handleDeleteSizes = (e,el)=>{
+    e.preventDefault()
+    setSize(
+      size.filter(en =>en !== el)
+    )
+  }
+  console.log(size)
    useEffect(() => {
     if(cartProducts && cartProducts.length){
     addLocalStorage()
@@ -66,6 +76,7 @@ export default function ProductDetail({ id }) {
       draggable: true,
       position: toast.POSITION.TOP_CENTER,
     });
+    setSize([])
   };
 
   return (
@@ -82,6 +93,7 @@ export default function ProductDetail({ id }) {
             <div className={styles.sizePriceCont}>
               <div className={styles.sizeContainer}>
                 <h1 className={styles.size}>Talle: </h1>
+                <h4> Cantidad={size.length >= 1? cantidad * size.length:0}</h4>
                 <select className={styles.selectSize}
                         onChange={(e) => {handleOnChangeSize(e) }}>
                             <option></option>
@@ -89,6 +101,12 @@ export default function ProductDetail({ id }) {
                             <option  key={i} value={s.number}>{s.number}</option>
                         ))}
                     </select>
+                     {size.length && size.map((sn, i) => (
+                    <span 
+                    key={i}
+                    onClick={(e) => {handleDeleteSizes(e,sn)}}
+                    >{sn} x </span>
+                    ))}
               </div>
               <h3 className={styles.price}>${myShoes.price}</h3>
             </div>          
