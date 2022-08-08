@@ -17,7 +17,7 @@ export default function Favorites() {
   const deleteProduct = (id) => {
     dispatch(deleteOneToFav({ FavId: id}));
   };
-  const usuario = useSelector((state) => state.user);
+  const usuario = useSelector((state) => state.user)
 
   return (
     <div>
