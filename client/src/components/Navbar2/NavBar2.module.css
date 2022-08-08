@@ -15,7 +15,7 @@ text-transform: uppercase;
 
 letter-spacing: 0.04em;
 
-color: #000000;
+color: white;
 }
 
 .yourShoes span{
@@ -28,7 +28,7 @@ color: #000000;
 }
 
 .navbar{
-    background: rgba(143, 53, 53, 0.9);
+    background: #404040;
     width: 100%;
     position:fixed;
     top: 0;
