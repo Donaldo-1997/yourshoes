@@ -54,11 +54,8 @@ const initialState = {
   users: [],
   usersCopy: [],
   sizes: [],
-<<<<<<< HEAD
-  brands: []
-=======
+  brands: [],
   reviews:[],
->>>>>>> 7e778de (Reviews)
 };
 
 export default function rootReducer(state = initialState, action) {

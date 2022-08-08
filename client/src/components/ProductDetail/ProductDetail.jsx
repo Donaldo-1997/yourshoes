@@ -6,13 +6,9 @@ import styles from "./ProductDetail.module.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useState } from "react";
-<<<<<<< HEAD
-import { ReviewsDetail } from "../ReviewsDetail/ReviewsDetail";
-export default function ProductDetail() {
-=======
 
 export default function ProductDetail({ id }) {
->>>>>>> e923fc4aa3ba5ea64ed9f4ff5fff3c0e9eb704b3
+
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getDetails(id));
@@ -115,11 +111,8 @@ export default function ProductDetail({ id }) {
               >
                 Añadir al carro
               </button>{" "}
-<<<<<<< HEAD
               <ToastContainer />
               <ReviewsDetail user={user} id={myShoes.id} />
-=======
->>>>>>> e923fc4aa3ba5ea64ed9f4ff5fff3c0e9eb704b3
             </div>
           </div>
         </div>

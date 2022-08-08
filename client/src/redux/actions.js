@@ -1,15 +1,6 @@
 import axios from "axios";
-<<<<<<< HEAD
-// import env from "react-dotenv";
-<<<<<<< HEAD
-=======
-import env from "react-dotenv";
 import swal from "sweetalert";
->>>>>>> 7e778de (Reviews)
 
-=======
-//asd
->>>>>>> e923fc4aa3ba5ea64ed9f4ff5fff3c0e9eb704b3
 export const GET_ALL_SHOES = "GET_ALL_SHOES"
 export const GET_DETAILS = "GET_DETAILS"
 export const GET_SHOES_NAME = "GET_SHOES_NAME"
@@ -52,39 +43,19 @@ export const POST_PRODUCT = "POST_PRODUCT"
 export const GET_USER_LOGIN = 'GET_USER_LOGIN'
 export const DELETE_ONE_FROM_FAV = 'DELETE_ONE_FROM_FAV'
 export const PUT_STOCK = "PUT_STOCK"
-<<<<<<< HEAD
 
 const URL = process.env.REACT_APP_URL
 // console.log('URL -->', URL)
-=======
 export const CREATE_REVIEW = "CREATE_REVIEW";
 export const GET_REVIEWS_PRODUCT = "GET_REVIEWS_PRODUCT";
 export const GET_USERS = "GET_USERS";
-const URL = window.env.URL
->>>>>>> 7e778de (Reviews)
 
 export function removerTodo() {
   return {
     type: REMOVER_TODO,
   };
 }
-export const create_new_review = (payload) => {
-  return (dispatch) => {
-    axios.post(`${URL}/reviews`, payload).then(
-      (res) => dispatch({ type: CREATE_REVIEW, payload: res.data }),
-      (error) => swal("Reseña no creada")
-    );
-  };
-};
 
-export const get_reviews = (id) => {
-  return (dispatch) => {
-    axios(`${URL}/reviews/${id}`).then(
-      (json) => dispatch({ type: GET_REVIEWS_PRODUCT, payload: json.data }),
-      (error) => swal(error)
-    );
-  };
-};
 export function getAllShoes() {
   return async function (dispatch) {
     const results = await axios(`${URL}/shoes`);
@@ -613,7 +584,6 @@ export function putProductStock(props){
   }
 }
 
-<<<<<<< HEAD
 // export function putCreatedProduct({id, input}){
 //   return async function (dispatch){
 //     const res = axios.put(`${URL}/shoes/${id}`, input)
@@ -637,7 +607,6 @@ export function getShoeById(id){
   axios(`${URL}/shoes/${id}`)
 }
 
-=======
 export const getUsers = () => {
   return async function (dispatch) {
     try {
@@ -651,4 +620,3 @@ export const getUsers = () => {
     }
   };
 };
->>>>>>> 7e778de (Reviews)
