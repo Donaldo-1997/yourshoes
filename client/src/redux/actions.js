@@ -1,6 +1,5 @@
 import axios from "axios";
 
-//asd
 export const GET_ALL_SHOES = "GET_ALL_SHOES"
 export const GET_DETAILS = "GET_DETAILS"
 export const GET_SHOES_NAME = "GET_SHOES_NAME"
@@ -44,7 +43,11 @@ export const GET_USER_LOGIN = 'GET_USER_LOGIN'
 export const DELETE_ONE_FROM_FAV = 'DELETE_ONE_FROM_FAV'
 export const PUT_STOCK = "PUT_STOCK"
 
+
 const URL = process.env.REACT_APP_URL
+
+// console.log('URL -->', URL)
+
 
 export function removerTodo() {
   return {
@@ -580,6 +583,7 @@ export function putProductStock(props){
   }
 }
 
+
 // export function putCreatedProduct({id, input}){
 //   return async function (dispatch){
 //     const res = axios.put(`${URL}/shoes/${id}`, input)
@@ -602,4 +606,3 @@ export const putCreatedProduct = ({ id, input }) => {
 export function getShoeById(id){
   axios(`${URL}/shoes/${id}`)
 }
-

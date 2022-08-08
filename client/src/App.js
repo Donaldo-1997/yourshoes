@@ -21,6 +21,7 @@ import AdminUsers from "./components/Admin/AdminUsers/AdminUsers";
 import AdminProducts from "./components/Admin/AdminProducts/AdminProducts";
 import Community from "./components/About/Community";
 import EditProduct from "./components/EditProduct/EditProduct";
+import { ToastContainer } from "react-toastify";
 
 
 function App() {
@@ -84,6 +85,7 @@ function App() {
 
   return (
     <Router>
+      <ToastContainer/>
       <Routes>
         <Route exact path="/" element={<HomePage />} />
         <Route exact path="/shoes/:id" element={<ProductDetail />} />
@@ -102,7 +104,6 @@ function App() {
         <Route exact path="/admin/create-product" element={<AdminProducts></AdminProducts>}/>
         <Route exact path="/community" element={<Community/>}/>
         <Route exact path="/edit/:id" element={<EditProduct/>}/>
-        
       </Routes>
       <Footer></Footer>
     </Router>

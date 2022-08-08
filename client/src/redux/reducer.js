@@ -38,7 +38,7 @@ import {
   HYDRATATE_FAV_LS,
   POST_PRODUCT,
   DELETE_ONE_FROM_FAV,
-  
+
 } from "./actions";
 
 const initialState = {
@@ -63,7 +63,7 @@ export default function rootReducer(state = initialState, action) {
         ...state,
         products: action.payload,
       };
-    
+
     case GET_ALL_CATEGORIES:
       return {
         ...state,

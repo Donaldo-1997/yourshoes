@@ -48,7 +48,7 @@ export default function Cart() {
             {cartProducts && cartProducts.map((item, index) => (
               <CartItem key={index} data={item} deleteProduct={deleteProduct} />
             ))}
-            <div>
+            <div className={styles.carrito}>
                 <h2>SUMA TOTAL: ${precios}</h2>
               <div>
                 

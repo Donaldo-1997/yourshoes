@@ -6,7 +6,7 @@
   flex-direction: column;
   align-items: center;
   gap: 0.5rem;
-  background: white;
+  background: #404040;
   height: 100vh;
 }
 .container2 {
@@ -85,4 +85,15 @@ h2 {
 
 .mpLinkBtn{
   padding-right: 10px;
+}
+
+.carrito{
+position: absolute;
+left: 70.97%;
+right: 0%;
+top: -0.53%;
+bottom: 0%;
+
+background: #BBB2B2;
+mix-blend-mode: normal;
 }
