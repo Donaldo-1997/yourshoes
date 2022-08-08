@@ -30,7 +30,7 @@ export default function NavBar({handleReset, handleInputName, handleNameSubmit})
   const user = JSON.parse(localStorage.getItem('user'))
 
   return (
-    <Navbar bg="light" expand="lg" className={styles.navbar}>
+    <Navbar style={{background: "#404040"}} expand="lg" className={styles.navbar}>
       <Container fluid>
         <button onClick={(e) => handleReset(e)} className={styles.resetButton}>
           <Navbar.Brand className={styles.yourShoes}>Your<span>Shoes</span></Navbar.Brand>

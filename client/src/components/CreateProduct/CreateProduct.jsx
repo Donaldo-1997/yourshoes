@@ -184,7 +184,6 @@ export default function CreateProduct(){
                     </div>
                     <div>
                         {!Object.keys(errors).length ? <button type="submit" className={styles.createButton}>CREAR PRODUCTO</button> : <button type="submit" className={styles.createButton} disabled={true}>CREAR PRODUCTO</button>}
-                        <ToastContainer/>
                     </div>
                 </form>
             </div>
