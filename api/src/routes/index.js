@@ -14,7 +14,7 @@ const mercadoRouter = require("./mercadopago.js")
 const size = require("./size")
 const nodemailer = require("./nodemailer.js")
 const stock = require ("./stock");
-const reviewsRouter = require("./review");
+
 
 //--------------------------ROUTES
 router.use("/stock", stock);
@@ -27,7 +27,7 @@ router.use("/brands", brands);
 router.use("/mercadopago", mercadoRouter);
 router.use("/size", size);
 router.use("/nodemailer", nodemailer);
-router.use("/reviews", reviewsRouter);
+
 
 
 // router.get('/', (req, res) => {

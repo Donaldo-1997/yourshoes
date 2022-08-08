@@ -46,6 +46,11 @@ export const PUT_STOCK = "PUT_STOCK"
 
 const URL = process.env.REACT_APP_URL
 
+// console.log('URL -->', URL)
+
+
+
+
 
 export function removerTodo() {
   return {
@@ -604,4 +609,9 @@ export const putCreatedProduct = ({ id, input }) => {
 export function getShoeById(id){
   axios(`${URL}/shoes/${id}`)
 }
+
+
+
+
+
 
