@@ -24,6 +24,7 @@ import EditProduct from "./components/EditProduct/EditProduct";
 import { ToastContainer } from "react-toastify";
 
 
+
 function App() {
   const [user, SetUser] = useState(null)
   useEffect(() => {
@@ -62,13 +63,13 @@ function App() {
       localStorage.setItem("favProducts", JSON.stringify([]));
       localStorage.setItem('user',  JSON.stringify([]))
     }
-  }, []); 
-  useEffect(() => {
-    if (localStorage.length === 0) {
-      localStorage.setItem("products", JSON.stringify([]));
-      localStorage.setItem("favProducts", JSON.stringify([]));
-    }
-  }, [user]);
+  }, [localStorage, user]); 
+  // useEffect(() => {
+  //   if (localStorage.length === 0) {
+  //     localStorage.setItem("products", JSON.stringify([]));
+  //     localStorage.setItem("favProducts", JSON.stringify([]));
+  //   }
+  // }, [user]);
 
     
   const productsLS = JSON.parse(localStorage.getItem("products"));
@@ -104,6 +105,7 @@ function App() {
         <Route exact path="/admin/create-product" element={<AdminProducts></AdminProducts>}/>
         <Route exact path="/community" element={<Community/>}/>
         <Route exact path="/edit/:id" element={<EditProduct/>}/>
+        
       </Routes>
       <Footer></Footer>
     </Router>

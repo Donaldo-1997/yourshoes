@@ -38,8 +38,9 @@ export default function LogIn() {
   }, [user]);
   
   return (
-    <div className={styles.contenedor}>
+    <div>
     <Navbar2></Navbar2>
+    <div className={styles.contenedor}>
       <Formik
         initialValues={{
           email: "",
@@ -108,7 +109,7 @@ export default function LogIn() {
                 )}
               />
             </div>
-            <button type="submit">Enviar</button>
+            <button type="submit" className={styles.enviarBtn}>Enviar</button>
             {formularioEnviado && (
               <p className={styles.exito}>Enviado con exito!</p>
             )}
@@ -123,7 +124,7 @@ export default function LogIn() {
 
             <Link to="/user" className={styles.link}>
               <p>
-                <FcGoodDecision></FcGoodDecision>Registrate
+                <FcGoodDecision></FcGoodDecision> Registrate
               </p>
             </Link>
 
@@ -135,6 +136,7 @@ export default function LogIn() {
           </Form>
         )}
       </Formik>
+    </div>
     </div>
   );
 }

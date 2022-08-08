@@ -42,7 +42,7 @@ export default function ProductCard({ image, title, price, id }) {
       width: "610px",
       height: "650px",
       "border-radius": "10px",
-      background: "#404040",
+      "background": "#212121",
     },
   };
   //MODAL//

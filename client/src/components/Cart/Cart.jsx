@@ -11,7 +11,7 @@ export default function Cart() {
   const dispatch = useDispatch();
   console.log(cartProducts, "Soy el producto añadido al carrito")
   
-  const user = useSelector(state => state.user)
+
   let precios = 0;
   for (let i = 0; i < cartProducts.length; i++) {
     if (cartProducts[i].quantity === 1) {
@@ -33,8 +33,9 @@ export default function Cart() {
   }, [cartProducts]);
 
   return (
-    <div className={styles.container}>
+    <div>
     <Navbar2></Navbar2>
+    <div className={styles.container}>
       {/* <button onClick={clearCart}>Limpiar carrito</button> */}
       <div>
         {cartProducts && cartProducts.length ? (
@@ -42,7 +43,7 @@ export default function Cart() {
             {cartProducts && cartProducts.map((item, index) => (
               <CartItem key={index} data={item} deleteProduct={deleteProduct} />
             ))}
-            <div>
+            <div className={styles.carrito}>
                 <h2>SUMA TOTAL: ${precios}</h2>
               <div>
                 
@@ -61,10 +62,11 @@ export default function Cart() {
         ) : (
           <div className={styles.containerSinDato}>
             <h5>El carrito está vacío.</h5>
-            <h5>Vuelve y escoje tus zapatillas favoritas!</h5>
+            <h5>Vuelve y escoge tus zapatillas favoritas!</h5>
           </div>
         )}
       </div>
+    </div>
     </div>
   );
 }

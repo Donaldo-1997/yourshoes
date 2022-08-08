@@ -4,7 +4,7 @@
     text-decoration-color: grey;
 }
 
-.yourShoes{
+.yourShoes.yourShoes{
     font-family: 'Anton';
 font-style: normal;
 font-weight: 400;
@@ -28,13 +28,11 @@ color: white;
 }
 
 .navbar{
-    background: #404040;
+    background: #212121;
     width: 100%;
     position:fixed;
     top: 0;
     left: 0;
-    
-
 }
 
 .resetButton{

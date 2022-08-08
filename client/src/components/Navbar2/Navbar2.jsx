@@ -10,10 +10,6 @@ import {Link} from 'react-router-dom'
 import styles from './NavBar2.module.css'
 
 
-
-
-
-
 export default function NavBar() {
 
   

@@ -10,9 +10,8 @@ const router = Router();
 router.get("/", async (req, res) => {
   try {
     const data = await User.findAll({
-      order: [['name', "ASC"]],
       include: [
-        { model: Order, attributes: ['id'] },
+        { model: Order},
       ]
     })
     res.status(200).json(data)

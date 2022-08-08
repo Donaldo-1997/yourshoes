@@ -19,12 +19,15 @@
   margin-top: auto;
   bottom: 0px;
   width: 100%;
+  font-family: Anton;
+  letter-spacing: 0.1rem;
+  transition: none;
 }
 .footer p {
   color: #8a8a8a;
 }
 .footer h3 {
-  color: #fff;
+  color:#f87d2d;
   margin-bottom: 20px;
   margin-top: auto;
 }
@@ -54,6 +57,11 @@
   /* font-weight: 300; */
   /* display: block; */
   color:grey;
-  transition: all 0.5s ease;
+  
   list-style: none;
+}
+.boton:hover{
+  transition: none;
+  color: #f87d2d;
+  transition: all 0.5s ease;
 }

@@ -29,7 +29,7 @@
 }
 
 .yourShoes span{
-    color:#F87D2D
+    color: black
 }
 
 .Login {
@@ -42,7 +42,7 @@
 	min-width: 500px;
     min-height: 400px;
 	margin-top: 0px;
-    background: linear-gradient(90deg, rgb(185, 134, 69) 0%, rgb(195, 97, 33) 35%, rgb(216, 90, 6) 95%);
+    background: #f87d2d;
 	border-radius: 5px;
 	padding: 20px;
 	box-shadow: rgba(0, 0, 0, 0.833) 0px 1px 4px;
@@ -120,4 +120,8 @@
 	font-size: 20px;
 	color: #fcf5f5;
 	cursor: pointer;
+}
+
+.enviarBtn{
+	background: #000000;
 }
