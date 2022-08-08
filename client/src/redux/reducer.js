@@ -114,9 +114,11 @@ export default function rootReducer(state = initialState, action) {
 
     case ADD_ONE_TO_CART:
       const newItem = state.products && state.products.find((product) => product.id === action.payload.id);
-      const newItemSize = state.sizes && state.sizes.find((size) => size.number=== action.payload.size);
+      const newItemSize = action.payload.size
+      const newQuantity = action.payload.quantity
       console.log(action.payload, "soy reducer")
-      let itemInCart = state.cart && state.cart.find((item) => item.id === newItem.id && item.size=== newItemSize.id);
+      console.log(newQuantity, "soy newQuantity")
+      let itemInCart = state.cart && state.cart.find((item) => item.id === newItem.id );
       console.log(state.cart, "soy cart")
       return itemInCart
         ? {
@@ -129,7 +131,7 @@ export default function rootReducer(state = initialState, action) {
         }
         : {
           ...state,
-          cart: state.cart && [...state.cart, { ...newItem, quantity: 1, sizeNumber: action.payload.size }],
+          cart: state.cart && [...state.cart, { ...newItem, quantity: newQuantity, sizeNumber: newItemSize }],
         };
 
     case DELETE_ONE_FROM_CART:
@@ -338,13 +340,7 @@ export default function rootReducer(state = initialState, action) {
           ...state,
           favorites: state.favorites.filter((item) => item.id !== FavId),
         };
-      }
-    // eslint-disable-next-line no-fallthrough
-
-    // case "PUT_CREATED_PRODUCT":
-    //   return{
-    //     ...state
-    //   }
+      }break
     default:
       return state;
   }
