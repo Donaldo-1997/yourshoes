@@ -1,5 +1,4 @@
 import axios from "axios";
-import swal from "sweetalert";
 
 export const GET_ALL_SHOES = "GET_ALL_SHOES"
 export const GET_DETAILS = "GET_DETAILS"
@@ -44,11 +43,9 @@ export const GET_USER_LOGIN = 'GET_USER_LOGIN'
 export const DELETE_ONE_FROM_FAV = 'DELETE_ONE_FROM_FAV'
 export const PUT_STOCK = "PUT_STOCK"
 
+
 const URL = process.env.REACT_APP_URL
-// console.log('URL -->', URL)
-export const CREATE_REVIEW = "CREATE_REVIEW";
-export const GET_REVIEWS_PRODUCT = "GET_REVIEWS_PRODUCT";
-export const GET_USERS = "GET_USERS";
+
 
 export function removerTodo() {
   return {
@@ -584,6 +581,7 @@ export function putProductStock(props){
   }
 }
 
+
 // export function putCreatedProduct({id, input}){
 //   return async function (dispatch){
 //     const res = axios.put(`${URL}/shoes/${id}`, input)
@@ -607,16 +605,3 @@ export function getShoeById(id){
   axios(`${URL}/shoes/${id}`)
 }
 
-export const getUsers = () => {
-  return async function (dispatch) {
-    try {
-      var json = await axios.get(`${URL}/user/`);
-      return dispatch({
-        type: GET_USERS,
-        payload: json.data,
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  };
-};

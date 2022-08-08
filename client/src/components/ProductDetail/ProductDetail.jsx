@@ -7,6 +7,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useState } from "react";
 
+
 export default function ProductDetail({ id }) {
 
   const dispatch = useDispatch();
@@ -113,6 +114,7 @@ export default function ProductDetail({ id }) {
               </button>{" "}
               <ToastContainer />
               <ReviewsDetail user={user} id={myShoes.id} />
+
             </div>
           </div>
         </div>

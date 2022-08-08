@@ -1,4 +1,6 @@
-
+.container{
+    background-color: rgba(0, 0, 0, 0.481);
+}
 .filtersContainer{
     display: flex;
     margin-top: 10px;

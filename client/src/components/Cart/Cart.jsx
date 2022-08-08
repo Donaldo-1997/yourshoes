@@ -35,6 +35,12 @@ export default function Cart() {
   return (
     <div className={styles.container}>
     <Navbar2></Navbar2>
+      <Link to="/">
+        <button className={styles.yourshoes}>
+          YOUR<span className={styles.shoes}>SHOES</span>
+        </button>
+      </Link>
+
       {/* <button onClick={clearCart}>Limpiar carrito</button> */}
       <div>
         {cartProducts && cartProducts.length ? (
@@ -42,7 +48,7 @@ export default function Cart() {
             {cartProducts && cartProducts.map((item, index) => (
               <CartItem key={index} data={item} deleteProduct={deleteProduct} />
             ))}
-            <div>
+            <div className={styles.carrito}>
                 <h2>SUMA TOTAL: ${precios}</h2>
               <div>
                 
