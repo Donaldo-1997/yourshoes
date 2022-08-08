@@ -13,19 +13,20 @@ export default function ProductDetail() {
   useEffect(() => {
     dispatch(getDetails(id));
   }, [dispatch, id]);
-
+  let cantidad = 1
   const user = useSelector(state => state.user)
 
   const cartProducts = useSelector((state) => state.cart);
   
   const myShoes = useSelector((state) => state.detail);
   console.log(myShoes, "soy my shoes")
-  const [size, SetSize]= useState()
+  const [size, setSize]= useState([])
   const shoesAdd ={
     id: id,
-    size: parseInt(size)
+    size: size.map(e=>parseInt(e)),
+    quantity: cantidad * size.length
   }
-
+  console.log(shoesAdd, "shoesAdd")
   const addLocalStorage = () => {
     localStorage.setItem("products", JSON.stringify(cartProducts));
   };
@@ -34,14 +35,18 @@ export default function ProductDetail() {
     localStorage.getItem("products");
   };
 
-  //  const addToCartToast = () => {
-    
-  // }
   const handleOnChangeSize = (e)=>{
     e.preventDefault()
-    SetSize(e.target.value)
+    setSize(
+      size.concat(e.target.value)
+    )
   }
-
+  const handleDeleteSize = (sn) => {
+    setSize(
+       size.filter(el => el !== sn )
+    )
+  }
+  console.log(size)
    useEffect(() => {
     if(cartProducts && cartProducts.length){
     addLocalStorage()
@@ -55,6 +60,7 @@ export default function ProductDetail() {
       draggable: true,
       position: toast.POSITION.TOP_CENTER,
     });
+    setSize([])
   };
 
   return (
@@ -74,7 +80,8 @@ export default function ProductDetail() {
           />
           <div className={styles.divContent}>
             <h1 className={styles.title}>{myShoes.title}</h1>
-            <h3 className={styles.price}>${myShoes.price}</h3>
+            <h4>Cantidad = {size.length>=1?cantidad * size.length: 0}</h4>
+            <h3 className={styles.price}> Total ${size.length>=2? myShoes.price*size.length:myShoes.price}</h3>
             <h5>descripcion del producto</h5>
             <h1 className={styles.size}>Talle: </h1>
             <select
@@ -84,29 +91,31 @@ export default function ProductDetail() {
                         <option  key={i} value={s.number}>{s.number}</option>
                     ))}
                 </select>
+                {size.length && size.map((cn, i) => (
+                    <span key={i}
+                        onClick={() =>{handleDeleteSize(cn)}}
+                    >{cn} x  </span>
+                ))} 
         
             <div className={styles.buttons}>
-            {
-              !Object.keys(user).length ?  <Link to='/login'><button className={styles.cart}>
+            {!Object.keys(user).length ?  <Link to='/login'><button className={styles.cart}>
                     Logueate para comprar
                   </button></Link> :
               <Link to="/mercadopago/pagos">
                 <button
                   className={styles.cart}
                   onClick={() => addToCart(myShoes.id)}
-                  id={myShoes.id}
-                >
+                  id={myShoes.id}>
                   Comprar
                 </button>
               </Link>}
               <button
                 className={styles.cart}
                 onClick={() => addToCart( myShoes.id)}
-                id={myShoes.id}
-              >
+                id={myShoes.id}>
                 Añadir al carro
               </button>{" "}
-              <ToastContainer />
+              <ToastContainer/>
             </div>
           </div>
         </div>

@@ -43,6 +43,8 @@ export const POST_PRODUCT = "POST_PRODUCT"
 export const GET_USER_LOGIN = 'GET_USER_LOGIN'
 export const DELETE_ONE_FROM_FAV = 'DELETE_ONE_FROM_FAV'
 export const PUT_STOCK = "PUT_STOCK"
+export const POST_ORDER = 'POST_ORDER'
+export const GET_ALL_USERS = 'GET_ALL_USERS'
 
 const URL = process.env.REACT_APP_URL
 
@@ -579,6 +581,15 @@ export function putProductStock(props){
     })
   }
 }
+export function postOrder(props){
+  return async function(dispatch){
+    const result = axios.post(`${URL}/order`, props)
+    return dispatch({
+      type: POST_ORDER,
+      payload: result.data
+    })
+  }
+}
 
 // export function putCreatedProduct({id, input}){
 //   return async function (dispatch){
@@ -603,3 +614,12 @@ export function getShoeById(id){
   axios(`${URL}/shoes/${id}`)
 }
 
+export function getAllUsers(){
+  return async function(dispatch){
+    const result = axios(`${URL}/user`)
+    return dispatch({
+      type: GET_ALL_USERS,
+      payload: result.data
+    })
+  }
+}
