@@ -15,8 +15,12 @@ const size = require("./size")
 const nodemailer = require("./nodemailer.js")
 const stock = require ("./stock");
 
+const order = require ("./order")
+
+
 
 //--------------------------ROUTES
+router.use("/order", order)
 router.use("/stock", stock);
 router.use("/auth", auth_email);
 router.use("/login", login);

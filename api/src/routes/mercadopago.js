@@ -4,6 +4,8 @@ const { ACCESS_TOKEN } = process.env;
 const { Router } = require("express");
 const router = Router();
 const { Product, Size } = require("../db");
+const {Op} = require('sequelize');
+const e = require("express");
 
 
 mercadopago.configure({
@@ -14,6 +16,7 @@ router.post("/", function (req, res) {
   try{
     ordenID = 1;
   if(req.body.as.length===0) res.status(400).send("Carrito vacío")
+  const userBody = req.body.userId
   const items_ml = req.body.as.map((p) => ({
     name: p.title,
     quantity: p.quantity,
@@ -55,33 +58,42 @@ router.post("/", function (req, res) {
 router.put("/", async (req, res) => {
   try{
     const idAll = req.body.cart;
-  console.log(idAll)
-  let productId = [];
-  let sizeId = [];
-  let productArray = [];
-
-  for (let i = 0; i < idAll.length; i++) {
-    productId.push(idAll[i].id) && sizeId.push(idAll[i].sizeNumber);
+    let productId = [];
+    let sizeId ;
+    let productArray = [];
+    
+    for (let i = 0; i < idAll.length; i++) {
+      sizeId=idAll[i].sizeNumber;
+      productId.push(idAll[i].id)
+      console.log(sizeId)
   }
 
   for (let i = 0; i < productId.length; i++) {
      const productCopy = await Product.findOne({
-      where: { id: productId[i] },include:[{model:Size, where:{number:sizeId[i]}}]})
+      where: { id: productId[i] },include:[{model:Size, where:{number:{[Op.or]:sizeId.map(e=>e)}}}]})
+     console.log(productCopy.sizes.map(e=>e))
       const data = productCopy.sizes.map(s=>s.id)
-      const data1 = productCopy.sizes.map(s=>s.stock-1)
-      const data2 = productCopy.sizes.map(s=>s.solds+1)
-    productCopy.removeSize(data)
-    const newSize = await Size.create({
-      number:sizeId[i],
-      stock:data1,
-      solds:data2
-    })
-    await productCopy.addSize(newSize)
-    await productCopy.save();
+     
+    productCopy.removeSizes(data)
+   
+    for (let j = 0; j < productCopy.sizes.length; j++) {
+      const newSizes = await  Size.create({
+            number: productCopy.sizes[j].number,
+            stock: productCopy.sizes[j].stock -1,
+            solds: productCopy.sizes[j].solds +1
+        })
+        console.log(newSizes)
+      await productCopy.addSize(newSizes)
+      }
+      await productCopy.save();
+  
     productArray.push(productCopy);
    }
+
    res.status(200).json(productArray)
+
   } catch(error){
+    console.log(error)
     res.status(404).json(error)
   }
 });
