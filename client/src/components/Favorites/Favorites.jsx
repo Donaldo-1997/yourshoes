@@ -38,12 +38,16 @@ export default function Favorites() {
               </div>
             ) : (
               <div>
+
                 <h4 className={styles.alertaFavs}>Todavia no tienes productos agregados a favoritos</h4>
+
               </div>
             )}
           </div>
         ) : (
-          <h4 className={styles.alertaFavs}>Debes estar logueado para ver tus productos favoritos</h4>
+
+          <h4 className={styles.mensaje}>Tienes que estar logueado para ver tus productos favoritos</h4>
+
         )}
       </div>
     </div>
