@@ -23,12 +23,8 @@ export default function Favorites() {
 
     <div className={styles.container}>
     <Navbar2></Navbar2>
-      <Link to="/" className={styles.yourShoes}>
-        YOUR<span>SHOES</span>
-      </Link>
       <div className={styles.favoritosTitle}>
-        <h3 className={styles.favoritosTitle2}>Favoritos</h3>
-        <h2>HOLA! {usuario.displayName}</h2>
+        <h3 className={styles.favoritosTitle2}>Tus productos favoritos</h3>
       </div>
 
       <div>
@@ -42,12 +38,12 @@ export default function Favorites() {
               </div>
             ) : (
               <div>
-                <h4>no hay nada</h4>
+                <h4 className={styles.alertaFavs}>Todavia no tienes productos agregados a favoritos</h4>
               </div>
             )}
           </div>
         ) : (
-          <h1>tienes que registrarte</h1>
+          <h4 className={styles.alertaFavs}>Debes estar logueado para ver tus productos favoritos</h4>
         )}
       </div>
     </div>

@@ -1,16 +1,29 @@
 .container {
-  display: flex;
   justify-content: center;
   text-align: center;
   align-items: center;
   flex-direction: column;
   gap: 0.5rem;
-  border-radius: 20px;
+  border-radius: 8px;
   border: solid black;
   margin: 2%;
-  margin-right: 20%;
-  margin-left: 20%;
+  margin-left: 607px;
   margin-top: 60px;
+  border-width: 2px;
+  width: 660px;
+  height: 417px;
+  overflow-y: scroll;
+}
+.container::-webkit-scrollbar{
+  width: 8px;     
+}
+.container::-webkit-scrollbar-thumb {
+  background: #fd7e14;
+  border-radius: 4px;
+}
+.container::-webkit-scrollbar-thumb:hover {
+  background: #b3b3b3;
+  box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
 }
 .favoritosTitle {
   /* IMPORTANTE */
@@ -29,6 +42,7 @@
   font-family: Anton;
   font-size: 2rem;
   text-transform: uppercase;
+  color: #fd7e14
 }
 /* .containerCards{
 .favoritosTitle2{
@@ -60,4 +74,8 @@
 
 .yourShoes:hover {
   text-decoration: none;
+}
+
+.alertaFavs{
+  color: white
 }

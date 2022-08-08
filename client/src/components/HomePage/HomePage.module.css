@@ -1,5 +1,5 @@
 .container{
-    background-color: rgba(0, 0, 0, 0.481);
+    background-color: #212121;
 }
 .filtersContainer{
     display: flex;
@@ -21,7 +21,7 @@
     margin-right: 10px;
     outline: 0px;
     width: 117px;
-    background: #404040;
+    background: #212121;
     color: #f87d2d;
 }
 

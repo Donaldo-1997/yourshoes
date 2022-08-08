@@ -112,7 +112,7 @@ export default function ProductDetail({ id }) {
               >
                 Añadir al carro
               </button>{" "}
-              <ToastContainer />
+             
              
 
             </div>

@@ -18,6 +18,7 @@
   margin-top: 20px;
   width: 400px;
   border-color: #000000;
+  border-width: 2px;
 }
 
 .divCard h5 {
@@ -52,11 +53,9 @@
 
 .imagen {
   left: 2rem;
-  border: solid #f87d2d;
   border-radius: 10px;
   width: 400px;
   height: 210px;
-  border-color: #000000;
 }
 
 .select {
