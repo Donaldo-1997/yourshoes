@@ -38,6 +38,8 @@ import NavBar from "../NavBar/NavBar";
 // import About from "../About/Footer";
 import styles from "./HomePage.module.css";
 
+
+
 export default function HomePage() {
   const dispatch = useDispatch();
   const allProducts = useSelector((state) => state.products);
