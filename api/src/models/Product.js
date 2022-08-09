@@ -26,7 +26,7 @@ module.exports = (sequelize) => {
         sold: {
             type: DataTypes.INTEGER,
             allownull: false,
-        },      
+        },
         isActive: {
             type: DataTypes.BOOLEAN,
             defaultValue: true,

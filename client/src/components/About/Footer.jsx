@@ -7,33 +7,29 @@ export default function About() {
       <div className={styles.container}>
         <div className={styles.row}>
           <div className={styles.footer_col}>
-            <h3>ABOUT</h3>
+            <h3>NOSOTROS</h3>
             <ul>
-              <li><Link to="/aboutUs">ABOUT US</Link></li>
-              <li>COMMUNITY</li>
-              <li>CONTACT</li>
+
+              <li><Link to="/aboutUs"><span className={styles.boton}>SOBRE NOSOTROS</span></Link></li>
+              <li><Link to="/community"><span className={styles.boton}>EQUIPO DE YOURSHOES</span></Link></li>
+
             </ul>
           </div>
           <div className={styles.footer_col2}>
-            <h3>PRODUCTS</h3>
-            <ul>
-              <li>ZAPATILLAS PARA LA FLIA</li>
+            <h3 className={styles.msgHenry}>Hecho con 🧡 por los alumnos de Henry</h3>
+            <ul className={styles.yourshoesFooter}>
+              <li className={styles.font}>YOURSHOES © 2022 | Todos los derechos reservados.</li>
             </ul>
           </div>
           <div className={styles.footer_col3}>
-            <h3>SUPPORT</h3>
+            <h3>SOPORTE</h3>
             <ul>
-              <li>FAQ</li>
-              <li>CONTACT SUPPORT</li>
+              <li>PREGUNTAS FRECUENTES</li>
+              <li>CONTACTO</li>
             </ul>
-          </div>
-          <div>
-            <h3>NEWSLETTER</h3>
-            <input type="email" placeholder="Email: " />
           </div>
         </div>
         <hr />
-      
       </div>
     </div>
   );

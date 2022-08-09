@@ -14,6 +14,8 @@ export const Dashboard = styled.div`
     box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
     border-radius: 10px;
     height: 100px;
+    color: white;
+    margin-left: 100px;
 `
 
 export const Left = styled.div`
@@ -34,6 +36,7 @@ export const TitleCard = styled.h4`
     color: ${(props) => props.theme.font_alt};
     margin-top: 5px;
     margin-bottom: 5px;
+    
 `
 
 export const SubTitleCard = styled.p`

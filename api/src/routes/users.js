@@ -1,5 +1,5 @@
 const { Router } = require('express');
-const { User, Order, Review } = require('../db.js');
+const { User, Order } = require('../db.js');
 const { Op } = require('sequelize')
 const { validateAttributes, validateAttribute } = require('../controllers/validation');
 const router = Router();
@@ -10,10 +10,8 @@ const router = Router();
 router.get("/", async (req, res) => {
   try {
     const data = await User.findAll({
-      order: [['name', "ASC"]],
       include: [
-        { model: Review },
-        { model: Order, attributes: ['id'] },
+        { model: Order},
       ]
     })
     res.status(200).json(data)
@@ -27,7 +25,7 @@ router.get("/:id", async (req, res) => {
   const {id} = req.params
   try{
     if(id){
-      const user = await User.findByPk(id)
+      const user = await User.findByPk(id, { include:[{ all: true }] })
         res.status(200).json(user)
     }
   }catch(error){

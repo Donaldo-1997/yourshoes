@@ -36,3 +36,18 @@
     transform: rotate(360deg);
   }
 }
+
+#root{
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: #212121;
+}
+
+select{
+  cursor: pointer;
+}
+
+Body{
+  background: rgba(0, 0, 0, 0.481);
+}

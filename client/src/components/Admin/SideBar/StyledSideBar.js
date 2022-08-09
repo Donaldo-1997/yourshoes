@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
-import PetsOutlinedIcon from '@mui/icons-material/PetsOutlined';
 import AttachMoneyOutlinedIcon from '@mui/icons-material/AttachMoneyOutlined';
 import DashboardOutlinedIcon from '@mui/icons-material/DashboardOutlined';
 import FormatListBulletedOutlinedIcon from '@mui/icons-material/FormatListBulletedOutlined';
@@ -8,7 +7,7 @@ import FormatListNumberedOutlinedIcon from '@mui/icons-material/FormatListNumber
 import FormatListNumberedRtlOutlinedIcon from '@mui/icons-material/FormatListNumberedRtlOutlined';
 import {Link} from'react-router-dom';
 import Inventory2OutlinedIcon from '@mui/icons-material/Inventory2Outlined';
-
+import AddBoxOutlinedIcon from '@mui/icons-material/AddBoxOutlined';
 
 export const ListDiv = styled.div`
     padding-left: 10px;
@@ -75,6 +74,11 @@ export const IconList2 = styled(FormatListNumberedOutlinedIcon)`
 export const IconList3 = styled(FormatListNumberedRtlOutlinedIcon)`
     font-size: 18px;
     color: ${(props) => props.theme.secondary};
+`
+
+export const IconCreate = styled(AddBoxOutlinedIcon)`
+    font-size: 18px;
+    color: rgb(248, 125, 45);
 `
 
 export const Text = styled.span`

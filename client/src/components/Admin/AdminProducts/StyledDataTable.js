@@ -32,4 +32,5 @@ export const TablaOscura = styled(Table)`
 
 export const TextTable = styled.p`
     color: ${(props) => props.theme.search};
+    font-size: 14px;
 `

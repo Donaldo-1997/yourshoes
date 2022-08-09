@@ -4,7 +4,7 @@
     text-decoration-color: grey;
 }
 
-.yourShoes{
+.yourShoes.yourShoes{
     font-family: 'Anton';
 font-style: normal;
 font-weight: 400;
@@ -15,7 +15,7 @@ text-transform: uppercase;
 
 letter-spacing: 0.04em;
 
-color: #000000;
+color: white;
 }
 
 .yourShoes span{
@@ -27,14 +27,13 @@ color: #000000;
     
 }
 
-.navbar{
-    background: rgba(143, 53, 53, 0.9);
+.navbar.navbar{
+    background: #212121;
     width: 100%;
     position:fixed;
     top: 0;
     left: 0;
-    
-
+    position: fixed;
 }
 
 .resetButton{
@@ -68,3 +67,18 @@ color: #000000;
     text-transform: uppercase;
     font-family: Inter;
 }
+
+.img {
+   
+    height: 49px;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    border-radius: 50%;
+    background-size: 100% auto;
+    }
+
+    .containerLogout {
+        display: flex;
+        align-items: center;
+        text-align: center;
+    }

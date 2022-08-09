@@ -78,4 +78,10 @@
   justify-content: center;
   text-align: center;
   align-items: center;
+  cursor: pointer;
 }
+
+.allContainer{
+  height: 293px;
+}
+

@@ -2,7 +2,6 @@ import React from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { FaSearch } from "react-icons/fa";
-import styles from './SearchBar.module.css'
 
 
 export default function Searchbar({handleInputName, handleNameSubmit}) {

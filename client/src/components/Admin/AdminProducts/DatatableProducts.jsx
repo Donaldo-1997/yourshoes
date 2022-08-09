@@ -7,9 +7,10 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { useSelector, useDispatch } from 'react-redux';
-
+import NavBar2 from "../../Navbar2/Navbar2"
 import { TextTable } from "./StyledDataTable";
 import { getAllShoes } from "../../../redux/actions";
+import NavBar from "../../NavBar/NavBar";
 
 
 
@@ -17,7 +18,7 @@ export default function DatatableProducts() {
 
     const dispatch = useDispatch()
     const products = useSelector((state) => state.products)
-    console.log('products', products)
+    // console.log('products', products)
     
     const [page, setPage] = useState(0);
 
@@ -40,7 +41,7 @@ export default function DatatableProducts() {
 
     return (
         <div >
-       
+            <NavBar2/>
             <TableContainer component={Paper} className='table' >
                     <TableHead>
                         <TableRow>
@@ -55,7 +56,7 @@ export default function DatatableProducts() {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {products.length && products.map((p, index) => (
+                        {products.length && products.slice(0, 50).map((p, index) => (
                             <TableRow key={index}>
                                 <TableCell className="tableCell"><TextTable>{p.id}</TextTable></TableCell>
                                 <TableCell className="tableCell">
@@ -65,10 +66,10 @@ export default function DatatableProducts() {
                                 </TableCell>
                                 <TableCell className="tableCell"><TextTable>{p.price}</TextTable></TableCell>
                                 <TableCell className="tableCell"><TextTable>{p.model}</TextTable></TableCell>
-                                <TableCell className="tableCell"><TextTable>{p.image}</TextTable></TableCell>
+                                <TableCell className="tableCell"><img src={p.image} alt="product" width="50" /></TableCell>
                                 <TableCell className="tableCell"><TextTable>{p.sold}</TextTable></TableCell>
-                                <TableCell className="tableCell"><TextTable>{p.isActive}</TextTable></TableCell>
-                                {/* <TableCell className="tableCell"><TextTable>{p.brand ? p.brand : 'Sin marca'}</TextTable></TableCell> */}
+                                <TableCell className="tableCell"><TextTable>{p.isActive ? 'true' : 'false'}</TextTable></TableCell>
+                                <TableCell className="tableCell"><TextTable>{p.brand ? p.brand.name : 'Sin marca'}</TextTable></TableCell>
                                 {/* <TableCell>
                                     <DivButtons>
                                         <ButtonEdit to={`/admin/profilepets/${p.id}`}>Editar</ButtonEdit>

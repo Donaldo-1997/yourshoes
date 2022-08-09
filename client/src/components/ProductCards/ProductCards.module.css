@@ -10,7 +10,6 @@
 
 .container .card {
   width: 210px;
-  border: solid 2px black;
   border-radius: 8px;
   overflow: hidden;
   margin: 20px;
@@ -21,4 +20,8 @@
 
 .Link {
   text-decoration: none;
+}
+
+.container .card:hover{
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 }

@@ -1,4 +1,6 @@
-
+.container{
+    background-color: #212121;
+}
 .filtersContainer{
     display: flex;
     margin-top: 10px;
@@ -19,11 +21,17 @@
     margin-right: 10px;
     outline: 0px;
     width: 117px;
+    background: #212121;
+    color: #f87d2d;
 }
 
 .priceButton{
     border-radius: 50%;
     border: none;
     background-color: #f87d2d;
+}
+
+::placeholder{
+    color: white
 }
 

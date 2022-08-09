@@ -25,14 +25,19 @@
   letter-spacing: 0.04em;
   margin-left: 5px;
   margin-right: 5px;
-  border-style: solid;
+  border: none;
   border-radius: 8px;
-  padding: 2px
+  padding: 2px;
+  background-color: #f87d2d;
 }
 
 .button:disabled:hover{
   transform: none;
   cursor: default
+}
+
+.button:disabled{
+  visibility: hidden;
 }
 
 p{
@@ -45,4 +50,8 @@ p{
 
   letter-spacing: 0.04em;
   margin-top: 14px;
+}
+
+.currentPage{
+  color: white;
 }
