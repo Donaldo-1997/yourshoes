@@ -177,7 +177,9 @@ export default function ProductDetail({ id }) {
             <h1 className={styles.title}>{myShoes.title}</h1>
             <div className={styles.sizePriceCont}>
               <div className={styles.sizeContainer}>
+                <div className={styles.sizeYSelect}>
                 <h1 className={styles.size}>Talle: </h1>
+
 
                 <h4>
                   {" "}
@@ -208,6 +210,8 @@ export default function ProductDetail({ id }) {
                       {sn} x{" "}
                     </span>
                   ))}
+                
+              </div>        
               </div>
               <h3 className={styles.price}>${myShoes.price}</h3>
             </div>
@@ -234,7 +238,10 @@ export default function ProductDetail({ id }) {
               >
                 Añadir al carro
               </button>{" "}
+
               <ToastContainer />
+
+
             </div>
           </div>
           <Fragment>
@@ -391,5 +398,5 @@ export default function ProductDetail({ id }) {
         </div>
       )}
     </div>
-  );
+  )
 }

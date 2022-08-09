@@ -13,19 +13,12 @@ export default function About() {
               <li><Link to="/aboutUs"><span className={styles.boton}>SOBRE NOSOTROS</span></Link></li>
               <li><Link to="/community"><span className={styles.boton}>EQUIPO DE YOURSHOES</span></Link></li>
 
-              <li>
-                <Link to="/aboutUs">ABOUT US</Link>
-              </li>
-              <li>
-                <Link to="/community">COMUNIDAD</Link>
-              </li>
-
             </ul>
           </div>
           <div className={styles.footer_col2}>
-            <h3>PRODUCTOS</h3>
-            <ul>
-              <li>ZAPATILLAS PARA LA FAMILIA</li>
+            <h3 className={styles.msgHenry}>Hecho con 🧡 por los alumnos de Henry</h3>
+            <ul className={styles.yourshoesFooter}>
+              <li className={styles.font}>YOURSHOES © 2022 | Todos los derechos reservados.</li>
             </ul>
           </div>
           <div className={styles.footer_col3}>
@@ -34,10 +27,6 @@ export default function About() {
               <li>PREGUNTAS FRECUENTES</li>
               <li>CONTACTO</li>
             </ul>
-          </div>
-          <div>
-            <h3>NOTIFICACIONES</h3>
-            <input type="email" placeholder="Email: " />
           </div>
         </div>
         <hr />

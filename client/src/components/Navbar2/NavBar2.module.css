@@ -27,12 +27,13 @@ color: white;
     
 }
 
-.navbar{
+.navbar.navbar{
     background: #212121;
     width: 100%;
     position:fixed;
     top: 0;
     left: 0;
+    position: fixed;
 }
 
 .resetButton{

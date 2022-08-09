@@ -13,6 +13,7 @@ import Button from '@mui/material/Button';
 import { useSelector } from 'react-redux';
 import Swal from "sweetalert2";
 import { BackgroundListUsers, TablaOscura, TextTable } from './StyledAdminUsers';
+import NavBar2 from "../../Navbar2/Navbar2"
 
 const AdminTable = () => {
 
@@ -59,6 +60,8 @@ const token = useSelector(state=>state.usuario)
   }
 
   return (
+    <div>
+    <NavBar2/>
     <BackgroundListUsers>
       <TableContainer component={Paper} className='table' >
         <TablaOscura sx={{ minWidth: 650 }} aria-label="simple table">
@@ -99,6 +102,7 @@ const token = useSelector(state=>state.usuario)
         </TablaOscura>
       </TableContainer>
     </BackgroundListUsers>
+    </div>
   );
 }
 
