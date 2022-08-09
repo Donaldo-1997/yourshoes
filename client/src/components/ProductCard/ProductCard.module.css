@@ -46,7 +46,7 @@
 .container {
   background: #f87d2d;
   padding-bottom: 18%;
-  height: 89px;
+  height: 117px;
   padding: 0.5rem;
   display: flex;
   flex-direction: column;
@@ -82,6 +82,6 @@
 }
 
 .allContainer{
-  height: 293px;
+  height: 341px;
 }
 

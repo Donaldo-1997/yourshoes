@@ -285,9 +285,9 @@ export default function ProductDetail({ id }) {
                   )}
                   <Button
                     variant="contained"
-                    color="primary"
+                    color="#fd7e14"
                     style={{ width: "200px" }}
-                    // className={styles.addReview}
+                    className={styles.addReview}
                     onClick={handleClickOpen}
                   >
                     AÑADIR RESEÑA

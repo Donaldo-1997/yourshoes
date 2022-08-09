@@ -21,13 +21,13 @@ export default function UserProfile() {
               <img className={styles.img} src={infoUser.image} />
             )}
             {!infoUser.name ? (
-              <h1>Nombre: {infoUser.user.name}</h1>
+              <div className={styles.nameContainer}><p className={styles.userName}>Nombre:</p> <h1>{infoUser.user.name}</h1></div>
             ) : (
-              <h1>Nombre: {infoUser.name}</h1>
+              <div className={styles.nameContainer}><p className={styles.userName}>Nombre:</p> <h1>{infoUser.name}</h1></div>
             )}
-            <h1>Apellido: {infoUser.surname}</h1>
-            <h1>E-mail: {infoUser.email}</h1>
-            <h1>Historia de compras:</h1>
+            <div className={styles.nameContainer}><p className={styles.userName}>Apellido:</p> <h1 className={styles.userData}>{infoUser.surname}</h1></div>
+            <div className={styles.nameContainer}><p className={styles.userName}>E-mail:</p> <h1 className={styles.userData}>{infoUser.email}</h1></div>
+            <div className={styles.nameContainer}><h1 className={styles.compras}>Historia de compras:</h1></div>
           </div>
         ) : null}
       </div>

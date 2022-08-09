@@ -49,7 +49,7 @@ select{
 }
 
 Body{
-  background: rgba(0, 0, 0, 0.481);
+  background: #212121;
 }
 
 .react-chatbot-kit-chat-input {
@@ -71,3 +71,4 @@ Body{
 .react-chatbot-kit-chat-bot-message-container {
   margin-bottom: 16px;
 }
+

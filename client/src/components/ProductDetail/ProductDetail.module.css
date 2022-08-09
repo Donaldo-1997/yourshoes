@@ -3,6 +3,9 @@
   flex-direction: column;
   align-items: center;
 }
+.addReview{
+  background: #fd7e14;
+}
 .reviewContainer {
   display: flex;
   flex-direction: column;
@@ -187,5 +190,6 @@
 .sizeYSelect{
   display: flex;
 }
+
 
 

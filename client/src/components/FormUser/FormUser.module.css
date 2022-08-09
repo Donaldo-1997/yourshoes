@@ -41,10 +41,10 @@ color: #faeeee;
 	min-width: 500px;
     min-height: 100px;
 	margin-top: 15px;
-    background: linear-gradient(90deg, rgb(185, 134, 69) 0%, rgb(195, 97, 33) 35%, rgb(216, 90, 6) 95%);
+    background: content-box;
 	border-radius: 5px;
 	padding: 20px;
-	box-shadow: rgba(0, 0, 0, 0.833) 0px 1px 4px;
+	box-shadow: 2px 4px 10px 1px rgb(201 201 201 / 47%);
 	margin-top: 100px;
 }
 
@@ -85,7 +85,7 @@ font-weight: 600;
 
 .formulario button[type="submit"] {
 	display: block;
-	background: #ff9d00;
+	background: #f87d2d;
 	font-weight: 600;
 	font-family: 'Open Sans', sans-serif;
 	border: none;
@@ -116,5 +116,9 @@ font-weight: 600;
 .link {
     text-decoration: none;
     font-size: 20px;
-color: #f9efef;
+	color: #f9efef;
+}
+
+.backBtn{
+	margin-top: 10px;
 }

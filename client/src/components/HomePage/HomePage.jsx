@@ -611,7 +611,7 @@ export default function HomePage() {
       height: "650px",
       "border-radius": "10px",
       background: "#212121",
-      color:"white"
+      color:"white",
     },
   };
   //MODAL//
