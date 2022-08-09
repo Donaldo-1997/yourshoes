@@ -19,6 +19,7 @@
   width: 400px;
   border-color: #000000;
   border-width: 2px;
+  height: 320px;
 }
 
 .divCard h5 {
@@ -116,6 +117,7 @@
 
 .sizeContainer{
   display: flex;
+  flex-direction: column;
   align-self: flex-start;
   padding-left: 5px;
 }
@@ -134,6 +136,10 @@
 
 .selectSize{
   border-radius: 30px;
+}
+
+.sizeYSelect{
+  display: flex;
 }
 
 

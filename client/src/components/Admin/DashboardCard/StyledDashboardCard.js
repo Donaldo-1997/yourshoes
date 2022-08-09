@@ -15,6 +15,7 @@ export const Dashboard = styled.div`
     border-radius: 10px;
     height: 100px;
     color: white;
+    margin-left: 100px;
 `
 
 export const Left = styled.div`

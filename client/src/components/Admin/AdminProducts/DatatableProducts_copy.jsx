@@ -27,6 +27,7 @@ import DisabledByDefaultIcon from '@mui/icons-material/DisabledByDefault';
 import { useEffect } from 'react';
 import { getAllShoes } from '../../../redux/actions';
 import {Link} from 'react-router-dom'
+import NavBar2 from "../../Navbar2/Navbar2"
 
 function descendingComparator(a, b, orderBy) {
   // console.log("a -->", a[orderBy])
@@ -124,6 +125,8 @@ function EnhancedTableHead(props) {
   };
 
   return (
+    <div>
+    <NavBar2/>
     <TableHead>
       <TableRow color='primary'>
         {/* <TableCell padding="checkbox">
@@ -160,6 +163,7 @@ function EnhancedTableHead(props) {
         ))}
       </TableRow>
     </TableHead>
+    </div>
   );
 }
 

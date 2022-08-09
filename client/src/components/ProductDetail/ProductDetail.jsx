@@ -92,8 +92,8 @@ export default function ProductDetail({ id }) {
             <h1 className={styles.title}>{myShoes.title}</h1>
             <div className={styles.sizePriceCont}>
               <div className={styles.sizeContainer}>
+                <div className={styles.sizeYSelect}>
                 <h1 className={styles.size}>Talle: </h1>
-                <h4> Cantidad={size.length >= 1? cantidad * size.length:0}</h4>
                 <select className={styles.selectSize}
                         onChange={(e) => {handleOnChangeSize(e) }}>
                             <option></option>
@@ -101,12 +101,15 @@ export default function ProductDetail({ id }) {
                             <option  key={i} value={s.number}>{s.number}</option>
                         ))}
                     </select>
-                     {size.length && size.map((sn, i) => (
-                    <span 
-                    key={i}
-                    onClick={(e) => {handleDeleteSizes(e,sn)}}
-                    >{sn} x </span>
-                    ))}
+                </div>    
+                      <h4> Cantidad={size.length >= 1? cantidad * size.length:0}</h4>
+                      {size.length && size.map((sn, i) => (
+                        <span 
+                        key={i}
+                        onClick={(e) => {handleDeleteSizes(e,sn)}}
+                        >{sn} x </span>
+                      ))}
+                
               </div>
               <h3 className={styles.price}>${myShoes.price}</h3>
             </div>          
@@ -131,9 +134,6 @@ export default function ProductDetail({ id }) {
               >
                 Añadir al carro
               </button>{" "}
-              <ToastContainer />
-             
-
             </div>
           </div>
         </div>

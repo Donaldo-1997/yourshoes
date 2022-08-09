@@ -31,8 +31,14 @@
   margin-bottom: 20px;
   margin-top: auto;
 }
-.footer_col,
-.footer_col2,
+.footer_col{
+  display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.footer_col2{
+  margin-top: 24px;
+}
 .footer_col3 {
   min-width: 250px;
   margin-bottom: 20px;
@@ -64,4 +70,13 @@
   transition: none;
   color: #f87d2d;
   transition: all 0.5s ease;
+}
+.msgHenry{
+  font-size: 20px;
+}
+.yourshoesFooter{
+  margin-right: 21px;
+}
+.font{
+  font-size: 11px;
 }

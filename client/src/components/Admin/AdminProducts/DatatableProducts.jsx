@@ -7,9 +7,10 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { useSelector, useDispatch } from 'react-redux';
-
+import NavBar2 from "../../Navbar2/Navbar2"
 import { TextTable } from "./StyledDataTable";
 import { getAllShoes } from "../../../redux/actions";
+import NavBar from "../../NavBar/NavBar";
 
 
 
@@ -40,7 +41,7 @@ export default function DatatableProducts() {
 
     return (
         <div >
-       
+            <NavBar2/>
             <TableContainer component={Paper} className='table' >
                     <TableHead>
                         <TableRow>
