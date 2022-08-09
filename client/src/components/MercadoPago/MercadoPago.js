@@ -17,18 +17,23 @@ function MercadoPago() {
   console.log(cart, 'soy el producto añadido al carrito')
   
   useEffect(() => {
+    let isCancelled = false
     dispatch(getAllUsers())
     if (cart.length > 0) {
       axios
         .post(`${process.env.REACT_APP_URL}/mercadopago`, {userId:userId, as:cart })
         .then((data) => {
+          if(!isCancelled){ 
           dispatch(putProductStock({cart}))
           dispatch(postOrder({userId:userId, as:cart }))
           setDatos(data.data);
           localStorage.setItem("products", JSON.stringify([]));
           console.info("Contenido de data:", data);
-        })
+        }})
         .catch((err) => console.error(err));
+    }
+    return ()=>{
+      isCancelled = true
     }
   }, [cart]);
 

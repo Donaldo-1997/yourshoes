@@ -21,13 +21,14 @@ import AdminUsers from "./components/Admin/AdminUsers/AdminUsers";
 import AdminProducts from "./components/Admin/AdminProducts/AdminProducts";
 import Community from "./components/About/Community";
 import EditProduct from "./components/EditProduct/EditProduct";
-import { ToastContainer } from "react-toastify";
+import Chatbot from "./components/Chatbot/Chatbot";
 
 
 
 function App() {
   const [user, SetUser] = useState(null)
   useEffect(() => {
+    let isCancelled = false
     const getUser = () => {
       fetch(`${process.env.REACT_APP_URL}/auth/login/success`, {
         method: "GET",
@@ -45,16 +46,20 @@ function App() {
           throw(response)
         })
         .then((res) => {
+          if(!isCancelled){ 
           dispatch(loginUser(res.user))
           SetUser(res.user)
           localStorage.setItem('user',  JSON.stringify(res.user))
           console.log('google -->',res);
-        })
+        }})
         .catch((err) => {
           console.log(err);
         });
     };
     getUser();
+    return ()=>{
+      isCancelled=true
+    }
   }, []);
 
   useEffect(() => {
@@ -63,13 +68,13 @@ function App() {
       localStorage.setItem("favProducts", JSON.stringify([]));
       localStorage.setItem('user',  JSON.stringify([]))
     }
-  }, [localStorage, user]); 
-  // useEffect(() => {
-  //   if (localStorage.length === 0) {
-  //     localStorage.setItem("products", JSON.stringify([]));
-  //     localStorage.setItem("favProducts", JSON.stringify([]));
-  //   }
-  // }, [user]);
+  }, []); 
+  useEffect(() => {
+    if (localStorage.length === 0) {
+      localStorage.setItem("products", JSON.stringify([]));
+      localStorage.setItem("favProducts", JSON.stringify([]));
+    }
+  }, [user]);
 
     
   const productsLS = JSON.parse(localStorage.getItem("products"));
@@ -86,7 +91,6 @@ function App() {
 
   return (
     <Router>
-      <ToastContainer/>
       <Routes>
         <Route exact path="/" element={<HomePage />} />
         <Route exact path="/shoes/:id" element={<ProductDetail />} />
@@ -105,6 +109,7 @@ function App() {
         <Route exact path="/admin/create-product" element={<AdminProducts></AdminProducts>}/>
         <Route exact path="/community" element={<Community/>}/>
         <Route exact path="/edit/:id" element={<EditProduct/>}/>
+        <Route exact path="/chatbot" element={<Chatbot/>}/>
         
       </Routes>
       <Footer></Footer>

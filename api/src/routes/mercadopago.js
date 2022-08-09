@@ -35,8 +35,9 @@ router.post("/", function (req, res) {
       installments: 3,
     },
     back_urls: {
-      success: "https://yourshoes.vercel.app/",
-      failure: "https://yourshoes.vercel.app/",
+      failure: `http://localhost:3001/payments/failure/${ordenID}`,
+      pending: `http://localhost:3001/payments/pending/${ordenID}`,
+      success: `http://localhost:3001/payments/success/${ordenID}`,
     },
   };
 
