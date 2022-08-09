@@ -91,7 +91,7 @@ class ActionProvider {
 
     handleReclamo = () => {
       const message = this.createChatBotMessage(
-        "Para YourShoes tu experiencia de compra y servicio es lo más importante, por eso nos interesa tu opinion. En la parte del detalle de cualquier artículo podras ver una seccion de" + "Opiniones" + "ahí podrás dejar cualquier comentario sobre tu experiencia de compra y producto (sea buena o mala)",
+        "Para YourShoes tu experiencia de compra y servicio es lo más importante, por eso nos interesa tu opinion. En la parte del detalle de cualquier artículo podras ver una seccion de" + ' ' + "opiniones" +', '+ "ahí podrás dejar cualquier comentario sobre tu experiencia de compra y producto (sea buena o mala)",
 
         {
           widget: "careerLinks"

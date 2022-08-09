@@ -2,6 +2,7 @@
     display: flex;
     align-items: flex-start;
     flex-wrap: wrap;
+    margin-top: 15px;
   }
   
   .learning-option-button {
@@ -10,5 +11,6 @@
     background: transparent;
     border: 1px solid rgb(128, 60, 0);
     margin: 3px;
+    color: white;
   }
   

@@ -16,31 +16,31 @@ import { hydratateLSFav } from "./redux/actions";
 import CreateProduct from "./components/CreateProduct/CreateProduct";
 import UserProfile from "./components/UserProfile/UserProfile";
 import AdminHome from "./components/AdminHome/AdminHome";
-import Footer from "./components/About/Footer"
+import Footer from "./components/About/Footer";
 import AdminUsers from "./components/Admin/AdminUsers/AdminUsers";
 import AdminProducts from "./components/Admin/AdminProducts/AdminProducts";
 import Community from "./components/About/Community";
 import EditProduct from "./components/EditProduct/EditProduct";
+
 import { ToastContainer } from "react-toastify";
 import Success from "./components/MercadoPago/Success";
 import Chatbot from "react-chatbot-kit";
-import config from './components/Chatbot/chatbotConfig'
-import ActionProvider from './components/Chatbot/ActionProvider'
+import config from "./components/Chatbot/chatbotConfig";
+import ActionProvider from "./components/Chatbot/ActionProvider";
 import MessageParser from "./components/Chatbot/MessageParser";
 import axios from 'axios'
 
 
 function App() {
   const dispatch = useDispatch();
-  const [user, SetUser] = useState(null)
+  const [user, SetUser] = useState(null);
   useEffect(() => {
-
-    let isCancelled = false
+    let isCancelled = false;
 
     if (localStorage.length === 0) {
       localStorage.setItem("products", JSON.stringify([]));
       localStorage.setItem("favProducts", JSON.stringify([]));
-      localStorage.setItem('user',  JSON.stringify([]))
+      localStorage.setItem("user", JSON.stringify([]));
     }
 
     const getUser = () => {
@@ -90,10 +90,12 @@ function App() {
       };
     getUser();
 
-    return ()=>{
-      isCancelled=true
-    }
+    return () => {
+      isCancelled = true;
+    };
   }, []);
+
+
 
 
   useEffect(() => {
@@ -103,11 +105,10 @@ function App() {
     }
   }, [user]);
 
-    
   const productsLS = JSON.parse(localStorage.getItem("products"));
-  
+
   useEffect(() => {
-    console.log("ACTUALIZANDO CARRITO")
+    console.log("ACTUALIZANDO CARRITO");
     dispatch(hydratateFromLocalStorage(productsLS));
   }, [productsLS]);
 
