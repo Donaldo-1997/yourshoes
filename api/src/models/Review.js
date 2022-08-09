@@ -4,14 +4,13 @@ module.exports = (sequelize) => {
   sequelize.define(
     "Review",
     {
-      comment: {
-        type: DataTypes.TEXT,
+      value: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
       },
-      calification: {
+      review: {
         type: DataTypes.STRING,
-      },
-      userId: {
-        type: DataTypes.STRING,
+        allowNull: false,
       },
     },
     {

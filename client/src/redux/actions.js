@@ -2,55 +2,52 @@ import axios from "axios";
 import swal from "sweetalert";
 
 //asd
-export const GET_ALL_SHOES = "GET_ALL_SHOES"
-export const GET_DETAILS = "GET_DETAILS"
-export const GET_SHOES_NAME = "GET_SHOES_NAME"
-export const GET_ALL_CATEGORIES = "GET_ALL_CATEGORIES"
-export const ADD_ONE_TO_CART = 'ADD_ONE_TO_CART'
-export const DELETE_ONE_FROM_CART = 'DELETE_ONE_FROM_CART'
-export const FILTER_BY_BRAND = "FILTER_BY_BRAND"
-export const POST_USER = 'POST_USER'
-export const GET_ALL_BRANDS = 'GET_ALL_BRANDS'
-export const LOGIN_USER = 'LOGIN_USER'
-export const FILTER_BY_PRICE = 'FILTER_BY_PRICE'
-export const FILTER_BY_CATEGORY = 'FILTER_BY_CATEGORY'
-export const FILTER_BY_SIZE = 'FILTER_BY_SIZE'
-export const COMBINATION_FILTERS = 'COMBINATION_FILTERS'
-export const COMBINATION_FILTERS1 = 'COMBINATION_FILTERS1'
-export const COMBINATION_FILTERS2 = 'COMBINATION_FILTERS2'
-export const COMBINATION_FILTERS3 = 'COMBINATION_FILTERS3'
-export const COMBINATION_FILTERS4 = 'COMBINATION_FILTERS4'
-export const COMBINATION_FILTERS5 = 'COMBINATION_FILTERS5'
-export const COMBINATION_FILTERS6 = 'COMBINATION_FILTERS6'
-export const COMBINATION_FILTERS7 = 'COMBINATION_FILTERS7'
-export const COMBINATION_FILTERS8 = 'COMBINATION_FILTERS8'
-export const COMBINATION_FILTERS9 = 'COMBINATION_FILTERS9'
-export const COMBINATION_FILTERS10 = 'COMBINATION_FILTERS10'
-export const COMBINATION_FILTERS11 = 'COMBINATION_FILTERS11'
-export const COMBINATION_FILTERS_12 = 'COMBINATION_FILTERS_12'
-export const COMBINATION_FILTERS_13 = 'COMBINATION_FILTERS_13'
-export const COMBINATION_FILTERS14 = 'COMBINATION_FILTERS14'
-export const COMBINATION_FILTERS15 = 'COMBINATION_FILTERS15'
-export const COMBINATION_FILTERS16 = 'COMBINATION_FILTERS16'
-export const COMBINATION_FILTERS17 = 'COMBINATION_FILTERS17'
-export const COMBINATION_FILTERS18 = 'COMBINATION_FILTERS18'
-export const GET_ALL_SIZES = 'GET_ALL_SIZES'
-export const HYDRATATE_FROM_LS = "HYDRATATE_FROM_LS"
-export const REMOVER_TODO = "REMOVER_TODO"
-export const MERCADOPAGO_PAYMENT = 'MERCADOPAGO_PAYMENT'
+export const GET_ALL_SHOES = "GET_ALL_SHOES";
+export const GET_DETAILS = "GET_DETAILS";
+export const GET_SHOES_NAME = "GET_SHOES_NAME";
+export const GET_ALL_CATEGORIES = "GET_ALL_CATEGORIES";
+export const ADD_ONE_TO_CART = "ADD_ONE_TO_CART";
+export const DELETE_ONE_FROM_CART = "DELETE_ONE_FROM_CART";
+export const FILTER_BY_BRAND = "FILTER_BY_BRAND";
+export const POST_USER = "POST_USER";
+export const GET_ALL_BRANDS = "GET_ALL_BRANDS";
+export const LOGIN_USER = "LOGIN_USER";
+export const FILTER_BY_PRICE = "FILTER_BY_PRICE";
+export const FILTER_BY_CATEGORY = "FILTER_BY_CATEGORY";
+export const FILTER_BY_SIZE = "FILTER_BY_SIZE";
+export const COMBINATION_FILTERS = "COMBINATION_FILTERS";
+export const COMBINATION_FILTERS1 = "COMBINATION_FILTERS1";
+export const COMBINATION_FILTERS2 = "COMBINATION_FILTERS2";
+export const COMBINATION_FILTERS3 = "COMBINATION_FILTERS3";
+export const COMBINATION_FILTERS4 = "COMBINATION_FILTERS4";
+export const COMBINATION_FILTERS5 = "COMBINATION_FILTERS5";
+export const COMBINATION_FILTERS6 = "COMBINATION_FILTERS6";
+export const COMBINATION_FILTERS7 = "COMBINATION_FILTERS7";
+export const COMBINATION_FILTERS8 = "COMBINATION_FILTERS8";
+export const COMBINATION_FILTERS9 = "COMBINATION_FILTERS9";
+export const COMBINATION_FILTERS10 = "COMBINATION_FILTERS10";
+export const COMBINATION_FILTERS11 = "COMBINATION_FILTERS11";
+export const COMBINATION_FILTERS_12 = "COMBINATION_FILTERS_12";
+export const COMBINATION_FILTERS_13 = "COMBINATION_FILTERS_13";
+export const COMBINATION_FILTERS14 = "COMBINATION_FILTERS14";
+export const COMBINATION_FILTERS15 = "COMBINATION_FILTERS15";
+export const COMBINATION_FILTERS16 = "COMBINATION_FILTERS16";
+export const COMBINATION_FILTERS17 = "COMBINATION_FILTERS17";
+export const COMBINATION_FILTERS18 = "COMBINATION_FILTERS18";
+export const GET_ALL_SIZES = "GET_ALL_SIZES";
+export const HYDRATATE_FROM_LS = "HYDRATATE_FROM_LS";
+export const REMOVER_TODO = "REMOVER_TODO";
+export const MERCADOPAGO_PAYMENT = "MERCADOPAGO_PAYMENT";
 export const ADD_ONE_TO_FAV = "ADD_ONE_TO_FAV";
 export const HYDRATATE_FAV_LS = "HYDRATATE_FAV_LS";
-export const POST_PRODUCT = "POST_PRODUCT"
-export const GET_USER_LOGIN = 'GET_USER_LOGIN'
-export const DELETE_ONE_FROM_FAV = 'DELETE_ONE_FROM_FAV'
-export const PUT_STOCK = "PUT_STOCK"
+export const POST_PRODUCT = "POST_PRODUCT";
+export const GET_USER_LOGIN = "GET_USER_LOGIN";
+export const DELETE_ONE_FROM_FAV = "DELETE_ONE_FROM_FAV";
+export const PUT_STOCK = "PUT_STOCK";
 
-const URL = process.env.REACT_APP_URL
+const URL = process.env.REACT_APP_URL;
 // console.log('URL -->', URL)
-export const CREATE_REVIEW = "CREATE_REVIEW";
-export const GET_REVIEWS_PRODUCT = "GET_REVIEWS_PRODUCT";
 export const GET_USERS = "GET_USERS";
-
 export function removerTodo() {
   return {
     type: REMOVER_TODO,
@@ -79,14 +76,14 @@ export function getDetails(id) {
 
 export function getShoesName(name) {
   return async function (dispatch) {
-  
-      const results = await axios(`${URL}/shoes?name=${name}`);
-      dispatch({
-        type: "GET_SHOES_NAME",
-        payload: results.data,
-      });
-      return results.data
-}
+    const results = await axios(`${URL}/shoes?name=${name}`);
+    dispatch({
+      type: "GET_SHOES_NAME",
+      payload: results.data,
+      
+    });
+    return results.data;
+  };
 }
 export function addOneToCart(payload) {
   return {
@@ -107,8 +104,8 @@ export function getAllBrands() {
     const results = await axios(`${URL}/brands`);
     return dispatch({
       type: GET_ALL_BRANDS,
-      payload: results.data
-    })
+      payload: results.data,
+    });
   };
 }
 
@@ -137,34 +134,34 @@ export function filterByBrand(payload) {
       type: FILTER_BY_BRAND,
       payload: results.data,
     });
-    return results.data
+    return results.data;
   };
 }
 
 export function filterByCategory(payload) {
   return async function (dispatch) {
     const results = await axios(`${URL}/shoes?category=${payload}`);
-     dispatch({
+    dispatch({
       type: FILTER_BY_CATEGORY,
       payload: results.data,
     });
-    return results.data
+    return results.data;
   };
 }
 export function filterBySize(payload) {
   return async function (dispatch) {
-    try{ 
-    const results = await axios(`${URL}/shoes?size=${payload}`);
-    //console.log(results.data)
-    dispatch({
-      type: FILTER_BY_SIZE,
-      payload: results.data
-    })
-    return results.data
-  }catch(error){
-    throw error
-  }
-}
+    try {
+      const results = await axios(`${URL}/shoes?size=${payload}`);
+      //console.log(results.data)
+      dispatch({
+        type: FILTER_BY_SIZE,
+        payload: results.data,
+      });
+      return results.data;
+    } catch (error) {
+      throw error;
+    }
+  };
 }
 export function filterByPrice(priceMin, priceMax) {
   //console.log("precio", priceMax)
@@ -182,7 +179,7 @@ export function filterByPrice(priceMin, priceMax) {
 export function postUser(payload) {
   return async function (dispatch) {
     try {
-      var json = await axios.post(`${URL}/login/signup`,payload);
+      var json = await axios.post(`${URL}/login/signup`, payload);
       dispatch({
         type: POST_USER,
         payload: json,
@@ -195,17 +192,17 @@ export function postUser(payload) {
 export function Login(payload) {
   return async function (dispatch) {
     try {
-      const json = await axios.post(`${URL}/login/signin`,payload);
+      const json = await axios.post(`${URL}/login/signin`, payload);
 
-      console.log('json -->', json);
+      console.log("json -->", json);
       dispatch({
         type: LOGIN_USER,
         payload: json.data.user,
       });
 
-      return json
+      return json;
     } catch (error) {
-      throw error
+      throw error;
     }
   };
 }
@@ -285,9 +282,7 @@ export function combinationsFilter2(brand, name, priceMin, priceMax) {
 export function combinationsFilter3(name, brand) {
   return async function (dispatch) {
     try {
-      const results = await axios(
-        `${URL}/shoes?name=${name}&brand=${brand}`
-      );
+      const results = await axios(`${URL}/shoes?name=${name}&brand=${brand}`);
       dispatch({
         type: COMBINATION_FILTERS3,
         payload: results.data,
@@ -451,9 +446,7 @@ export function combinationsFilter_12(size, priceMin, priceMax) {
 export function combinationsFilter_13(size, brand) {
   return async function (dispatch) {
     try {
-      const results = await axios(
-        `${URL}/shoes?size=${size}&brand=${brand}`
-      );
+      const results = await axios(`${URL}/shoes?size=${size}&brand=${brand}`);
       dispatch({
         type: COMBINATION_FILTERS_13,
         payload: results.data,
@@ -485,9 +478,7 @@ export function combinationsFilter14(size, brand, name, priceMin, priceMax) {
 export function combinationsFilter15(size, name) {
   return async function (dispatch) {
     try {
-      const results = await axios(
-        `${URL}/shoes?size=${size}&name=${name}`
-      );
+      const results = await axios(`${URL}/shoes?size=${size}&name=${name}`);
       dispatch({
         type: COMBINATION_FILTERS15,
         payload: results.data,
@@ -513,23 +504,32 @@ export function combinationsFilter16(size, category) {
     } catch (err) {
       throw err;
     }
-  }
+  };
 }
 export function combinationsFilter17(size, category, brand) {
   return async function (dispatch) {
     try {
-      const results = await axios(`${URL}/shoes?size=${size}&category=${category}&brand=${brand}`)
+      const results = await axios(
+        `${URL}/shoes?size=${size}&category=${category}&brand=${brand}`
+      );
       dispatch({
         type: COMBINATION_FILTERS17,
-        payload: results.data
-      })
-      return results.data
+        payload: results.data,
+      });
+      return results.data;
     } catch (err) {
       throw err;
     }
   };
 }
-export function combinationsFilter18(size, category, brand, name, priceMin, priceMax) {
+export function combinationsFilter18(
+  size,
+  category,
+  brand,
+  name,
+  priceMin,
+  priceMax
+) {
   return async function (dispatch) {
     try {
       const results = await axios(
@@ -543,7 +543,7 @@ export function combinationsFilter18(size, category, brand, name, priceMin, pric
     } catch (err) {
       throw err;
     }
-  }
+  };
 }
 export function addOneToFav(payload) {
   return {
@@ -552,21 +552,21 @@ export function addOneToFav(payload) {
   };
 }
 
-export function postProduct(props){
-  return async function (dispatch){
-    const response = axios.post(`${URL}/shoes`, props)
+export function postProduct(props) {
+  return async function (dispatch) {
+    const response = axios.post(`${URL}/shoes`, props);
     dispatch({
       type: POST_PRODUCT,
-      payload: response.data
-    })
-  }
+      payload: response.data,
+    });
+  };
 }
 
-export function loginUser(user){
-    return ({
-      type: 'USER_LOGGED',
-      payload: user
-    })
+export function loginUser(user) {
+  return {
+    type: "USER_LOGGED",
+    payload: user,
+  };
 }
 
 export function deleteOneToFav(payload) {
@@ -575,14 +575,14 @@ export function deleteOneToFav(payload) {
     payload: payload,
   };
 }
-export function putProductStock(props){
-  return async function(dispatch){
-    const result = axios.put(`${URL}/mercadopago`, props)
+export function putProductStock(props) {
+  return async function (dispatch) {
+    const result = axios.put(`${URL}/mercadopago`, props);
     return dispatch({
       type: PUT_STOCK,
-      payload: result.data
-    })
-  }
+      payload: result.data,
+    });
+  };
 }
 
 // export function putCreatedProduct({id, input}){
@@ -596,7 +596,7 @@ export function putProductStock(props){
 // }
 
 export const putCreatedProduct = ({ id, input }) => {
-  console.log("id: ", id, "input: ", input)
+  console.log("id: ", id, "input: ", input);
   return async (dispatch) => {
     await axios
       .put(`${URL}/shoes/${id}`, input)
@@ -604,8 +604,8 @@ export const putCreatedProduct = ({ id, input }) => {
   };
 };
 
-export function getShoeById(id){
-  axios(`${URL}/shoes/${id}`)
+export function getShoeById(id) {
+  axios(`${URL}/shoes/${id}`);
 }
 
 export const getUsers = () => {

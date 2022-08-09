@@ -7,39 +7,34 @@ import { useNavigate } from "react-router-dom";
 import { FcGoogle, FcGoodDecision, FcDownLeft } from "react-icons/fc";
 import { Link } from "react-router-dom";
 import Navbar2 from "../Navbar2/Navbar2";
-import UserProfile from "../UserProfile/UserProfile";
 
 export default function LogIn() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.user)
+  const user = useSelector((state) => state.user);
 
   const [formularioEnviado, setformularioEnviado] = useState(false);
 
   const handleLogin = (valores, resetForm) => {
     dispatch(Login(valores))
-    .then(res => {
-      resetForm();
-      console.log("post", res);
-      setformularioEnviado(true);
-      setTimeout(() => setformularioEnviado(false), 5000);
-      navigate("/");
-    })
-    .catch(error => {
-      // console.log(error);
-      alert(error.response.data.msg)
-    })
-    
-  }
+      .then((res) => {
+        resetForm();
+        console.log("post", res);
+        setformularioEnviado(true);
+        setTimeout(() => setformularioEnviado(false), 5000);
+        navigate("/");
+      })
+      .catch((error) => {
+        alert(error.response.data.msg);
+      });
+  };
   useEffect(() => {
-  
-     localStorage.setItem('user',  JSON.stringify(user))
-   
+    localStorage.setItem("user", JSON.stringify(user));
   }, [user]);
-  
+
   return (
     <div className={styles.contenedor}>
-    <Navbar2></Navbar2>
+      <Navbar2></Navbar2>
       <Formik
         initialValues={{
           email: "",

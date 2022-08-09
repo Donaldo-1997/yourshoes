@@ -36,22 +36,20 @@ export default function Comprar({ data }) {
     <div className={s.container}>
       <form id="form1">
         <div className={s.hijo}>
-          <div>
-            {cart.map((producto, i) => {
-              return (
-                <div className={s.hijo2} key={i}>
-                  <img src={producto.image} alt="" width={75} />
-                  <h5>{producto.title.slice(0, 25)}...</h5>
-                  <h5>
-                    {producto.price} x {producto.quantity} =$
-                    {producto.price * producto.quantity}
-                  </h5>
-                  <h5>{producto.quantity}</h5>
-                </div>
-              );
-            })}
-            <h4>Total a pagar: ${precios}</h4>
-          </div>
+          {cart.map((producto, i) => {
+            return (
+              <div className={s.hijo2} key={i}>
+                <img src={producto.image} alt="" width={75} />
+                <h5>{producto.title.slice(0, 25)}...</h5>
+                <h5>
+                  {producto.price} x {producto.quantity} =$
+                  {producto.price * producto.quantity}
+                </h5>
+                <h5>{producto.quantity}</h5>
+              </div>
+            );
+          })}
+          <h4>Total a pagar: ${precios}</h4>
         </div>
       </form>
     </div>

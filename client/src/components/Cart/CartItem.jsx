@@ -1,7 +1,7 @@
 import styles from "./CartItem.module.css";
 
 const CartItem = ({ data, deleteProduct }) => {
-  let { id, image, price, quantity } = data;
+  let { id, image, price, quantity, sizeNumber } = data;
   return (
     <div className={styles.container}>
       <img src={image} alt="Img Not Found" className={styles.imgCart} />
@@ -9,6 +9,7 @@ const CartItem = ({ data, deleteProduct }) => {
         <h5>
           ${price} x {quantity} = ${price * quantity}
         </h5>
+        <p>Talle: {sizeNumber}</p>
         <div className={styles.buttonsContainer}>
           <button onClick={() => deleteProduct(id)} className={styles.deleteBtn}>Eliminar (1)</button>
           <button onClick={() => deleteProduct(id, true)} className={styles.deleteBtn}>

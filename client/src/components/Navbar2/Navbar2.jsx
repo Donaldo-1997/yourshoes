@@ -5,7 +5,6 @@ import Navbar from "react-bootstrap/Navbar";
 import { BsFillCartFill } from "react-icons/bs";
 import { FaHeart } from "react-icons/fa";
 import { FaUserAlt } from "react-icons/fa";
-import { BiLogOut } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import styles from "./NavBar2.module.css";
 

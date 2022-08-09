@@ -60,15 +60,15 @@ const { Category, Product, Review, Order, User, Brand, Role, Size } = sequelize.
 Category.belongsToMany(Product, {through: 'category_product',timestamps: false})
 Product.belongsTo(Category)
 
-Product.belongsToMany(Review, {through: 'review_product',timestamps: false})
-Review.belongsTo(Product)
+
+
+Review.belongsTo(User, { as: "author", allowNull: false });
+Review.belongsTo(Product, { as: "product", allowNull: false });
+
+
 
 Brand.belongsToMany(Product,{through: 'brand_product',timestamps: false})
 Product.belongsTo(Brand)
-
-Product.hasMany(Review);
-Review.belongsTo(Product);
-
 User.belongsToMany(Order, {through: 'user_order',timestamps: false})
 Order.belongsTo(User)
 

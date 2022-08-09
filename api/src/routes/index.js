@@ -27,7 +27,7 @@ router.use("/brands", brands);
 router.use("/mercadopago", mercadoRouter);
 router.use("/size", size);
 router.use("/nodemailer", nodemailer);
-router.use("/reviews", reviewsRouter);
+router.use('/reviews', reviewsRouter);
 
 
 // router.get('/', (req, res) => {

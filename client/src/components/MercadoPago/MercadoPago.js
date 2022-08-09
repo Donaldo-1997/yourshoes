@@ -8,29 +8,41 @@ import { putProductStock } from "../../redux/actions";
 
 function MercadoPago() {
   const cart = useSelector((state) => state.cart);
-  console.log(cart);
-  const [datos, setDatos] = useState("");
-  const dispatch = useDispatch()
+  console.log(cart.length, "CART LENGTH");
+  const [datos, setDatos] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const dispatch = useDispatch();
+  if (cart.length > 0 && !loading && !datos) {
+    console.log("MERCADOPAGO!!!", cart);
+    setLoading(true);
+    axios
+      .post(`${process.env.REACT_APP_URL}/mercadopago`, { as: cart })
+      .then((data) => {
+        setLoading(false)
+        dispatch(putProductStock({ cart }));
+        setDatos(data.data);
+        // localStorage.setItem("products", JSON.stringify([]));
+        console.info("Contenido de data:", data);
+      })
+      .catch((err) => console.error(err));
+  }
 
-  useEffect(() => {
-    if (cart.length > 0) {
-      axios
-        .post(`${process.env.REACT_APP_URL}/mercadopago`, { as: cart })
-        .then((data) => {
-          dispatch(putProductStock({cart}))
-          setDatos(data.data);
-          localStorage.setItem("products", JSON.stringify([]));
-          console.info("Contenido de data:", data);
-        })
-        .catch((err) => console.error(err));
-    }
-  }, [cart]);
+  // useEffect(() => {
+  //   if (cart.length > 0 && !loading) {
+  //     console.log("MERCADOPAGO!!!", cart);
+  //     setLoading(true)
+  // axios
+  //   .post(`${process.env.REACT_APP_URL}/mercadopago`, { as: cart })
+  //   .then((data) => {
+  //     dispatch(putProductStock({ cart }));
+  //     setDatos(data.data);
+  //     // localStorage.setItem("products", JSON.stringify([]));
+  //     console.info("Contenido de data:", data);
+  //   })
+  //   .catch((err) => console.error(err));
+  //   }
+  // }, [loading, cart.length]);
 
-  //   const productos = [
-  //     { title: "Producto 1", quantity: 5, price: 10.52 },
-  //     { title: "Producto 2", quantity: 15, price: 100.52 },
-  //     { title: "Producto 3", quantity: 6, price: 200 },
-  //   ];
   return (
     <div className="a">
       {!datos ? <p>Aguarde un momento....</p> : <Checkout data={datos} />}

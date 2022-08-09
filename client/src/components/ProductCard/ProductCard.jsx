@@ -1,44 +1,42 @@
-import React, {useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
 import styles from "./ProductCard.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { FaHeart } from "react-icons/fa";
 import { addOneToFav } from "../../redux/actions";
 import { useEffect } from "react";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Modal from 'react-modal' 
+import Modal from "react-modal";
 import ProductDetail from "../ProductDetail/ProductDetail";
 
 export default function ProductCard({ image, title, price, id }) {
   const dispatch = useDispatch();
 
   //MODAL//
-  const [modalIsOpen, setIsOpen] = useState(false)
+  const [modalIsOpen, setIsOpen] = useState(false);
   const openModal = () => {
-    setIsOpen(true)
-  }
+    setIsOpen(true);
+  };
 
   const closeModal = () => {
-    setIsOpen(false)
-  }
+    setIsOpen(false);
+  };
 
   useEffect(() => {
-    if(modalIsOpen) {
-      document.body.style.overflow = 'hidden'
-    }else{
-      document.body.style.overflow = 'unset'
+    if (modalIsOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
     }
-    
- }, [modalIsOpen]);
+  }, [modalIsOpen]);
 
   const customStyles = {
     content: {
-      top: '50%',
-      left: '50%',
-      right: 'auto',
-      bottom: 'auto',
-      transform: 'translate(-50%, -50%)',
+      top: "50%",
+      left: "50%",
+      right: "auto",
+      bottom: "auto",
+      transform: "translate(-50%, -50%)",
       width: "610px",
       height: "650px",
       "border-radius": "10px",
@@ -47,22 +45,22 @@ export default function ProductCard({ image, title, price, id }) {
   };
   //MODAL//
 
-  const favProducts = useSelector((state) => state.favorites);
-  const addLocalStorage = () => {
-    localStorage.setItem("favProducts", JSON.stringify(favProducts));
-  };
-  const saveLocalStorage = () => {
-    localStorage.getItem("favProducts");
-  };
-  useEffect(() => {
-    if (favProducts && favProducts.length) {
-      addLocalStorage();
-      saveLocalStorage();
-    }
-  }, [favProducts]);
+  // const favProducts = useSelector((state) => state.favorites);
+  // const addLocalStorage = () => {
+  //   localStorage.setItem("favProducts", JSON.stringify(favProducts));
+  // };
+  // const saveLocalStorage = () => {
+  //   localStorage.getItem("favProducts");
+  // };
+  // useEffect(() => {
+  //   if (favProducts && favProducts.length) {
+  //     addLocalStorage();
+  //     saveLocalStorage();
+  //   }
+  // }, [favProducts]);
 
   const addToFav = (e) => {
-    e.stopPropagation()
+    e.stopPropagation();
     dispatch(addOneToFav(id));
     toast.success("Tu producto fue agregado favoritos!", {
       className: "fav-toast",
@@ -72,7 +70,7 @@ export default function ProductCard({ image, title, price, id }) {
   };
   return (
     <div className={styles.allContainer}>
-      <div  onClick={(e) => openModal(e)} className={styles.infoContainer}>
+      <div onClick={(e) => openModal(e)} className={styles.infoContainer}>
         <div className={styles.containerImg}>
           <img src={image} alt="img not found" className={styles.cardImg} />
         </div>
@@ -80,7 +78,6 @@ export default function ProductCard({ image, title, price, id }) {
           <button onClick={addToFav}>
             <FaHeart style={{ color: "#f87d2d" }} />
           </button>
-    
         </div>
         <div className={styles.container}>
           <div className={styles.short}>
@@ -94,12 +91,12 @@ export default function ProductCard({ image, title, price, id }) {
         </div>
       </div>
       <Modal
-          isOpen={modalIsOpen}
-          onRequestClose={closeModal}
-          style={customStyles}
-        >
-          <ProductDetail id={id}/>
-        </Modal>
+        isOpen={modalIsOpen}
+        onRequestClose={closeModal}
+        style={customStyles}
+      >
+        <ProductDetail id={id} />
+      </Modal>
     </div>
   );
 }

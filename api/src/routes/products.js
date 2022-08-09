@@ -1,92 +1,86 @@
-const { Router } = require('express');
-const { Product, Brand, Category, Size} = require('../db.js');
-const { Op } = require('sequelize')
-const { getByName, getByBrand, getByCategory, getByPrice, getAll, getBySize } = require('../controllers/products.js');
-const {getAllFilters}= require('../controllers/filtersCombinations')
+const { Router } = require("express");
+const { Product, Brand, Category, Size, Review } = require("../db.js");
+const { Op } = require("sequelize");
+const {
+  getByName,
+  getByBrand,
+  getByCategory,
+  getByPrice,
+  getAll,
+  getBySize,
+} = require("../controllers/products.js");
+const { getAllFilters } = require("../controllers/filtersCombinations");
 const router = Router();
 
-
-router.get('/', async (req, res, next) => {
+router.get("/", async (req, res, next) => {
   const { name, priceMax, priceMin, brand, category, size } = req.query;
-  const options = getAllFilters(req.query)
-  if(Object.keys(options).length){
-    const resulTs = await Product.findAll(options)
-    res.status(200).json(resulTs)
-  }
-  else if (name) {
+  const options = getAllFilters(req.query);
+  if (Object.keys(options).length) {
+    const resulTs = await Product.findAll(options);
+    res.status(200).json(resulTs);
+  } else if (name) {
     try {
-      const results = await getByName(name)
+      const results = await getByName(name);
 
-      res.status(200).json(results)
+      res.status(200).json(results);
     } catch (error) {
-      next(error)
+      next(error);
+    }
+  } else if (brand) {
+    try {
+      const results = await getByBrand(brand);
+
+      res.status(200).json(results);
+    } catch (error) {
+      next(error);
+    }
+  } else if (category) {
+    try {
+      const results = await getByCategory(category);
+
+      res.status(200).json(results);
+    } catch (error) {
+      next(error);
+    }
+  } else if (size) {
+    try {
+      const results = await getBySize(size);
+
+      res.status(200).json(results);
+    } catch (error) {
+      next(error);
+    }
+  } else if (priceMax) {
+    try {
+      const results = await getByPrice(priceMin, priceMax);
+
+      res.status(200).json(results);
+    } catch (error) {
+      next(error);
+    }
+  } else {
+    try {
+      const results = await getAll();
+
+      res.status(200).json(results);
+    } catch (error) {
+      next(error);
     }
   }
-  else if (brand) {
-    try {
-      const results = await getByBrand(brand)
-
-      res.status(200).json(results)
-
-    } catch (error) {
-      next(error)
-    }
-  }
-  else if (category) {
-    try {
-      const results = await getByCategory(category)
-
-      res.status(200).json(results)
-
-    } catch (error) {
-      next(error)
-    }
-  }
-  else if (size) {
-    try {
-      const results = await getBySize(size)
-
-      res.status(200).json(results)
-    } catch (error) {
-      next(error)
-    }
-  }
-  else if (priceMax) {
-    try {
-      const results = await getByPrice(priceMin, priceMax)
-
-      res.status(200).json(results)
-
-    } catch (error) {
-      next(error)
-    }
-  }
-  else {
-    try {
-      const results = await getAll()
-
-      res.status(200).json(results)
-
-    } catch (error) {
-      next(error)
-    }
-  }
-
 });
 
 router.get("/:id", async (req, res) => {
   try {
     const { id } = req.params;
     if (id) {
-      const foundProduct = await Product.findByPk(id,
-        {
-          include: [
-            { model: Brand },
-            { model: Category },
-            { model: Size},
-            
-          ]
-        });
+      const foundProduct = await Product.findByPk(id, {
+        include: [
+          { model: Brand },
+          { model: Category },
+          { model: Size },
+          // { model: Review },
+        ],
+      });
 
       if (foundProduct) {
         res.status(200).send(foundProduct);
@@ -101,82 +95,81 @@ router.get("/:id", async (req, res) => {
 
 router.post("/", async (req, res) => {
   try {
-    const {
-      title,
-      model,
-      image,
-      price,
-      size,
-      brand,
-      category
-    } = req.body
+    const { title, model, image, price, size, brand, category } = req.body;
 
     const [newProduct, created] = await Product.findOrCreate({
       where: {
-        title
+        title,
       },
       defaults: {
         id: `MLA${Math.round(Math.random() * 1000000000)}`,
         model,
         image,
-        price
+        price,
       },
-    })
-    const findCategories = await Category.findOne({ where: { name: { [Op.iLike]: `%${category}%` } } })
-    const findBrand = await Brand.findOne({ where: { name: { [Op.iLike]: `%${brand}%` } } })
-    const findSize = await Size.findOne({where: {id:size}})
-    newProduct.addSize(findSize)
-    newProduct.setCategory(findCategories)
-    newProduct.setBrand(findBrand)
+    });
+    const findCategories = await Category.findOne({
+      where: { name: { [Op.iLike]: `%${category}%` } },
+    });
+    const findBrand = await Brand.findOne({
+      where: { name: { [Op.iLike]: `%${brand}%` } },
+    });
+    const findSize = await Size.findOne({ where: { id: size } });
+    newProduct.addSize(findSize);
+    newProduct.setCategory(findCategories);
+    newProduct.setBrand(findBrand);
 
-    !created ?
-      res.status(201).send('There is already a Product with that title')
+    !created
+      ? res.status(201).send("There is already a Product with that title")
       : res.status(200).json(newProduct);
-
   } catch (error) {
-    console.log(error)
-    res.status(404).json(error)
+    console.log(error);
+    res.status(404).json(error);
   }
-})
-
+});
 
 router.put("/:id", async (req, res) => {
-  try{
-    const { title, model, image, price, size, brand, category } = req.body
-    const { id } = req.params
-    
-    const productUpdated = await Product.findOne({where: {id}, include: [{model: Brand}, {model: Category}, {model: Size}]})
-    console.log('product', productUpdated)
-    const oldBrand = productUpdated.brand.id
-    console.log('brand', oldBrand)
-    const oldCategory = productUpdated.category.id
-    const oldSizes = productUpdated.sizes.map(size => size.id)
-    await productUpdated.update(oldBrand)
-    await productUpdated.update(oldCategory)
-    await productUpdated.removeSize(oldSizes)
+  try {
+    const { title, model, image, price, size, brand, category } = req.body;
+    const { id } = req.params;
 
-    const brandDb = await Brand.findOne({where: {name: { [Op.iLike]: `%${brand}%` } }})
-    const categoryDb = await Category.findOne({where : {name:{ [Op.iLike]: `%${category}%` } }})
-    const sizeDb = await Size.findAll({where: {id: size}})
+    const productUpdated = await Product.findOne({
+      where: { id },
+      include: [{ model: Brand }, { model: Category }, { model: Size }],
+    });
+    console.log("product", productUpdated);
+    const oldBrand = productUpdated.brand.id;
+    console.log("brand", oldBrand);
+    const oldCategory = productUpdated.category.id;
+    const oldSizes = productUpdated.sizes.map((size) => size.id);
+    await productUpdated.update(oldBrand);
+    await productUpdated.update(oldCategory);
+    await productUpdated.removeSize(oldSizes);
 
-    await productUpdated.setBrand(brandDb)
-    await productUpdated.setCategory(categoryDb)
-    await productUpdated.addSize(sizeDb)
+    const brandDb = await Brand.findOne({
+      where: { name: { [Op.iLike]: `%${brand}%` } },
+    });
+    const categoryDb = await Category.findOne({
+      where: { name: { [Op.iLike]: `%${category}%` } },
+    });
+    const sizeDb = await Size.findAll({ where: { id: size } });
+
+    await productUpdated.setBrand(brandDb);
+    await productUpdated.setCategory(categoryDb);
+    await productUpdated.addSize(sizeDb);
 
     productUpdated.set({
       title,
       model,
       image,
-      price
-    })
+      price,
+    });
 
-    await productUpdated.save()
-    res.status(200).send(productUpdated)
-
-  }catch(error){
-    console.log(error)
+    await productUpdated.save();
+    res.status(200).send(productUpdated);
+  } catch (error) {
+    console.log(error);
   }
-})
-
+});
 
 module.exports = router;

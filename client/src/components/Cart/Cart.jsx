@@ -9,9 +9,8 @@ import Navbar2 from "../Navbar2/Navbar2";
 export default function Cart() {
   const cartProducts = useSelector((state) => state.cart);
   const dispatch = useDispatch();
-  console.log(cartProducts, "Soy el producto añadido al carrito")
+  // console.log(cartProducts, "Soy el producto añadido al carrito")
   
-  const user = useSelector(state => state.user)
   let precios = 0;
   for (let i = 0; i < cartProducts.length; i++) {
     if (cartProducts[i].quantity === 1) {
@@ -19,7 +18,6 @@ export default function Cart() {
     } else {
       precios += cartProducts[i].price * cartProducts[i].quantity;
     }
-    console.log(precios)
   }
   const deleteProduct = (id, all = false) => {
     dispatch(deleteOneToCart({ productId: id, all }));
@@ -27,15 +25,15 @@ export default function Cart() {
   const clearCart = () => {
     dispatch(removerTodo());
   };
-
-  useEffect(() => {
-    localStorage.setItem("products", JSON.stringify(cartProducts));
-  }, [cartProducts]);
+  
+  // const user = useSelector(state => state.user)
+  // useEffect(() => {
+  //   localStorage.setItem("products", JSON.stringify(cartProducts));
+  // }, [cartProducts]);
 
   return (
     <div className={styles.container}>
     <Navbar2></Navbar2>
-      {/* <button onClick={clearCart}>Limpiar carrito</button> */}
       <div>
         {cartProducts && cartProducts.length ? (
           <div className={styles.contenedor}>

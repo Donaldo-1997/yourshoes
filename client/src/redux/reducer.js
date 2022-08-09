@@ -38,9 +38,9 @@ import {
   HYDRATATE_FAV_LS,
   POST_PRODUCT,
   DELETE_ONE_FROM_FAV,
-  CREATE_REVIEW,
-  GET_REVIEWS_PRODUCT,
   GET_USERS,
+  // GET_REVIEWS,
+  // POST_REVIEW,
 } from "./actions";
 
 const initialState = {
@@ -55,7 +55,7 @@ const initialState = {
   usersCopy: [],
   sizes: [],
   brands: [],
-  reviews:[],
+  reviews: [],
 };
 
 export default function rootReducer(state = initialState, action) {
@@ -65,13 +65,23 @@ export default function rootReducer(state = initialState, action) {
         ...state,
         products: action.payload,
       };
-      case GET_USERS: {
-        return {
-          ...state,
-          users: action.payload,
-          usersCopy: action.payload
-        };
-      }
+    // case GET_REVIEWS:
+    //   return {
+    //     ...state,
+    //     reviews: action.payload.data,
+    //   };
+    // case POST_REVIEW:
+    //   return {
+    //     ...state,
+    //     reviews: state.reviews.concat(action.payload),
+    //   };
+    case GET_USERS: {
+      return {
+        ...state,
+        users: action.payload,
+        usersCopy: action.payload,
+      };
+    }
     case GET_ALL_CATEGORIES:
       return {
         ...state,
@@ -82,25 +92,11 @@ export default function rootReducer(state = initialState, action) {
         ...state,
         sizes: action.payload,
       };
-      case CREATE_REVIEW:
-      return {
-        ...state,
-        reviews: action.payload,
-      };
 
-    case GET_REVIEWS_PRODUCT:
-      return {
-        ...state,
-        reviews: action.payload,
-      };
-    // case GET_ALL_CATEGORIES:
-    //   return {
-    //       ...state,
-    //   };
     case GET_ALL_BRANDS:
       return {
         ...state,
-        brands: action.payload
+        brands: action.payload,
       };
 
     case GET_DETAILS:
@@ -131,24 +127,34 @@ export default function rootReducer(state = initialState, action) {
           };
 
     case ADD_ONE_TO_CART:
-      const newItem = state.products && state.products.find((product) => product.id === action.payload.id);
-      const newItemSize = state.sizes && state.sizes.find((size) => size.number=== action.payload.size);
-      console.log(action.payload, "soy reducer")
-      let itemInCart = state.cart && state.cart.find((item) => item.id === newItem.id && item.size=== newItemSize.id);
-      console.log(state.cart, "soy cart")
+      const newItem =
+        state.products &&
+        state.products.find((product) => product.id === action.payload.id);
+      const newItemSize =
+        state.sizes &&
+        state.sizes.find((size) => size.number === action.payload.size);
+      let itemInCart = state.cart.find(
+        (item) =>
+          item.id === newItem.id && item.sizeNumber === newItemSize.number
+      );
       return itemInCart
         ? {
-          ...state,
-          cart: state.cart && state.cart.map((item) =>
-            item.id === newItem.id
-              ? { ...item, quantity: item.quantity + 1,  }
-              : item
-          ),
-        }
+            ...state,
+            cart:
+              state.cart &&
+              state.cart.map((item) =>
+                item.id === newItem.id
+                  ? { ...item, quantity: item.quantity + 1 }
+                  : item
+              ),
+          }
         : {
-          ...state,
-          cart: state.cart && [...state.cart, { ...newItem, quantity: 1, sizeNumber: action.payload.size }],
-        };
+            ...state,
+            cart: state.cart && [
+              ...state.cart,
+              { ...newItem, quantity: 1, sizeNumber: action.payload.size },
+            ],
+          };
 
     case DELETE_ONE_FROM_CART:
       const { productId, all } = action.payload;
@@ -350,7 +356,7 @@ export default function rootReducer(state = initialState, action) {
     case DELETE_ONE_FROM_FAV:
       const { FavId } = action.payload;
       let itemToDeleteFAv = state.favorites.find((item) => item.id === FavId);
-      console.log(FavId);
+      console.log(FavId, "id del producto en fav");
       if (itemToDeleteFAv) {
         return {
           ...state,
