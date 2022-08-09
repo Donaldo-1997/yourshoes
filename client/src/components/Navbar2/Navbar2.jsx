@@ -16,7 +16,14 @@ import styles from './NavBar2.module.css'
 
 export default function NavBar() {
 
-  
+  const handleLogout = () => {
+    localStorage.setItem("products", JSON.stringify([]));
+    localStorage.setItem("favProducts", JSON.stringify([]));
+    localStorage.setItem("user", JSON.stringify([]))
+    
+  }
+
+  const user = JSON.parse(localStorage.getItem('user'))
 
   return (
     <Navbar bg="light" expand="lg" className={styles.navbar}>
@@ -29,15 +36,32 @@ export default function NavBar() {
             style={{ maxHeight: "100px" }}
             navbarScroll
           >
+            <div className={styles.containerLogout}>
             <Nav.Link className={styles.icon}>
-             <Link to='/cart' className={styles.Link}> <BsFillCartFill style={{ color: "#f87d2d" }} /></Link> 
+             <Link to='/cart' className={styles.Link}> <BsFillCartFill  style={{ color: "#f87d2d" }} /></Link> 
             </Nav.Link>
+            </div>
+            <div className={styles.containerLogout}>
             <Nav.Link  className={styles.icon}>
               <Link to="/favorites"><FaHeart style={{ color: "#f87d2d" }} /></Link> 
             </Nav.Link>
+            </div>
+            {user && Object.keys(user).length ? (
+              <div className={styles.containerLogout}>
+              <div>
+              <a href={`${process.env.REACT_APP_URL}/auth/logout`} onClick={handleLogout} className={styles.logout_button}><BiLogOut style={{ color: "#f87d2d" }}></BiLogOut></a>
+              </div>
+              <div>
+             <Link to='/datauser'>{!user.image ? <img className={styles.img} src="https://cdn4.iconfinder.com/data/icons/e-commerce-181/512/477_profile__avatar__man_-512.png"/> : <img className={styles.img} src={user.image}/>}</Link> 
+              </div>
+              </div>
+            ) : (
+              <div className={styles.containerLogout}>
               <Nav.Link  className={styles.icon}>
                  <Link to='/login'><FaUserAlt  style={{ color: "#f87d2d" }} /></Link>
               </Nav.Link>
+              </div>
+            )}
         
           </Nav>
         

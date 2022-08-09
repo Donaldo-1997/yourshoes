@@ -28,7 +28,7 @@ color: #000000;
 }
 
 .navbar{
-    background: rgba(143, 53, 53, 0.9);
+    background: rgba(143, 53, 53, 0.097);
     width: 100%;
     position:fixed;
     z-index: 100;

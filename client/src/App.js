@@ -22,6 +22,15 @@ import AdminProducts from "./components/Admin/AdminProducts/AdminProducts";
 import Community from "./components/About/Community";
 import EditProduct from "./components/EditProduct/EditProduct";
 import { ToastContainer } from "react-toastify";
+import Chatbot from "react-chatbot-kit";
+import config from './components/Chatbot/chatbotConfig'
+import ActionProvider from './components/Chatbot/ActionProvider'
+import MessageParser from "./components/Chatbot/MessageParser";
+
+
+
+
+
 
 
 function App() {
@@ -104,6 +113,21 @@ function App() {
         <Route exact path="/admin/create-product" element={<AdminProducts></AdminProducts>}/>
         <Route exact path="/community" element={<Community/>}/>
         <Route exact path="/edit/:id" element={<EditProduct/>}/>
+        <Route exact path="/chatbot" element={<Chatbot
+         config={config}
+            actionProvider={ActionProvider}
+            messageParser={MessageParser}
+            className="app_Chatbot"
+        ><img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMSTcf9vxteFLXwKOVebZMuNkDh7PkAvwe7w&usqp=CAU"
+          alt="Career Guidance Bot"
+         
+        /></Chatbot>}/>
+
+      
+
+        
+
       </Routes>
       <Footer></Footer>
     </Router>
