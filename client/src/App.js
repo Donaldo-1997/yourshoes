@@ -21,14 +21,28 @@ import AdminUsers from "./components/Admin/AdminUsers/AdminUsers";
 import AdminProducts from "./components/Admin/AdminProducts/AdminProducts";
 import Community from "./components/About/Community";
 import EditProduct from "./components/EditProduct/EditProduct";
-import Chatbot from "./components/Chatbot/Chatbot";
 
+
+
+
+
+import { ToastContainer } from "react-toastify";
+import Success from "./components/MercadoPago/Success";
 
 
 function App() {
+  const dispatch = useDispatch();
   const [user, SetUser] = useState(null)
   useEffect(() => {
+
     let isCancelled = false
+
+    if (localStorage.length === 0) {
+      localStorage.setItem("products", JSON.stringify([]));
+      localStorage.setItem("favProducts", JSON.stringify([]));
+      localStorage.setItem('user',  JSON.stringify([]))
+    }
+
     const getUser = () => {
       fetch(`${process.env.REACT_APP_URL}/auth/login/success`, {
         method: "GET",
@@ -57,18 +71,16 @@ function App() {
         });
     };
     getUser();
+
     return ()=>{
       isCancelled=true
     }
   }, []);
 
-  useEffect(() => {
-    if (localStorage.length === 0) {
-      localStorage.setItem("products", JSON.stringify([]));
-      localStorage.setItem("favProducts", JSON.stringify([]));
-      localStorage.setItem('user',  JSON.stringify([]))
-    }
-  }, []); 
+
+ 
+ 
+
   useEffect(() => {
     if (localStorage.length === 0) {
       localStorage.setItem("products", JSON.stringify([]));
@@ -79,8 +91,8 @@ function App() {
     
   const productsLS = JSON.parse(localStorage.getItem("products"));
   
-  const dispatch = useDispatch();
   useEffect(() => {
+    console.log("ACTUALIZANDO CARRITO")
     dispatch(hydratateFromLocalStorage(productsLS));
   }, [productsLS]);
 
@@ -109,8 +121,13 @@ function App() {
         <Route exact path="/admin/create-product" element={<AdminProducts></AdminProducts>}/>
         <Route exact path="/community" element={<Community/>}/>
         <Route exact path="/edit/:id" element={<EditProduct/>}/>
-        <Route exact path="/chatbot" element={<Chatbot/>}/>
+
         
+        
+
+        <Route exact path="/success" element={<Success/>}/>
+        <Route exact path="/failure" element={<div>FAILURE</div>}/>
+
       </Routes>
       <Footer></Footer>
     </Router>

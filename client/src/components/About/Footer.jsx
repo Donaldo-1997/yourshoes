@@ -9,8 +9,17 @@ export default function About() {
           <div className={styles.footer_col}>
             <h3>NOSOTROS</h3>
             <ul>
+
               <li><Link to="/aboutUs"><span className={styles.boton}>SOBRE NOSOTROS</span></Link></li>
               <li><Link to="/community"><span className={styles.boton}>EQUIPO DE YOURSHOES</span></Link></li>
+
+              <li>
+                <Link to="/aboutUs">ABOUT US</Link>
+              </li>
+              <li>
+                <Link to="/community">COMUNIDAD</Link>
+              </li>
+
             </ul>
           </div>
           <div className={styles.footer_col2}>
@@ -32,7 +41,6 @@ export default function About() {
           </div>
         </div>
         <hr />
-      
       </div>
     </div>
   );

@@ -1,5 +1,6 @@
 import axios from "axios";
 
+
 export const GET_ALL_SHOES = "GET_ALL_SHOES"
 export const GET_DETAILS = "GET_DETAILS"
 export const GET_SHOES_NAME = "GET_SHOES_NAME"
@@ -46,10 +47,10 @@ export const POST_ORDER = 'POST_ORDER'
 export const GET_ALL_USERS = 'GET_ALL_USERS'
 
 
-const URL = process.env.REACT_APP_URL
 
-// console.log('URL -->', URL)
+const URL = process.env.REACT_APP_URL;
 
+export const GET_USERS = "GET_USERS";
 
 export function removerTodo() {
   return {
@@ -79,14 +80,14 @@ export function getDetails(id) {
 
 export function getShoesName(name) {
   return async function (dispatch) {
-  
-      const results = await axios(`${URL}/shoes?name=${name}`);
-      dispatch({
-        type: "GET_SHOES_NAME",
-        payload: results.data,
-      });
-      return results.data
-}
+    const results = await axios(`${URL}/shoes?name=${name}`);
+    dispatch({
+      type: "GET_SHOES_NAME",
+      payload: results.data,
+      
+    });
+    return results.data;
+  };
 }
 export function addOneToCart(payload) {
   return {
@@ -107,8 +108,8 @@ export function getAllBrands() {
     const results = await axios(`${URL}/brands`);
     return dispatch({
       type: GET_ALL_BRANDS,
-      payload: results.data
-    })
+      payload: results.data,
+    });
   };
 }
 
@@ -137,34 +138,34 @@ export function filterByBrand(payload) {
       type: FILTER_BY_BRAND,
       payload: results.data,
     });
-    return results.data
+    return results.data;
   };
 }
 
 export function filterByCategory(payload) {
   return async function (dispatch) {
     const results = await axios(`${URL}/shoes?category=${payload}`);
-     dispatch({
+    dispatch({
       type: FILTER_BY_CATEGORY,
       payload: results.data,
     });
-    return results.data
+    return results.data;
   };
 }
 export function filterBySize(payload) {
   return async function (dispatch) {
-    try{ 
-    const results = await axios(`${URL}/shoes?size=${payload}`);
-    //console.log(results.data)
-    dispatch({
-      type: FILTER_BY_SIZE,
-      payload: results.data
-    })
-    return results.data
-  }catch(error){
-    throw error
-  }
-}
+    try {
+      const results = await axios(`${URL}/shoes?size=${payload}`);
+      //console.log(results.data)
+      dispatch({
+        type: FILTER_BY_SIZE,
+        payload: results.data,
+      });
+      return results.data;
+    } catch (error) {
+      throw error;
+    }
+  };
 }
 export function filterByPrice(priceMin, priceMax) {
   //console.log("precio", priceMax)
@@ -182,7 +183,7 @@ export function filterByPrice(priceMin, priceMax) {
 export function postUser(payload) {
   return async function (dispatch) {
     try {
-      var json = await axios.post(`${URL}/login/signup`,payload);
+      var json = await axios.post(`${URL}/login/signup`, payload);
       dispatch({
         type: POST_USER,
         payload: json,
@@ -195,17 +196,17 @@ export function postUser(payload) {
 export function Login(payload) {
   return async function (dispatch) {
     try {
-      const json = await axios.post(`${URL}/login/signin`,payload);
+      const json = await axios.post(`${URL}/login/signin`, payload);
 
-      console.log('json -->', json);
+      console.log("json -->", json);
       dispatch({
         type: LOGIN_USER,
         payload: json.data.user,
       });
 
-      return json
+      return json;
     } catch (error) {
-      throw error
+      throw error;
     }
   };
 }
@@ -285,9 +286,7 @@ export function combinationsFilter2(brand, name, priceMin, priceMax) {
 export function combinationsFilter3(name, brand) {
   return async function (dispatch) {
     try {
-      const results = await axios(
-        `${URL}/shoes?name=${name}&brand=${brand}`
-      );
+      const results = await axios(`${URL}/shoes?name=${name}&brand=${brand}`);
       dispatch({
         type: COMBINATION_FILTERS3,
         payload: results.data,
@@ -451,9 +450,7 @@ export function combinationsFilter_12(size, priceMin, priceMax) {
 export function combinationsFilter_13(size, brand) {
   return async function (dispatch) {
     try {
-      const results = await axios(
-        `${URL}/shoes?size=${size}&brand=${brand}`
-      );
+      const results = await axios(`${URL}/shoes?size=${size}&brand=${brand}`);
       dispatch({
         type: COMBINATION_FILTERS_13,
         payload: results.data,
@@ -485,9 +482,7 @@ export function combinationsFilter14(size, brand, name, priceMin, priceMax) {
 export function combinationsFilter15(size, name) {
   return async function (dispatch) {
     try {
-      const results = await axios(
-        `${URL}/shoes?size=${size}&name=${name}`
-      );
+      const results = await axios(`${URL}/shoes?size=${size}&name=${name}`);
       dispatch({
         type: COMBINATION_FILTERS15,
         payload: results.data,
@@ -513,23 +508,32 @@ export function combinationsFilter16(size, category) {
     } catch (err) {
       throw err;
     }
-  }
+  };
 }
 export function combinationsFilter17(size, category, brand) {
   return async function (dispatch) {
     try {
-      const results = await axios(`${URL}/shoes?size=${size}&category=${category}&brand=${brand}`)
+      const results = await axios(
+        `${URL}/shoes?size=${size}&category=${category}&brand=${brand}`
+      );
       dispatch({
         type: COMBINATION_FILTERS17,
-        payload: results.data
-      })
-      return results.data
+        payload: results.data,
+      });
+      return results.data;
     } catch (err) {
       throw err;
     }
   };
 }
-export function combinationsFilter18(size, category, brand, name, priceMin, priceMax) {
+export function combinationsFilter18(
+  size,
+  category,
+  brand,
+  name,
+  priceMin,
+  priceMax
+) {
   return async function (dispatch) {
     try {
       const results = await axios(
@@ -543,7 +547,7 @@ export function combinationsFilter18(size, category, brand, name, priceMin, pric
     } catch (err) {
       throw err;
     }
-  }
+  };
 }
 export function addOneToFav(payload) {
   return {
@@ -552,21 +556,21 @@ export function addOneToFav(payload) {
   };
 }
 
-export function postProduct(props){
-  return async function (dispatch){
-    const response = axios.post(`${URL}/shoes`, props)
+export function postProduct(props) {
+  return async function (dispatch) {
+    const response = axios.post(`${URL}/shoes`, props);
     dispatch({
       type: POST_PRODUCT,
-      payload: response.data
-    })
-  }
+      payload: response.data,
+    });
+  };
 }
 
-export function loginUser(user){
-    return ({
-      type: 'USER_LOGGED',
-      payload: user
-    })
+export function loginUser(user) {
+  return {
+    type: "USER_LOGGED",
+    payload: user,
+  };
 }
 
 export function deleteOneToFav(payload) {
@@ -575,14 +579,14 @@ export function deleteOneToFav(payload) {
     payload: payload,
   };
 }
-export function putProductStock(props){
-  return async function(dispatch){
-    const result = axios.put(`${URL}/mercadopago`, props)
+export function putProductStock(props) {
+  return async function (dispatch) {
+    const result = axios.put(`${URL}/mercadopago`, props);
     return dispatch({
       type: PUT_STOCK,
-      payload: result.data
-    })
-  }
+      payload: result.data,
+    });
+  };
 }
 export function postOrder(props){
   return async function(dispatch){
@@ -606,7 +610,7 @@ export function postOrder(props){
 // }
 
 export const putCreatedProduct = ({ id, input }) => {
-  console.log("id: ", id, "input: ", input)
+  console.log("id: ", id, "input: ", input);
   return async (dispatch) => {
     await axios
       .put(`${URL}/shoes/${id}`, input)
@@ -614,9 +618,10 @@ export const putCreatedProduct = ({ id, input }) => {
   };
 };
 
-export function getShoeById(id){
-  axios(`${URL}/shoes/${id}`)
+export function getShoeById(id) {
+  axios(`${URL}/shoes/${id}`);
 }
+
 
 export function getAllUsers(){
   return async function(dispatch){
@@ -629,4 +634,19 @@ export function getAllUsers(){
 
 }
 
+
+
+export const getUsers = () => {
+  return async function (dispatch) {
+    try {
+      var json = await axios.get(`${URL}/user/`);
+      return dispatch({
+        type: GET_USERS,
+        payload: json.data,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
 

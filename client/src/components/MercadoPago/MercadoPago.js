@@ -8,6 +8,7 @@ import { getAllUsers, postOrder, putProductStock } from "../../redux/actions";
 
 function MercadoPago() {
   const cart = useSelector((state) => state.cart);
+
   const [datos, setDatos] = useState("");
   const dispatch = useDispatch()
 
@@ -37,11 +38,9 @@ function MercadoPago() {
     }
   }, [cart]);
 
-  //   const productos = [
-  //     { title: "Producto 1", quantity: 5, price: 10.52 },
-  //     { title: "Producto 2", quantity: 15, price: 100.52 },
-  //     { title: "Producto 3", quantity: 6, price: 200 },
-  //   ];
+  console.log(cart.length, "CART LENGTH");
+
+
   return (
     <div className="a">
       {!datos ? <p>Aguarde un momento....</p> : <Checkout data={datos} />}

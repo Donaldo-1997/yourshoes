@@ -16,7 +16,7 @@ const nodemailer = require("./nodemailer.js")
 const stock = require ("./stock");
 const paymants = require ("./payments")
 const order = require ("./order")
-
+const reviewsRouter = require("./review")
 
 
 //--------------------------ROUTES
@@ -33,6 +33,9 @@ router.use("/mercadopago", mercadoRouter);
 router.use("/size", size);
 router.use("/nodemailer", nodemailer);
 
+
+
+router.use('/reviews', reviewsRouter);
 
 
 // router.get('/', (req, res) => {
