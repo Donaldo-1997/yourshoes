@@ -21,25 +21,13 @@ import AdminUsers from "./components/Admin/AdminUsers/AdminUsers";
 import AdminProducts from "./components/Admin/AdminProducts/AdminProducts";
 import Community from "./components/About/Community";
 import EditProduct from "./components/EditProduct/EditProduct";
-
-
-
-
-
 import { ToastContainer } from "react-toastify";
-
 import Success from "./components/MercadoPago/Success";
-
 import Chatbot from "react-chatbot-kit";
 import config from './components/Chatbot/chatbotConfig'
 import ActionProvider from './components/Chatbot/ActionProvider'
 import MessageParser from "./components/Chatbot/MessageParser";
-
-
-
-
-
-
+import axios from 'axios'
 
 
 function App() {
@@ -56,32 +44,50 @@ function App() {
     }
 
     const getUser = () => {
-      fetch(`${process.env.REACT_APP_URL}/auth/login/success`, {
-        method: "GET",
-        credentials: "include",
-        headers: {
-          // Accept: "application/json",
+      // fetch(`${process.env.REACT_APP_URL}/auth/login/success`, {
+      //   method: "GET",
+      //   credentials: "include",
+      //   headers: {
+      //     // Accept: "application/json",
+      //     "origin": [`${process.env.REACT_APP_URL}`],
+      //     "Content-Type": "application/json",
+      //     "Access-Control-Allow-Credentials": true,
+      //     "Access-Control-Allow-Origin": "*"
+      //   },
+      // })
+      //   .then((response) => {
+      //     if (response.status === 200) return response.json();
+      //     throw(response)
+      //   })
+      //   .then((res) => {
+      //     if(!isCancelled){ 
+      //     dispatch(loginUser(res.user))
+      //     SetUser(res.user)
+      //     localStorage.setItem('user',  JSON.stringify(res.user))
+      //     console.log('google -->',res);
+      //   }})
+      //   .catch((err) => {
+      //     console.log(err);
+      //   });
+      axios.get(`${process.env.REACT_APP_URL}/auth/login/success`, {
+        withCredentials: true,
           "origin": [`${process.env.REACT_APP_URL}`],
           "Content-Type": "application/json",
           "Access-Control-Allow-Credentials": true,
-          "Access-Control-Allow-Origin": "*"
-        },
-      })
-        .then((response) => {
-          if (response.status === 200) return response.json();
-          throw(response)
         })
-        .then((res) => {
-          if(!isCancelled){ 
-          dispatch(loginUser(res.user))
-          SetUser(res.user)
-          localStorage.setItem('user',  JSON.stringify(res.user))
-          console.log('google -->',res);
-        }})
+        .then(res => {
+            if(res.data.user) {
+              if(!isCancelled){
+                dispatch(loginUser(res.data.user))
+                localStorage.setItem('user', JSON.stringify(res.data.user))
+              }
+              console.log('LOGIN_SUCCESS -->', res);
+          }
+        })
         .catch((err) => {
-          console.log(err);
+            console.log('LOGIN_ERROR', err);
         });
-    };
+      };
     getUser();
 
     return ()=>{
@@ -89,9 +95,6 @@ function App() {
     }
   }, []);
 
-
- 
- 
 
   useEffect(() => {
     if (localStorage.length === 0) {
@@ -143,13 +146,7 @@ function App() {
         ><img
           src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMSTcf9vxteFLXwKOVebZMuNkDh7PkAvwe7w&usqp=CAU"
           alt="Career Guidance Bot"
-         
         /></Chatbot>}/>
-
-      
-
-        
-
       </Routes>
       <Footer></Footer>
     </Router>
