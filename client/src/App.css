@@ -51,3 +51,23 @@ select{
 Body{
   background: rgba(0, 0, 0, 0.481);
 }
+
+.react-chatbot-kit-chat-input {
+  display: none;
+}
+
+.react-chatbot-kit-chat-btn-send {
+  display: none;
+}
+
+.react-chatbot-kit-chat-header{
+  display: none;
+}
+
+.react-chatbot-kit-chat-bot-message {
+  font-size: 20px;
+}
+
+.react-chatbot-kit-chat-bot-message-container {
+  margin-bottom: 16px;
+}
