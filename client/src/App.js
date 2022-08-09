@@ -76,8 +76,8 @@ function App() {
           "Access-Control-Allow-Credentials": true,
         })
         .then(res => {
+          if(!isCancelled){
             if(res.data.user) {
-              if(!isCancelled){
                 dispatch(loginUser(res.data.user))
                 localStorage.setItem('user', JSON.stringify(res.data.user))
               }
