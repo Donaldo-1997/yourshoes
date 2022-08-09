@@ -14,12 +14,13 @@ const mercadoRouter = require("./mercadopago.js")
 const size = require("./size")
 const nodemailer = require("./nodemailer.js")
 const stock = require ("./stock");
-
+const paymants = require ("./payments")
 const order = require ("./order")
 
 
 
 //--------------------------ROUTES
+router.use("/payments", paymants)
 router.use("/order", order)
 router.use("/stock", stock);
 router.use("/auth", auth_email);

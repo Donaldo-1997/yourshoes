@@ -102,9 +102,7 @@ async function getAll() {
     try {
         let result = cargo ? await Product.findAll({
           include: [
-            { model: Brand },
-            { model: Category },
-            { model: Size }
+            { all: true }
           ]
         }) : await getAllProducts()
 

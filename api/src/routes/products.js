@@ -81,10 +81,7 @@ router.get("/:id", async (req, res) => {
       const foundProduct = await Product.findByPk(id,
         {
           include: [
-            { model: Brand },
-            { model: Category },
-            { model: Size},
-            
+            { all: true }
           ]
         });
 
@@ -145,7 +142,7 @@ router.put("/:id", async (req, res) => {
     const { title, model, image, price, size, brand, category } = req.body
     const { id } = req.params
     
-    const productUpdated = await Product.findOne({where: {id}, include: [{model: Brand}, {model: Category}, {model: Size}]})
+    const productUpdated = await Product.findOne({where: {id}, include: [{ all: true }]})
     console.log('product', productUpdated)
     const oldBrand = productUpdated.brand.id
     console.log('brand', oldBrand)
