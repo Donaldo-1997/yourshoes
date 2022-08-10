@@ -2,7 +2,7 @@ import React from "react";
 import { useLocation } from "react-router-dom";
 import CreateProduct from "../../CreateProduct/CreateProduct";
 import SideBar from "../SideBar/SideBar";
-import DatatableProducts_copy from "./DatatableProducts_copy";
+import DatatableProducts from "./DatatableProducts";
 import { BackgroundList, ContainerList } from "./StyledAdmin";
 import NavBar2 from "../../Navbar2/Navbar2"
 
@@ -17,7 +17,7 @@ export default function AdminProducts() {
             <BackgroundList>
                 <ContainerList>
                     <SideBar />
-                    {pathname === '/admin/products' ? <DatatableProducts_copy /> : <CreateProduct />}
+                    {pathname === '/admin/products' ? <DatatableProducts /> : <CreateProduct />}
                 </ContainerList>
             </BackgroundList>
         </div>

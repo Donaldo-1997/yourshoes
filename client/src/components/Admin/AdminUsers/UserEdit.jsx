@@ -51,10 +51,7 @@ export default function UserEdit({ data }) {
                     <input type="text" name='email' value={state.address} onChange={handleChange} />
                 </div>
                 <div>
-                    <input type="text" name='email' value={state.email} onChange={handleChange} />
-                </div>
-                <div>
-                    <input type="text" name='email' value={state.email} onChange={handleChange} />
+                    <input type="text" name='email' value={state.phone_number} onChange={handleChange} />
                 </div>
                 <div style={{ gridColumn: '1 / span 2' }}>
                     <button style={{ width: '100%' }} type="submit">Guardar</button>
