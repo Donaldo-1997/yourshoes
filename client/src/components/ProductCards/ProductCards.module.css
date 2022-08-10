@@ -9,12 +9,12 @@
 }
 
 .container .card {
-  width: 210px;
+  width: 250px;
   border-radius: 8px;
   overflow: hidden;
   margin: 20px;
   text-align: left;
-  height: 293px;
+  height: 340px;
   background-color: white;
 }
 

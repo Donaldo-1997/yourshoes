@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import s from "./Checkout.module.css";
 import React from "react";
 import { useSelector } from "react-redux";
+import NavBar2 from "../Navbar2/Navbar2";
 
 export default function Comprar({ data }) {
   const cart = useSelector((state) => state.cart);
@@ -33,27 +34,27 @@ export default function Comprar({ data }) {
     }
   }
   return (
-    <div className={s.container}>
-      <form id="form1">
-        <div className={s.hijo}>
-          <div>
+    <div>
+      <NavBar2/>
+      <div className={s.container}>
+        <form id="form1" className={s.allContainer}>
+          <div className={s.hijo}>
             {cart.map((producto, i) => {
               return (
                 <div className={s.hijo2} key={i}>
-                  <img src={producto.image} alt="" width={75} />
+                  <img src={producto.image} alt="" width={200} />
                   <h5>{producto.title.slice(0, 25)}...</h5>
                   <h5>
                     {producto.price} x {producto.quantity} =$
                     {producto.price * producto.quantity}
                   </h5>
-                  <h5>{producto.quantity}</h5>
                 </div>
               );
             })}
-            <h4>Total a pagar: ${precios}</h4>
           </div>
-        </div>
-      </form>
+        </form>
+            <h4 className={s.totalAPagar}>Total a pagar: ${precios}</h4>
+      </div>
     </div>
   );
 }

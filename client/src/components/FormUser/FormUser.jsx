@@ -208,7 +208,7 @@ export default function Formulario() {
               />
             </div>
             <div>
-              <label htmlFor="password">Contrasena: </label>
+              <label htmlFor="password">Contraseña: </label>
               <Field
                 type="password"
                 id="password"
@@ -227,7 +227,7 @@ export default function Formulario() {
               <p className={styles.exito}>Enviado con exito!</p>
             )}
             
-            <Link to='/login' className={styles.link}><p><FcDownLeft></FcDownLeft>Regresa</p></Link>
+            <Link to='/login' className={styles.link}><p className={styles.backBtn}><FcDownLeft></FcDownLeft>Regresa</p></Link>
 
           </Form>
         )}

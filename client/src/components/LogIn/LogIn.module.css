@@ -25,11 +25,11 @@
     /* or 60px */
     letter-spacing: 0.04em;
 
-    color: #000000;
+    color: white;
 }
 
 .yourShoes span{
-    color: black
+    color: #f87d2d
 }
 
 .Login {
@@ -42,10 +42,10 @@
 	min-width: 500px;
     min-height: 400px;
 	margin-top: 0px;
-    background: #f87d2d;
+    background: content-box;
 	border-radius: 5px;
 	padding: 20px;
-	box-shadow: rgba(0, 0, 0, 0.833) 0px 1px 4px;
+	box-shadow: 2px 4px 10px 1px rgb(201 201 201 / 47%);
 }
 
 .formulario > div {
@@ -87,7 +87,7 @@
 
 .formulario button[type="submit"] {
 	display: block;
-	background: #ff9d00;
+	background: #f87d2d;
 	font-weight: 600;
 	font-family: 'Open Sans', sans-serif;
 	border: none;

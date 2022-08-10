@@ -3,7 +3,56 @@
   flex-direction: column;
   align-items: center;
 }
+.addReview{
+  background: #fd7e14;
+}
+.reviewContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 
+}
+.inputReviewDiv {
+  width: 100%;
+  text-align: center;
+  padding: 5%;
+}
+.inputReviewDiv p{
+  color: white;
+}
+.reviewTittle {
+  font-size: 2em;
+  text-align: center;
+  color: black;
+}
+.reviewCard {
+  padding: 15px;
+  width: 75%;
+  height: 100%;
+  background-color: white;
+  color: rgb(20, 15, 15);
+  margin-bottom: 1.5em;
+  border-radius: 10px;
+  -webkit-box-shadow: 4px 4px 15px -5px rgba(0, 0, 0, 0.6);
+  -moz-box-shadow: 4px 4px 15px -5px rgba(0, 0, 0, 0.6);
+  box-shadow: 4px 4px 15px -5px rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: stretch;
+}
+.reviewRating {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+.chip {
+  margin: 0.05em;
+}
+.reviewContent {
+  padding-left: 16px;
+  text-align: center;
+  margin: auto;
+}
 .divContent {
   display: flex;
   flex-direction: row;
@@ -19,6 +68,7 @@
   width: 400px;
   border-color: #000000;
   border-width: 2px;
+  height: 320px;
 }
 
 .divCard h5 {
@@ -116,6 +166,7 @@
 
 .sizeContainer{
   display: flex;
+  flex-direction: column;
   align-self: flex-start;
   padding-left: 5px;
 }
@@ -135,5 +186,10 @@
 .selectSize{
   border-radius: 30px;
 }
+
+.sizeYSelect{
+  display: flex;
+}
+
 
 

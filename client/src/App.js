@@ -16,66 +16,99 @@ import { hydratateLSFav } from "./redux/actions";
 import CreateProduct from "./components/CreateProduct/CreateProduct";
 import UserProfile from "./components/UserProfile/UserProfile";
 import AdminHome from "./components/AdminHome/AdminHome";
-import Footer from "./components/About/Footer"
+import Footer from "./components/About/Footer";
 import AdminUsers from "./components/Admin/AdminUsers/AdminUsers";
 import AdminProducts from "./components/Admin/AdminProducts/AdminProducts";
 import Community from "./components/About/Community";
 import EditProduct from "./components/EditProduct/EditProduct";
-import { ToastContainer } from "react-toastify";
 
+import { ToastContainer } from "react-toastify";
+import Success from "./components/MercadoPago/Success";
+import Chatbot from "react-chatbot-kit";
+import config from "./components/Chatbot/chatbotConfig";
+import ActionProvider from "./components/Chatbot/ActionProvider";
+import MessageParser from "./components/Chatbot/MessageParser";
+import axios from 'axios'
 
 
 function App() {
-  const [user, SetUser] = useState(null)
+  const dispatch = useDispatch();
+  const [user, SetUser] = useState(null);
   useEffect(() => {
+    let isCancelled = false;
+
+    if (localStorage.length === 0) {
+      localStorage.setItem("products", JSON.stringify([]));
+      localStorage.setItem("favProducts", JSON.stringify([]));
+      localStorage.setItem("user", JSON.stringify([]));
+    }
+
     const getUser = () => {
-      fetch(`${process.env.REACT_APP_URL}/auth/login/success`, {
-        method: "GET",
-        credentials: "include",
-        headers: {
-          // Accept: "application/json",
+      // fetch(`${process.env.REACT_APP_URL}/auth/login/success`, {
+      //   method: "GET",
+      //   credentials: "include",
+      //   headers: {
+      //     // Accept: "application/json",
+      //     "origin": [`${process.env.REACT_APP_URL}`],
+      //     "Content-Type": "application/json",
+      //     "Access-Control-Allow-Credentials": true,
+      //     "Access-Control-Allow-Origin": "*"
+      //   },
+      // })
+      //   .then((response) => {
+      //     if (response.status === 200) return response.json();
+      //     throw(response)
+      //   })
+      //   .then((res) => {
+      //     if(!isCancelled){ 
+      //     dispatch(loginUser(res.user))
+      //     SetUser(res.user)
+      //     localStorage.setItem('user',  JSON.stringify(res.user))
+      //     console.log('google -->',res);
+      //   }})
+      //   .catch((err) => {
+      //     console.log(err);
+      //   });
+      axios.get(`${process.env.REACT_APP_URL}/auth/login/success`, {
+        withCredentials: true,
           "origin": [`${process.env.REACT_APP_URL}`],
           "Content-Type": "application/json",
           "Access-Control-Allow-Credentials": true,
-          "Access-Control-Allow-Origin": "*"
-        },
-      })
-        .then((response) => {
-          if (response.status === 200) return response.json();
-          throw(response)
         })
-        .then((res) => {
-          dispatch(loginUser(res.user))
-          SetUser(res.user)
-          localStorage.setItem('user',  JSON.stringify(res.user))
-          console.log('google -->',res);
+        .then(res => {
+          if(!isCancelled){
+            if(res.data.user) {
+                dispatch(loginUser(res.data.user))
+                localStorage.setItem('user', JSON.stringify(res.data.user))
+              }
+              console.log('LOGIN_SUCCESS -->', res);
+          }
         })
         .catch((err) => {
-          console.log(err);
+            console.log('LOGIN_ERROR', err);
         });
-    };
+      };
     getUser();
+
+    return () => {
+      isCancelled = true;
+    };
   }, []);
+
+
+
 
   useEffect(() => {
     if (localStorage.length === 0) {
       localStorage.setItem("products", JSON.stringify([]));
       localStorage.setItem("favProducts", JSON.stringify([]));
-      localStorage.setItem('user',  JSON.stringify([]))
     }
-  }, [localStorage, user]); 
-  // useEffect(() => {
-  //   if (localStorage.length === 0) {
-  //     localStorage.setItem("products", JSON.stringify([]));
-  //     localStorage.setItem("favProducts", JSON.stringify([]));
-  //   }
-  // }, [user]);
+  }, [user]);
 
-    
   const productsLS = JSON.parse(localStorage.getItem("products"));
-  
-  const dispatch = useDispatch();
+
   useEffect(() => {
+    console.log("ACTUALIZANDO CARRITO");
     dispatch(hydratateFromLocalStorage(productsLS));
   }, [productsLS]);
 
@@ -86,7 +119,6 @@ function App() {
 
   return (
     <Router>
-      <ToastContainer/>
       <Routes>
         <Route exact path="/" element={<HomePage />} />
         <Route exact path="/shoes/:id" element={<ProductDetail />} />
@@ -105,7 +137,17 @@ function App() {
         <Route exact path="/admin/create-product" element={<AdminProducts></AdminProducts>}/>
         <Route exact path="/community" element={<Community/>}/>
         <Route exact path="/edit/:id" element={<EditProduct/>}/>
-        
+        <Route exact path="/success" element={<Success/>}/>
+        <Route exact path="/failure" element={<div>FAILURE</div>}/>
+        <Route exact path="/chatbot" element={<Chatbot
+         config={config}
+            actionProvider={ActionProvider}
+            messageParser={MessageParser}
+            className="app_Chatbot"
+        ><img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMSTcf9vxteFLXwKOVebZMuNkDh7PkAvwe7w&usqp=CAU"
+          alt="Career Guidance Bot"
+        /></Chatbot>}/>
       </Routes>
       <Footer></Footer>
     </Router>
