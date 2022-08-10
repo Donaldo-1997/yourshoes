@@ -591,6 +591,7 @@ export function putProductStock(props) {
 export function postOrder(props){
   return async function(dispatch){
     const result = axios.post(`${URL}/order`, props)
+    console.log(result.data)
     return dispatch({
       type: POST_ORDER,
       payload: result.data
