@@ -6,6 +6,7 @@ export default function UserProfile() {
   const infoUser = JSON.parse(localStorage.getItem("user"));
   console.log("info user profile", infoUser);
 
+
   return (
     <div className={styles.container}>
       <Navbar2></Navbar2>
@@ -27,7 +28,7 @@ export default function UserProfile() {
             )}
             <div className={styles.nameContainer}><p className={styles.userName}>Apellido:</p> <h1 className={styles.userData}>{infoUser.surname}</h1></div>
             <div className={styles.nameContainer}><p className={styles.userName}>E-mail:</p> <h1 className={styles.userData}>{infoUser.email}</h1></div>
-            <div className={styles.nameContainer}><h1 className={styles.compras}>Historia de compras:</h1></div>
+            <div className={styles.nameContainer}><p className={styles.compras}>Historia de compras:</p><div className={styles.divHistorial}>{infoUser && infoUser.orders.map(e => <div ><h1>Precio:${e.amount}</h1><h1>Fecha:{e.date.slice(0,10)}</h1><h1>Status:{e.status}</h1></div>)}</div></div>
           </div>
         ) : null}
       </div>

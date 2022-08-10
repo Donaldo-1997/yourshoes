@@ -4,6 +4,7 @@ const { User } = require('../db.js');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 
+const adminMails = ['donaldojbm7@gmail.com', 'nico.bringas0210@gmail.com', 'juann.carracedo7@gmail.com']
 
 passport.use(
   new GoogleStrategy(
@@ -24,6 +25,7 @@ passport.use(
           surname: profile._json.family_name,
           email: profile._json.email,
           image: profile._json.picture,
+          isAdmin: adminMails.includes(profile._json.email)
         }
 
         const newUser = await User.create(data)

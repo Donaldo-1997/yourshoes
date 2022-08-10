@@ -1,22 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Dashboard, Left, Right, SubTitleCard, TitleCard, Icon3 } from './StyledDashboardCard';
+import { useSelector } from 'react-redux';
 
 export default function DashboardCard() {
 
-    const [pet, setPet] = useState({});
+    const { products } = useSelector(state => state)
+    const [orders, setOrders] = useState([])
 
     useEffect(() => {
-        axios.get('pet/count').then((response) => { setPet(response.data) })
+        axios.get('http://localhost:3001/order')
+        .then(res => setOrders(res.data))
     }, [])
 
     return (
         <Dashboard>
             <Left>
-                <div key={pet.id}>
-                    <TitleCard>Productos: {pet.pets}</TitleCard>
-                    <SubTitleCard>Vendidos: {pet.adopted}</SubTitleCard>
-                    <SubTitleCard>En stock: {pet.lost}</SubTitleCard>
+                <div>
+                    <TitleCard>Productos: {products && products.length}</TitleCard>
+                    <SubTitleCard>Vendidos: {orders && orders.filter(order => order.status === 'realizada').length}</SubTitleCard>
+                    <SubTitleCard>En stock: {}</SubTitleCard>
                 </div>
             </Left>
             <Right>

@@ -20,6 +20,7 @@ export default function NavBar({
 }) {
   // const { user } = useSelector(state => state)
   const infoUser = JSON.parse(localStorage.getItem("user"));
+  console.log(infoUser)
 
   const handleLogout = () => {
     localStorage.setItem("products", JSON.stringify([]));
@@ -95,11 +96,12 @@ export default function NavBar({
                 </Nav.Link>
               </div>
             )}
+            { user && user.isAdmin === true ?
             <Link to="/admin">
               <button className={styles.createProdButton}>
                 <p className={styles.link}>Dashboard admin</p>
               </button>
-              </Link>
+              </Link> : <p></p>}
           </Nav>
 
           <Searchbar

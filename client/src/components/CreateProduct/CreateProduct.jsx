@@ -217,13 +217,13 @@ useEffect(()=>{
       return errors;
     };
 
-    return (
-      <div className={styles.Container}>
-      <Link to="/">
+  return (
+    <div className={styles.Container}>
+      {/* <Link to="/">
         <button className={styles.homeButton}>
           YOUR<span className={styles.shoes}>SHOES</span>
         </button>
-      </Link>
+      </Link> */}
       <h1 className={styles.title}>Publicación de producto</h1>
       <div className={styles.allContainer}>
         <form onSubmit={(e) => handleSubmit(e)} className={styles.form}>
