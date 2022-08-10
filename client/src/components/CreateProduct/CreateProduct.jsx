@@ -309,54 +309,63 @@ array.push(size35,size36,size37,size38,size39,size40,size41,size42,size43)
         <input onChange={(e)=>{handleOnChange(e)}}
         className={styles.inputSizeStock}
         type='number'
+        min="0"
         value={size35.stock}/>
 
         <label>36 </label>
         <input onChange={(e)=>{handleOnChange1(e)}}
         className={styles.inputSizeStock}
         type='number'
+        min="0"
         value={size36.stock}/>
 
         <label>37 </label>
         <input onChange={(e)=>{handleOnChange2(e)}}
         className={styles.inputSizeStock}
         type='number'
+        min="0"
         value={size37.stock}/>
 
         <label>38 </label>
         <input onChange={(e)=>{handleOnChange3(e)}}
         className={styles.inputSizeStock}
         type='number'
+        min="0"
         value={size38.stock}/>
 
         <label>39 </label>
         <input onChange={(e)=>{handleOnChange4(e)}}
         className={styles.inputSizeStock}
         type='number'
+        min="0"
         value={size39.stock}/>
 
         <label>40 </label>
         <input onChange={(e)=>{handleOnChange5(e)}}
         className={styles.inputSizeStock}
         type='number'
+        min="0"
         value={size40.stock}/>
 
         <label>41 </label>
         <input onChange={(e)=>{handleOnChange6(e)}}
         className={styles.inputSizeStock}
         type='number'
+        min="0"
         value={size41.stock}/>
 
         <label>42 </label>
         <input onChange={(e)=>{handleOnChange7(e)}}
         className={styles.inputSizeStock}
         type='number'
+        min="0"
         value={size42.stock}/>
 
         <label>43</label>
         <input onChange={(e)=>{handleOnChange8(e)}}
         className={styles.inputSizeStock}
         type='number'
+        min="0"
         value={size43.stock}/>
           <div>
             {!Object.keys(errors).length ? (

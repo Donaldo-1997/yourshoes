@@ -22,13 +22,17 @@ export default function UserProfile() {
               <img className={styles.img} src={infoUser.image} />
             )}
             {!infoUser.name ? (
-              <div className={styles.nameContainer}><p className={styles.userName}>Nombre:</p> <h1>{infoUser.user.name}</h1></div>
+              <div className={styles.nameContainer}><p className={styles.userName}>Nombre: </p> <h2>{infoUser.user.name}</h2></div>
             ) : (
-              <div className={styles.nameContainer}><p className={styles.userName}>Nombre:</p> <h1>{infoUser.name}</h1></div>
+              <div className={styles.nameContainer}><p className={styles.userName}>Nombre: </p> <h2>{infoUser.name}</h2></div>
             )}
-            <div className={styles.nameContainer}><p className={styles.userName}>Apellido:</p> <h1 className={styles.userData}>{infoUser.surname}</h1></div>
-            <div className={styles.nameContainer}><p className={styles.userName}>E-mail:</p> <h1 className={styles.userData}>{infoUser.email}</h1></div>
-            <div className={styles.nameContainer}><p className={styles.compras}>Historia de compras:</p><div className={styles.divHistorial}>{infoUser && infoUser.orders.map(e => <div ><h1>Precio:${e.amount}</h1><h1>Fecha:{e.date.slice(0,10)}</h1><h1>Status:{e.status}</h1></div>)}</div></div>
+            <div className={styles.nameContainer}><p className={styles.userName}>Apellido: </p> <h2 className={styles.userData}>{infoUser.surname}</h2></div>
+            <div className={styles.nameContainer}><p className={styles.userName}>E-mail: </p> <h2 className={styles.userData}>{infoUser.email}</h2></div>
+            <div >
+              <div className={styles.historialContainer}>
+                <p className={styles.compras}>Historia de compras: </p>
+                <div className={styles.divHistorial}>{infoUser && infoUser.orders.map(e => <div className={styles.historial}><h2>Fecha de compra: {e.date.slice(0,10)}</h2><h2>Precio: ${e.amount}</h2><h2>Estado de compra: {e.status.charAt(0).toUpperCase() + e.status.slice(1)}</h2></div>)}</div></div>
+            </div>
           </div>
         ) : null}
       </div>
