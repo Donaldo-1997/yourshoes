@@ -28,6 +28,7 @@ import config from "./components/Chatbot/chatbotConfig";
 import ActionProvider from "./components/Chatbot/ActionProvider";
 import MessageParser from "./components/Chatbot/MessageParser";
 import axios from 'axios'
+import CreatePrueba from "./components/prueba";
 
 
 function App() {
@@ -148,6 +149,7 @@ function App() {
           src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMSTcf9vxteFLXwKOVebZMuNkDh7PkAvwe7w&usqp=CAU"
           alt="Career Guidance Bot"
         /></Chatbot>}/>
+        <Route exact path="/prueba" element={<CreatePrueba/>}/>
       </Routes>
       <Footer></Footer>
     </Router>
