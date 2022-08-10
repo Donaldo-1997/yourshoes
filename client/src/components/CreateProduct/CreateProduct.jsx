@@ -279,10 +279,6 @@ useEffect(()=>{
             )}
           </div>
 
-          <div className={styles.tallesContainer}>
-            <label className={styles.label}>Talle </label>
-          </div>
-
           <div className={styles.infoContainer}>
             <label className={styles.label}>Marca </label>
             <input
@@ -314,51 +310,71 @@ useEffect(()=>{
               <option>Alpargatas</option>
             </select>
           </div>
-          
-        <label>35</label>
+          <div className={styles.tallesContainer}>
+            <label className={styles.label}>Talle </label>
+          </div>
+      <div className={styles.sizeInputsContainer}>
+        <label>35 </label>
         <input onChange={(e)=>{handleOnChange(e)}}
-        placeholder="ingresa el stock..."
+        className={styles.inputSizeStock}
         type='number'
+        min="0"
         value={size35.stock}/>
 
-        <label>36</label>
+        <label>36 </label>
         <input onChange={(e)=>{handleOnChange1(e)}}
-        placeholder="ingresa el stock..."
+        className={styles.inputSizeStock}
+        type='number'
+        min="0"
         value={size36.stock}/>
 
-        <label>37</label>
+        <label>37 </label>
         <input onChange={(e)=>{handleOnChange2(e)}}
-        placeholder="ingresa el stock..."
+        className={styles.inputSizeStock}
+        type='number'
+        min="0"
         value={size37.stock}/>
 
-        <label>38</label>
+        <label>38 </label>
         <input onChange={(e)=>{handleOnChange3(e)}}
-        placeholder="ingresa el stock..."
+        className={styles.inputSizeStock}
+        type='number'
+        min="0"
         value={size38.stock}/>
 
-        <label>39</label>
+        <label>39 </label>
         <input onChange={(e)=>{handleOnChange4(e)}}
-        placeholder="ingresa el stock..."
+        className={styles.inputSizeStock}
+        type='number'
+        min="0"
         value={size39.stock}/>
 
-        <label>40</label>
+        <label>40 </label>
         <input onChange={(e)=>{handleOnChange5(e)}}
-        placeholder="ingresa el stock..."
+        className={styles.inputSizeStock}
+        type='number'
+        min="0"
         value={size40.stock}/>
 
-        <label>41</label>
+        <label>41 </label>
         <input onChange={(e)=>{handleOnChange6(e)}}
-        placeholder="ingresa el stock..."
+        className={styles.inputSizeStock}
+        type='number'
+        min="0"
         value={size41.stock}/>
 
-        <label>42</label>
+        <label>42 </label>
         <input onChange={(e)=>{handleOnChange7(e)}}
-        placeholder="ingresa el stock..."
+        className={styles.inputSizeStock}
+        type='number'
+        min="0"
         value={size42.stock}/>
 
         <label>43</label>
         <input onChange={(e)=>{handleOnChange8(e)}}
-        placeholder="ingresa el stock..."
+        className={styles.inputSizeStock}
+        type='number'
+        min="0"
         value={size43.stock}/>
           <div>
             {!Object.keys(errors).length ? (
@@ -375,6 +391,7 @@ useEffect(()=>{
               </button>
             )}
           </div>
+        </div>
         </form>
       </div>
     </div>

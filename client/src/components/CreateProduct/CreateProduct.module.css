@@ -39,8 +39,8 @@
 }
 
 .createButton{
-    margin-top: 63px;
-    margin-left: 38%;
+    margin-top: -1px;
+    margin-left: 288px;
     width: 151px;
     height: 61px;
     border-radius: 10px;
@@ -102,4 +102,20 @@
 .xButton{
     background: transparent;
     border-style: none;
+}
+
+.inputSizeStock{
+    border: none;
+    border-bottom-style: solid;
+    margin-right: 10px;
+    outline: 0px;
+    width: 40px;
+    background: #f87d2d;
+    margin-left: 5px;
+}
+
+.sizeInputsContainer{
+    height: 150px;
+    width: 239px;
+    margin-left: 10px;
 }

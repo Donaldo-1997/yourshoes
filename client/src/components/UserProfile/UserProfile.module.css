@@ -31,6 +31,9 @@
   margin-top: 10px;
   color: white;
   padding-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .userData{
@@ -40,9 +43,31 @@
 .compras{
   font-size: 20px;
   color: #f87d2d;
+  padding: 10px;
 }
 
 .divHistorial {
   border: 15px;
   border-color: #f87d2d;
+}
+
+.historial{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  border-width: 1px;
+  padding: 10px;
+  border-bottom-style: solid;
+  border-bottom-color: #fd7e14;
+  width: 620px;
+}
+
+
+.historialContainer{
+  border-style: solid;
+  border-color: #f87d2d;
+  border-width: 2px;
+  border-radius: 7px;
+  height: 222px;
+  overflow-y: scroll;
 }
