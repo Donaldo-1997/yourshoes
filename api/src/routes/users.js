@@ -34,14 +34,43 @@ router.get("/:id", async (req, res) => {
   }
 })
 
+router.put('/isAdmin/:id', async (req, res, next) => {
+  const { id } = req.params
+  const { isAdmin } = req.body
+
+  try {
+    const userToUpdate = await User.findOne({ where: { id } })
+    userToUpdate.isAdmin = isAdmin
+    await userToUpdate.save()
+    
+    res.status(200).json({ msg: 'Propiedad isAdmin actualizada', user: userToUpdate})
+  } catch (error) {
+    next(error)
+  }
+})
+
+router.put('/isBanned/:id', async (req, res, next) => {
+  const { id } = req.params
+  const { isBanned } = req.body
+
+  try {
+    const userToUpdate = await User.findOne({ where: { id } })
+    userToUpdate.isBanned = isBanned
+    await userToUpdate.save()
+    
+    res.status(200).json({ msg: 'Propiedad isBanned actualizada', user: userToUpdate})
+  } catch (error) {
+    next(error)
+  }
+})
 
 //PUT USER
 router.put('/', async (req, res) => {
   const { email } = req.query;
   const { name, surname, nickname, phone_number, date_of_Birth, address } = req.body;
   try {
-    const validation = validateAttribute(name, surname, nickname, phone_number, date_of_Birth, address);
-    if (validation === true) {
+    // const validation = validateAttribute(name, surname, nickname, phone_number, date_of_Birth, address);
+    // if (validation === true) {
       if (email) {
         const us1 = await User.findOne({
           where: { email: email }
@@ -50,23 +79,24 @@ router.put('/', async (req, res) => {
         if (us1 !== null) {
           us1.name = name;
           us1.surname = surname;
-          us1.nickname = nickname;
-          us1.phone_number = phone_number;
-          us1.date_of_Birth = date_of_Birth;
-          us1.address = address;
+          us1.nickname = nickname ? nickname : '';
+          us1.phone_number = phone_number ? phone_number : '';
+          us1.date_of_Birth = date_of_Birth ? date_of_Birth : '';
+          us1.address = address ? address : '';
 
           await us1.save();
-          res.status(200).json('Your User was Successfully Changed');
+          res.status(200).json({ msg: 'Your User was Successfully Changed', user: us1 });
         } else {
           res.send('You must enter your email correctly')
         }
       } else {
         res.send('You must enter your email');
       }
-    } else {
-      return res.status(404).send(validation);
-    }
+    // } else {
+    //   return res.status(404).send(validation);
+    // }
   } catch (error) {
+    console.log(error);
     res.status(400).send(error);
   }
 });

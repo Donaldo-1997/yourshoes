@@ -7,6 +7,7 @@ export default function DashboardCard() {
 
     const { products } = useSelector(state => state)
     const [orders, setOrders] = useState([])
+    const vendidos = orders && orders.filter(order => order.status === 'realizada').length
 
     useEffect(() => {
         axios.get('http://localhost:3001/order')
@@ -18,8 +19,8 @@ export default function DashboardCard() {
             <Left>
                 <div>
                     <TitleCard>Productos: {products && products.length}</TitleCard>
-                    <SubTitleCard>Vendidos: {orders && orders.filter(order => order.status === 'realizada').length}</SubTitleCard>
-                    <SubTitleCard>En stock: {}</SubTitleCard>
+                    <SubTitleCard>Vendidos: {vendidos}</SubTitleCard>
+                    <SubTitleCard>En stock: {products && products.length - vendidos}</SubTitleCard>
                 </div>
             </Left>
             <Right>

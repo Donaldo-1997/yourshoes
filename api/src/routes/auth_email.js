@@ -10,17 +10,17 @@ const { CLIENT_URL } = process.env;
 router.get("/login/success", async (req, res) => {
   if (req.user) {
 
-    const email = req.user.emails[0].value
+    // const email = req.user.emails[0].value
 
-    const userDB = await User.findOne({ 
-      where: { email }, 
-      include: [
-        { model: Order }
-      ]
-    })
+    // const userDB = await User.findOne({ 
+    //   where: { email }, 
+    //   include: [
+    //     { model: Order }
+    //   ]
+    // })
     
     return res.status(200).json({
-      user: userDB,
+      user: req.user,
       token: req.cookies.session
       //   cookies: req.cookies
     });

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
@@ -9,32 +9,29 @@ import { FaUserAlt } from "react-icons/fa";
 import { BiLogOut } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import styles from "./NavBar.module.css";
+import { useSelector } from "react-redux";
 // import { useDispatch, useSelector } from "react-redux";
 // import axios from "axios";
 // import { logoutUser } from "../../redux/actions";
+
 
 export default function NavBar({
   handleReset,
   handleInputName,
   handleNameSubmit,
 }) {
-  // const { user } = useSelector(state => state)
-  const infoUser = JSON.parse(localStorage.getItem("user"));
-  console.log(infoUser)
+  
+  const { user } = useSelector(state => state)
 
   const handleLogout = () => {
     localStorage.setItem("products", JSON.stringify([]));
     localStorage.setItem("favProducts", JSON.stringify([]));
     localStorage.setItem("user", JSON.stringify([]));
   };
-  const user = JSON.parse(localStorage.getItem("user"));
 
   return (
 
     <Navbar style={{background: "#212121"}} expand="lg" className={styles.navbar}>
-
-    
-
       <Container fluid>
         <button onClick={(e) => handleReset(e)} className={styles.resetButton}>
           <Navbar.Brand className={styles.yourShoes}>
@@ -76,13 +73,13 @@ export default function NavBar({
                 </div>
                 <div>
                   <Link to="/datauser">
-                    {!infoUser.image ? (
+                    {!user.image ? (
                       <img
                         className={styles.img}
                         src="https://cdn4.iconfinder.com/data/icons/e-commerce-181/512/477_profile__avatar__man_-512.png"
                       />
                     ) : (
-                      <img className={styles.img} src={infoUser.image} />
+                      <img className={styles.img} src={user.image} />
                     )}
                   </Link>
                 </div>
