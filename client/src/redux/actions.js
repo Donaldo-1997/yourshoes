@@ -46,6 +46,7 @@ export const POST_ORDER = 'POST_ORDER'
 export const GET_ALL_USERS = 'GET_ALL_USERS'
 
 
+
 const URL = process.env.REACT_APP_URL
 
 // console.log('URL -->', URL)
@@ -577,7 +578,7 @@ export function deleteOneToFav(payload) {
 }
 export function putProductStock(props){
   return async function(dispatch){
-    const result = axios.put(`${URL}/mercadopago`, props)
+    const result = axios.put(`${URL}/stock`, props)
     return dispatch({
       type: PUT_STOCK,
       payload: result.data
@@ -587,6 +588,7 @@ export function putProductStock(props){
 export function postOrder(props){
   return async function(dispatch){
     const result = axios.post(`${URL}/order`, props)
+    console.log(result.data)
     return dispatch({
       type: POST_ORDER,
       payload: result.data

@@ -78,6 +78,15 @@ export default function ProductDetail({ id }) {
     });
     setSize([])
   };
+  const addToCart1 = () => {
+    dispatch(addOneToCart(shoesAdd));
+    toast.success("Tu producto fue agregado al carrito!", {
+      className: "cart-toast",
+      draggable: true,
+      position: toast.POSITION.TOP_CENTER,
+    });
+    setSize([])
+  };
 
   return (
     <div>
@@ -118,6 +127,7 @@ export default function ProductDetail({ id }) {
               <Link to="/mercadopago/pagos">
                 <button
                   className={styles.cart}
+                
                   onClick={() => addToCart(myShoes.id)}
                   id={myShoes.id}
                 >
@@ -126,7 +136,8 @@ export default function ProductDetail({ id }) {
               </Link>}
               <button
                 className={styles.cart}
-                onClick={() => addToCart( myShoes.id)}
+                
+                onClick={() => addToCart1( myShoes.id)}
                 id={myShoes.id}
               >
                 Añadir al carro

@@ -2,8 +2,6 @@ const { Product, Brand, Category, Size } = require('../db');
 const { Op } = require('sequelize');
 const { getAllProducts } = require('.');
 
-let cargo = false
-
 async function getByName(name, asc_desc) {
     try {
         const nameSearch = await Product.findAll({
@@ -100,15 +98,18 @@ async function getBySize(size) {
 
 async function getAll() {
     try {
-        let result = cargo ? await Product.findAll({
+        let result =  await Product.findAll({
           include: [
             { all: true }
           ]
-        }) : await getAllProducts()
-
-        cargo = true;
-        
-        return result
+        })
+         if(result.length){
+           return result
+        }
+          else{
+             let data =await getAllProducts()
+             return data
+          }
 
       } catch (error) {
         throw error

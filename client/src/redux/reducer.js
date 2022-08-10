@@ -38,6 +38,7 @@ import {
   HYDRATATE_FAV_LS,
   POST_PRODUCT,
   DELETE_ONE_FROM_FAV,
+  POST_ORDER
 
 } from "./actions";
 
@@ -53,7 +54,7 @@ const initialState = {
   usersCopy: [],
   sizes: [],
   brands: [],
-
+  order: []
 };
 
 export default function rootReducer(state = initialState, action) {
@@ -331,6 +332,12 @@ export default function rootReducer(state = initialState, action) {
         ...state,
         user: action.payload,
       };
+    case POST_ORDER:
+      return {
+        ...state,
+        order: action.payload
+      }
+    
     case DELETE_ONE_FROM_FAV:
       const { FavId } = action.payload;
       let itemToDeleteFAv = state.favorites.find((item) => item.id === FavId);

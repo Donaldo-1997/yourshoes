@@ -10,7 +10,8 @@ function MercadoPago() {
   const cart = useSelector((state) => state.cart);
   const [datos, setDatos] = useState("");
   const dispatch = useDispatch()
-
+  const orderId = useSelector(state=>state.order)
+  console.log(orderId)
   const user = localStorage.getItem('user')
   const json = JSON.parse(user)
   const userId = json.id 
@@ -21,11 +22,11 @@ function MercadoPago() {
     dispatch(getAllUsers())
     if (cart.length > 0) {
       axios
-        .post(`${process.env.REACT_APP_URL}/mercadopago`, {userId:userId, as:cart })
-        .then((data) => {
-          if(!isCancelled){ 
+      .post(`${process.env.REACT_APP_URL}/payments`, {userId:userId, as:cart })
+      .then((data) => {
+        if(!isCancelled){ 
           dispatch(putProductStock({cart}))
-          dispatch(postOrder({userId:userId, as:cart }))
+          
           setDatos(data.data);
           localStorage.setItem("products", JSON.stringify([]));
           console.info("Contenido de data:", data);
