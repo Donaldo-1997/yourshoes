@@ -171,6 +171,15 @@ export default function ProductDetail({ id }) {
       setSize([]);
     }
   };
+  const addToCart1 = () => {
+    dispatch(addOneToCart(shoesAdd));
+    toast.success("Tu producto fue agregado al carrito!", {
+      className: "cart-toast",
+      draggable: true,
+      position: toast.POSITION.TOP_CENTER,
+    });
+    setSize([])
+  };
 
   const handleComprar = () => {
     addToCart()

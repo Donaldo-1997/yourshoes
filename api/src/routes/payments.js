@@ -1,15 +1,69 @@
 const { Router } = require("express");
 const router = Router();
 const axios = require("axios");
+const mercadopago = require("mercadopago");
+const { ACCESS_TOKEN } = process.env;
 
+mercadopago.configure({
+  access_token: ACCESS_TOKEN,
+});
+
+let idInterval
+function timeout(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
 
 router.post("/", async (req, res) => {
-  const { items, email, userId } = req.body;
-
+  clearInterval(idInterval)
+  const {as, userId} = req.body;
+  let contador = 0
+  let orden={}
+   idInterval=setInterval(async() => {
+    if(contador===0){
+      orden = (await axios.post(`http://localhost:3001/order`, { as,userId })).data
+    }
+    contador++
+  },500);
+  await timeout(5000)
+  clearInterval(idInterval)
+  console.log(orden,"orden")
+  console.log(idInterval)
+  console.log(contador)
+ 
   try {
-    const orden = (await axios.post(`http://localhost:3001/order`, { userId, email, items })).data;
-    const result = await createPayment(items, orden.id);
-    res.send(result);
+    const items_ml = as.map((p) => ({
+      name: p.title,
+      quantity: p.quantity,
+      unit_price: p.price,
+    }));
+    let preference = {
+      items: items_ml,
+      external_reference: `${orden.id}`,
+      payment_methods: {
+        exclude_payments_types: [
+          {
+            id: "atm",
+          },
+        ],
+        installments: 3,
+      },
+      back_urls: {
+        failure: `http://localhost:3001/payments/failure/${orden.id}`,
+        pending: `http://localhost:3001/payments/pending/${orden.id}`,
+        success: `http://localhost:3001/payments/success/${orden.id}`,
+      },
+    };
+  
+    mercadopago.preferences
+      .create(preference)
+      .then((r) => {
+        console.info("respondio");
+        (global.id = r.body.id), res.json({ id: global.id });
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+   
   } catch (error) {
     console.log("Entra aca", error);
     res.status(404).json(error);
@@ -22,6 +76,7 @@ router.get("/success/:id", async (req, res) => {
 
   try {
     await axios.put(`http://localhost:3001/order/${id}`, {order: "realizada"})
+    /* await axios.put(`http://localhost:3001/stock`,{}) */
     res.redirect("http://localhost:3000/");
   } catch (error) {
     res.send({ error: error.message });
@@ -52,8 +107,8 @@ router.get("/pending/:id", async (req, res) =>  {
   }
 });
 
-async function createPayment(item, id) {
-  const url = "https://api.mercadopago.com/checkout/preferences";
+
+ /*  const url = "https://api.mercadopago.com/checkout/preferences";
   const body = {
     items: item,
     back_urls: {
@@ -78,7 +133,7 @@ async function createPayment(item, id) {
       }),
     ];
     console.log("Esto es payments ", payment);
-    return result;
-}
+    return result; */
+
 
 module.exports = router;
