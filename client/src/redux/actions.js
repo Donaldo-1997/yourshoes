@@ -658,3 +658,13 @@ export const getUsers = () => {
   };
 };
 
+export const editUser = (email, props) => {
+  return async function (dispatch){
+    try{
+      await axios.put(`${URL}/user?email=${email}`, props);
+    }catch(error){
+      console.log(error)
+    }
+  }
+}
+

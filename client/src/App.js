@@ -28,6 +28,7 @@ import config from "./components/Chatbot/chatbotConfig";
 import ActionProvider from "./components/Chatbot/ActionProvider";
 import MessageParser from "./components/Chatbot/MessageParser";
 import axios from 'axios'
+import EditUser from "./components/EditUser/EditUser";
 
 
 
@@ -140,6 +141,7 @@ function App() {
         <Route exact path="/edit/:id" element={<EditProduct/>}/>
         <Route exact path="/success" element={<Success/>}/>
         <Route exact path="/failure" element={<div>FAILURE</div>}/>
+        <Route exact path="/edituser" element={<EditUser/>}/>
         <Route exact path="/chatbot" element={<Chatbot
          config={config}
             actionProvider={ActionProvider}

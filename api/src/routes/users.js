@@ -67,7 +67,7 @@ router.put('/isBanned/:id', async (req, res, next) => {
 //PUT USER
 router.put('/', async (req, res) => {
   const { email } = req.query;
-  const { name, surname, nickname, phone_number, date_of_Birth, address } = req.body;
+  const { name, surname, nickname, phone_number, date_of_Birth, address, image } = req.body;
   try {
     // const validation = validateAttribute(name, surname, nickname, phone_number, date_of_Birth, address);
     // if (validation === true) {
@@ -83,7 +83,7 @@ router.put('/', async (req, res) => {
           us1.phone_number = phone_number ? phone_number : '';
           us1.date_of_Birth = date_of_Birth ? date_of_Birth : '';
           us1.address = address ? address : '';
-
+          us1.image = image ? image : '',
           await us1.save();
           res.status(200).json({ msg: 'Your User was Successfully Changed', user: us1 });
         } else {
