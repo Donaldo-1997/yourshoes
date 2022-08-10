@@ -111,9 +111,10 @@ router.post("/", async (req, res) => {
     });
    
     for (let j = 0; j < size.length; j++) {
+      let stock = size[j].stock
       const newSizes = await  Size.create({
             number: size[j].number,
-            stock: size[j].stock,
+            stock: parseInt(stock),
             solds: 0
         })
         console.log(newSizes)
@@ -136,7 +137,7 @@ router.post("/", async (req, res) => {
 
 router.put("/:id", async (req, res) => {
   try {
-    const { title, model, image, price, brand, category,size } = req.body;
+    const { title, model, image, price, brand, category} = req.body;
     const { id } = req.params;
 
     const productUpdated = await Product.findOne({
@@ -147,11 +148,10 @@ router.put("/:id", async (req, res) => {
     const oldBrand = productUpdated.brand.id;
     console.log("brand", oldBrand);
     const oldCategory = productUpdated.category.id;
-    const oldSizes = productUpdated.sizes.map((size) => size.id);
+
     await productUpdated.update(oldBrand);
     await productUpdated.update(oldCategory);
-    await productUpdated.removeSize(oldSizes);
-
+   
     const brandDb = await Brand.findOne({
       where: { name: { [Op.iLike]: `%${brand}%` } },
     });

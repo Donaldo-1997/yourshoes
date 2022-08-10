@@ -39,6 +39,7 @@ import {
   POST_PRODUCT,
   DELETE_ONE_FROM_FAV,
   GET_USERS,
+  CLEAN_DETAILS
   // GET_REVIEWS,
   // POST_REVIEW,
 } from "./actions";
@@ -84,7 +85,11 @@ export default function rootReducer(state = initialState, action) {
         usersCopy: action.payload,
       };
     }
-
+    case CLEAN_DETAILS:
+            return {
+                ...state,
+                details: action.payload,
+            }
     case GET_ALL_CATEGORIES:
       return {
         ...state,

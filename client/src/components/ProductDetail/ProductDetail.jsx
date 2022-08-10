@@ -1,7 +1,7 @@
 import Axios from "axios";
 import React, { Fragment, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addOneToCart, getDetails } from "../../redux/actions";
+import { addOneToCart, cleanDetails, getDetails } from "../../redux/actions";
 import { Link } from "react-router-dom";
 import styles from "./ProductDetail.module.css";
 import { ToastContainer, toast } from "react-toastify";
@@ -61,6 +61,9 @@ export default function ProductDetail({ id }) {
   useEffect(() => {
     dispatch(getDetails(id));
     getReviews();
+    return()=>{
+      dispatch(cleanDetails())
+    }
   }, [dispatch, id]);
 
   const getReviews = () => {

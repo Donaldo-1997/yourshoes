@@ -45,7 +45,7 @@ export const DELETE_ONE_FROM_FAV = 'DELETE_ONE_FROM_FAV'
 export const PUT_STOCK = "PUT_STOCK"
 export const POST_ORDER = 'POST_ORDER'
 export const GET_ALL_USERS = 'GET_ALL_USERS'
-
+export const CLEAN_DETAILS = 'CLEAN_DETAILS'
 
 
 const URL = process.env.REACT_APP_URL;
@@ -56,6 +56,13 @@ export function removerTodo() {
   return {
     type: REMOVER_TODO,
   };
+}
+
+export const cleanDetails = () => {
+  return ({
+      type: CLEAN_DETAILS,
+      payload: []
+  })
 }
 
 export function getAllShoes() {

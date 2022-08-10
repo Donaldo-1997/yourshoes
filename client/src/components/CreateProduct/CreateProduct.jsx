@@ -6,7 +6,8 @@ import styles from "./CreateProduct.module.css";
 import { Widget } from "@uploadcare/react-widget";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import CreatePrueba from "../prueba";
+import { useEffect } from "react";
+
 
 export default function CreateProduct() {
   const dispatch = useDispatch();
@@ -55,7 +56,7 @@ export default function CreateProduct() {
     });
   };
 
-  const[size35, setSize35] = useState({
+const[size35, setSize35] = useState({
     number:35,
     stock:0
 })
@@ -155,14 +156,21 @@ const handleOnChange8 = (e)=>{
     stock: e.target.value
 })
 }
-array.push(size35,size36,size37,size38,size39,size40,size41,size42,size43)
 
+
+useEffect(()=>{
+  const aux = [size35,size36,size37,size38,size39,size40,size41,size42,size43]
+  setInput({
+    ...input,
+    size:aux
+  })
+},[size35,size36,size37,size38,size39,size40,size41,size42,size43])
   const handleChange = (e) => {
     e.preventDefault();
     setInput({
       ...input,
       [e.target.name]: e.target.value,
-      size:array
+      //size:array
     });
     setErrors(
       validations({
@@ -173,6 +181,7 @@ array.push(size35,size36,size37,size38,size39,size40,size41,size42,size43)
     };
     console.log(input)
     const handleSubmit = (e) => {
+      
       e.preventDefault();
       dispatch(postProduct(input));
       setInput({
