@@ -12,7 +12,6 @@ import TableSortLabel from '@mui/material/TableSortLabel';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
-import Checkbox from '@mui/material/Checkbox';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import FormControlLabel from '@mui/material/FormControlLabel';
@@ -20,15 +19,10 @@ import Switch from '@mui/material/Switch';
 import DeleteIcon from '@mui/icons-material/Delete';
 import FilterListIcon from '@mui/icons-material/FilterList';
 import { visuallyHidden } from '@mui/utils';
-import { useDispatch, useSelector } from 'react-redux';
 import { Button } from '@mui/material';
-import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-import DisabledByDefaultIcon from '@mui/icons-material/DisabledByDefault';
 import { useEffect, useState } from 'react';
-import {Link} from 'react-router-dom'
-import axios from 'axios';
+import axios, { Axios } from 'axios';
 import Modal from 'react-modal';
-import UserProfile from '../../UserProfile/UserProfile';
 import UserEdit from './UserEdit';
 
 function descendingComparator(a, b, orderBy) {
@@ -118,12 +112,12 @@ const headCells = [
     disablePadding: false,
     label: 'Baneado',
   },
-  {
-    id: 'isActive',
-    numeric: true,
-    disablePadding: false,
-    label: 'Activo',
-  },
+  // {
+  //   id: 'isActive',
+  //   numeric: true,
+  //   disablePadding: false,
+  //   label: 'Activo',
+  // },
   {
     id: 'actions',
     numeric: true,
@@ -141,17 +135,6 @@ function EnhancedTableHead(props) {
   return (
     <TableHead>
       <TableRow color='primary'>
-        {/* <TableCell padding="checkbox">
-          <Checkbox
-            color="primary"
-            indeterminate={numSelected > 0 && numSelected < rowCount}
-            checked={rowCount > 0 && numSelected === rowCount}
-            onChange={onSelectAllClick}
-            inputProps={{
-              'aria-label': 'select all desserts',
-            }}
-          />
-        </TableCell> */}
         {headCells.map((headCell) => (
           <TableCell
             key={headCell.id}
@@ -192,16 +175,6 @@ const EnhancedTableToolbar = (props) => {
         }),
       }}
     >
-      {/* {numSelected > 0 ? (
-        <Typography
-          sx={{ flex: '1 1 100%' }}
-          color="inherit"
-          variant="subtitle1"
-          component="div"
-        >
-          {numSelected} selected
-        </Typography>
-      ) : ( */}
         <Typography
           sx={{ flex: '1 1 100%' }}
           variant="h6"
@@ -248,12 +221,8 @@ export default function EnhancedTable() {
   const [dense, setDense] = React.useState(false);
   const [rowsPerPage, setRowsPerPage] = React.useState(40);
 
-  // console.log(order)
-  // console.log(orderBy)
-  const dispatch = useDispatch() 
-  // const rows = []
   
-  const rows = JSON.parse(localStorage.getItem('users'))
+  const [ rows, setRows] = useState([])
   // console.log(rows)
 
   const handleRequestSort = (event, property) => {
@@ -271,25 +240,14 @@ export default function EnhancedTable() {
     setSelected([]);
   };
 
-  const handleClick = (event, name) => {
-    const selectedIndex = selected.indexOf(name);
-    let newSelected = [];
-
-    if (selectedIndex === -1) {
-      newSelected = newSelected.concat(selected, name);
-    } else if (selectedIndex === 0) {
-      newSelected = newSelected.concat(selected.slice(1));
-    } else if (selectedIndex === selected.length - 1) {
-      newSelected = newSelected.concat(selected.slice(0, -1));
-    } else if (selectedIndex > 0) {
-      newSelected = newSelected.concat(
-        selected.slice(0, selectedIndex),
-        selected.slice(selectedIndex + 1),
-      );
-    }
-
-    setSelected(newSelected);
-  };
+  useEffect(() => {
+      // dispatch para obtener todos los usuarios
+      axios.get('http://localhost:3001/user')
+      .then(res => {
+          localStorage.setItem('users', JSON.stringify(res.data))
+          setRows(res.data)
+      })
+  }, [])
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -309,6 +267,34 @@ export default function EnhancedTable() {
   // Avoid a layout jump when reaching the last page with empty rows.
   const emptyRows =
     page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
+
+  const updateIsAdmin = (idUser, data, nameUser) => {
+    const respuesta = window.confirm(`Actualiza propiedad isAdmin del usuario "${nameUser}"`)
+
+    console.log('DATA --->', data)
+
+    if(respuesta){
+      axios.put(`http://localhost:3001/user/isadmin/${idUser}`, { isAdmin: data })
+      .then(res => {
+        console.log(res)
+        setRows([...rows.filter(user => user.id !== idUser), res.data.user])
+      })
+    }
+  }
+  
+  const updateIsBanned = (idUser, data, nameUser) => {
+    const respuesta = window.confirm(`Está seguro de cambiar la propiedad isBanned del usuario "${nameUser}"`)
+
+    console.log('DATA --->', data)
+
+    if(respuesta){
+      axios.put(`http://localhost:3001/user/isBanned/${idUser}`, { isBanned: data })
+      .then(res => {
+        console.log(res)
+        setRows([...rows.filter(user => user.id !== idUser), res.data.user])
+      })
+    }
+  }
 
   return (
     <Box sx={{ width: '100%' }}>
@@ -343,22 +329,12 @@ export default function EnhancedTable() {
                     <>
                     <TableRow
                       hover
-                      // onClick={(event) => }
                       role="checkbox"
                       aria-checked={isItemSelected}
                       tabIndex={-1}
                       key={row.id}
                       selected={isItemSelected}
                     >
-                      {/* <TableCell padding="checkbox">
-                        <Checkbox
-                          color="primary"
-                          checked={isItemSelected}
-                          inputProps={{
-                            'aria-labelledby': labelId,
-                          }}
-                        />
-                      </TableCell> */}
                       <TableCell
                         component="th"
                         id={labelId}
@@ -373,9 +349,9 @@ export default function EnhancedTable() {
                       <TableCell align="left"><img src={row.image} alt="user" width="50" style={{ borderRadius: '50%', cursor: 'pointer' }} /></TableCell>
                       <TableCell align="left">{row.phone_number ? row.phone_number : 'No tiene'}</TableCell>
                       <TableCell align="left">{row.address ? row.address : 'No tiene'}</TableCell>
-                      <TableCell align="center">{<Switch checked={row.isAdmin} onChange={() => window.confirm('modificar isAdmin del usuario?')} />}</TableCell>
-                      <TableCell align="center">{<Switch checked={row.isBanned} onChange={() => window.confirm('modificar isBanned del usuario?')} />}</TableCell>
-                      <TableCell align="center">{<Switch checked={row.isActive} onChange={() => window.confirm('modificar isActive del usuario?')} />}</TableCell>
+                      <TableCell align="center">{<Switch checked={row.isAdmin} onChange={() => updateIsAdmin(row.id, !row.isAdmin, row.name)} />}</TableCell>
+                      <TableCell align="center">{<Switch checked={row.isBanned} onChange={() => updateIsBanned(row.id, !row.isBanned, row.name)} />}</TableCell>
+                      {/* <TableCell align="center">{<Switch checked={row.isActive} onChange={() => window.confirm('modificar isActive del usuario?')} />}</TableCell> */}
                       <TableCell align="right"><Button onClick={openModal} variant='outlined' color='success' size='small' >Editar</Button></TableCell>
                     </TableRow>
 
@@ -396,7 +372,7 @@ export default function EnhancedTable() {
                         },
                       }}
                     >
-                      <UserEdit data={row}/>
+                      <UserEdit data={row} closeModal={closeModal}/>
                     </Modal>
                 </>
                   );

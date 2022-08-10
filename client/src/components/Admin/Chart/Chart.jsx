@@ -9,12 +9,14 @@ import NavBar2 from "../../Navbar2/Navbar2"
 export default function Chart() {
 
   const products = useSelector((state) => state.products)
+  const users = JSON.parse(localStorage.getItem('users'))
+
   // console.log('products',products)
 
   const dispatch = useDispatch()
 
   useEffect(() => {
-dispatch(getAllShoes())
+    dispatch(getAllShoes())
   }, [])
 
   
@@ -23,10 +25,10 @@ dispatch(getAllShoes())
       "name": "Productos",
       "info": products.length,
     },
-    // {
-    //   "name": "...",
-    //   "info": products[0].name,
-    // },
+    {
+      "name": "Users",
+      "info": users && users.length,
+    },
     // {
     //   "name": "...",
     //   "info": products[0].name,
@@ -40,7 +42,7 @@ dispatch(getAllShoes())
         <h1>VENTAS:</h1>
         <XAxis dataKey="name"/>
         <YAxis />
-        <Bar dataKey="info" fill="rgb(248, 125, 45)" />
+        <Bar barSize={50} dataKey="info" fill="rgb(248, 125, 45)" />
       </BarChart>
     </div>
   );
