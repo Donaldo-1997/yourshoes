@@ -95,11 +95,11 @@ export default function NavBar({
                 </Nav.Link>
               </div>
             )}
-            <button className={styles.createProdButton}>
-              <Link to="/admin">
-                <span className={styles.link}>Dashboard admin</span>
+            <Link to="/admin">
+              <button className={styles.createProdButton}>
+                <p className={styles.link}>Dashboard admin</p>
+              </button>
               </Link>
-            </button>
           </Nav>
 
           <Searchbar

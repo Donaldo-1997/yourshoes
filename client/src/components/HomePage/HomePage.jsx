@@ -613,6 +613,7 @@ export default function HomePage() {
       background: "#212121",
       color:"white",
     },
+    
   };
   //MODAL//
 
@@ -742,7 +743,6 @@ export default function HomePage() {
           config={config}
           actionProvider={ActionProvider}
           messageParser={MessageParser}
-          
         ></Chatbot>
       </Modal>
     </div>

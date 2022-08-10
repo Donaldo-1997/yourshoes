@@ -7,7 +7,7 @@ import styles from "./ProductDetail.module.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Navbar2 from "../Navbar2/Navbar2";
-
+import { useNavigate } from 'react-router-dom'
 import { useState } from "react";
 import TextField from "@material-ui/core/TextField";
 import Rating from "@material-ui/lab/Rating";
@@ -45,7 +45,7 @@ export default function ProductDetail({ id }) {
   const [openSnack, setSnack] = useState(false);
   console.log(reviews, "SOY LAS REVIEWS");
   const classes = useStyles();
-
+  const navigate = useNavigate()
   const myShoes = useSelector((state) => state.detail);
   const userLogged = useSelector((state) => state.user);
   console.log(userLogged, "USER");
@@ -155,14 +155,29 @@ export default function ProductDetail({ id }) {
     setDescription(e.target.value);
   };
   const addToCart = () => {
-    dispatch(addOneToCart(shoesAdd));
-    toast.success("Tu producto fue agregado al carrito!", {
-      className: "cart-toast",
-      draggable: true,
-      position: toast.POSITION.TOP_CENTER,
-    });
-    setSize([]);
+    if(size.length === 0){
+      toast.error("Debes elegir al menos 1 talle!", {
+        className: "cart-toast",
+        draggable: true,
+        position: toast.POSITION.TOP_CENTER,
+      })
+    }else{
+      dispatch(addOneToCart(shoesAdd));
+      toast.success("Tu producto fue agregado al carrito!", {
+        className: "cart-toast",
+        draggable: true,
+        position: toast.POSITION.TOP_CENTER,
+      });
+      setSize([]);
+    }
   };
+
+  const handleComprar = () => {
+    addToCart()
+    if(size.length !== 0){
+      navigate('/mercadopago/pagos')
+    }
+  }
 
   return (
     <div>
@@ -178,13 +193,9 @@ export default function ProductDetail({ id }) {
             <div className={styles.sizePriceCont}>
               <div className={styles.sizeContainer}>
                 <div className={styles.sizeYSelect}>
+                <div className={styles.tallesContainer}>
+                <div className={styles.talleDetails}>
                 <h1 className={styles.size}>Talle: </h1>
-
-
-                <h4>
-                  {" "}
-                  Cantidad={size.length >= 1 ? cantidad * size.length : 0}
-                </h4>
                 <select
                   className={styles.selectSize}
                   onChange={(e) => {
@@ -199,21 +210,28 @@ export default function ProductDetail({ id }) {
                       </option>
                     ))}
                 </select>
-                {size.length &&
+                {size.length ?
                   size.map((sn, i) => (
                     <span
+                      className={styles.selectedSize}
                       key={i}
                       onClick={(e) => {
                         handleDeleteSizes(e, sn);
                       }}
                     >
-                      {sn} x{" "}
+                      {sn}
                     </span>
-                  ))}
-                
+                  )) : null}
+                  </div>
+                  <div className={styles.cantYPrecio}>
+                <h4>
+                  Cantidad: {size.length}
+                </h4>
+                <h3 className={styles.price}>${myShoes.price}</h3>
+                </div>
+                </div>
               </div>        
               </div>
-              <h3 className={styles.price}>${myShoes.price}</h3>
             </div>
             <div className={styles.buttons}>
               {!Object.keys(userLogged).length ? (
@@ -221,29 +239,26 @@ export default function ProductDetail({ id }) {
                   Comprar
                 </button>
               ) : (
-                <Link to="/mercadopago/pagos">
+               
                   <button
                     className={styles.cart}
-                    onClick={() => addToCart(myShoes.id)}
+                    onClick={handleComprar}
                     id={myShoes.id}
                   >
                     Comprar
                   </button>
-                </Link>
+              
               )}
               <button
                 className={styles.cart}
-                onClick={() => addToCart(myShoes.id)}
+                onClick={addToCart}
                 id={myShoes.id}
               >
                 Añadir al carro
               </button>{" "}
-
-              <ToastContainer />
-
-
             </div>
           </div>
+
           <Fragment>
             <div className={styles.reviewContainer}>
               {userLogged.id && (

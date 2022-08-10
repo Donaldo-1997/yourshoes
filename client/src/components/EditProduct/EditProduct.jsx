@@ -283,7 +283,6 @@ export default function EditProduct() {
                 EDITAR
               </button>
             )}
-            <ToastContainer />
           </div>
         </form>
       </div>

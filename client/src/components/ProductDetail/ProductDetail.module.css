@@ -152,7 +152,7 @@
   font-weight: 600;
   font-size: 30.0714px;
   line-height: 100%;
-  padding-right: 5px;
+  padding-right: 15px;
 }
 
 .size {
@@ -184,12 +184,44 @@
 }
 
 .selectSize{
-  border-radius: 30px;
+  border: none;
+  border-bottom-style: solid;
+  margin-right: 10px;
+  outline: 0px;
+  width: 40px;
+  background: #212121;
+  color: white;
+  height: 36px;
 }
 
 .sizeYSelect{
   display: flex;
 }
 
+.talleDetails{
+  display: flex;
+}
 
+.tallesContainer{
+  display: flex;
+  flex-direction: column;
+  width: 396px;
+  height: 120px;
+  justify-content: space-between;
+}
 
+.cantYPrecio{
+  display: flex;
+  justify-content: space-between;
+}
+
+.selectedSize{
+  border-style: solid;
+  border-width: 1px;
+  margin-right: 10px;
+  height: 26px;
+  width: 26px;
+  padding-left: 3px;
+  margin-top: 4px;
+  cursor: pointer;
+}
