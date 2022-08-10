@@ -208,13 +208,13 @@ array.push(size35,size36,size37,size38,size39,size40,size41,size42,size43)
       return errors;
     };
 
-    return (
-      <div className={styles.Container}>
-      <Link to="/">
+  return (
+    <div className={styles.Container}>
+      {/* <Link to="/">
         <button className={styles.homeButton}>
           YOUR<span className={styles.shoes}>SHOES</span>
         </button>
-      </Link>
+      </Link> */}
       <h1 className={styles.title}>Publicación de producto</h1>
       <div className={styles.allContainer}>
         <form onSubmit={(e) => handleSubmit(e)} className={styles.form}>
