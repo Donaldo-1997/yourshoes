@@ -27,7 +27,6 @@ import DisabledByDefaultIcon from '@mui/icons-material/DisabledByDefault';
 import { useEffect } from 'react';
 import { getAllShoes } from '../../../redux/actions';
 import {Link} from 'react-router-dom'
-import NavBar2 from "../../Navbar2/Navbar2"
 
 function descendingComparator(a, b, orderBy) {
   // console.log("a -->", a[orderBy])
@@ -125,8 +124,6 @@ function EnhancedTableHead(props) {
   };
 
   return (
-    <div>
-    <NavBar2/>
     <TableHead>
       <TableRow color='primary'>
         {/* <TableCell padding="checkbox">
@@ -163,7 +160,6 @@ function EnhancedTableHead(props) {
         ))}
       </TableRow>
     </TableHead>
-    </div>
   );
 }
 
@@ -321,7 +317,7 @@ export default function EnhancedTable() {
                   return (
                     <TableRow
                       hover
-                      onClick={(event) => handleClick(event, row.id)}
+                      // onClick={(event) => handleClick(event, row.id)}
                       role="checkbox"
                       aria-checked={isItemSelected}
                       tabIndex={-1}
@@ -351,7 +347,7 @@ export default function EnhancedTable() {
                       <TableCell align="left"><img src={row.image} alt="product" width="50" /></TableCell>
                       <TableCell align="right">{row.sold}</TableCell>
                       <TableCell align="left">{row.model}</TableCell>
-                      <TableCell align="center">{row.isActive ? <CheckCircleIcon color='success' /> : <DisabledByDefaultIcon color='error' /> }</TableCell>
+                      <TableCell align="center">{<Switch checked={row.isActive} onChange={() => window.confirm('modificar isActive del producto?')} />}</TableCell>
                       <TableCell align="right"><Link to={`/edit/${row.id}`}><Button variant='outlined' color='success' size='small' >Editar</Button></Link></TableCell>
                     </TableRow>
                   );
