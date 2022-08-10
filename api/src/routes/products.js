@@ -109,8 +109,19 @@ router.post("/", async (req, res) => {
     const findBrand = await Brand.findOne({
       where: { name: { [Op.iLike]: `%${brand}%` } },
     });
-    const findSize = await Size.findOne({ where: { id: size } });
-    newProduct.addSize(findSize);
+   
+    for (let j = 0; j < size.length; j++) {
+      const newSizes = await  Size.create({
+            number: size[j].number,
+            stock: size[j].stock,
+            solds: 0
+        })
+        console.log(newSizes)
+      await newProduct.addSize(newSizes)
+      console.log(newSizes)
+    }
+
+    
     newProduct.setCategory(findCategories);
     newProduct.setBrand(findBrand);
 
@@ -125,7 +136,7 @@ router.post("/", async (req, res) => {
 
 router.put("/:id", async (req, res) => {
   try {
-    const { title, model, image, price, size, brand, category } = req.body;
+    const { title, model, image, price, brand, category,size } = req.body;
     const { id } = req.params;
 
     const productUpdated = await Product.findOne({
@@ -147,12 +158,10 @@ router.put("/:id", async (req, res) => {
     const categoryDb = await Category.findOne({
       where: { name: { [Op.iLike]: `%${category}%` } },
     });
-    const sizeDb = await Size.findAll({ where: { id: size } });
-
+   
     await productUpdated.setBrand(brandDb);
     await productUpdated.setCategory(categoryDb);
-    await productUpdated.addSize(sizeDb);
-
+    
     productUpdated.set({
       title,
       model,

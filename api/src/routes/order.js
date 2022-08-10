@@ -1,7 +1,6 @@
 const { Router } = require("express");
-const { Product, Size, Order, User } = require("../db");
+const { Product, Order, User } = require("../db");
 const router = Router();
-const axios = require("axios")
 
 //Post Orden Compra
 router.post("/", async (req, res) => {
@@ -54,6 +53,7 @@ router.post("/", async (req, res) => {
     });
     await newOrder.setUser(userId.id);
     idAll.map(async (item) => await newOrder.addProduct(item.id));
+    await userId.addOrder(newOrder)
     console.log(newOrder)
     res.status(200).json(newOrder);
    

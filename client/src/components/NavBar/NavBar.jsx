@@ -95,11 +95,12 @@ export default function NavBar({
                 </Nav.Link>
               </div>
             )}
+            { user && user.isAdmin === true ?
             <Link to="/admin">
               <button className={styles.createProdButton}>
                 <p className={styles.link}>Dashboard admin</p>
               </button>
-              </Link>
+              </Link> : <p></p>}
           </Nav>
 
           <Searchbar
