@@ -68,6 +68,7 @@ export default function ProductCard({ image, title, price, id }) {
       position: toast.POSITION.TOP_CENTER,
     });
   };
+  
   return (
     <div className={styles.allContainer}>
       <div onClick={(e) => openModal(e)} className={styles.infoContainer}>

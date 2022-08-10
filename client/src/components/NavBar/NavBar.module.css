@@ -56,12 +56,17 @@
     color: black;
     padding-left: 20px;
     padding-right: 20px;
+    margin-left: 31px;
+    margin-top: 8px;
+    height: 33px;
 }
 
 .link{
     color:black;
     text-transform: uppercase;
     font-family: Inter;
+    font-size: 12px;
+    margin-top: 6px;
 }
 
 .containerLogout {

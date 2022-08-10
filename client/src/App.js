@@ -21,7 +21,6 @@ import AdminUsers from "./components/Admin/AdminUsers/AdminUsers";
 import AdminProducts from "./components/Admin/AdminProducts/AdminProducts";
 import Community from "./components/About/Community";
 import EditProduct from "./components/EditProduct/EditProduct";
-
 import { ToastContainer } from "react-toastify";
 import Success from "./components/MercadoPago/Success";
 import Chatbot from "react-chatbot-kit";
@@ -119,6 +118,7 @@ function App() {
 
   return (
     <Router>
+      <ToastContainer/>
       <Routes>
         <Route exact path="/" element={<HomePage />} />
         <Route exact path="/shoes/:id" element={<ProductDetail />} />

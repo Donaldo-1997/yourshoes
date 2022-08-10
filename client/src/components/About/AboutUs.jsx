@@ -1,5 +1,4 @@
 import styles from "./AboutUs.module.css";
-import { Link } from "react-router-dom";
 import NavBar2 from "../Navbar2/Navbar2"
 
 
