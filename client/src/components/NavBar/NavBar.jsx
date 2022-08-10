@@ -20,6 +20,7 @@ export default function NavBar({
 }) {
   // const { user } = useSelector(state => state)
   const infoUser = JSON.parse(localStorage.getItem("user"));
+  console.log(infoUser)
 
   const handleLogout = () => {
     localStorage.setItem("products", JSON.stringify([]));
