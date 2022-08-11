@@ -118,12 +118,6 @@ const headCells = [
   //   disablePadding: false,
   //   label: 'Activo',
   // },
-  {
-    id: 'actions',
-    numeric: true,
-    disablePadding: false,
-    label: 'Acciones',
-  },
 ];
 
 function EnhancedTableHead(props) {
@@ -352,7 +346,6 @@ export default function EnhancedTable() {
                       <TableCell align="center">{<Switch checked={row.isAdmin} onChange={() => updateIsAdmin(row.id, !row.isAdmin, row.name)} />}</TableCell>
                       <TableCell align="center">{<Switch checked={row.isBanned} onChange={() => updateIsBanned(row.id, !row.isBanned, row.name)} />}</TableCell>
                       {/* <TableCell align="center">{<Switch checked={row.isActive} onChange={() => window.confirm('modificar isActive del usuario?')} />}</TableCell> */}
-                      <TableCell align="right"><Button onClick={openModal} variant='outlined' color='success' size='small' >Editar</Button></TableCell>
                     </TableRow>
 
                     <Modal

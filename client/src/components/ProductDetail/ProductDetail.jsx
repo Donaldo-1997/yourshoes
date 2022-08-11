@@ -292,6 +292,7 @@ export default function ProductDetail({ id }) {
                       variant="outlined"
                       onChange={handleDescriptionChange}
                       value={description}
+                      color= "white"
                     />
                   </form>
                   <Rating
@@ -354,7 +355,7 @@ export default function ProductDetail({ id }) {
                   </div>
                 ))
               ) : (
-                <h5>No se encontraron reviews para este producto.</h5>
+                <h5>No se encontraron reseñas para este producto.</h5>
               )}
             </div>
             <Dialog

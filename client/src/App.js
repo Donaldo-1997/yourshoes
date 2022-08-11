@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import HomePage from "./components/HomePage/HomePage";
 import ProductDetail from "./components/ProductDetail/ProductDetail";
 import "./App.css";
@@ -136,12 +136,18 @@ function App() {
         <Route exact path="/favorites" element={<Favorites />} />
         <Route exact path="/post" element={<CreateProduct/>}/>
         <Route exact path="/datauser" element={<UserProfile/>}/>
-        <Route exact path="/admin" element={<AdminHome></AdminHome>}/>
+        {/* <Route exact path="/admin" element={<AdminHome></AdminHome>}/>
         <Route exact path="/admin/users" element={<AdminUsers></AdminUsers>}/>
         <Route exact path="/admin/products" element={<AdminProducts></AdminProducts>}/>
         <Route exact path="/admin/create-product" element={<AdminProducts></AdminProducts>}/>
         <Route exact path="/community" element={<Community/>}/>
-        <Route exact path="/edit/:id" element={<EditProduct/>}/>
+        <Route exact path="/edit/:id" element={<EditProduct/>}/> */}
+        <Route exact path="/admin" element={ JSON.parse(localStorage.getItem('user'))?.isAdmin === true ? <AdminHome /> : <Navigate to='/' />}/>
+        <Route exact path="/admin/users" element={ JSON.parse(localStorage.getItem('user'))?.isAdmin === true ? <AdminUsers /> : <Navigate to='/' />}/>
+        <Route exact path="/admin/products" element={JSON.parse(localStorage.getItem('user'))?.isAdmin === true ? <AdminProducts /> : <Navigate to='/' />}/>
+        <Route exact path="/admin/create-product" element={ JSON.parse(localStorage.getItem('user'))?.isAdmin === true ? <AdminProducts /> : <Navigate to='/' />}/>
+        <Route exact path="/community" element={<Community/>}/>
+        <Route exact path="/edit/:id" element={ JSON.parse(localStorage.getItem('user'))?.isAdmin === true ? <EditProduct /> : <Navigate to='/' />}/>
         <Route exact path="/success" element={<Success/>}/>
         <Route exact path="/failure" element={<div>FAILURE</div>}/>
         <Route exact path="/edituser" element={<EditUser/>}/>

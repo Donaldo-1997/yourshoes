@@ -203,42 +203,6 @@ export default function EditProduct() {
             )}
           </div>
 
-          <div className={styles.tallesContainer}>
-            <label className={styles.label}>Talle </label>
-            <select
-              onChange={(e) => handleSelectSize(e)}
-              value={input.size}
-              className={styles.select}
-            >
-              <option>35</option>
-              <option>36</option>
-              <option>37</option>
-              <option>38</option>
-              <option>39</option>
-              <option>40</option>
-              <option>41</option>
-              <option>42</option>
-              <option>43</option>
-              <option>44</option>
-              <option>45</option>
-            </select>
-            <ul className={styles.ulTalles}>
-              {input.size &&
-                input.size.map((talle) => (
-                  <li key={talle} className={styles.liTalle}>
-                    {talle}
-                    <button
-                      value={talle}
-                      onClick={(e) => handleDeleteSize(e)}
-                      className={styles.xButton}
-                    >
-                      x
-                    </button>
-                  </li>
-                ))}
-            </ul>
-          </div>
-
           <div className={styles.infoContainer}>
             <label className={styles.label}>Marca </label>
             <select onChange={(e) => handleSelectBrand(e)} value={input.brand}>

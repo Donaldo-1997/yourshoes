@@ -26,10 +26,10 @@ export default function Cart() {
     dispatch(removerTodo());
   };
   
-  // const user = useSelector(state => state.user)
-  // useEffect(() => {
-  //   localStorage.setItem("products", JSON.stringify(cartProducts));
-  // }, [cartProducts]);
+  const user = useSelector(state => state.user)
+  useEffect(() => {
+    localStorage.setItem("products", JSON.stringify(cartProducts));
+  }, [cartProducts]);
 
   return (
     <div>
@@ -47,13 +47,11 @@ export default function Cart() {
             <div className={styles.carrito}>
                 <h2>SUMA TOTAL: ${precios}</h2>
               <div>
-                
                 <Link to="/mercadopago/pagos" className={styles.mpLinkBtn}>
-
                   <button className={styles.buttonsContainer}>
                     Ir a comprar
-                  </button>
-                </Link>
+                  </button> 
+                </Link> 
                 <button className={styles.buttonsContainer} onClick={clearCart}>
                   Limpiar carrito
                 </button>

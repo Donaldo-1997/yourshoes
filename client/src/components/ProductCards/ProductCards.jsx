@@ -6,7 +6,7 @@ import { ReactComponent as ErrorImg } from "../../assets/not-found-img.svg"
 export default function ProductCards({ allProducts }) {
   return (
     <div className={styles.container}>
-      {allProducts.length ? (
+      {allProducts?.length ? (
         allProducts.map((product) => {
           return (
             <div key={product.id} className={styles.card}>

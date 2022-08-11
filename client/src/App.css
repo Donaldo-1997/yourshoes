@@ -88,3 +88,11 @@ div::-webkit-scrollbar-thumb:hover {
   width: 700px;
   border-width: 2px;
 }
+
+#outlined-basic-label{
+  color: white;
+}
+
+#outlined-basic{
+  color: white;
+}

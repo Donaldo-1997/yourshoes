@@ -25,7 +25,7 @@ router.get("/login/success", async (req, res) => {
       //   cookies: req.cookies
     });
   }
-
+  
   else res.status(400).send('solicitud inválida')
 });
 

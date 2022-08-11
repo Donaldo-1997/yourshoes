@@ -11,6 +11,7 @@ import { useEffect } from "react";
 
 export default function CreateProduct() {
   const dispatch = useDispatch();
+  const navigate = useNavigate()
   const [errors, setErrors] = useState({ first: true });
   let array = []
 
@@ -198,6 +199,7 @@ useEffect(()=>{
         draggable: true,
         position: toast.POSITION.TOP_CENTER,
       });
+      navigate("/")
     };
     
     //Validaciones//
