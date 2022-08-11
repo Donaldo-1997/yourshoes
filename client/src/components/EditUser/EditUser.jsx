@@ -44,7 +44,8 @@ export default function EditUser() {
           console.log("post", valores);
           setformularioEnviado(true);
           setTimeout(() => setformularioEnviado(false), 5000);
-          navigate('/datauser')
+          navigate('/')
+          window.location.reload()
         }}
         validate={(valores) => {
           let error = {};
