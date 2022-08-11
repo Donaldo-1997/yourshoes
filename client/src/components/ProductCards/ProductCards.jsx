@@ -1,6 +1,8 @@
 import React from "react";
 import ProductCard from "../ProductCard/ProductCard";
 import styles from "./ProductCards.module.css";
+import { ReactComponent as ErrorImg } from "../../assets/not-found-img.svg"
+
 export default function ProductCards({ allProducts }) {
   return (
     <div className={styles.container}>
@@ -20,7 +22,8 @@ export default function ProductCards({ allProducts }) {
         })
       ) : (
         <div className={styles.sinFiltro}>
-          <h1>No se encontraron zapatos con estos filtros...</h1>
+          <ErrorImg/>
+          <h1>Ups! Parece que no pudimos encontrar el producto que buscabas.</h1>
         </div>
       )}
     </div>

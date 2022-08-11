@@ -68,17 +68,17 @@ color: white;
     font-family: Inter;
 }
 
-.img {
-   
+.img {   
     height: 49px;
     background-repeat: no-repeat;
     background-position: 50%;
     border-radius: 50%;
     background-size: 100% auto;
-    }
+    background: white;
+}
 
-    .containerLogout {
-        display: flex;
-        align-items: center;
-        text-align: center;
-    }
+.containerLogout {
+    display: flex;
+    align-items: center;
+    text-align: center;
+}

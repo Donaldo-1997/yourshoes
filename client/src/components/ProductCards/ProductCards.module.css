@@ -18,16 +18,13 @@
   background-color: white;
 }
 .sinFiltro{
-  /* border: solid 5px #fd7e14; */
   display: flex;
-  justify-content: center;
   align-items: center;
-  flex-direction: column;
   gap: 0.5rem;
   padding: 22%;
 }
 .sinFiltro h1{
-  color: white;
+  color: #fd7e14;
   text-align:left;
 }
 

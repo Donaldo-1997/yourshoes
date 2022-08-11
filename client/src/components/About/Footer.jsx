@@ -24,7 +24,7 @@ export default function About() {
           <div className={styles.footer_col3}>
             <h3>SOPORTE</h3>
             <ul>
-              <li>CONTACTO</li>
+              <li><Link to="/contact"><span className={styles.boton}>CONTACTO</span></Link></li>
             </ul>
           </div>
         </div>
