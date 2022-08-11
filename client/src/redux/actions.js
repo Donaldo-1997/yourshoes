@@ -661,7 +661,11 @@ export const getUsers = () => {
 export const editUser = (email, props) => {
   return async function (dispatch){
     try{
-      await axios.put(`${URL}/user?email=${email}`, props);
+      const res = await axios.put(`${URL}/user?email=${email}`, props);
+      return dispatch({
+        type: "EDIT_USER",
+        payload: res.data
+      })
     }catch(error){
       console.log(error)
     }

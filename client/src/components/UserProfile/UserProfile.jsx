@@ -33,6 +33,7 @@ export default function UserProfile() {
                 <p className={styles.compras}>Historia de compras: </p>
                 <div className={styles.divHistorial}>{infoUser && infoUser.orders.map(e => <div className={styles.historial}><h2>Fecha de compra: {e.date.slice(0,10)}</h2><h2>Precio: ${e.amount}</h2><h2>Estado de compra: {e.status.charAt(0).toUpperCase() + e.status.slice(1)}</h2></div>)}</div></div>
             </div>
+
           </div>
         ) : null}
       </div>

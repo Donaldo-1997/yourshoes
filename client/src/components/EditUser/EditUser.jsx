@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import { useDispatch, useSelector } from "react-redux";
 import { editUser } from "../../redux/actions";
@@ -20,6 +20,22 @@ export default function EditUser() {
   const usuario = useSelector(state => state.user)
   console.log(usuario)
   const [formularioEnviado, setformularioEnviado] = useState(false);
+
+  useEffect(() => {
+    if (usuario) {
+      setformularioEnviado({
+        image: usuario.image,  
+        name: usuario.name,
+        surname: usuario.surname,
+        nickname: usuario.nickname,
+        email: usuario.email,
+        password: usuario.password,
+        phone_number: usuario.phone_number,
+        date_of_Birth: usuario.date_of_Birth,
+        address: usuario.address,
+      });
+    }
+  }, [usuario]);
 
 
   return (
