@@ -9,7 +9,7 @@ const user = require("./users");
 const categories= require("./categories")
 const brands= require("./brands");
 const login = require('./login')
-const auth_email = require('./auth_email')
+const authGoogle = require('./authGoogle')
 const size = require("./size")
 const nodemailer = require("./nodemailer.js")
 const stock = require ("./stock");
@@ -22,7 +22,7 @@ const reviewsRouter = require("./review")
 router.use("/payments", paymants)
 router.use("/order", order)
 router.use("/stock", stock);
-router.use("/auth", auth_email);
+router.use("/auth", authGoogle);
 router.use("/login", login);
 router.use("/user/", user);
 router.use("/shoes", shoesRouter);

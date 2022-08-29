@@ -10,9 +10,9 @@ import { BiLogOut } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import styles from "./NavBar.module.css";
 import { useSelector } from "react-redux";
-// import { useDispatch, useSelector } from "react-redux";
-// import axios from "axios";
-// import { logoutUser } from "../../redux/actions";
+import LoginButtonAuth0 from "../LoginButtonAuth0";
+import LogoutButtonAuth0 from "../LogoutButtonAuth0";
+import { useAuth0 } from "@auth0/auth0-react";
 
 
 export default function NavBar({
@@ -22,6 +22,8 @@ export default function NavBar({
 }) {
   
   const { user } = useSelector(state => state)
+
+  const { isAuthenticated } = useAuth0()
 
   const handleLogout = () => {
     localStorage.setItem("products", JSON.stringify([]));
@@ -60,16 +62,12 @@ export default function NavBar({
                 </Link>
               </Nav.Link>
             </div>
-            {user && Object.keys(user).length ? (
+            {isAuthenticated ? (
               <div className={styles.containerLogout}>
                 <div>
-                  <a
-                    href={`${process.env.REACT_APP_URL}/auth/logout`}
-                    onClick={handleLogout}
+                  <LogoutButtonAuth0 
                     className={styles.logout_button}
-                  >
-                    <BiLogOut style={{ color: "#f87d2d" }}></BiLogOut>
-                  </a>
+                  />
                 </div>
                 <div>
                   <Link to="/datauser">
@@ -86,11 +84,7 @@ export default function NavBar({
               </div>
             ) : (
               <div className={styles.containerLogout}>
-                <Nav.Link className={styles.icon}>
-                  <Link to="/login">
-                    <FaUserAlt style={{ color: "#f87d2d" }} />
-                  </Link>
-                </Nav.Link>
+                <LoginButtonAuth0 className={styles.icon}/>
               </div>
             )}
             { user && user.isAdmin === true ?

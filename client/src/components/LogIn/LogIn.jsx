@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import { useDispatch, useSelector } from "react-redux";
-import { Login } from "../../redux/actions";
+import { login } from "../../redux/actions";
 import styles from "./LogIn.module.css";
 import { useNavigate } from "react-router-dom";
 import { FcGoogle, FcGoodDecision, FcDownLeft } from "react-icons/fc";
@@ -16,7 +16,7 @@ export default function LogIn() {
   const [formularioEnviado, setformularioEnviado] = useState(false);
 
   const handleLogin = (valores, resetForm) => {
-    dispatch(Login(valores))
+    dispatch(login(valores))
       .then((res) => {
         resetForm();
         console.log("post", res);
@@ -25,7 +25,8 @@ export default function LogIn() {
         navigate("/");
       })
       .catch((error) => {
-        alert(error.response.data.msg);
+        console.log(error)
+        // alert(error.response.data.msg);
       });
   };
   useEffect(() => {

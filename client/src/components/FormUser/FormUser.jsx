@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 import Navbar2 from "../Navbar2/Navbar2";
 // import * as Yup from "yup";
 
-//name, surname, nickname, email, phone_number, date_of_Birth, address
+//name, surname, username, email, phone_number, date_of_Birth, address
 
 //expresion regular nombre solo letras y espacio  !/^[a-zA-ZÀ-ÿ\s]{1,40}$/
 //expresion regular correo  /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/
@@ -26,7 +26,7 @@ export default function Formulario() {
         initialValues={{
           name: "",
           surname: "",
-          nickname: "",
+          username: "",
           email: "",
           password: "",
           phone_number: "",
@@ -59,10 +59,10 @@ export default function Formulario() {
           }
 
           // validacion del nick name
-          if (!valores.nickname) {
-            error.nickname = "Ingresa tu Sobrenombre";
-          } else if (!/^[a-zA-ZÀ-ÿ\s]{1,40}$/.test(valores.nickname)) {
-            error.nickname = "Tu nickname debe contener solo letras";
+          if (!valores.username) {
+            error.username = "Ingresa tu Sobrenombre";
+          } else if (!/^[a-zA-ZÀ-ÿ\s]{1,40}$/.test(valores.username)) {
+            error.username = "Tu username debe contener solo letras";
           }
 
           if (!valores.email) {
@@ -132,17 +132,17 @@ export default function Formulario() {
               />
             </div>
             <div>
-              <label htmlFor="nickname">Nombre de Usuario: </label>
+              <label htmlFor="username">Nombre de Usuario: </label>
               <Field
                 type="text"
-                id="nickname"
-                name="nickname"
+                id="username"
+                name="username"
                 placeholder="Jhon Cena"
               />
               <ErrorMessage
-                name="nickname"
+                name="username"
                 component={() => (
-                  <div className={styles.error}>{errors.nickname}</div>
+                  <div className={styles.error}>{errors.username}</div>
                 )}
               />
             </div>

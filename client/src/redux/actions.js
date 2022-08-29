@@ -190,7 +190,10 @@ export function filterByPrice(priceMin, priceMax) {
 export function postUser(payload) {
   return async function (dispatch) {
     try {
-      var json = await axios.post(`${URL}/login/signup`, payload);
+      const json = await axios.post(`${URL}/login/signup`, payload);
+
+      localStorage.setItem('user', JSON.stringify(json.user))
+
       dispatch({
         type: POST_USER,
         payload: json,
@@ -200,18 +203,19 @@ export function postUser(payload) {
     }
   };
 }
-export function Login(payload) {
+export function login(payload) {
   return async function (dispatch) {
     try {
       const json = await axios.post(`${URL}/login/signin`, payload);
-
       console.log("json -->", json);
-      dispatch({
+      
+      localStorage.setItem('user', JSON.stringify(json.user))
+
+      return dispatch({
         type: LOGIN_USER,
         payload: json.data.user,
       });
-
-      return json;
+      
     } catch (error) {
       throw error;
     }
