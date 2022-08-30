@@ -10,7 +10,7 @@ export default function UserProfile() {
 
   return (
     <div className={styles.container}>
-      <Navbar></Navbar>
+      <Navbar2></Navbar2>
       <div>
         <Link to="/edituser">
           <button className={styles.editBtn}>Editar</button>
