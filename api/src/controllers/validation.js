@@ -1,11 +1,11 @@
 
-function validateAttributes(name, surname, nickname, email, phone_number, date_of_Birth, address){
+function validateAttributes(name, surname, username, email, phone_number, date_of_Birth, address){
     if (!name || (typeof name !== "string") || (name.length < 0) ){
         return "The User Name must exist and must be a character string"
     } else if (!surname || (typeof surname !== "string") || (surname.length < 0) ){
         return "The User Name must exist and must be a character string"
-    } else if (!nickname || (typeof nickname !== "string") || (nickname.length < 0) ){
-        return "The User nickname must exist and must be a character string"
+    } else if (!username || (typeof username !== "string") || (username.length < 0) ){
+        return "The User username must exist and must be a character string"
     } else if (!email || (typeof email !== "string") || (email.length < 0) ){
         return "The User email must exist and must be a character string"
     } else if (!phone_number || (typeof phone_number !== "string") ){
@@ -25,8 +25,8 @@ function validateAttribute(name, surname, phone_number, date_of_Birth, address){
         return "The User Name must exist and must be a character string"
     } else if (!surname || (typeof surname !== "string") || (surname.length < 0) ){
         return "The User Name must exist and must be a character string"
-    } else if (!nickname || (typeof nickname !== "string") || (nickname.length < 0) ){
-        return "The User nickname must exist and must be a character string"
+    } else if (!username || (typeof username !== "string") || (username.length < 0) ){
+        return "The User username must exist and must be a character string"
     } else if (!phone_number || (typeof phone_number !== "number") ){
         return "The User phone number must exist and must be a number"
     } else if (!date_of_Birth || typeof date_of_Birth !== "string"){

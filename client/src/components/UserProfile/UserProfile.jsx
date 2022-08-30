@@ -4,13 +4,13 @@ import Navbar2 from "../Navbar2/Navbar2";
 import { Link } from "react-router-dom"
 
 export default function UserProfile() {
-  const infoUser = JSON.parse(localStorage.getItem("user"));
+
+  const infoUser = JSON.parse(localStorage.getItem("user"))
   console.log("info user profile", infoUser);
 
-  
   return (
     <div className={styles.container}>
-      <Navbar2></Navbar2>
+      <Navbar></Navbar>
       <div>
         <Link to="/edituser">
           <button className={styles.editBtn}>Editar</button>
@@ -26,7 +26,7 @@ export default function UserProfile() {
               <img className={styles.img} src={infoUser.image} />
             )}
             {!infoUser.name ? (
-              <div className={styles.nameContainer}><p className={styles.userName}>Nombre: </p> <h2>{infoUser.user.name}</h2></div>
+              <div className={styles.nameContainer}><p className={styles.userName}>Nombre: </p> <h2>{infoUser.name}</h2></div>
             ) : (
               <div className={styles.nameContainer}><p className={styles.userName}>Nombre: </p> <h2>{infoUser.name}</h2></div>
             )}
@@ -39,7 +39,7 @@ export default function UserProfile() {
             <div >
               <div className={styles.historialContainer}>
                 <p className={styles.compras}>Historia de compras: </p>
-                <div className={styles.divHistorial}>{infoUser && infoUser.orders.map(e => <div className={styles.historial}><h2>Fecha de compra: {e.date.slice(0,10)}</h2><h2>Precio: ${e.amount}</h2><h2>Estado de compra: {e.status.charAt(0).toUpperCase() + e.status.slice(1)}</h2></div>)}</div></div>
+                <div className={styles.divHistorial}>{infoUser.orders && infoUser.orders.map(e => <div className={styles.historial}><h2>Fecha de compra: {e.date.slice(0,10)}</h2><h2>Precio: ${e.amount}</h2><h2>Estado de compra: {e.status.charAt(0).toUpperCase() + e.status.slice(1)}</h2></div>)}</div></div>
             </div>
             
           </div>

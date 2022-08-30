@@ -7,7 +7,7 @@ import FormUser from "./components/FormUser/FormUser";
 import LogIn from "./components/LogIn/LogIn";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { hydratateFromLocalStorage, loginUser } from "./redux/actions";
+import { hydratateFromLocalStorage, login, loginUser, postUser } from "./redux/actions";
 import AboutUs from "./components/About/AboutUs";
 import FAQs from "./components/About/FAQs";
 import MercadoPago from "./components/MercadoPago/MercadoPago";
@@ -32,72 +32,44 @@ import EditUser from "./components/EditUser/EditUser";
 import SocialFollow from "./components/About/SocialFollow";
 
 
+import { useAuth0 } from "@auth0/auth0-react";
 
 
 
 function App() {
   const dispatch = useDispatch();
-  const [user, SetUser] = useState(null);
+  // const [user, SetUser] = useState(null);
+
+  const { user } = useAuth0()
+
+  const userToBackend = {
+    name: user && user.given_name,
+    surname: user && user.family_name,
+    email: user && user.email,
+    username: user && user.nickname,
+    image: user && user.picture,
+    password: user && user.password ? user.password : null,
+    address: user && user.address ? user.address : null,
+    date_of_Birth: user && user.date_of_Birth ? user.date_of_Birth : null,
+    phone_number: user && user.phone_number ? user.phone_number : null,
+  }
+  
   useEffect(() => {
-    let isCancelled = false;
+    if(user) {
+      axios.post(`${process.env.REACT_APP_URL}/auth/google`, userToBackend)
+      .then( res => {
+        console.log(res)
+        localStorage.setItem("user", JSON.stringify(res.data));
+        
+      })
+    } 
 
     if (localStorage.length === 0) {
       localStorage.setItem("products", JSON.stringify([]));
       localStorage.setItem("favProducts", JSON.stringify([]));
       localStorage.setItem("user", JSON.stringify([]));
     }
-
-    const getUser = () => {
-      // fetch(`${process.env.REACT_APP_URL}/auth/login/success`, {
-      //   method: "GET",
-      //   credentials: "include",
-      //   headers: {
-      //     // Accept: "application/json",
-      //     "origin": [`${process.env.REACT_APP_URL}`],
-      //     "Content-Type": "application/json",
-      //     "Access-Control-Allow-Credentials": true,
-      //     "Access-Control-Allow-Origin": "*"
-      //   },
-      // })
-      //   .then((response) => {
-      //     if (response.status === 200) return response.json();
-      //     throw(response)
-      //   })
-      //   .then((res) => {
-      //     if(!isCancelled){ 
-      //     dispatch(loginUser(res.user))
-      //     SetUser(res.user)
-      //     localStorage.setItem('user',  JSON.stringify(res.user))
-      //     console.log('google -->',res);
-      //   }})
-      //   .catch((err) => {
-      //     console.log(err);
-      //   });
-      axios.get(`${process.env.REACT_APP_URL}/auth/login/success`, {
-        withCredentials: true,
-          "origin": [`${process.env.REACT_APP_URL}`],
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Credentials": true,
-        })
-        .then(res => {
-          if(!isCancelled){
-            if(res.data.user) {
-                dispatch(loginUser(res.data.user))
-                localStorage.setItem('user', JSON.stringify(res.data.user))
-              }
-              console.log('LOGIN_SUCCESS -->', res);
-          }
-        })
-        .catch((err) => {
-            console.log('LOGIN_ERROR', err);
-        });
-      };
-    getUser();
-
-    return () => {
-      isCancelled = true;
-    };
-  }, []);
+  }, [user]);
 
 
 
@@ -136,18 +108,12 @@ function App() {
         <Route exact path="/favorites" element={<Favorites />} />
         <Route exact path="/post" element={<CreateProduct/>}/>
         <Route exact path="/datauser" element={<UserProfile/>}/>
-        {/* <Route exact path="/admin" element={<AdminHome></AdminHome>}/>
-        <Route exact path="/admin/users" element={<AdminUsers></AdminUsers>}/>
-        <Route exact path="/admin/products" element={<AdminProducts></AdminProducts>}/>
-        <Route exact path="/admin/create-product" element={<AdminProducts></AdminProducts>}/>
+        {/* <Route exact path="/admin" element={ JSON.parse(localStorage.getItem('user')).isAdmin ? <AdminHome /> : <Navigate to='/' />}/>
+        <Route exact path="/admin/users" element={ JSON.parse(localStorage.getItem('user')).isAdmin ? <AdminUsers /> : <Navigate to='/' />}/>
+        <Route exact path="/admin/products" element={JSON.parse(localStorage.getItem('user')).isAdmin ? <AdminProducts /> : <Navigate to='/' />}/>
+        <Route exact path="/admin/create-product" element={ JSON.parse(localStorage.getItem('user')).isAdmin ? <AdminProducts /> : <Navigate to='/' />}/> */}
         <Route exact path="/community" element={<Community/>}/>
-        <Route exact path="/edit/:id" element={<EditProduct/>}/> */}
-        <Route exact path="/admin" element={ JSON.parse(localStorage.getItem('user'))?.isAdmin === true ? <AdminHome /> : <Navigate to='/' />}/>
-        <Route exact path="/admin/users" element={ JSON.parse(localStorage.getItem('user'))?.isAdmin === true ? <AdminUsers /> : <Navigate to='/' />}/>
-        <Route exact path="/admin/products" element={JSON.parse(localStorage.getItem('user'))?.isAdmin === true ? <AdminProducts /> : <Navigate to='/' />}/>
-        <Route exact path="/admin/create-product" element={ JSON.parse(localStorage.getItem('user'))?.isAdmin === true ? <AdminProducts /> : <Navigate to='/' />}/>
-        <Route exact path="/community" element={<Community/>}/>
-        <Route exact path="/edit/:id" element={ JSON.parse(localStorage.getItem('user'))?.isAdmin === true ? <EditProduct /> : <Navigate to='/' />}/>
+        {/* <Route exact path="/edit/:id" element={ JSON.parse(localStorage.getItem('user')).isAdmin ? <EditProduct /> : <Navigate to='/' />}/> */}
         <Route exact path="/success" element={<Success/>}/>
         <Route exact path="/failure" element={<div>FAILURE</div>}/>
         <Route exact path="/edituser" element={<EditUser/>}/>

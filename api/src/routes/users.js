@@ -67,9 +67,9 @@ router.put('/isBanned/:id', async (req, res, next) => {
 //PUT USER
 router.put('/', async (req, res) => {
   const { email } = req.query;
-  const { name, surname, nickname, phone_number, date_of_Birth, address, image } = req.body;
+  const { name, surname, username, phone_number, date_of_Birth, address, image } = req.body;
   try {
-    // const validation = validateAttribute(name, surname, nickname, phone_number, date_of_Birth, address);
+    // const validation = validateAttribute(name, surname, username, phone_number, date_of_Birth, address);
     // if (validation === true) {
       if (email) {
         const us1 = await User.findOne({
@@ -79,7 +79,7 @@ router.put('/', async (req, res) => {
         if (us1 !== null) {
           us1.name = name;
           us1.surname = surname;
-          us1.nickname = nickname ? nickname : '';
+          us1.username = username ? username : '';
           us1.phone_number = phone_number ? phone_number : '';
           us1.date_of_Birth = date_of_Birth ? date_of_Birth : '';
           us1.address = address ? address : '';

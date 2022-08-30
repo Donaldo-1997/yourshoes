@@ -6,6 +6,7 @@ const routes = require("./routes/index.js");
 const cors = require("cors");
 const passport = require("passport");
 const cookieSession = require("cookie-session");
+const session = require('express-session');
 
 require("./db.js");
 
@@ -20,6 +21,16 @@ server.use(
     maxAge: 24 * 60 * 60 * 100,
   })
 );
+
+server.use(session({
+  secret: process.env.AUTH_SECRET,
+  resave: false,
+  saveUninitialized: true,
+  cookie: {
+      maxAge: 1000 * 60 * 60 * 24 // Equals 1 day (1 day * 24 hr/1 day * 60 min/1 hr * 60 sec/1 min * 1000 ms / 1 sec)
+  }
+}));
+
 
 // Initializes passport and passport sessions
 server.use(passport.initialize());
